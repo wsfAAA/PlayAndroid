@@ -1,0 +1,6 @@
+1、依赖baselibrary库
+   a、在baselibrary库中 添加每个组件 所需的第三方依赖
+   b、api和implementation 区分
+   c、添加公共对外 提供的组件数据传递 library
+
+2、loginmodule  登录组件 处理登录相关操作
