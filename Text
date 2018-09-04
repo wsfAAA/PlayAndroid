@@ -1,6 +1,7 @@
-1、依赖baselibrary库
+1、依赖baselibrary库    baselibrary库:目的向其他组件提供公共的网络请求和第三方库
    a、在baselibrary库中 添加每个组件 所需的第三方依赖
    b、api和implementation 区分
-   c、添加公共对外 提供的组件数据传递 library
+   c、添加 yt basemvp 不知识好 是坏
+   d、
 
 2、loginmodule  登录组件 处理登录相关操作
