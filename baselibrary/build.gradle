@@ -1,13 +1,11 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 27
-
-
+    compileSdkVersion compile_sdk_version.toInteger()
 
     defaultConfig {
-        minSdkVersion 19
-        targetSdkVersion 27
+        minSdkVersion min_sdk_version.toInteger()
+        targetSdkVersion target_sdt_version.toInteger()
         versionCode 1
         versionName "1.0"
 
@@ -31,9 +29,9 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     //noinspection GradleCompatible
-    api 'com.android.support:appcompat-v7:27.1.0'
+    api "com.android.support:appcompat-v7:$support_version"
+    api "com.android.support:recyclerview-v7:$support_version"
     api 'com.android.support.constraint:constraint-layout:1.1.2'
-    compile 'com.android.support:recyclerview-v7:27.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'

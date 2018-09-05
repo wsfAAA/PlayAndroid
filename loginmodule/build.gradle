@@ -1,14 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 27
-
-
+    compileSdkVersion compile_sdk_version.toInteger()
 
     defaultConfig {
         applicationId "playandroid.cmcc.com.loginmodule"
-        minSdkVersion 19
-        targetSdkVersion 27
+        minSdkVersion min_sdk_version.toInteger()
+        targetSdkVersion target_sdt_version.toInteger()
         versionCode 1
         versionName "1.0"
 

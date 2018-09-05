@@ -1,13 +1,8 @@
 package playandroid.cmcc.com.loginmodule;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
-public class LoginActivity extends AppCompatActivity {
+import playandroid.cmcc.com.baselibrary.base.vu.BasePresenterActivity;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.loginactivity_main);
-    }
+public class LoginActivity extends BasePresenterActivity<LoginVu> {
+
 }

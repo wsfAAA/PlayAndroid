@@ -1,13 +1,7 @@
 package cmcc.com.playandroid;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import playandroid.cmcc.com.baselibrary.base.vu.BasePresenterActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BasePresenterActivity<MainVu> {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-    }
 }
