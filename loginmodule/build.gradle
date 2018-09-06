@@ -1,10 +1,17 @@
-apply plugin: 'com.android.application'
+if (isRunAlone.toBoolean()) {//单独调试
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
+apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion compile_sdk_version.toInteger()
 
     defaultConfig {
-        applicationId "playandroid.cmcc.com.loginmodule"
+        if (isRunAlone.toBoolean()) {//单独调试 加applicationId
+            applicationId "playandroid.cmcc.com.loginmodule"
+        }
         minSdkVersion min_sdk_version.toInteger()
         targetSdkVersion target_sdt_version.toInteger()
         versionCode 1
@@ -12,6 +19,16 @@ android {
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
+    }
+
+    sourceSets {
+        main {
+            if (isRunAlone.toBoolean()) {//单独调试 加载AndroidManifest
+                manifest.srcFile 'src/main/manifest/AndroidManifest.xml'
+            } else {//集成调试 加载AndroidManifest
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            }
+        }
     }
 
     buildTypes {
@@ -25,6 +42,10 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //butterknife
+    implementation 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 
     implementation project(':baselibrary')
 }

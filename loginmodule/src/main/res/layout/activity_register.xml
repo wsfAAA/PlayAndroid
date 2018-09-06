@@ -5,34 +5,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="playandroid.cmcc.com.loginmodule.login.LoginActivity">
-
+    tools:context="playandroid.cmcc.com.loginmodule.register.RegisterActivity">
 
     <EditText
         android:id="@+id/et_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="请输入账号" />
+        android:hint="用户名" />
 
     <EditText
         android:id="@+id/et_userpassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="请输入密码" />
+        android:hint="密码" />
 
+    <EditText
+        android:id="@+id/et_repassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请再次输入密码"/>
 
     <Button
-        android:id="@+id/bt_login"
+        android:id="@+id/bt_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="登录" />
+        android:text="注册" />
 
     <TextView
-        android:id="@+id/tv_register"
+        android:id="@+id/tv_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="点击注册"
+        android:padding="10dp"
+        android:text="去登录"
         android:textColor="@color/colorPrimaryDark" />
-
 </LinearLayout>

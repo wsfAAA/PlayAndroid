@@ -36,12 +36,13 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
+    compile 'com.blankj:utilcode:1.11.1'//工具类
 
     compile 'me.drakeet.multitype:multitype:3.4.4'//适配器
 
     //butterknife
-    compile 'com.jakewharton:butterknife:8.8.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    compile 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 
     //Rxjava和Retrofit相关的依赖
     compile 'com.squareup.okhttp3:logging-interceptor:3.8.1'//拦截器
