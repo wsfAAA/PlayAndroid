@@ -7,4 +7,6 @@ import playandroid.cmcc.com.baselibrary.base.mvp.BaseModel;
  */
 
 public class MainModel extends BaseModel<MainPresenter> {
+
+
 }

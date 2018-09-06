@@ -26,6 +26,7 @@ public class LoginInterceptor implements IInterceptor {
 //                callback.onInterrupt(new RuntimeException("请登录")); // 中断路由流程
 //            }
 //        } else {
+
 //            callback.onContinue(postcard);  // 处理完成，交还控制权
 //        }
 

@@ -8,4 +8,6 @@ import playandroid.cmcc.com.baselibrary.base.mvp.BasePresenterX;
  */
 
 public class MainPresenter extends BasePresenterX<MainVu,MainModel> {
+
+
 }

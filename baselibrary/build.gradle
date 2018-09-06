@@ -8,7 +8,6 @@ android {
         targetSdkVersion target_sdt_version.toInteger()
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         // 所有使用到 ARouter 的组件和模块的 build.gradle 都要添加

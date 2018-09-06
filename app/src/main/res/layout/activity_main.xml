@@ -7,6 +7,7 @@
     tools:context="cmcc.com.playandroid.main.MainActivity">
 
 
+
     <Button
         android:id="@+id/bt_login"
         android:layout_width="match_parent"

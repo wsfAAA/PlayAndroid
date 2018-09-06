@@ -10,6 +10,7 @@ import playandroid.cmcc.com.baselibrary.base.vu.BasePresenterActivity;
 @Route(path = "/account/login")
 public class LoginActivity extends BasePresenterActivity<LoginVu> {
 
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

@@ -16,5 +16,6 @@ public class LoginApplication extends Application {
         super.onCreate();
         Utils.init(this);//单独调试时初始化 第三方工具类
         ToastUtils.showShort("初始化工具类");
+
     }
 }

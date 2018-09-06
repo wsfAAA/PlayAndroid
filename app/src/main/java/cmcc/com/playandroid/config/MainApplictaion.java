@@ -27,6 +27,7 @@ public class MainApplictaion extends Application {
         ARouter.init(this);
     }
 
+
     private boolean isDebug() {
         return BuildConfig.DEBUG;
     }

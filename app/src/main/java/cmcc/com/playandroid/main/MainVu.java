@@ -23,9 +23,11 @@ public class MainVu extends MgMvpXVu<MainPresenter> {
         return R.layout.activity_main;
     }
 
+
     @Override
     public void bindView() {
         super.bindView();
+
     }
 
     /**

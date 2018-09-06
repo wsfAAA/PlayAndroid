@@ -6,5 +6,6 @@ package cmcc.com.playandroid.config;
 
 public class APPconfig {
 
+
     public static final boolean isDug=true;
 }
