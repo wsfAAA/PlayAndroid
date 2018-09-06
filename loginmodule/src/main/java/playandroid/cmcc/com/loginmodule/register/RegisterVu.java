@@ -42,7 +42,6 @@ public class RegisterVu extends MgMvpXVu<RegisterPresenter> {
     @Override
     public int getLayoutId() {
         return R.layout.activity_register;
-
     }
 
     @Override
