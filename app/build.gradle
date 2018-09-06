@@ -9,6 +9,14 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        // 所有使用到 ARouter 的组件和模块的 build.gradle 都要添加
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [ moduleName : project.getName() ]
+            }
+        }
+
     }
     buildTypes {
         release {
@@ -21,5 +29,8 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'//butterknife-compiler 和
+
     implementation project(':baselibrary')//依赖基础库
+    runtimeOnly project(':loginmodule')//依赖登录库
 }

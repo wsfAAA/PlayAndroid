@@ -1,7 +1,20 @@
-1、依赖baselibrary库    baselibrary库:目的向其他组件提供公共的网络请求和第三方库
+一、依赖baselibrary库    baselibrary库:目的向其他组件提供公共的网络请求和第三方库
    a、在baselibrary库中 添加每个组件 所需的第三方依赖
    b、api和implementation 区分
-   c、添加 yt basemvp 不知识好 是坏
-   d、
+   c、添加 yt basemvp
 
-2、loginmodule  登录组件 处理登录相关操作
+  问题：
+   A、baselibrary库中引用butterknife，在module中R2为空问题
+      a、现解决方案 在module中也添加butterknife的引用，不够完善 后期优化        已解决
+          方案：annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0' 需在每个module和主工程中引用
+               和arouter路由中的 annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'一样
+
+二、loginmodule  登录组件 处理登录相关操作，向其它组件提供用户信息
+  问题：
+      A、登录成功后 缺少本地存储、和单利获取
+
+三、主工程
+   a、使用runtimeOnly 依赖其它组件  隔离代码
+
+注意：
+   1、butterknife在android studio3.0上最高只能使用8.4.0

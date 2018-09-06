@@ -19,6 +19,12 @@ android {
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
+        // 所有使用到 ARouter 的组件和模块的 build.gradle 都要添加
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [ moduleName : project.getName() ]
+            }
+        }
     }
 
     sourceSets {
@@ -43,9 +49,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    //butterknife
-    implementation 'com.jakewharton:butterknife:8.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
-
+    annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
     implementation project(':baselibrary')
 }

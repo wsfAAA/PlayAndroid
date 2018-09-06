@@ -3,8 +3,11 @@ package playandroid.cmcc.com.loginmodule.login;
 
 import android.content.Intent;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+
 import playandroid.cmcc.com.baselibrary.base.vu.BasePresenterActivity;
 
+@Route(path = "/account/login")
 public class LoginActivity extends BasePresenterActivity<LoginVu> {
 
     @Override

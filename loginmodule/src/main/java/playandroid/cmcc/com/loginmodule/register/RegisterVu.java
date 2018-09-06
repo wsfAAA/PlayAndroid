@@ -49,7 +49,7 @@ public class RegisterVu extends MgMvpXVu<RegisterPresenter> {
         super.bindView();
     }
 
-    @OnClick({R.id.bt_register, R.id.tv_login})
+    @OnClick({R2.id.bt_register, R2.id.tv_login})
     public void onViewClicked(View view) {
         if (view.getId() == R.id.bt_register) {
             String username = etUsername.getText().toString().trim();

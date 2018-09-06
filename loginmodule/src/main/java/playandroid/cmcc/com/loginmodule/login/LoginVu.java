@@ -48,7 +48,7 @@ public class LoginVu extends MgMvpXVu<LoginPresenter> {
 
     }
 
-    @OnClick({R.id.bt_login, R.id.tv_register})
+    @OnClick({R2.id.bt_login, R2.id.tv_register})
     public void onViewClicked(View view) {
         if (view.getId() == R.id.bt_login) {
             String username = etUsername.getText().toString().trim();
