@@ -45,6 +45,7 @@ public class LoginVu extends MgMvpXVu<LoginPresenter> {
     @Override
     public void bindView() {
         super.bindView();
+
     }
 
     @OnClick({R2.id.bt_login, R2.id.tv_register})
