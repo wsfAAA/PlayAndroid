@@ -34,4 +34,5 @@ dependencies {
 
     implementation project(':baselibrary')//依赖基础库
     runtimeOnly project(':loginmodule')//依赖登录库
+//    runtimeOnly project(':searchmodule')//搜索依赖库
 }

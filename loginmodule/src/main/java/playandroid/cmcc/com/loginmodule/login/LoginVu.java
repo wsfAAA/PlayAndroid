@@ -1,6 +1,7 @@
 package playandroid.cmcc.com.loginmodule.login;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
@@ -67,6 +68,7 @@ public class LoginVu extends MgMvpXVu<LoginPresenter> {
 
     /**
      * 注册返回结果
+     *
      * @param data
      */
     public void registerResult(Intent data) {
@@ -76,9 +78,13 @@ public class LoginVu extends MgMvpXVu<LoginPresenter> {
 
     /**
      * 登录成功
+     *
      * @param bean
      */
-    public void loginSucceed(LoginRegisterBean bean){
-        ToastUtils.showShort("登录成功:  "+bean.getData().getUsername()+"   "+bean.getData().getPassword());
+    public void loginSucceed(LoginRegisterBean bean) {
+        ToastUtils.showShort("登录成功:  " + bean.getData().getUsername() + "   " + bean.getData().getPassword());
+        if ((Activity) context instanceof LoginActivity) {
+            ((Activity) context).finish();
+        }
     }
 }

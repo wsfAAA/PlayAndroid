@@ -1,5 +1,6 @@
 package cmcc.com.playandroid.main;
 
+import android.view.View;
 import android.widget.Button;
 
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -15,8 +16,13 @@ import playandroid.cmcc.com.baselibrary.base.bk.MgMvpXVu;
 
 public class MainVu extends MgMvpXVu<MainPresenter> {
 
+    public static final String AROUTER_LOGIN = "/account/login";
+    public static final String AROUTER_SEARCH = "/home/search";
+
     @BindView(R.id.bt_login)
     Button btLogin;
+    @BindView(R.id.bt_search)
+    Button btSearch;
 
     @Override
     public int getLayoutId() {
@@ -30,11 +36,15 @@ public class MainVu extends MgMvpXVu<MainPresenter> {
 
     }
 
-    /**
-     * 调整登录页
-     */
-    @OnClick(R.id.bt_login)
-    public void onViewClicked() {
-        ARouter.getInstance().build("/account/login").navigation();
+    @OnClick({R.id.bt_login, R.id.bt_search})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.bt_login:
+                ARouter.getInstance().build(AROUTER_LOGIN).navigation();
+                break;
+            case R.id.bt_search:
+                ARouter.getInstance().build(AROUTER_SEARCH).navigation();
+                break;
+        }
     }
 }

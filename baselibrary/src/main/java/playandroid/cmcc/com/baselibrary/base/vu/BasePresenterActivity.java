@@ -28,6 +28,8 @@ public  class BasePresenterActivity<V extends Vu> extends FragmentActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFormat(PixelFormat.TRANSLUCENT);
 
+//        hideNavBar();
+
         try {
             Class c = this.getClass();
             Type t = c.getGenericSuperclass();
