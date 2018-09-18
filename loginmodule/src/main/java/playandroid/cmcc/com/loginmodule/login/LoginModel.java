@@ -7,6 +7,7 @@ import io.reactivex.schedulers.Schedulers;
 import playandroid.cmcc.com.baselibrary.base.mvp.BaseModel;
 import playandroid.cmcc.com.baselibrary.net.DataServiceManager;
 import playandroid.cmcc.com.baselibrary.net.MgBaseObserver;
+import playandroid.cmcc.com.baselibrary.net.service.RetrofitService;
 import playandroid.cmcc.com.loginmodule.api.LoginApi;
 import playandroid.cmcc.com.loginmodule.bean.LoginRegisterBean;
 
@@ -19,7 +20,7 @@ public class LoginModel extends BaseModel<LoginPresenter> {
     private Disposable loginDisposable;
 
     public void login(String username, String password){
-        LoginApi serviceAPI = DataServiceManager.getServiceAPI(LoginApi.baseUrl, LoginApi.class);
+        LoginApi serviceAPI = DataServiceManager.getServiceAPI(RetrofitService.baseUrl, LoginApi.class);
         serviceAPI.login(username,password).subscribeOn(Schedulers.io()).
                 observeOn(AndroidSchedulers.mainThread()).
                 subscribe(new MgBaseObserver<LoginRegisterBean>() {

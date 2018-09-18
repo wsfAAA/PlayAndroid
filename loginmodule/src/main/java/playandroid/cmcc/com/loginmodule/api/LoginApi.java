@@ -15,8 +15,6 @@ import retrofit2.http.POST;
 
 public interface LoginApi {
 
-    public static final String baseUrl="http://www.wanandroid.com/";
-
     /**
      * 登录
      * @return

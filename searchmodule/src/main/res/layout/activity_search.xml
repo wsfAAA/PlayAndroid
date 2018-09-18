@@ -1,15 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="50dp"
+    android:background="@color/color_EA1E63"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
     tools:context="playandroid.cmcc.com.searchmodule.mvp.SearchActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <ImageView
+        android:id="@+id/img_search_back"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginLeft="5dp"
+        android:src="@drawable/back" />
+
+    <EditText
+        android:id="@+id/et_seach_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="搜索"/>
+        android:layout_marginLeft="30dp"
+        android:layout_weight="1"
+        android:hint="发现更多干活" />
 
+    <ImageView
+        android:id="@+id/img_search"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:src="@drawable/search" />
 
-</RelativeLayout>
+</LinearLayout>

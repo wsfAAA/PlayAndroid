@@ -7,4 +7,5 @@ import playandroid.cmcc.com.baselibrary.base.mvp.BasePresenterX;
  */
 
 public class SearchPresenter extends BasePresenterX<SearchVu,SearchModle>{
+
 }

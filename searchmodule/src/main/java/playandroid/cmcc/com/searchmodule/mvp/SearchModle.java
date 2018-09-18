@@ -7,4 +7,6 @@ import playandroid.cmcc.com.baselibrary.base.mvp.BaseModel;
  */
 
 public class SearchModle extends BaseModel<SearchPresenter> {
+
+
 }

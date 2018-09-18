@@ -6,5 +6,6 @@ package playandroid.cmcc.com.baselibrary.net.service;
  */
 
 public interface RetrofitService {
+    public static final String baseUrl="http://www.wanandroid.com/";
 
 }
