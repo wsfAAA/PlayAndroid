@@ -1,5 +1,6 @@
 package playandroid.cmcc.com.baselibrary.base.vu;
 
+import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.os.Build;
@@ -11,6 +12,8 @@ import android.view.WindowManager;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+
+import playandroid.cmcc.com.baselibrary.R;
 
 
 /**
@@ -29,6 +32,7 @@ public  class BasePresenterActivity<V extends Vu> extends FragmentActivity {
         getWindow().setFormat(PixelFormat.TRANSLUCENT);
 
 //        hideNavBar();
+        setWindowStatusBarColor(this, R.color.color_EA1E63);
 
         try {
             Class c = this.getClass();
@@ -45,6 +49,24 @@ public  class BasePresenterActivity<V extends Vu> extends FragmentActivity {
             e.printStackTrace();
         }
 
+    }
+
+    /**
+     * 改变状态栏颜色
+     */
+
+    public static void setWindowStatusBarColor(Activity activity, int colorResId) {
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                Window window = activity.getWindow();
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                window.setStatusBarColor(activity.getResources().getColor(colorResId));
+                //底部导航栏
+                //window.setNavigationBarColor(activity.getResources().getColor(colorResId));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     protected void hideNavBar(){

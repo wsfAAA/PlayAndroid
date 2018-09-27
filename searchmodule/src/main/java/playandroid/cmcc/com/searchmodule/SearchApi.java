@@ -18,6 +18,6 @@ public interface SearchApi {
      */
     @FormUrlEncoded
     @POST("article/query/0/json")
-    Observable<SearchBean> login(@Field("k") String k);
+    Observable<SearchBean> searchContent(@Field("k") String k);
 
 }

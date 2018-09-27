@@ -3,33 +3,44 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:background="@color/color_EA1E63"
-    android:gravity="center_vertical"
-    android:orientation="horizontal"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="playandroid.cmcc.com.searchmodule.mvp.SearchActivity">
 
-    <ImageView
-        android:id="@+id/img_search_back"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginLeft="5dp"
-        android:src="@drawable/back" />
 
-    <EditText
-        android:id="@+id/et_seach_content"
-        android:layout_width="0dp"
+    <include layout="@layout/include_search_toobar" />
+
+    <TextView
+        android:layout_marginTop="@dimen/dp_20"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_weight="1"
-        android:hint="发现更多干活" />
+        android:text="@string/search_hot"
+        android:textColor="@color/color_00ceff"
+        android:textSize="@dimen/sp_14" />
 
-    <ImageView
-        android:id="@+id/img_search"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:src="@drawable/search" />
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/dp_20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/search_history"
+            android:textColor="@color/color_00ceff"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/tv_search_clean"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dp_10"
+            android:text="@string/search_clean"
+            android:textSize="@dimen/sp_14" />
+
+    </LinearLayout>
 
 </LinearLayout>
