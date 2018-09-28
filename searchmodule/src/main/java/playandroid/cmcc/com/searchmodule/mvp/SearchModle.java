@@ -9,6 +9,7 @@ import playandroid.cmcc.com.baselibrary.net.MgBaseObserver;
 import playandroid.cmcc.com.baselibrary.net.service.RetrofitService;
 import playandroid.cmcc.com.searchmodule.SearchApi;
 import playandroid.cmcc.com.searchmodule.SearchBean;
+import playandroid.cmcc.com.searchmodule.SearchHotKey;
 
 /**
  * Created by wsf on 2018/9/17.
@@ -29,9 +30,9 @@ public class SearchModle extends BaseModel<SearchPresenter> {
 
             @Override
             public void onNext(SearchBean searchBean) {
-                if (searchBean != null&&searchBean.getData()!=null&&searchBean.getData().getDatas().size()>0) {
+                if (searchBean != null && searchBean.getData() != null && searchBean.getData().getDatas().size() > 0) {
                     mPresenter.searchSucceed(searchBean);
-                }else {
+                } else {
                     mPresenter.searchFailure();
                 }
             }
@@ -39,6 +40,34 @@ public class SearchModle extends BaseModel<SearchPresenter> {
             @Override
             public void onError(Throwable e) {
                 mPresenter.searchFailure();
+            }
+        });
+    }
+
+    /**
+     * 热词搜索
+     */
+    public void searchHotKey() {
+        SearchApi serviceAPI = DataServiceManager.getServiceAPI(RetrofitService.baseUrl, SearchApi.class);
+        serviceAPI.searchHotKey().subscribeOn(Schedulers.io()).
+                observeOn(AndroidSchedulers.mainThread()).subscribe(new MgBaseObserver<SearchHotKey>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+                mDisposable = d;
+            }
+
+            @Override
+            public void onNext(SearchHotKey searchBean) {
+                if (searchBean != null && searchBean.getData() != null && searchBean.getData().size() > 0) {
+                    mPresenter.searchHotKeySucceed(searchBean);
+                } else {
+                    mPresenter.searchHotKeyFailure();
+                }
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                mPresenter.searchHotKeyFailure();
             }
         });
     }

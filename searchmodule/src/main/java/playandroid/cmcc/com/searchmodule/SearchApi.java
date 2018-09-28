@@ -3,6 +3,7 @@ package playandroid.cmcc.com.searchmodule;
 import io.reactivex.Observable;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 /**
@@ -19,5 +20,11 @@ public interface SearchApi {
     @FormUrlEncoded
     @POST("article/query/0/json")
     Observable<SearchBean> searchContent(@Field("k") String k);
+
+    /**
+     * 搜索热词
+     */
+    @GET("hotkey/json")
+    Observable<SearchHotKey> searchHotKey();
 
 }

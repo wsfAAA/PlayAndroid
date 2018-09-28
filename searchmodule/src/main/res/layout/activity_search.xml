@@ -11,18 +11,26 @@
     <include layout="@layout/include_search_toobar" />
 
     <TextView
-        android:layout_marginTop="@dimen/dp_20"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_20"
         android:text="@string/search_hot"
         android:textColor="@color/color_00ceff"
         android:textSize="@dimen/sp_14" />
 
-
-    <LinearLayout
-        android:layout_marginTop="@dimen/dp_20"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_hot"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginRight="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_10" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_20"
         android:orientation="horizontal">
 
         <TextView
@@ -42,5 +50,14 @@
             android:textSize="@dimen/sp_14" />
 
     </LinearLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_history"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginRight="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_10" />
 
 </LinearLayout>
