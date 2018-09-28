@@ -3,5 +3,6 @@
 
     <string name="search_hot">热门搜索</string>
     <string name="search_history">搜索历史</string>
+    <string name="search_no_history">快来搜点干活吧</string>
     <string name="search_clean">清空</string>
 </resources>

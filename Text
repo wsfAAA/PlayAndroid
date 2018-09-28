@@ -25,6 +25,7 @@
    a、使用runtimeOnly 依赖其它组件  隔离代码
 
 四、搜索
+    1、技术点  热词 点击传值通过setTag进行传值
 
 注意：
    1、butterknife在android studio3.0上最高只能使用8.4.0
