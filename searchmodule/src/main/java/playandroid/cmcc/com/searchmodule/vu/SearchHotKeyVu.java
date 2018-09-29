@@ -1,14 +1,11 @@
-package playandroid.cmcc.com.searchmodule.mvp;
+package playandroid.cmcc.com.searchmodule.vu;
 
 import android.widget.TextView;
 
-import java.util.List;
-
 import butterknife.BindView;
-import butterknife.OnClick;
 import playandroid.cmcc.com.baselibrary.base.bk.MgBaseVu;
 import playandroid.cmcc.com.searchmodule.R;
-import playandroid.cmcc.com.searchmodule.SearchHotKey;
+import playandroid.cmcc.com.searchmodule.bean.SearchHotKey;
 
 /**
  * Created by wsf on 2018/9/27.

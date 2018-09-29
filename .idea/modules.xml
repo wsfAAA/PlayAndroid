@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/PlayAndroid.iml" filepath="$PROJECT_DIR$/.idea/modules/PlayAndroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/baselibrary/baselibrary.iml" filepath="$PROJECT_DIR$/baselibrary/baselibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/loginmodule/loginmodule.iml" filepath="$PROJECT_DIR$/loginmodule/loginmodule.iml" />
+      <module fileurl="file://$PROJECT_DIR$/searchmodule/searchmodule.iml" filepath="$PROJECT_DIR$/searchmodule/searchmodule.iml" />
+    </modules>
+  </component>
+</project>

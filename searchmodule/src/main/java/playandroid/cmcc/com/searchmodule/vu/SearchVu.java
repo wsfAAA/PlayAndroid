@@ -1,6 +1,7 @@
-package playandroid.cmcc.com.searchmodule.mvp;
+package playandroid.cmcc.com.searchmodule.vu;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -23,10 +24,11 @@ import me.drakeet.multitype.MultiTypeAdapter;
 import playandroid.cmcc.com.baselibrary.base.bk.MgMvpXVu;
 import playandroid.cmcc.com.searchmodule.R;
 import playandroid.cmcc.com.searchmodule.R2;
-import playandroid.cmcc.com.searchmodule.SearchBean;
-import playandroid.cmcc.com.searchmodule.SearchHistoryAdapter;
-import playandroid.cmcc.com.searchmodule.SearchHotKey;
-import playandroid.cmcc.com.searchmodule.SraechItemBinder;
+import playandroid.cmcc.com.searchmodule.activity.SearchPageActivity;
+import playandroid.cmcc.com.searchmodule.adapter.SearchHistoryAdapter;
+import playandroid.cmcc.com.searchmodule.bean.SearchHotKey;
+import playandroid.cmcc.com.searchmodule.adapter.SearchItemBinder;
+import playandroid.cmcc.com.searchmodule.presenter.SearchPresenter;
 
 /**
  * Created by wsf on 2018/9/17.
@@ -40,13 +42,13 @@ public class SearchVu extends MgMvpXVu<SearchPresenter> {
     AutoCompleteTextView etSeachContent;
     @BindView(R2.id.img_search)
     ImageView imgSearch;
-    @BindView(R.id.recycler_hot)
+    @BindView(R2.id.recycler_hot)
     RecyclerView mRecyclerHot;
-    @BindView(R.id.tv_search_clean)
+    @BindView(R2.id.tv_search_clean)
     TextView tvSearchClean;
-    @BindView(R.id.recycler_history)
+    @BindView(R2.id.recycler_history)
     RecyclerView mRecyclerHistory;
-    @BindView(R.id.tv_no_history)
+    @BindView(R2.id.tv_no_history)
     TextView tvNoHistory;
     private StaggeredGridLayoutManager staggeredGridLayoutManager;
     private MultiTypeAdapter multiTypeAdapterHot;
@@ -57,6 +59,7 @@ public class SearchVu extends MgMvpXVu<SearchPresenter> {
     private ArrayList<String> mSearchHistoryList = new ArrayList<>();//历史记录
 
     public final static String SEARCH_HOTKEY = "SEARCH_HOTKEY";
+    public final static String INTENT_SEARCH_HOTKEY = "INTENT_SEARCH_HOTKEY";
     private SearchHistoryAdapter searchHistoryAdapter;
 
     @Override
@@ -112,6 +115,7 @@ public class SearchVu extends MgMvpXVu<SearchPresenter> {
             String historyKey = (String) v.getTag(R.id.tv_search_history_id);
             if (!TextUtils.isEmpty(historyKey)) {
                 ToastUtils.showShort(historyKey);
+                startActivity(historyKey);
             }
         }
     };
@@ -138,13 +142,14 @@ public class SearchVu extends MgMvpXVu<SearchPresenter> {
     private void searchHotKey() {
         mPresenter.searchHotKeyRequest();
         multiTypeAdapterHot = new MultiTypeAdapter();
-        SraechItemBinder sraechItemBinder = new SraechItemBinder();
+        SearchItemBinder sraechItemBinder = new SearchItemBinder();
         sraechItemBinder.setOnItemClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SearchHotKey.DataBean hotKeyBean = (SearchHotKey.DataBean) v.getTag(R.id.tv_search_hotkey);
                 if (hotKeyBean != null) {
                     saveSearchHistory(hotKeyBean.getName());
+                    startActivity(hotKeyBean.getName());
                 }
             }
         });
@@ -169,8 +174,8 @@ public class SearchVu extends MgMvpXVu<SearchPresenter> {
             if (TextUtils.isEmpty(searchContent)) {
                 ToastUtils.showShort("请输入搜索内容");
             } else {
-                mPresenter.searchRequest(searchContent);
                 saveSearchHistory(searchContent);
+                startActivity(searchContent);
             }
         } else if (view.getId() == R.id.tv_search_clean) {//清空
             VisibleView(View.VISIBLE);
@@ -182,17 +187,15 @@ public class SearchVu extends MgMvpXVu<SearchPresenter> {
         }
     }
 
-
-    public void searchFailure() {
-
+    private void startActivity(String searchContent) {
+        Intent intent = new Intent(context, SearchPageActivity.class);
+        intent.putExtra(INTENT_SEARCH_HOTKEY,searchContent);
+        context.startActivity(intent);
     }
 
-    public void searchSucceed(SearchBean searchBean) {
-
-    }
 
     public void searchHotKeyFailure() {
-
+        ToastUtils.showShort("热词请求失败");
     }
 
     public void searchHotKeySucceed(SearchHotKey searchBean) {

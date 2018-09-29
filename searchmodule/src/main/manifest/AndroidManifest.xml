@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="playandroid.cmcc.com.searchmodule">
 
-    <!--单独调试-->
+    <!-- 单独调试 -->
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -14,13 +14,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".mvp.SearchActivity">
+        <activity android:name=".activity.SearchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.SearchPageActivity"/>
     </application>
 
 </manifest>

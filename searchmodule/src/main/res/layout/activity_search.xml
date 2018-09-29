@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="playandroid.cmcc.com.searchmodule.mvp.SearchActivity">
+    tools:context="playandroid.cmcc.com.searchmodule.activity.SearchActivity">
 
 
     <include layout="@layout/include_search_toobar" />

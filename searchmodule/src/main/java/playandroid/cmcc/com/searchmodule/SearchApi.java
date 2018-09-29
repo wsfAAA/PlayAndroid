@@ -1,6 +1,8 @@
 package playandroid.cmcc.com.searchmodule;
 
 import io.reactivex.Observable;
+import playandroid.cmcc.com.searchmodule.bean.SearchBean;
+import playandroid.cmcc.com.searchmodule.bean.SearchHotKey;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;

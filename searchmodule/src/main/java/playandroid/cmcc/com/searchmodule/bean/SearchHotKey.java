@@ -1,4 +1,4 @@
-package playandroid.cmcc.com.searchmodule;
+package playandroid.cmcc.com.searchmodule.bean;
 
 import java.util.List;
 

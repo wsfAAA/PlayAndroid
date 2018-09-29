@@ -4,7 +4,8 @@
 
     <!--集成调试使用-->
     <application android:theme="@style/AppTheme">
-        <activity android:name=".mvp.SearchActivity"/>
+        <activity android:name=".activity.SearchActivity"/>
+        <activity android:name=".activity.SearchPageActivity"/>
     </application>
 
 </manifest>

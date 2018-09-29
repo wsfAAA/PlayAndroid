@@ -1,4 +1,4 @@
-package playandroid.cmcc.com.searchmodule;
+package playandroid.cmcc.com.searchmodule.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -10,12 +10,15 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.drakeet.multitype.ItemViewBinder;
+import playandroid.cmcc.com.searchmodule.R;
+import playandroid.cmcc.com.searchmodule.R2;
+import playandroid.cmcc.com.searchmodule.bean.SearchHotKey;
 
 /**
  * Created by wsf on 2018/9/27.
  */
 
-public class SraechItemBinder extends ItemViewBinder<SearchHotKey, SraechItemBinder.ViewHolder> {
+public class SearchItemBinder extends ItemViewBinder<SearchHotKey, SearchItemBinder.ViewHolder> {
 
     @NonNull
     @Override
@@ -42,7 +45,7 @@ public class SraechItemBinder extends ItemViewBinder<SearchHotKey, SraechItemBin
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.tv_setchkhotkey)
+        @BindView(R2.id.tv_setchkhotkey)
         TextView tvSetchkhotkey;
 
         ViewHolder(View view) {
