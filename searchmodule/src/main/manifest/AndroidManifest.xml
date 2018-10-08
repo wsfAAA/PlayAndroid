@@ -21,7 +21,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.SearchPageActivity"/>
+        <activity android:name=".activity.SearchPageActivity" />
+        <activity android:name=".activity.SearchWebViewActivity"></activity>
     </application>
 
 </manifest>

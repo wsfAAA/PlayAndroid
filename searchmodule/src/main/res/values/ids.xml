@@ -6,5 +6,6 @@
     <!--搜索记录 点击事件id-->
     <item name="tv_search_history_id" type="id" />
     <item name="tv_search_history_position_id" type="id" />
+    <item name="search_result_position_id" type="id" />
 
 </resources>

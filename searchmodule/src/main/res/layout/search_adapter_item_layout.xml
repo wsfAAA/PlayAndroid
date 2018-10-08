@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/mll_root"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/dp_130"
+    android:layout_height="@dimen/dp_120"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -28,8 +28,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dp_10"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/dp_5"
+        android:layout_weight="1"
         android:orientation="horizontal">
 
         <ImageView
@@ -37,7 +38,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="@dimen/dp_5"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:scaleType="centerCrop" />
 
         <RelativeLayout
@@ -49,10 +50,11 @@
                 android:id="@+id/mtv_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp_5"
                 android:maxLines="3"
                 android:text="@string/search_no_history"
-                android:textColor="@color/color_00ceff"
-                android:textSize="@dimen/sp_18" />
+                android:textColor="@color/color_000000"
+                android:textSize="@dimen/sp_16" />
 
             <TextView
                 android:id="@+id/mtv_type"
@@ -65,13 +67,18 @@
 
             <ImageView
                 android:id="@+id/mImag_collect"
-                android:layout_width="@dimen/dp_32"
-                android:layout_height="@dimen/dp_32"
+                android:layout_width="@dimen/dp_25"
+                android:layout_height="@dimen/dp_25"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
-                android:src="@drawable/collect_no" />
+                android:src="@drawable/collect_yes" />
 
         </RelativeLayout>
     </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:background="@color/color_e6e2e4" />
 
 </LinearLayout>

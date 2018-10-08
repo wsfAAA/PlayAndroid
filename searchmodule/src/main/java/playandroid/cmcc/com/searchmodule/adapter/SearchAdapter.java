@@ -12,6 +12,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.ReflectUtils;
+import com.blankj.utilcode.util.RegexUtils;
+
 import java.util.List;
 
 import butterknife.BindView;
@@ -55,13 +58,38 @@ public class SearchAdapter extends ItemViewBinder<SearchBean, SearchAdapter.View
             holder.mImgPicture.setVisibility(View.GONE);
             loaderData(holder, datasBean);
         }
+//        String url="";
+//        if (!RegexUtils.isURL(datasBean.getLink())){
+//            url=""+datasBean.getLink();
+//        }else {
+//            url=datasBean.getLink();
+//        }
+        holder.mLlRoot.setTag(R.id.search_result_position_id,datasBean.getLink());
+        holder.mLlRoot.setOnClickListener(mListener);
+        holder.mImagCollect.setOnClickListener(mCollectListener);
     }
 
     private void loaderData(@NonNull ViewHolder holder, SearchBean.DataBean.DatasBean datasBean) {
         holder.mTvAuthor.setText(datasBean.getAuthor());
         holder.mTvDate.setText(datasBean.getNiceDate());
-        holder.mTvContent.setText(datasBean.getTitle());
+        holder.mTvContent.setText(datasBean.getTitle()
+                .replace("<em class='highlight'>","").replace("</em>",""));
         holder.mTvType.setText(datasBean.getChapterName());
+    }
+
+    private View.OnClickListener mListener;
+    private View.OnClickListener mCollectListener;
+
+    public void setOnItemClickListener(View.OnClickListener listener){
+        mListener=listener;
+    }
+
+    /**
+     * 收藏
+     * @param listener
+     */
+    public void setCollectOnItemClickListener(View.OnClickListener listener){
+        mCollectListener=listener;
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
