@@ -4,7 +4,7 @@ package playandroid.cmcc.com.loginmodule.login;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import playandroid.cmcc.com.baselibrary.base.mvp.BaseModel;
+import playandroid.cmcc.com.baselibrary.base.jadapter.basemvp.BaseModel;
 import playandroid.cmcc.com.baselibrary.net.DataServiceManager;
 import playandroid.cmcc.com.baselibrary.net.MgBaseObserver;
 import playandroid.cmcc.com.baselibrary.net.service.RetrofitService;
@@ -32,15 +32,15 @@ public class LoginModel extends BaseModel<LoginPresenter> {
                     @Override
                     public void onNext(LoginRegisterBean bean) {
                         if (bean.getData()!=null&&bean.getErrorCode()==0){
-                            mPresenter.loginSucceed(bean);
+                            mBasePresenter.loginSucceed(bean);
                         }else {
-                            mPresenter.loginFialuer(bean.getErrorMsg()+"    "+bean.getErrorCode());
+                            mBasePresenter.loginFialuer(bean.getErrorMsg()+"    "+bean.getErrorCode());
                         }
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                            mPresenter.loginFialuer(e.toString());
+                        mBasePresenter.loginFialuer(e.toString());
                     }
                 });
     }

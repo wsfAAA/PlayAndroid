@@ -3,12 +3,11 @@ package playandroid.cmcc.com.searchmodule.modle;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import playandroid.cmcc.com.baselibrary.base.mvp.BaseModel;
+import playandroid.cmcc.com.baselibrary.base.jadapter.basemvp.BaseModel;
 import playandroid.cmcc.com.baselibrary.net.DataServiceManager;
 import playandroid.cmcc.com.baselibrary.net.MgBaseObserver;
 import playandroid.cmcc.com.baselibrary.net.service.RetrofitService;
 import playandroid.cmcc.com.searchmodule.SearchApi;
-import playandroid.cmcc.com.searchmodule.bean.SearchBean;
 import playandroid.cmcc.com.searchmodule.bean.SearchHotKey;
 import playandroid.cmcc.com.searchmodule.presenter.SearchPresenter;
 
@@ -35,15 +34,15 @@ public class SearchModle extends BaseModel<SearchPresenter> {
             @Override
             public void onNext(SearchHotKey searchBean) {
                 if (searchBean != null && searchBean.getData() != null && searchBean.getData().size() > 0) {
-                    mPresenter.searchHotKeySucceed(searchBean);
+                    mBasePresenter.searchHotKeySucceed(searchBean);
                 } else {
-                    mPresenter.searchHotKeyFailure();
+                    mBasePresenter.searchHotKeyFailure();
                 }
             }
 
             @Override
             public void onError(Throwable e) {
-                mPresenter.searchHotKeyFailure();
+                mBasePresenter.searchHotKeyFailure();
             }
         });
     }

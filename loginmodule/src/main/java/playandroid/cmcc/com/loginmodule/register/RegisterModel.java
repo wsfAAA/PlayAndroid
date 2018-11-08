@@ -3,7 +3,7 @@ package playandroid.cmcc.com.loginmodule.register;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import playandroid.cmcc.com.baselibrary.base.mvp.BaseModel;
+import playandroid.cmcc.com.baselibrary.base.jadapter.basemvp.BaseModel;
 import playandroid.cmcc.com.baselibrary.net.DataServiceManager;
 import playandroid.cmcc.com.baselibrary.net.MgBaseObserver;
 import playandroid.cmcc.com.baselibrary.net.service.RetrofitService;
@@ -25,21 +25,21 @@ public class RegisterModel extends BaseModel<RegisterPresenter> {
                 subscribe(new MgBaseObserver<LoginRegisterBean>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-                        registerDisposable =d;
+                        registerDisposable = d;
                     }
 
                     @Override
                     public void onNext(LoginRegisterBean bean) {
-                        if (bean.getData()!=null&&bean.getErrorCode()==0){
-                            mPresenter.onRegisterSucceed(bean);
-                        }else {
-                            mPresenter.onRegisterFailure(bean.getErrorMsg());
+                        if (bean.getData() != null && bean.getErrorCode() == 0) {
+                            mBasePresenter.onRegisterSucceed(bean);
+                        } else {
+                            mBasePresenter.onRegisterFailure(bean.getErrorMsg());
                         }
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        mPresenter.onRegisterFailure(e.toString());
+                        mBasePresenter.onRegisterFailure(e.toString());
                     }
                 });
 
@@ -73,7 +73,7 @@ public class RegisterModel extends BaseModel<RegisterPresenter> {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (registerDisposable!=null){
+        if (registerDisposable != null) {
             registerDisposable.dispose();
         }
     }

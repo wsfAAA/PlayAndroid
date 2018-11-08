@@ -31,17 +31,17 @@ public class SearchItemBinder extends ItemViewBinder<SearchHotKey, SearchItemBin
     protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull SearchHotKey item) {
         int position = holder.getPosition();
         SearchHotKey.DataBean dataBean = item.getData().get(position);
-        if (dataBean!=null){
+        if (dataBean != null) {
             holder.tvSetchkhotkey.setText(dataBean.getName());
-            holder.tvSetchkhotkey.setTag(R.id.tv_search_hotkey,dataBean);//通过tag传值
+            holder.tvSetchkhotkey.setTag(R.id.tv_search_hotkey, dataBean);//通过tag传值
             holder.tvSetchkhotkey.setOnClickListener(mListener);
         }
     }
 
     private View.OnClickListener mListener;
 
-    public void setOnItemClickListener(View.OnClickListener mListener){
-            this.mListener=mListener;
+    public void setOnItemClickListener(View.OnClickListener mListener) {
+        this.mListener = mListener;
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
