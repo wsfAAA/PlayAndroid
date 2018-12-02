@@ -12,8 +12,8 @@ import com.bumptech.glide.Glide;
 
 public class BaseUtils {
 
-    public static void loaderImage(Context context, String imageUrl, ImageView imageView) {
-        if (TextUtils.isEmpty(imageUrl) || imageView == null) {
+    public static void loaderGlideImage(Context context, Object imageUrl, ImageView imageView) {
+        if (imageUrl==null || imageView == null) {
             return;
         }
         Glide.with(context).load(imageUrl).into(imageView);

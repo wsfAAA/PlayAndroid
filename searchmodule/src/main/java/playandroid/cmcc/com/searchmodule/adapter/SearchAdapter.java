@@ -52,7 +52,7 @@ public class SearchAdapter extends ItemViewBinder<SearchBean, SearchAdapter.View
         List<SearchBean.DataBean.DatasBean.TagsBean> tags = datasBean.getTags();
         if (tags != null && tags.size() > 0 && tags.get(0) != null && !TextUtils.isEmpty(tags.get(0).getUrl())) {
             holder.mImgPicture.setVisibility(View.VISIBLE);
-            BaseUtils.loaderImage(context,datasBean.getEnvelopePic(),holder.mImgPicture);
+            BaseUtils.loaderGlideImage(context,datasBean.getEnvelopePic(),holder.mImgPicture);
             loaderData(holder, datasBean);
         } else {
             holder.mImgPicture.setVisibility(View.GONE);

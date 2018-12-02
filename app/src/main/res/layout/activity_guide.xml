@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".startpage.GuideActivity">
+
+
+    <com.youth.banner.Banner
+        android:id="@+id/m_banner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:indicator_margin="@dimen/dp_5"/>
+
+    <Button
+        android:visibility="gone"
+        android:id="@+id/mBtn_start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/dp_50"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_20"
+        android:text="开启精彩之旅" />
+
+</RelativeLayout>
