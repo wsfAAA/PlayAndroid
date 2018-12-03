@@ -4,35 +4,50 @@
   3、侧滑
   4、四个导航
 
+目的：
+    1、每个组件都可以单独运行
+    2、组件直接相互解耦
+    3、组件之间可以组合使用
+    4、封装一套自己 base核心库
+    5、分享、支付组件
+
 如何单独调试：
-每个gradle.properties中设置是否单独调试
+每个gradle.properties中设置是否单独调试、取消在app.gradle中依赖
 
 --------------------------------------------------------------------------------------------------->
 
-一、依赖baselibrary库    baselibrary库:目的向其他组件提供公共的网络请求和第三方库
-   a、在baselibrary库中 添加每个组件 所需的第三方依赖
-   b、api和implementation 区分
-   c、添加 yt basemvp
+一、依赖baselibrary库              baselibrary库:目的向其他组件提供公共的网络请求和第三方库、通用功能
+   a、在baselibrary库中           添加每个组件 所需的第三方依赖
+   b、api 和 implementation 区分  api library 使用该修饰的依赖可以被其他library使用，implementation不可以
+   c、添加 yt basemvp             移除yt basemvp替换自己的mvp
 
-  问题：
+--------------------------------------------------------------------------------------------------->
+
+二、loginmodule  登录组件 处理登录相关操作，向其它组件提供用户信息
+    问题：
+       A、登录成功后 缺少本地存储、和单利获取
+
+
+--------------------------------------------------------------------------------------------------->
+三、主工程
+   a、使用runtimeOnly 依赖其它组件  隔离代码
+
+
+--------------------------------------------------------------------------------------------------->
+四、搜索
+    1、技术点
+            a、热词 点击传值通过setTag进行传值
+
+
+--------------------------------------------------------------------------------------------------->
+ 问题：
    A、baselibrary库中引用butterknife，在module中R2为空问题
       a、现解决方案 在module中也添加butterknife的引用，不够完善 后期优化        已解决
           方案：annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0' 需在每个module和主工程中引用
                和arouter路由中的 annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'一样
 
-二、loginmodule  登录组件 处理登录相关操作，向其它组件提供用户信息
-  问题：
-      A、登录成功后 缺少本地存储、和单利获取
-
-三、主工程
-   a、使用runtimeOnly 依赖其它组件  隔离代码
-
-四、搜索
-    1、技术点  热词 点击传值通过setTag进行传值
-
 注意：
-   1、butterknife在android studio3.0上最高只能使用8.4.0
-
+     butterknife在android studio3.0上最高只能使用8.4.0
 
 --------------------------------------------------------------------------------------------------->
 代码解耦：使用implementation主项目中依旧是可以访问到 login 中代码，需要采用3.0的runtimeOnly 进行隔离。
@@ -41,7 +56,7 @@
 
 
 使用技术：
-    mvp+butterknife+组件化+arouter+Rxjava+Retrofit2
+    mvp+butterknife+组件化+aroutr+Rxjavea+Retrofit2
 
 开放api:
     http://www.wanandroid.com/blog/show/2
