@@ -21,8 +21,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cmcc.com.playandroid.R;
 import cmcc.com.playandroid.main.MainActivity;
-import playandroid.cmcc.com.baselibrary.timer.BaseTimerTask;
-import playandroid.cmcc.com.baselibrary.timer.ITimerListener;
+import playandroid.cmcc.com.baselibrary.timertask.BaseTimerTask;
+import playandroid.cmcc.com.baselibrary.timertask.ITimerListener;
 
 public class WelcomeActivity extends AppCompatActivity implements ITimerListener {
 
