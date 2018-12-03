@@ -22,6 +22,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import me.drakeet.multitype.MultiTypeAdapter;
 import playandroid.cmcc.com.baselibrary.base.jadapter.basemvp.BaseActivity;
+import playandroid.cmcc.com.baselibrary.base.jadapter.basemvp.BaseMvpActivity;
 import playandroid.cmcc.com.searchmodule.R;
 import playandroid.cmcc.com.searchmodule.R2;
 import playandroid.cmcc.com.searchmodule.adapter.SearchHistoryAdapter;
@@ -30,7 +31,7 @@ import playandroid.cmcc.com.searchmodule.bean.SearchHotKey;
 import playandroid.cmcc.com.searchmodule.presenter.SearchPresenter;
 
 @Route(path = "/home/search")
-public class SearchActivity extends BaseActivity<SearchPresenter> {
+public class SearchActivity extends BaseMvpActivity<SearchPresenter> {
 
     @BindView(R2.id.img_search_back)
     ImageView imgSearchBack;
@@ -199,5 +200,10 @@ public class SearchActivity extends BaseActivity<SearchPresenter> {
             mHotKeyData.add(searchBean);
         }
         multiTypeAdapterHot.notifyDataSetChanged();
+    }
+
+    @Override
+    public SearchPresenter creatPersenter() {
+        return new SearchPresenter();
     }
 }

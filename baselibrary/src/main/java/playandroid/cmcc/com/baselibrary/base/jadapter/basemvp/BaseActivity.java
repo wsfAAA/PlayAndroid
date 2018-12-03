@@ -4,57 +4,48 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
+import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 
 import butterknife.ButterKnife;
-
+import butterknife.Unbinder;
 
 
 /**
  * Created by wsf on 2018/11/6.
  */
 
-public abstract class BaseActivity<P extends BasePresenter> extends FragmentActivity {
+public abstract class BaseActivity extends FragmentActivity {
 
     protected final String TAG = getClass().getSimpleName();
 
-    protected P mBasePresenter;
+    protected Context mContext;
 
-    public Context mContext;
+    private Unbinder mUnbind;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mContext = this;
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);  //消除actionbar
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);  //设置全屏
         setContentView(getLayoutResID());
-        ButterKnife.bind(this);
-        mBasePresenter = TUtil.getT(this, 0);
-        mBasePresenter.addActivityInstanc(this);
+        mUnbind = ButterKnife.bind(this);
+        mContext = this;
         initView();
     }
-
-
-    /**
-     * 获得Layout文件id
-     *
-     * @return
-     */
-    protected abstract int getLayoutResID();
-
-
-    protected abstract void initView();
-
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.i("wsf", TAG + " onDestroy");
-        if (mBasePresenter != null) {
-            mBasePresenter.onDestroy();
-            mBasePresenter = null;
+        if (mUnbind != null) {
+            mUnbind.unbind();
         }
     }
+
+    protected abstract int getLayoutResID();
+
+    protected abstract void initView();
 
 }

@@ -13,12 +13,13 @@ import com.blankj.utilcode.util.ToastUtils;
 import butterknife.BindView;
 import butterknife.OnClick;
 import playandroid.cmcc.com.baselibrary.base.jadapter.basemvp.BaseActivity;
+import playandroid.cmcc.com.baselibrary.base.jadapter.basemvp.BaseMvpActivity;
 import playandroid.cmcc.com.loginmodule.R;
 import playandroid.cmcc.com.loginmodule.R2;
 import playandroid.cmcc.com.loginmodule.bean.LoginRegisterBean;
 import playandroid.cmcc.com.loginmodule.login.LoginActivity;
 
-public class RegisterActivity extends BaseActivity<RegisterPresenter> {
+public class RegisterActivity extends BaseMvpActivity<RegisterPresenter> {
 
     @BindView(R2.id.et_username)
     EditText etUsername;
@@ -74,5 +75,10 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> {
         }
         setResult(LoginActivity.RESULTCODE, intent);
         finish();
+    }
+
+    @Override
+    public RegisterPresenter creatPersenter() {
+        return new RegisterPresenter();
     }
 }

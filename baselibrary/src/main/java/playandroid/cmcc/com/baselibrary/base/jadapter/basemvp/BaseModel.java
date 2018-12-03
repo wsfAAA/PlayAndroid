@@ -1,8 +1,6 @@
 package playandroid.cmcc.com.baselibrary.base.jadapter.basemvp;
 
 
-import android.util.Log;
-
 /**
  * Created by wsf on 2018/11/6.
  */
@@ -22,19 +20,14 @@ public class BaseModel<P extends BasePresenter> {
      *
      * @param mPresenter
      */
-    public void setmPresenter(P mPresenter) {
+    public void setPresenter(P mPresenter) {
         this.mBasePresenter = mPresenter;
     }
 
     public BaseModel() {
     }
 
-    public BaseModel(P mPresenter) {
-        this.mBasePresenter = mPresenter;
-    }
-
     public void onDestroy() {
         mBasePresenter = null;
-        Log.i("wsf", TAG + "  onDestroy");
     }
 }

@@ -14,13 +14,14 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import me.drakeet.multitype.MultiTypeAdapter;
 import playandroid.cmcc.com.baselibrary.base.jadapter.basemvp.BaseActivity;
+import playandroid.cmcc.com.baselibrary.base.jadapter.basemvp.BaseMvpActivity;
 import playandroid.cmcc.com.searchmodule.R;
 import playandroid.cmcc.com.searchmodule.R2;
 import playandroid.cmcc.com.searchmodule.adapter.SearchAdapter;
 import playandroid.cmcc.com.searchmodule.bean.SearchBean;
 import playandroid.cmcc.com.searchmodule.presenter.SearchPagePresenter;
 
-public class SearchPageActivity extends BaseActivity<SearchPagePresenter> {
+public class SearchPageActivity extends BaseMvpActivity<SearchPagePresenter> {
 
     @BindView(R2.id.mrecycler)
     RecyclerView mRecycler;
@@ -78,5 +79,10 @@ public class SearchPageActivity extends BaseActivity<SearchPagePresenter> {
             mSearchBean.add(searchBean);
         }
         mSearchAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public SearchPagePresenter creatPersenter() {
+        return new SearchPagePresenter();
     }
 }

@@ -23,4 +23,9 @@ public class SearchPagePresenter extends BasePresenter<SearchPageActivity, Searc
     public void searchSucceed(SearchBean searchBean) {
         mBaseView.searchSucceed(searchBean);
     }
+
+    @Override
+    public SearchPageModle creatModel() {
+        return new SearchPageModle();
+    }
 }

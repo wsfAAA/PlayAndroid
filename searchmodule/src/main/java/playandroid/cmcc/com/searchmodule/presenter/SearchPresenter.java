@@ -22,4 +22,9 @@ public class SearchPresenter extends BasePresenter<SearchActivity, SearchModle> 
     public void searchHotKeyFailure() {
         mBaseView.searchHotKeyFailure();
     }
+
+    @Override
+    public SearchModle creatModel() {
+        return new SearchModle();
+    }
 }

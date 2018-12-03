@@ -7,5 +7,5 @@ package playandroid.cmcc.com.baselibrary.base.jadapter.basemvp;
 
 public interface BindViewModel<M extends BaseModel> {
 
-    M bindModel();
+    M creatModel();
 }

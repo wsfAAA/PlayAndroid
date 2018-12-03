@@ -2,11 +2,7 @@ package cmcc.com.playandroid.startpage;
 
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,14 +13,14 @@ import java.text.MessageFormat;
 import java.util.Timer;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cmcc.com.playandroid.R;
 import cmcc.com.playandroid.main.MainActivity;
+import playandroid.cmcc.com.baselibrary.base.jadapter.basemvp.BaseActivity;
 import playandroid.cmcc.com.baselibrary.timertask.BaseTimerTask;
 import playandroid.cmcc.com.baselibrary.timertask.ITimerListener;
 
-public class WelcomeActivity extends AppCompatActivity implements ITimerListener {
+public class WelcomeActivity extends BaseActivity implements ITimerListener {
 
     public final static String IS_GUIDE = "IS_GUIDE";
 
@@ -38,11 +34,12 @@ public class WelcomeActivity extends AppCompatActivity implements ITimerListener
     private long mCount = 5;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-        setContentView(R.layout.activity_welcome);
-        ButterKnife.bind(this);
+    protected int getLayoutResID() {
+        return R.layout.activity_welcome;
+    }
+
+    @Override
+    protected void initView() {
         initTimer();
     }
 

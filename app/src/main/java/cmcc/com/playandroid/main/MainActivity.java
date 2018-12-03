@@ -10,8 +10,9 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import cmcc.com.playandroid.R;
 import playandroid.cmcc.com.baselibrary.base.jadapter.basemvp.BaseActivity;
+import playandroid.cmcc.com.baselibrary.base.jadapter.basemvp.BaseMvpActivity;
 
-public class MainActivity extends BaseActivity<MainPresenter> {
+public class MainActivity extends BaseMvpActivity<MainPresenter> {
 
     public static final String AROUTER_LOGIN = "/account/login";
     public static final String AROUTER_SEARCH = "/home/search";
@@ -41,5 +42,10 @@ public class MainActivity extends BaseActivity<MainPresenter> {
                 ARouter.getInstance().build(AROUTER_SEARCH).navigation();
                 break;
         }
+    }
+
+    @Override
+    public MainPresenter creatPersenter() {
+        return new MainPresenter();
     }
 }

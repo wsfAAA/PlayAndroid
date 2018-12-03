@@ -10,4 +10,8 @@ import playandroid.cmcc.com.baselibrary.base.jadapter.basemvp.BasePresenter;
 public class MainPresenter extends BasePresenter<MainActivity,MainModel> {
 
 
+    @Override
+    public MainModel creatModel() {
+        return new MainModel();
+    }
 }

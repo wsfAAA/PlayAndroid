@@ -20,9 +20,10 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cmcc.com.playandroid.R;
 import cmcc.com.playandroid.main.MainActivity;
+import playandroid.cmcc.com.baselibrary.base.jadapter.basemvp.BaseActivity;
 import playandroid.cmcc.com.baselibrary.util.GlideImageLoader;
 
-public class GuideActivity extends AppCompatActivity {
+public class GuideActivity extends BaseActivity {
 
     @BindView(R.id.m_banner)
     Banner mBanner;
@@ -31,12 +32,9 @@ public class GuideActivity extends AppCompatActivity {
 
     private ArrayList<Integer> dataPic = new ArrayList<>();
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-        setContentView(R.layout.activity_guide);
-        ButterKnife.bind(this);
+    protected void initView() {
 
         dataPic.clear();
         dataPic.add(R.drawable.one);
@@ -71,6 +69,12 @@ public class GuideActivity extends AppCompatActivity {
             public void onPageScrollStateChanged(int state) {
             }
         });
+
+    }
+
+    @Override
+    protected int getLayoutResID() {
+        return R.layout.activity_guide;
     }
 
     @OnClick(R.id.mBtn_start)

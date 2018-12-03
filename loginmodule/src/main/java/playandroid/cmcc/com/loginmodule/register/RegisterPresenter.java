@@ -29,4 +29,9 @@ public class RegisterPresenter extends BasePresenter<RegisterActivity, RegisterM
     public void onRegisterFailure(String mes) {
         ToastUtils.showShort("注册失败: " + mes);
     }
+
+    @Override
+    public RegisterModel creatModel() {
+        return new RegisterModel();
+    }
 }

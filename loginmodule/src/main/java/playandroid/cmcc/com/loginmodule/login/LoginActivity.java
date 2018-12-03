@@ -14,6 +14,7 @@ import com.blankj.utilcode.util.ToastUtils;
 import butterknife.BindView;
 import butterknife.OnClick;
 import playandroid.cmcc.com.baselibrary.base.jadapter.basemvp.BaseActivity;
+import playandroid.cmcc.com.baselibrary.base.jadapter.basemvp.BaseMvpActivity;
 import playandroid.cmcc.com.loginmodule.R;
 import playandroid.cmcc.com.loginmodule.R2;
 import playandroid.cmcc.com.loginmodule.bean.LoginRegisterBean;
@@ -21,7 +22,7 @@ import playandroid.cmcc.com.loginmodule.register.RegisterActivity;
 
 
 @Route(path = "/account/login")
-public class LoginActivity extends BaseActivity<LoginPresenter> {
+public class LoginActivity extends BaseMvpActivity<LoginPresenter> {
 
     @BindView(R2.id.et_username)
     EditText etUsername;
@@ -86,5 +87,10 @@ public class LoginActivity extends BaseActivity<LoginPresenter> {
     public void loginSucceed(LoginRegisterBean bean) {
         ToastUtils.showShort("登录成功:  " + bean.getData().getUsername() + "   " + bean.getData().getPassword());
         finish();
+    }
+
+    @Override
+    public LoginPresenter creatPersenter() {
+        return new LoginPresenter();
     }
 }
