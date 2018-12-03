@@ -1,4 +1,4 @@
-package playandroid.cmcc.com.baselibrary.base.jadapter;
+package playandroid.cmcc.com.baselibrary.mgnet;
 
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;

@@ -1,7 +1,8 @@
-package playandroid.cmcc.com.baselibrary.base.jadapter.basemvp;
+package playandroid.cmcc.com.baselibrary.basemvp;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+
 
 /**
  * Created by wsf on 2018/11/14.

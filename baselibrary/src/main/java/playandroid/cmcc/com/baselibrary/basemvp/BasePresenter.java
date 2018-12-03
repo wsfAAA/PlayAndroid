@@ -1,6 +1,7 @@
-package playandroid.cmcc.com.baselibrary.base.jadapter.basemvp;
+package playandroid.cmcc.com.baselibrary.basemvp;
 
 import android.support.v4.app.FragmentActivity;
+
 
 public abstract class BasePresenter<V extends FragmentActivity, M extends BaseModel> implements BindViewModel<M> {
 

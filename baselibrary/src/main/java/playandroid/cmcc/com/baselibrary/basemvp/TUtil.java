@@ -1,4 +1,4 @@
-package playandroid.cmcc.com.baselibrary.base.jadapter.basemvp;
+package playandroid.cmcc.com.baselibrary.basemvp;
 
 import java.lang.reflect.ParameterizedType;
 

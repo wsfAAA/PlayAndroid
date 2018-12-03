@@ -1,4 +1,4 @@
-package playandroid.cmcc.com.baselibrary.base.jadapter.basemvp;
+package playandroid.cmcc.com.baselibrary.basemvp;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import android.view.WindowManager;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import playandroid.cmcc.com.baselibrary.base.BaseApplication;
 
 
 /**
@@ -34,6 +35,8 @@ public abstract class BaseActivity extends FragmentActivity {
         mUnbind = ButterKnife.bind(this);
         mContext = this;
         initView();
+
+        BaseApplication.getApplication().getActivityManage().addActivity(this);
     }
 
     @Override
@@ -42,6 +45,7 @@ public abstract class BaseActivity extends FragmentActivity {
         if (mUnbind != null) {
             mUnbind.unbind();
         }
+        BaseApplication.getApplication().getActivityManage().removeActivity(this);
     }
 
     protected abstract int getLayoutResID();
