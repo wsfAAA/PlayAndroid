@@ -1,4 +1,4 @@
-package playandroid.cmcc.com.baselibrary.net;
+package playandroid.cmcc.com.baselibrary.mgnet;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

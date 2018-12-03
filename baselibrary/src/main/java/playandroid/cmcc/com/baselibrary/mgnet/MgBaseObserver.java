@@ -1,6 +1,4 @@
-package playandroid.cmcc.com.baselibrary.net;
-
-import android.util.Log;
+package playandroid.cmcc.com.baselibrary.mgnet;
 
 import io.reactivex.Observer;
 

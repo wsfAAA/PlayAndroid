@@ -1,4 +1,4 @@
-package playandroid.cmcc.com.baselibrary.net.interceptor;
+package playandroid.cmcc.com.baselibrary.mgnet.interceptor;
 
 import android.text.TextUtils;
 

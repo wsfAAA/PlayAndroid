@@ -1,4 +1,4 @@
-package playandroid.cmcc.com.baselibrary.net.service;
+package playandroid.cmcc.com.baselibrary.mgnet.service;
 
 /**
  * Created by yutao on 2018/1/22.

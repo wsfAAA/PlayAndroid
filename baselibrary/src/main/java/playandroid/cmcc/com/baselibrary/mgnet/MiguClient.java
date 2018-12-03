@@ -1,11 +1,11 @@
-package playandroid.cmcc.com.baselibrary.net;
+package playandroid.cmcc.com.baselibrary.mgnet;
 
 
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
 import playandroid.cmcc.com.baselibrary.BuildConfig;
-import playandroid.cmcc.com.baselibrary.net.interceptor.ResponseInterceptor;
+import playandroid.cmcc.com.baselibrary.mgnet.interceptor.ResponseInterceptor;
 
 /**
  * Created by caominyan on 2018/4/4.
