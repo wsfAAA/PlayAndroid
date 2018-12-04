@@ -12,8 +12,7 @@ import com.blankj.utilcode.util.ToastUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import playandroid.cmcc.com.baselibrary.base.jadapter.basemvp.BaseActivity;
-import playandroid.cmcc.com.baselibrary.base.jadapter.basemvp.BaseMvpActivity;
+import playandroid.cmcc.com.baselibrary.basemvp.BaseMvpActivity;
 import playandroid.cmcc.com.loginmodule.R;
 import playandroid.cmcc.com.loginmodule.R2;
 import playandroid.cmcc.com.loginmodule.bean.LoginRegisterBean;
@@ -41,8 +40,9 @@ public class RegisterActivity extends BaseMvpActivity<RegisterPresenter> {
         return R.layout.activity_register;
     }
 
+
     @Override
-    protected void initView() {
+    protected void initMvpView() {
 
     }
 

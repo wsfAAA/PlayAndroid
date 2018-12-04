@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import playandroid.cmcc.com.searchmodule.R;
+import playandroid.cmcc.com.searchmodule.R2;
 
 /**
  * Created by wsf on 2018/9/28.
@@ -62,11 +63,11 @@ public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryAdap
 
     public static class SearchHistoryViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.tv_search_history)
+        @BindView(R2.id.tv_search_history)
         TextView tvSearchHistory;
-        @BindView(R.id.tv_search_history_clean)
+        @BindView(R2.id.tv_search_history_clean)
         ImageView tvSearchHistoryClean;
-        @BindView(R.id.rl_search_history_root)
+        @BindView(R2.id.rl_search_history_root)
         RelativeLayout rlSearchHistoryRoot;
 
         public SearchHistoryViewHolder(View itemView) {

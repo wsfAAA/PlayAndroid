@@ -16,7 +16,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import cmcc.com.playandroid.R;
 import cmcc.com.playandroid.main.MainActivity;
-import playandroid.cmcc.com.baselibrary.base.jadapter.basemvp.BaseActivity;
+import playandroid.cmcc.com.baselibrary.basemvp.BaseActivity;
 import playandroid.cmcc.com.baselibrary.timertask.BaseTimerTask;
 import playandroid.cmcc.com.baselibrary.timertask.ITimerListener;
 

@@ -3,7 +3,7 @@ package playandroid.cmcc.com.searchmodule.modle;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import playandroid.cmcc.com.baselibrary.base.jadapter.basemvp.BaseModel;
+import playandroid.cmcc.com.baselibrary.basemvp.BaseModel;
 import playandroid.cmcc.com.baselibrary.mgnet.DataServiceManager;
 import playandroid.cmcc.com.baselibrary.mgnet.MgBaseObserver;
 import playandroid.cmcc.com.baselibrary.mgnet.service.RetrofitService;

@@ -1,6 +1,6 @@
 package playandroid.cmcc.com.searchmodule.presenter;
 
-import playandroid.cmcc.com.baselibrary.base.jadapter.basemvp.BasePresenter;
+import playandroid.cmcc.com.baselibrary.basemvp.BasePresenter;
 import playandroid.cmcc.com.searchmodule.activity.SearchPageActivity;
 import playandroid.cmcc.com.searchmodule.bean.SearchBean;
 import playandroid.cmcc.com.searchmodule.modle.SearchPageModle;

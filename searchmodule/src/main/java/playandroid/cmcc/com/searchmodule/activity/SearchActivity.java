@@ -21,8 +21,7 @@ import java.util.Set;
 import butterknife.BindView;
 import butterknife.OnClick;
 import me.drakeet.multitype.MultiTypeAdapter;
-import playandroid.cmcc.com.baselibrary.base.jadapter.basemvp.BaseActivity;
-import playandroid.cmcc.com.baselibrary.base.jadapter.basemvp.BaseMvpActivity;
+import playandroid.cmcc.com.baselibrary.basemvp.BaseMvpActivity;
 import playandroid.cmcc.com.searchmodule.R;
 import playandroid.cmcc.com.searchmodule.R2;
 import playandroid.cmcc.com.searchmodule.adapter.SearchHistoryAdapter;
@@ -65,7 +64,7 @@ public class SearchActivity extends BaseMvpActivity<SearchPresenter> {
     }
 
     @Override
-    protected void initView() {
+    protected void initMvpView() {
         searchHotKey();
         searchHistory();
     }
@@ -205,5 +204,10 @@ public class SearchActivity extends BaseMvpActivity<SearchPresenter> {
     @Override
     public SearchPresenter creatPersenter() {
         return new SearchPresenter();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }

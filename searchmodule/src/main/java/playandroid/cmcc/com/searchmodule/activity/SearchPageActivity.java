@@ -13,8 +13,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import me.drakeet.multitype.MultiTypeAdapter;
-import playandroid.cmcc.com.baselibrary.base.jadapter.basemvp.BaseActivity;
-import playandroid.cmcc.com.baselibrary.base.jadapter.basemvp.BaseMvpActivity;
+import playandroid.cmcc.com.baselibrary.basemvp.BaseMvpActivity;
 import playandroid.cmcc.com.searchmodule.R;
 import playandroid.cmcc.com.searchmodule.R2;
 import playandroid.cmcc.com.searchmodule.adapter.SearchAdapter;
@@ -37,7 +36,7 @@ public class SearchPageActivity extends BaseMvpActivity<SearchPagePresenter> {
     }
 
     @Override
-    protected void initView() {
+    protected void initMvpView() {
         Intent intent = getIntent();
         String searchContent = intent.getStringExtra(SearchActivity.INTENT_SEARCH_HOTKEY);
         mBasePresenter.searchRequest(searchContent);

@@ -1,4 +1,4 @@
-if (isRunAlone.toBoolean()) {//单独调试
+if (Boolean.valueOf(rootProject.ext.isModule)) {//单独调试
     apply plugin: 'com.android.application'
 } else {
     apply plugin: 'com.android.library'
@@ -6,16 +6,17 @@ if (isRunAlone.toBoolean()) {//单独调试
 apply plugin: 'com.jakewharton.butterknife'
 
 android {
-    compileSdkVersion compile_sdk_version.toInteger()
+    compileSdkVersion rootProject.ext.versions.compileSdkVersion
 
     defaultConfig {
-        if (isRunAlone.toBoolean()) {//单独调试 加applicationId
+        if (Boolean.valueOf(rootProject.ext.isModule)) {//单独调试 加applicationId
             applicationId "playandroid.cmcc.com.loginmodule"
         }
-        minSdkVersion min_sdk_version.toInteger()
-        targetSdkVersion target_sdt_version.toInteger()
-        versionCode 1
-        versionName "1.0"
+
+        minSdkVersion rootProject.ext.versions.minSdkVersion
+        targetSdkVersion rootProject.ext.versions.targetSdkVersion
+        versionCode rootProject.ext.versions.versionCode
+        versionName rootProject.ext.versions.versionName
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -27,9 +28,11 @@ android {
         }
     }
 
+    //java插件引入了一个概念叫做SourceSets，通过修改SourceSets中的属性，可以指定哪些源文件
+    //（ 或文件夹下的源文件 ） 要被编译 ， 哪些源文件要被排除 。
     sourceSets {
         main {
-            if (isRunAlone.toBoolean()) {//单独调试 加载AndroidManifest
+            if (Boolean.valueOf(rootProject.ext.isModule)) {//单独调试 加载AndroidManifest
                 manifest.srcFile 'src/main/manifest/AndroidManifest.xml'
             } else {//集成调试 加载AndroidManifest
                 manifest.srcFile 'src/main/AndroidManifest.xml'
@@ -48,7 +51,8 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
-    annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
+    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
+    annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
+
     implementation project(':baselibrary')
 }

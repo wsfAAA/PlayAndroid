@@ -1,6 +1,7 @@
 package playandroid.cmcc.com.baselibrary.base;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.Utils;
@@ -20,6 +21,11 @@ public class BaseApplication extends Application {
 
     private ActivityManage activityManage;
 
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        application = this;
+    }
 
     @Override
     public void onCreate() {

@@ -16,11 +16,10 @@ import com.youth.banner.BannerConfig;
 import java.util.ArrayList;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cmcc.com.playandroid.R;
 import cmcc.com.playandroid.main.MainActivity;
-import playandroid.cmcc.com.baselibrary.base.jadapter.basemvp.BaseActivity;
+import playandroid.cmcc.com.baselibrary.basemvp.BaseActivity;
 import playandroid.cmcc.com.baselibrary.util.GlideImageLoader;
 
 public class GuideActivity extends BaseActivity {

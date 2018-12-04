@@ -1,13 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion compile_sdk_version.toInteger()
+    compileSdkVersion rootProject.ext.versions.compileSdkVersion
+
     defaultConfig {
-        applicationId "cmcc.com.playandroid"
-        minSdkVersion min_sdk_version.toInteger()
-        targetSdkVersion target_sdt_version.toInteger()
-        versionCode 1
-        versionName "1.0"
+        applicationId "cmcc.com.playandroid"  //每个app 唯一标识
+        minSdkVersion rootProject.ext.versions.minSdkVersion
+        targetSdkVersion rootProject.ext.versions.targetSdkVersion
+        versionCode rootProject.ext.versions.versionCode
+        versionName rootProject.ext.versions.versionName
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         // 所有使用到 ARouter 的组件和模块的 build.gradle 都要添加
@@ -29,10 +31,11 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'//butterknife-compiler
+    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
 
     implementation project(':baselibrary')//依赖基础库
-//    runtimeOnly project(':loginmodule')//依赖登录库
-//    runtimeOnly project(':searchmodule')//搜索依赖库
+    if (!Boolean.valueOf(rootProject.ext.isModule)) {
+        runtimeOnly project(':loginmodule')//依赖登录库
+        runtimeOnly project(':searchmodule')//搜索依赖库
+    }
 }
