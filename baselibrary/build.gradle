@@ -59,16 +59,19 @@ dependencies {
     api rootProject.ext.dependencies["butterknife"]
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
 
-    //Rxjava和Retrofit相关的依赖
-    api rootProject.ext.dependencies["logging-interceptor"]
-    api rootProject.ext.dependencies["rxandroid"]
-    api rootProject.ext.dependencies["rxjava"]
-    api rootProject.ext.dependencies["retrofit"]
-    api rootProject.ext.dependencies["adapter-rxjava2"]
-    api rootProject.ext.dependencies["converter-scalars"]
-    api rootProject.ext.dependencies["converter-gson"]
+//    //Rxjava和Retrofit相关的依赖
+//    api rootProject.ext.dependencies["logging-interceptor"]
+//    api rootProject.ext.dependencies["rxandroid"]
+//    api rootProject.ext.dependencies["rxjava"]
+//    api rootProject.ext.dependencies["retrofit"]
+//    api rootProject.ext.dependencies["adapter-rxjava2"]
+//    api rootProject.ext.dependencies["converter-scalars"]
+//    api rootProject.ext.dependencies["converter-gson"]
 
-    //加载控件
+    //网络请求库 Rxjava和Retrofit
+    api rootProject.ext.dependencies["novate"]
+
+    //数据加载控件
     api rootProject.ext.dependencies["SmartRefreshLayout"]
     api rootProject.ext.dependencies["SmartRefreshHeader"]
 

@@ -1,12 +1,12 @@
 package playandroid.cmcc.com.loginmodule.api;
 
 
-import io.reactivex.Observable;
 import playandroid.cmcc.com.loginmodule.bean.LoginRegisterBean;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import rx.Observable;
 
 /**
  * Created by yutao on 2018/1/22.

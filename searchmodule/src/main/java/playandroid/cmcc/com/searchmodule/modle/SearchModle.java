@@ -1,13 +1,19 @@
 package playandroid.cmcc.com.searchmodule.modle;
 
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
+import android.util.Log;
+
+import com.google.gson.Gson;
+import com.tamic.novate.Throwable;
+import com.tamic.novate.callback.RxResultCallback;
+import com.tamic.novate.callback.RxStringCallback;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import playandroid.cmcc.com.baselibrary.basemvp.BaseModel;
-import playandroid.cmcc.com.baselibrary.mgnet.DataServiceManager;
-import playandroid.cmcc.com.baselibrary.mgnet.MgBaseObserver;
-import playandroid.cmcc.com.baselibrary.mgnet.service.RetrofitService;
-import playandroid.cmcc.com.searchmodule.SearchApi;
+import playandroid.cmcc.com.baselibrary.net.BaseApi;
+import playandroid.cmcc.com.baselibrary.net.HttpClient;
+import playandroid.cmcc.com.baselibrary.net.callback.RxCallBack;
 import playandroid.cmcc.com.searchmodule.bean.SearchHotKey;
 import playandroid.cmcc.com.searchmodule.presenter.SearchPresenter;
 
@@ -17,31 +23,24 @@ import playandroid.cmcc.com.searchmodule.presenter.SearchPresenter;
 
 public class SearchModle extends BaseModel<SearchPresenter> {
 
-    private Disposable mDisposable;
 
     /**
      * 热词搜索
      */
     public void searchHotKey() {
-        SearchApi serviceAPI = DataServiceManager.getServiceAPI(RetrofitService.baseUrl, SearchApi.class);
-        serviceAPI.searchHotKey().subscribeOn(Schedulers.io()).
-                observeOn(AndroidSchedulers.mainThread()).subscribe(new MgBaseObserver<SearchHotKey>() {
-            @Override
-            public void onSubscribe(Disposable d) {
-                mDisposable = d;
-            }
+        HttpClient.getInstance().rxGet(BaseApi.SEARCH_HOT_KEY, new RxCallBack<SearchHotKey>() {
 
             @Override
-            public void onNext(SearchHotKey searchBean) {
-                if (searchBean != null && searchBean.getData() != null && searchBean.getData().size() > 0) {
-                    mBasePresenter.searchHotKeySucceed(searchBean);
+            public void onRxSuccess(Object tag, SearchHotKey response) {
+                if (response != null && response.getData() != null && response.getData().size() > 0) {
+                    mBasePresenter.searchHotKeySucceed(response);
                 } else {
                     mBasePresenter.searchHotKeyFailure();
                 }
             }
 
             @Override
-            public void onError(Throwable e) {
+            public void onRxError(Object tag, Throwable e) {
                 mBasePresenter.searchHotKeyFailure();
             }
         });
