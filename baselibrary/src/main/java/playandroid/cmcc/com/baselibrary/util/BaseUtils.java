@@ -1,10 +1,12 @@
 package playandroid.cmcc.com.baselibrary.util;
 
 import android.content.Context;
+import android.os.Looper;
 import android.text.TextUtils;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,6 +27,15 @@ public class BaseUtils {
         Glide.with(context).load(imageUrl).into(imageView);
     }
 
+    private static Gson mGson;
+
+    public static <T> T fromJson(String json, Class<T> classOfT) {
+        if (mGson == null) {
+            mGson = new Gson();
+        }
+        return mGson.fromJson(json, classOfT);
+    }
+
     /**
      * 请求参数转Json
      *
@@ -40,5 +51,13 @@ public class BaseUtils {
             }
         }
         return json.toString();
+    }
+
+    /**
+     * 当前线程是否是主线程
+     * @return
+     */
+    public static boolean isMainThread() {
+        return Thread.currentThread() == Looper.getMainLooper().getThread();
     }
 }

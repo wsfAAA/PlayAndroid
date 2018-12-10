@@ -20,6 +20,7 @@
    a、在baselibrary库中           添加每个组件 所需的第三方依赖
    b、api 和 implementation 区分  api library 使用该修饰的依赖可以被其他library使用，implementation不可以
    c、添加 yt basemvp             移除yt basemvp替换自己的mvp
+   d、novate存在多线程问题待解决，还有rxjava相关使用
 
 --------------------------------------------------------------------------------------------------->
 

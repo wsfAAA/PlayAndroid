@@ -52,9 +52,6 @@ ext {
 //            "converter-scalars"   : 'com.squareup.retrofit2:converter-scalars:2.3.0',//String解析工厂
 //            "converter-gson"      : 'com.squareup.retrofit2:converter-gson:2.3.0',//gson解析工厂
 
-            //网络请求库 Rxjava2和Retrofit2
-            "novate"              : 'com.tamic.novate:novate:1.5.5',
-
             //加载控件
             "SmartRefreshLayout"  : 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-14',
             "SmartRefreshHeader"  : 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-14',//没有使用特殊Header，可以不加这行

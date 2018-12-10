@@ -1,13 +1,15 @@
 package playandroid.cmcc.com.baselibrary.net;
 
 /**
- * Created by wsf on 2018/12/6.
+ * Created by 傅令杰 on 2017/4/2
  */
 
-public enum HttpMethod {
+enum HttpMethod {
     GET,
     POST,
+    POST_RAW,
     PUT,
+    PUT_RAW,
     DELETE,
-    JSON
+    UPLOAD
 }
