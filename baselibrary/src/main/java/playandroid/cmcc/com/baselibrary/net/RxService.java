@@ -19,13 +19,13 @@ import retrofit2.http.QueryMap;
 import retrofit2.http.Streaming;
 import retrofit2.http.Url;
 
-/**
- * Created by 傅令杰 on 2017/4/2
- */
 public interface RxService {
 
     @GET
     Observable<String> get(@Url String url, @QueryMap WeakHashMap<String, Object> params);
+
+    @GET
+    Observable<String> get(@Url String url);
 
     @FormUrlEncoded
     @POST
@@ -52,6 +52,4 @@ public interface RxService {
     @POST
     Observable<String> upload(@Url String url, @Part MultipartBody.Part file);
 
-    @GET
-    Observable<String> getGetData(@Url String url);
 }

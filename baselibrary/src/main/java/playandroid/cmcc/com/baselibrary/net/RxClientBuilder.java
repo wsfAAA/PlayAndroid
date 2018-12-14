@@ -13,17 +13,18 @@ import okhttp3.RequestBody;
  */
 public final class RxClientBuilder {
 
-    private static final WeakHashMap<String, Object> PARAMS = RxCreator.getParams();//WeakHashMap 不在使用时会被gc
-    private String mUrl = null;
+    private WeakHashMap<String, Object> PARAMS = new WeakHashMap<>();//WeakHashMap 不在使用时会被gc
     private RequestBody mBody = null;
     private File mFile = null;
+    private String mBaseUrl;
+    private boolean mIsObservable;//是否返回 Observable 进行rxjava操作符处理
 
     RxClientBuilder() {
+
     }
 
-    public final RxClientBuilder url(String url) {
-        this.mUrl = url;
-        return this;
+    public final RxClient build() {
+        return new RxClient(PARAMS, mBody, mFile, mBaseUrl, mIsObservable);
     }
 
     public final RxClientBuilder params(WeakHashMap<String, Object> params) {
@@ -51,8 +52,15 @@ public final class RxClientBuilder {
         return this;
     }
 
-
-    public final RxClient build() {
-        return new RxClient(mUrl, PARAMS, mBody, mFile);
+    public final RxClientBuilder baseUrl(String baseUrl) {
+        this.mBaseUrl = baseUrl;
+        return this;
     }
+
+    public final RxClientBuilder isObservable(boolean isObservable) {
+        this.mIsObservable = isObservable;
+        return this;
+    }
+
+
 }

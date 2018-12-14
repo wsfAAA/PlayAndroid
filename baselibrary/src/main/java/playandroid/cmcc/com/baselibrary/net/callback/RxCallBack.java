@@ -1,34 +1,32 @@
 package playandroid.cmcc.com.baselibrary.net.callback;
 
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
+import com.google.gson.internal.$Gson$Types;
+
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 
 /**
  * Created by wsf on 2018/12/10.
  */
 
-public abstract class RxCallBack<T> implements Observer<T> {
+public abstract class RxCallBack<T> {
 
-    @Override
-    public void onSubscribe(Disposable d) {
+    public Type mType;
 
+    public RxCallBack() {
+        mType = getSuperclassTypeParameter(getClass());
     }
 
-    @Override
-    public void onNext(T t) {
+    private Type getSuperclassTypeParameter(Class<?> subclass) {
+        Type superclass = subclass.getGenericSuperclass();
+        if (superclass instanceof Class) {
+            throw new RuntimeException("Missing type parameter.");
+        }
+        ParameterizedType parameterized = (ParameterizedType) superclass;
+        return $Gson$Types.canonicalize(parameterized.getActualTypeArguments()[0]);
     }
 
-    @Override
-    public void onError(Throwable e) {
+    public abstract void rxOnError(Throwable e);
 
-    }
-
-    @Override
-    public void onComplete() {
-
-    }
-
-    protected abstract void RxOnNext(T t);
-
-    protected abstract void RxOnError(Throwable e);
+    public abstract void rxOnNext(T response);
 }

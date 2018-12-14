@@ -27,13 +27,13 @@ public class BaseUtils {
         Glide.with(context).load(imageUrl).into(imageView);
     }
 
-    private static Gson mGson;
 
-    public static <T> T fromJson(String json, Class<T> classOfT) {
-        if (mGson == null) {
-            mGson = new Gson();
-        }
-        return mGson.fromJson(json, classOfT);
+    public static final class GsonHoler{
+        private static final Gson GSON=new Gson();
+    }
+
+    public static Gson getGsonInstance(){
+        return GsonHoler.GSON;
     }
 
     /**
