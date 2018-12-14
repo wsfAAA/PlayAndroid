@@ -31,8 +31,9 @@ public class CacheInterceptor implements Interceptor {
             Response response = chain.proceed(request);
             // read from cache for 60 s
             int maxAge = 60;
+
             String cacheControl = request.cacheControl().toString();
-            Log.i("wsf","cacheControl:  "+cacheControl);
+//            Log.i("wsf", "cacheControl:  " + cacheControl);
             return response.newBuilder()
                     .removeHeader("Pragma")
                     .removeHeader("Cache-Control")

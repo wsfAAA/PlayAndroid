@@ -8,6 +8,7 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import playandroid.cmcc.com.baselibrary.api.BaseApiService;
 import playandroid.cmcc.com.baselibrary.basemvp.BaseModel;
 import playandroid.cmcc.com.baselibrary.net.RxClient;
 import playandroid.cmcc.com.baselibrary.net.RxCreator;
@@ -87,9 +88,10 @@ public class SearchModle extends BaseModel<SearchPresenter> {
 
         RxClient.builder()
                 .build()
-                .rxGet("hotkey/json", new RxCallBack<SearchHotKey>() {
+                .rxGet(BaseApiService.SEACH_HOTKEY, new RxCallBack<SearchHotKey>() {
                     @Override
                     public void rxOnError(Throwable e) {
+                        Log.i("wsf","e:  "+e.toString());
                         mBasePresenter.searchHotKeyFailure();
                     }
 

@@ -20,6 +20,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import playandroid.cmcc.com.baselibrary.BuildConfig;
+import playandroid.cmcc.com.baselibrary.api.BaseApiService;
 import playandroid.cmcc.com.baselibrary.base.BaseApplication;
 import playandroid.cmcc.com.baselibrary.net.callback.RxCallBack;
 import playandroid.cmcc.com.baselibrary.net.interceptor.CacheInterceptor;
@@ -89,6 +90,10 @@ public final class RxClient {
             default:
                 break;
         }
+        goRequest(rxCallBack, observable);
+    }
+
+    private void goRequest(final RxCallBack rxCallBack, Observable<String> observable) {
         observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<String>() {
@@ -167,7 +172,7 @@ public final class RxClient {
         if (!TextUtils.isEmpty(BASEURL)) {
             retrofitBuilde.baseUrl(BASEURL);
         } else {
-            retrofitBuilde.baseUrl(RxCreator.BASE_URL);
+            retrofitBuilde.baseUrl(BaseApiService.BASE_URL);
         }
 
         if (CONNECT_TIME_OUT > 0) {
@@ -177,16 +182,18 @@ public final class RxClient {
             okhttpBuilder.readTimeout(READ_TIME_OUT, TimeUnit.SECONDS);
         }
 
+        if (BuildConfig.DEBUG) {
+            // TODO: 2018/12/14  网络日志打印输出
+            okhttpBuilder.cache(RxCreator.getCache());
+            okhttpBuilder.addInterceptor(new LogInterceptor());
+        }
+
         if (IS_CACHE) {
             okhttpBuilder.addInterceptor(new CacheInterceptor(BaseApplication.getApplication()));
         }
 
         okhttpBuilder.addInterceptor(new HeaderInterceptor(HEADER_PARAMS));
 
-        if (BuildConfig.DEBUG) {
-            // TODO: 2018/12/14  网络日志打印输出
-            okhttpBuilder.addInterceptor(new LogInterceptor());
-        }
         retrofitBuilde.client(okhttpBuilder.build());
         Retrofit build = retrofitBuilde.build();
         return build.create(RxService.class);

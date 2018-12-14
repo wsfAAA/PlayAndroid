@@ -1,16 +1,21 @@
 package playandroid.cmcc.com.baselibrary.net;
 
 
+import android.util.Log;
+
+import java.io.File;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Cache;
 import okhttp3.OkHttpClient;
+import playandroid.cmcc.com.baselibrary.api.BaseApiService;
+import playandroid.cmcc.com.baselibrary.base.BaseApplication;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 
 public final class RxCreator {
-    public static final String BASE_URL = "http://wanandroid.com/";
 
     /**
      * 构建OkHttp
@@ -31,13 +36,30 @@ public final class RxCreator {
         return OKHttpHolder.getOkhttpBuilder();
     }
 
+    private static final class OKHttpCacheHolder {
+
+        private static final Cache getCache() {
+            File mHttpCacheDirectory = new File(BaseApplication.getApplication().getCacheDir(), "tamic_cache");
+            try {
+                Cache cache = new Cache(mHttpCacheDirectory, 10 * 1024 * 1024);
+                return cache;
+            } catch (Exception e) {
+                throw new RuntimeException("Cache Exception!");
+            }
+        }
+    }
+
+    public static final Cache getCache() {
+        return OKHttpCacheHolder.getCache();
+    }
+
 
     /**
      * 构建全局Retrofit Builder
      */
     private static final class RetrofitHolder {
         public static final Retrofit.Builder RETROFIT_BUILDER = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(BaseApiService.BASE_URL)
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create());
     }
