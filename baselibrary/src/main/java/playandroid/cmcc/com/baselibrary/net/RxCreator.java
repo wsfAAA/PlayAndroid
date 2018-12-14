@@ -18,12 +18,19 @@ public final class RxCreator {
     private static final class OKHttpHolder {
         private static final int CONNECT_TIME_OUT = 10;
         private static final int READ_TIME_OUT = 5;
-        private static final OkHttpClient OK_HTTP_CLIENT = new OkHttpClient.Builder()
-                .connectTimeout(CONNECT_TIME_OUT, TimeUnit.SECONDS)
-                .readTimeout(READ_TIME_OUT, TimeUnit.SECONDS)
-//                .addInterceptor()  //添加拦截器  参考MiguClient getUnsafeOkHttpClient
-                .build();
+
+        private static final OkHttpClient.Builder getOkhttpBuilder() {
+            OkHttpClient.Builder builder = new OkHttpClient.Builder();
+            builder.connectTimeout(CONNECT_TIME_OUT, TimeUnit.SECONDS);
+            builder.readTimeout(READ_TIME_OUT, TimeUnit.SECONDS);
+            return builder;
+        }
     }
+
+    public static OkHttpClient.Builder getOkhttpBuilder() {
+        return OKHttpHolder.getOkhttpBuilder();
+    }
+
 
     /**
      * 构建全局Retrofit Builder
@@ -31,12 +38,11 @@ public final class RxCreator {
     private static final class RetrofitHolder {
         public static final Retrofit.Builder RETROFIT_BUILDER = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
-                .client(OKHttpHolder.OK_HTTP_CLIENT)
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create());
     }
 
-    public static Retrofit.Builder getRetrofitBuilde(){
-            return RetrofitHolder.RETROFIT_BUILDER;
+    public static Retrofit.Builder getRetrofitBuilde() {
+        return RetrofitHolder.RETROFIT_BUILDER;
     }
 }

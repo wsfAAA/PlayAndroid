@@ -13,30 +13,61 @@ import okhttp3.RequestBody;
  */
 public final class RxClientBuilder {
 
-    private WeakHashMap<String, Object> PARAMS = new WeakHashMap<>();//WeakHashMap 不在使用时会被gc
+    private WeakHashMap<String, Object> PARAMS = new WeakHashMap<>();//请求参数  WeakHashMap 不在使用时会被gc
+    private final WeakHashMap<String, String> mHeaderPapams = new WeakHashMap<>();//请求头
     private RequestBody mBody = null;
     private File mFile = null;
     private String mBaseUrl;
-    private boolean mIsObservable;//是否返回 Observable 进行rxjava操作符处理
+    private int mConnectTimeOut;
+    private int mReadTimeOut;
+    private boolean mIsCache;
 
     RxClientBuilder() {
 
     }
 
     public final RxClient build() {
-        return new RxClient(PARAMS, mBody, mFile, mBaseUrl, mIsObservable);
+        return new RxClient(PARAMS, mHeaderPapams, mBody, mFile, mBaseUrl, mConnectTimeOut, mReadTimeOut, mIsCache);
     }
 
-    public final RxClientBuilder params(WeakHashMap<String, Object> params) {
+    /**
+     * 参数
+     *
+     * @param params
+     * @return
+     */
+    public final RxClientBuilder addParams(WeakHashMap<String, Object> params) {
         PARAMS.putAll(params);
         return this;
     }
 
-    public final RxClientBuilder params(String key, Object value) {
+    public final RxClientBuilder addParams(String key, Object value) {
         PARAMS.put(key, value);
         return this;
     }
 
+    /**
+     * 请求头
+     *
+     * @param params
+     * @return
+     */
+    public final RxClientBuilder addHeaderParams(WeakHashMap<String, String> params) {
+        mHeaderPapams.putAll(params);
+        return this;
+    }
+
+    public final RxClientBuilder addHeaderParams(String key, String value) {
+        mHeaderPapams.put(key, value);
+        return this;
+    }
+
+    /**
+     * 上传文件
+     *
+     * @param file
+     * @return
+     */
     public final RxClientBuilder file(File file) {
         this.mFile = file;
         return this;
@@ -47,20 +78,58 @@ public final class RxClientBuilder {
         return this;
     }
 
+    /**
+     *
+     *  json 格式
+     * @param raw
+     * @return
+     */
     public final RxClientBuilder raw(String raw) {
         this.mBody = RequestBody.create(MediaType.parse("application/json;charset=UTF-8"), raw);
         return this;
     }
 
+    /**
+     * 替换baseurl
+     *
+     * @param baseUrl
+     * @return
+     */
     public final RxClientBuilder baseUrl(String baseUrl) {
         this.mBaseUrl = baseUrl;
         return this;
     }
 
-    public final RxClientBuilder isObservable(boolean isObservable) {
-        this.mIsObservable = isObservable;
+    /**
+     * 连接超时
+     *
+     * @param connectTimeOut
+     * @return
+     */
+    public final RxClientBuilder connectTimeOut(int connectTimeOut) {
+        this.mConnectTimeOut = connectTimeOut;
         return this;
     }
 
+    /**
+     * 读取超时
+     *
+     * @param readTimeOut
+     * @return
+     */
+    public final RxClientBuilder readTimeOut(int readTimeOut) {
+        this.mReadTimeOut = readTimeOut;
+        return this;
+    }
 
+    /**
+     * 是否使用 okhttp 缓存
+     *
+     * @param isCache
+     * @return
+     */
+    public final RxClientBuilder cache(boolean isCache) {
+        this.mIsCache = isCache;
+        return this;
+    }
 }

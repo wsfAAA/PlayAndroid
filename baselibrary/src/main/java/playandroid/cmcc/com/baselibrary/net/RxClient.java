@@ -2,9 +2,12 @@ package playandroid.cmcc.com.baselibrary.net;
 
 import android.text.TextUtils;
 
+import com.parkingwang.okhttp3.LogInterceptor.LogInterceptor;
+
 import java.io.File;
 import java.util.Map;
 import java.util.WeakHashMap;
+import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
 import io.reactivex.Observer;
@@ -13,28 +16,44 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
+import playandroid.cmcc.com.baselibrary.BuildConfig;
+import playandroid.cmcc.com.baselibrary.base.BaseApplication;
 import playandroid.cmcc.com.baselibrary.net.callback.RxCallBack;
+import playandroid.cmcc.com.baselibrary.net.interceptor.CacheInterceptor;
+import playandroid.cmcc.com.baselibrary.net.interceptor.HeaderInterceptor;
 import playandroid.cmcc.com.baselibrary.util.BaseUtils;
 import retrofit2.Retrofit;
 
 public final class RxClient {
 
     private final WeakHashMap<String, Object> PARAMS = new WeakHashMap<>();
+    private final WeakHashMap<String, String> HEADER_PARAMS = new WeakHashMap<>();
     private final RequestBody BODY;
     private final File FILE;
     private final String BASEURL;
+    private final int CONNECT_TIME_OUT;
+    private final int READ_TIME_OUT;
+    private final boolean IS_CACHE;
 
     RxClient(Map<String, Object> params,
+             WeakHashMap<String, String> headerPapams,
              RequestBody body,
              File file,
              String baseUrl,
-             boolean isObservable) {
+             int connectTimeOut,
+             int readTimeOut,
+             boolean isCache) {
         this.PARAMS.putAll(params);
+        this.HEADER_PARAMS.putAll(headerPapams);
         this.BODY = body;
         this.FILE = file;
         this.BASEURL = baseUrl;
+        this.CONNECT_TIME_OUT = connectTimeOut;
+        this.READ_TIME_OUT = readTimeOut;
+        this.IS_CACHE = isCache;
     }
 
     public static RxClientBuilder builder() {
@@ -143,11 +162,32 @@ public final class RxClient {
 
     private RxService getRxService() {
         Retrofit.Builder retrofitBuilde = RxCreator.getRetrofitBuilde();
+        OkHttpClient.Builder okhttpBuilder = RxCreator.getOkhttpBuilder();
+
         if (!TextUtils.isEmpty(BASEURL)) {
             retrofitBuilde.baseUrl(BASEURL);
         } else {
             retrofitBuilde.baseUrl(RxCreator.BASE_URL);
         }
+
+        if (CONNECT_TIME_OUT > 0) {
+            okhttpBuilder.connectTimeout(CONNECT_TIME_OUT, TimeUnit.SECONDS);
+        }
+        if (READ_TIME_OUT > 0) {
+            okhttpBuilder.readTimeout(READ_TIME_OUT, TimeUnit.SECONDS);
+        }
+
+        if (IS_CACHE) {
+            okhttpBuilder.addInterceptor(new CacheInterceptor(BaseApplication.getApplication()));
+        }
+
+        okhttpBuilder.addInterceptor(new HeaderInterceptor(HEADER_PARAMS));
+
+        if (BuildConfig.DEBUG) {
+            // TODO: 2018/12/14  网络日志打印输出
+            okhttpBuilder.addInterceptor(new LogInterceptor());
+        }
+        retrofitBuilde.client(okhttpBuilder.build());
         Retrofit build = retrofitBuilde.build();
         return build.create(RxService.class);
     }
