@@ -1,6 +1,10 @@
 package playandroid.cmcc.com.searchmodule.modle;
 
+import playandroid.cmcc.com.baselibrary.api.BaseApiService;
 import playandroid.cmcc.com.baselibrary.basemvp.BaseModel;
+import playandroid.cmcc.com.baselibrary.net.RxClient;
+import playandroid.cmcc.com.baselibrary.net.callback.RxCallBack;
+import playandroid.cmcc.com.searchmodule.bean.SearchBean;
 import playandroid.cmcc.com.searchmodule.presenter.SearchPagePresenter;
 
 /**
@@ -10,30 +14,25 @@ import playandroid.cmcc.com.searchmodule.presenter.SearchPagePresenter;
 public class SearchPageModle extends BaseModel<SearchPagePresenter> {
 
 
-
     public void searchRequest(String mes) {
-//        SearchApi serviceAPI = DataServiceManager.getServiceAPI(RetrofitService.baseUrl, SearchApi.class);
-//        serviceAPI.searchContent(mes).subscribeOn(Schedulers.io()).
-//                observeOn(AndroidSchedulers.mainThread()).subscribe(new MgBaseObserver<SearchBean>() {
-//            @Override
-//            public void onSubscribe(Disposable d) {
-//                mDisposable = d;
-//            }
-//
-//            @Override
-//            public void onNext(SearchBean searchBean) {
-//                if (searchBean != null && searchBean.getData() != null && searchBean.getData().getDatas().size() > 0) {
-//                    mBasePresenter.searchSucceed(searchBean);
-//                } else {
-//                    mBasePresenter.searchFailure();
-//                }
-//            }
-//
-//            @Override
-//            public void onError(Throwable e) {
-//                mBasePresenter.searchFailure();
-//            }
-//        });
+        RxClient.builder()
+                .addParams("k", mes)
+                .build()
+                .rxPost(BaseApiService.SEARCH, new RxCallBack<SearchBean>() {
+                    @Override
+                    public void rxOnNext(SearchBean response) {
+                        if (response != null && response.getData() != null && response.getData().getDatas().size() > 0) {
+                            mBasePresenter.searchSucceed(response);
+                        } else {
+                            mBasePresenter.searchFailure();
+                        }
+                    }
+
+                    @Override
+                    public void rxOnError(Throwable e) {
+                        mBasePresenter.searchFailure();
+                    }
+                });
     }
 
 

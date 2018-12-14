@@ -91,7 +91,6 @@ public class SearchModle extends BaseModel<SearchPresenter> {
                 .rxGet(BaseApiService.SEACH_HOTKEY, new RxCallBack<SearchHotKey>() {
                     @Override
                     public void rxOnError(Throwable e) {
-                        Log.i("wsf","e:  "+e.toString());
                         mBasePresenter.searchHotKeyFailure();
                     }
 

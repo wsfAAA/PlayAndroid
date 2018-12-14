@@ -1,6 +1,10 @@
 package playandroid.cmcc.com.loginmodule.register;
 
+import playandroid.cmcc.com.baselibrary.api.BaseApiService;
 import playandroid.cmcc.com.baselibrary.basemvp.BaseModel;
+import playandroid.cmcc.com.baselibrary.net.RxClient;
+import playandroid.cmcc.com.baselibrary.net.callback.RxCallBack;
+import playandroid.cmcc.com.loginmodule.bean.LoginRegisterBean;
 
 /**
  * Created by wsf on 2018/9/6.
@@ -10,30 +14,26 @@ public class RegisterModel extends BaseModel<RegisterPresenter> {
 
 
     public void requestRegister(String username, String userpassword, String repassword) {
-//        LoginApi serviceAPI = DataServiceManager.getServiceAPI(RetrofitService.baseUrl, LoginApi.class);
-//        serviceAPI.register(username, userpassword, repassword).subscribeOn(Schedulers.io()).
-//                observeOn(AndroidSchedulers.mainThread()).
-//                subscribe(new MgBaseObserver<LoginRegisterBean>() {
-//                    @Override
-//                    public void onSubscribe(Disposable d) {
-//                        registerDisposable = d;
-//                    }
-//
-//                    @Override
-//                    public void onNext(LoginRegisterBean bean) {
-//                        if (bean.getData() != null && bean.getErrorCode() == 0) {
-//                            mBasePresenter.onRegisterSucceed(bean);
-//                        } else {
-//                            mBasePresenter.onRegisterFailure(bean.getErrorMsg());
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onError(Throwable e) {
-//                        mBasePresenter.onRegisterFailure(e.toString());
-//                    }
-//                });
+        RxClient.builder()
+                .addParams("username", username)
+                .addParams("password", userpassword)
+                .addParams("repassword", repassword)
+                .build()
+                .rxPost(BaseApiService.REGISTER, new RxCallBack<LoginRegisterBean>() {
+                    @Override
+                    public void rxOnNext(LoginRegisterBean response) {
+                        if (response.getData() != null && response.getErrorCode() == 0) {
+                            mBasePresenter.onRegisterSucceed(response);
+                        } else {
+                            mBasePresenter.onRegisterFailure(response.getErrorMsg());
+                        }
+                    }
 
+                    @Override
+                    public void rxOnError(Throwable e) {
+                        mBasePresenter.onRegisterFailure(e.toString());
+                    }
+                });
     }
 
 

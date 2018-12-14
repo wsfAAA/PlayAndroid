@@ -1,8 +1,10 @@
 package playandroid.cmcc.com.loginmodule.login;
 
 
+import playandroid.cmcc.com.baselibrary.api.BaseApiService;
 import playandroid.cmcc.com.baselibrary.basemvp.BaseModel;
-import playandroid.cmcc.com.loginmodule.api.LoginApi;
+import playandroid.cmcc.com.baselibrary.net.RxClient;
+import playandroid.cmcc.com.baselibrary.net.callback.RxCallBack;
 import playandroid.cmcc.com.loginmodule.bean.LoginRegisterBean;
 
 /**
@@ -12,30 +14,26 @@ import playandroid.cmcc.com.loginmodule.bean.LoginRegisterBean;
 public class LoginModel extends BaseModel<LoginPresenter> {
 
 
-    public void login(String username, String password){
-//        LoginApi serviceAPI = DataServiceManager.getServiceAPI(RetrofitService.baseUrl, LoginApi.class);
-//        serviceAPI.login(username,password).subscribeOn(Schedulers.io()).
-//                observeOn(AndroidSchedulers.mainThread()).
-//                subscribe(new MgBaseObserver<LoginRegisterBean>() {
-//                    @Override
-//                    public void onSubscribe(Disposable d) {
-//                        loginDisposable =d;
-//                    }
-//
-//                    @Override
-//                    public void onNext(LoginRegisterBean bean) {
-//                        if (bean.getData()!=null&&bean.getErrorCode()==0){
-//                            mBasePresenter.loginSucceed(bean);
-//                        }else {
-//                            mBasePresenter.loginFialuer(bean.getErrorMsg()+"    "+bean.getErrorCode());
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onError(Throwable e) {
-//                        mBasePresenter.loginFialuer(e.toString());
-//                    }
-//                });
+    public void login(String username, String password) {
+        RxClient.builder()
+                .addParams("username", username)
+                .addParams("password", password)
+                .build()
+                .rxPost(BaseApiService.LOGIN, new RxCallBack<LoginRegisterBean>() {
+                    @Override
+                    public void rxOnNext(LoginRegisterBean response) {
+                        if (response.getData() != null && response.getErrorCode() == 0) {
+                            mBasePresenter.loginSucceed(response);
+                        } else {
+                            mBasePresenter.loginFialuer(response.getErrorMsg() + "    " + response.getErrorCode());
+                        }
+                    }
+
+                    @Override
+                    public void rxOnError(Throwable e) {
+                        mBasePresenter.loginFialuer(e.toString());
+                    }
+                });
     }
 
     @Override

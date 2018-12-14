@@ -26,7 +26,8 @@ public abstract class RxCallBack<T> {
         return $Gson$Types.canonicalize(parameterized.getActualTypeArguments()[0]);
     }
 
+    public abstract void rxOnNext(T response);
+
     public abstract void rxOnError(Throwable e);
 
-    public abstract void rxOnNext(T response);
 }
