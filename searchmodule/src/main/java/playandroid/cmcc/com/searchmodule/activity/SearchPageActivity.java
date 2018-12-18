@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import me.drakeet.multitype.MultiTypeAdapter;
 import playandroid.cmcc.com.baselibrary.basemvp.BaseMvpActivity;
+import playandroid.cmcc.com.baselibrary.util.WebViewRoute;
 import playandroid.cmcc.com.searchmodule.R;
 import playandroid.cmcc.com.searchmodule.R2;
 import playandroid.cmcc.com.searchmodule.adapter.SearchAdapter;
@@ -62,8 +63,9 @@ public class SearchPageActivity extends BaseMvpActivity<SearchPagePresenter> {
                     ToastUtils.showShort("url空");
                     return;
                 }
-                Intent intent1 = new Intent(mContext, SearchWebViewActivity.class);
-                intent1.putExtra(SearchWebViewActivity.SEARCH_HTTP_URL, url);
+
+                Intent intent1 = new Intent(mContext, WebviewActivity.class);
+                intent1.putExtra(WebViewRoute.WEBVIEW_URL, url);
                 startActivity(intent1);
             }
         });
