@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="playandroid.cmcc.com.searchmodule.activity.WebviewActivity">
+    android:orientation="vertical">
 
     <include layout="@layout/webview_bar_layout" />
 

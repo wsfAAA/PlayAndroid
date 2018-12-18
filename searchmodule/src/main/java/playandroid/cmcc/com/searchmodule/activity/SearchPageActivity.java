@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import me.drakeet.multitype.MultiTypeAdapter;
+import playandroid.cmcc.com.baselibrary.webview.WebviewActivity;
 import playandroid.cmcc.com.baselibrary.basemvp.BaseMvpActivity;
 import playandroid.cmcc.com.baselibrary.util.WebViewRoute;
 import playandroid.cmcc.com.searchmodule.R;
@@ -66,6 +67,7 @@ public class SearchPageActivity extends BaseMvpActivity<SearchPagePresenter> {
 
                 Intent intent1 = new Intent(mContext, WebviewActivity.class);
                 intent1.putExtra(WebViewRoute.WEBVIEW_URL, url);
+//                intent1.putExtra(WebViewRoute.WEBVIEW_LOAD_URL, false);
                 startActivity(intent1);
             }
         });

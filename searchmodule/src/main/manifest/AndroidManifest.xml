@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.SearchPageActivity" />
-        <activity android:name=".activity.WebviewActivity"/>
+        <activity android:name="playandroid.cmcc.com.baselibrary.webview.WebviewActivity"/>
     </application>
 
 </manifest>

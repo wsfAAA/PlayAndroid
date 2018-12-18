@@ -1,4 +1,4 @@
-package playandroid.cmcc.com.searchmodule.activity;
+package playandroid.cmcc.com.baselibrary.webview;
 
 
 import android.graphics.Bitmap;
@@ -21,10 +21,10 @@ import com.blankj.utilcode.util.RegexUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import playandroid.cmcc.com.baselibrary.R;
+import playandroid.cmcc.com.baselibrary.R2;
 import playandroid.cmcc.com.baselibrary.basemvp.BaseWebViewActivity;
 import playandroid.cmcc.com.baselibrary.util.WebViewRoute;
-import playandroid.cmcc.com.searchmodule.R;
-import playandroid.cmcc.com.searchmodule.R2;
 
 @Route(path = "/search/webactivity")
 public class WebviewActivity extends BaseWebViewActivity {
@@ -168,6 +168,7 @@ public class WebviewActivity extends BaseWebViewActivity {
 
     /**
      * 返回键拦截
+     *
      * @param keyCode
      * @param event
      * @return
