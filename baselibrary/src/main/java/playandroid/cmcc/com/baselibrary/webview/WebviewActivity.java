@@ -3,6 +3,7 @@ package playandroid.cmcc.com.baselibrary.webview;
 
 import android.graphics.Bitmap;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.WebChromeClient;
@@ -17,13 +18,15 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.blankj.utilcode.util.ConvertUtils;
 import com.blankj.utilcode.util.RegexUtils;
+import com.blankj.utilcode.util.ScreenUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 import playandroid.cmcc.com.baselibrary.R;
 import playandroid.cmcc.com.baselibrary.R2;
-import playandroid.cmcc.com.baselibrary.basemvp.BaseWebViewActivity;
+import playandroid.cmcc.com.baselibrary.base.BaseWebViewActivity;
 import playandroid.cmcc.com.baselibrary.util.WebViewRoute;
 
 @Route(path = "/search/webactivity")
@@ -45,6 +48,7 @@ public class WebviewActivity extends BaseWebViewActivity {
     private String mUrl;
     private boolean mIsLoadUrl; //是否使用本webview加载 url,true使用 false不使用
     private WebView mWebview;
+    private WebViewBarMore mWebViewBarMore;
 
     @Override
     protected int getLayoutResID() {
@@ -151,6 +155,9 @@ public class WebviewActivity extends BaseWebViewActivity {
             mWebview = null;
         }
         super.onDestroy();
+        if (mWebViewBarMore != null) {
+            mWebViewBarMore.destory();
+        }
     }
 
 
@@ -162,7 +169,10 @@ public class WebviewActivity extends BaseWebViewActivity {
         } else if (i == R.id.m_img_close) {
             finish();
         } else if (i == R.id.m_img_more) {
-
+            if (mWebViewBarMore == null) {
+                mWebViewBarMore = new WebViewBarMore();
+            }
+            mWebViewBarMore.showPopup(mImgMore, ScreenUtils.getScreenWidth(), 0);
         }
     }
 

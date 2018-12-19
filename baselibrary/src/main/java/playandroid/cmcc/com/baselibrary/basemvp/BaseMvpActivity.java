@@ -1,6 +1,8 @@
 package playandroid.cmcc.com.baselibrary.basemvp;
 
 
+import playandroid.cmcc.com.baselibrary.base.BaseActivity;
+
 /**
  * Created by wsf on 2018/11/14.
  * 需要使用mvp模式可以继承BaseMvpActivity，无需只需要继承BaseActivity

@@ -1,8 +1,9 @@
-package playandroid.cmcc.com.baselibrary.basemvp;
+package playandroid.cmcc.com.baselibrary.base;
 
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
+import playandroid.cmcc.com.baselibrary.base.BaseActivity;
 import playandroid.cmcc.com.baselibrary.base.BaseApplication;
 
 /**

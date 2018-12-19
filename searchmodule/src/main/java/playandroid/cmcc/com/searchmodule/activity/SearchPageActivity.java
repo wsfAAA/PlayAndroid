@@ -13,9 +13,9 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import me.drakeet.multitype.MultiTypeAdapter;
-import playandroid.cmcc.com.baselibrary.webview.WebviewActivity;
 import playandroid.cmcc.com.baselibrary.basemvp.BaseMvpActivity;
 import playandroid.cmcc.com.baselibrary.util.WebViewRoute;
+import playandroid.cmcc.com.baselibrary.webview.WebviewActivity;
 import playandroid.cmcc.com.searchmodule.R;
 import playandroid.cmcc.com.searchmodule.R2;
 import playandroid.cmcc.com.searchmodule.adapter.SearchAdapter;

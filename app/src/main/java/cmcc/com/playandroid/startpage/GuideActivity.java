@@ -1,17 +1,12 @@
 package cmcc.com.playandroid.startpage;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 
 import com.blankj.utilcode.util.SPUtils;
 import com.youth.banner.Banner;
-import com.youth.banner.BannerConfig;
 
 import java.util.ArrayList;
 
@@ -19,7 +14,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import cmcc.com.playandroid.R;
 import cmcc.com.playandroid.main.MainActivity;
-import playandroid.cmcc.com.baselibrary.basemvp.BaseActivity;
+import playandroid.cmcc.com.baselibrary.base.BaseActivity;
 import playandroid.cmcc.com.baselibrary.util.GlideImageLoader;
 
 public class GuideActivity extends BaseActivity {

@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">BaseLibrary</string>
 
+
+    <string name="web_share">分享</string>
+    <string name="web_collect">收藏</string>
+    <string name="app_bs_open">用浏览器打开</string>
+
 </resources>
