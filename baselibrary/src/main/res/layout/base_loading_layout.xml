@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/ll_loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/m_img_loading_anim"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:src="@drawable/img_new_loading" />
+
+        <ImageView
+            android:id="@+id/m_img_loading_center"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:src="@drawable/view_loading_center" />
+
+        <TextView
+            android:id="@+id/m_tv_load_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/m_img_loading_center"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/dp_3"
+            android:text="@string/load_page"
+            android:textColor="@color/color_666666" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/m_ll_no_data"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/m_img_no_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/migu_no_data" />
+
+        <TextView
+            android:id="@+id/m_img_no_data_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/load_no_data"
+            android:textColor="@color/color_CDCDCD" />
+
+        <ImageView
+            android:id="@+id/m_img_no_data_reload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:src="@drawable/img_error_reload" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/m_ll_no_net"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_ffffff"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_no_internet" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/load_failed_reload"
+            android:textColor="@color/color_CDCDCD"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/m_img_reload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:src="@drawable/icon_reload_page" />
+    </LinearLayout>
+
+</RelativeLayout>

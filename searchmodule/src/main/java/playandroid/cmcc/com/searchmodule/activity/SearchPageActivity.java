@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import me.drakeet.multitype.MultiTypeAdapter;
 import playandroid.cmcc.com.baselibrary.basemvp.BaseMvpActivity;
+import playandroid.cmcc.com.baselibrary.ui.BaseLoadingView;
 import playandroid.cmcc.com.baselibrary.util.WebViewRoute;
 import playandroid.cmcc.com.baselibrary.webview.WebviewActivity;
 import playandroid.cmcc.com.searchmodule.R;
@@ -28,6 +29,8 @@ public class SearchPageActivity extends BaseMvpActivity<SearchPagePresenter> {
     RecyclerView mRecycler;
     @BindView(R2.id.mSmartRefreshLayout)
     SmartRefreshLayout mSmartRefreshLayout;
+    @BindView(R2.id.m_base_loading)
+    BaseLoadingView mBaseLoading;
 
     private MultiTypeAdapter mSearchAdapter;
     private ArrayList<SearchBean> mSearchBean = new ArrayList<>();
@@ -41,6 +44,7 @@ public class SearchPageActivity extends BaseMvpActivity<SearchPagePresenter> {
     protected void initMvpView() {
         Intent intent = getIntent();
         String searchContent = intent.getStringExtra(SearchActivity.INTENT_SEARCH_HOTKEY);
+        mBaseLoading.showLoading();
         mBasePresenter.searchRequest(searchContent);
 
         mSearchAdapter = new MultiTypeAdapter();
@@ -71,16 +75,25 @@ public class SearchPageActivity extends BaseMvpActivity<SearchPagePresenter> {
                 startActivity(intent1);
             }
         });
+
+        mBaseLoading.setAnewListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ToastUtils.showShort("重试");
+            }
+        });
     }
 
     public void searchFailure() {
         ToastUtils.showShort("请求失败");
+        mBaseLoading.showEmptyData();
     }
 
     public void searchSucceed(SearchBean searchBean) {
         for (int i = 0; i < searchBean.getData().getDatas().size(); i++) {
             mSearchBean.add(searchBean);
         }
+        mBaseLoading.showContent();
         mSearchAdapter.notifyDataSetChanged();
     }
 
