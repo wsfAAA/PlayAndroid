@@ -61,8 +61,5 @@ ext {
 
             //banner
             "banner"              : 'com.youth.banner:banner:1.4.10',
-
-            //Loader 加载样式依赖
-            "Loader"              : 'com.wang.avi:library:2.1.3',
     ]
 }

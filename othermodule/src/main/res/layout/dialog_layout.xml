@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/et1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"/>
+
+    <Button
+        android:id="@+id/bnt1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="btn1"/>
+    <Button
+        android:id="@+id/bnt2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="btn2"/>
+
+</LinearLayout>

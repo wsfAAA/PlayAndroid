@@ -92,7 +92,4 @@ dependencies {
 
     //banner
     api rootProject.ext.dependencies["banner"]
-
-    //Loader 加载样式依赖
-    api rootProject.ext.dependencies["Loader"]
 }

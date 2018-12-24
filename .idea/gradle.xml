@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/baselibrary" />
             <option value="$PROJECT_DIR$/loginmodule" />
+            <option value="$PROJECT_DIR$/othermodule" />
             <option value="$PROJECT_DIR$/searchmodule" />
           </set>
         </option>
