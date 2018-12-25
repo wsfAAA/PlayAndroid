@@ -92,4 +92,7 @@ dependencies {
 
     //banner
     api rootProject.ext.dependencies["banner"]
+
+    //basepopupwindow
+    api rootProject.ext.dependencies["BasePopup"]
 }

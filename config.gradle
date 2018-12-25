@@ -61,5 +61,7 @@ ext {
 
             //banner
             "banner"              : 'com.youth.banner:banner:1.4.10',
+
+            "BasePopup"           : 'com.github.razerdp:BasePopup:2.1.4',
     ]
 }

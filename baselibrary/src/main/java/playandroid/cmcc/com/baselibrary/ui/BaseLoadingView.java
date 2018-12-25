@@ -5,6 +5,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -98,6 +99,7 @@ public class BaseLoadingView extends RelativeLayout {
         mRLoading.setVisibility(GONE);
         mLlNoData.setVisibility(GONE);
         mLlNoNet.setVisibility(GONE);
+        stopLoadAnimator();
     }
 
     /**
@@ -108,6 +110,7 @@ public class BaseLoadingView extends RelativeLayout {
         mRLoading.setVisibility(GONE);
         mLlNoData.setVisibility(VISIBLE);
         mLlNoNet.setVisibility(GONE);
+        stopLoadAnimator();
     }
 
     /**
@@ -118,6 +121,7 @@ public class BaseLoadingView extends RelativeLayout {
         mRLoading.setVisibility(GONE);
         mLlNoData.setVisibility(GONE);
         mLlNoNet.setVisibility(VISIBLE);
+        stopLoadAnimator();
     }
 
 
@@ -162,7 +166,7 @@ public class BaseLoadingView extends RelativeLayout {
                 if (mRLoading.getVisibility() == View.VISIBLE) {
                     startLoadAnimator();
                 } else {
-                    stopLoadAnimator();
+//                    stopLoadAnimator();  //StackOverflowError异常 部分手机
                 }
             }
 

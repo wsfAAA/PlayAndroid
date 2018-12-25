@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import test.opendingding.com.othermodule.R;
 import test.opendingding.com.othermodule.dialogandpopup.dialog.DialogFramengTest;
-import test.opendingding.com.othermodule.dialogandpopup.dialog.DialogTest;
+import test.opendingding.com.othermodule.dialogandpopup.dialog.DialogBuilderTest;
 import test.opendingding.com.othermodule.dialogandpopup.dialog.DialogTow;
 import test.opendingding.com.othermodule.dialogandpopup.popwiond.PopwiondButton;
 
@@ -98,8 +98,8 @@ public class DialogActivity extends AppCompatActivity {
     }
 
     private void showDialog() {
-        DialogTest.Builder builder = new DialogTest.Builder(this);
-        builder.setClickListener(new DialogTest.Builder.ClickListener() {
+        DialogBuilderTest.Builder builder = new DialogBuilderTest.Builder(this);
+        builder.setClickListener(new DialogBuilderTest.Builder.ClickListener() {
             @Override
             public void clickYes() {
                 Toast.makeText(DialogActivity.this, "clickYes", Toast.LENGTH_SHORT).show();
@@ -110,7 +110,7 @@ public class DialogActivity extends AppCompatActivity {
                 Toast.makeText(DialogActivity.this, "clickCancel", Toast.LENGTH_SHORT).show();
             }
         });
-        DialogTest dialogTest = builder.create();
+        DialogBuilderTest dialogTest = builder.create();
         dialogTest.show();
     }
 

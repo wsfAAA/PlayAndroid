@@ -170,9 +170,9 @@ public class WebviewActivity extends BaseWebViewActivity {
             finish();
         } else if (i == R.id.m_img_more) {
             if (mWebViewBarMore == null) {
-                mWebViewBarMore = new WebViewBarMore();
+                mWebViewBarMore = new WebViewBarMore(this);
             }
-            mWebViewBarMore.showPopup(mImgMore, ScreenUtils.getScreenWidth(), 0);
+            mWebViewBarMore.showPopup();
         }
     }
 

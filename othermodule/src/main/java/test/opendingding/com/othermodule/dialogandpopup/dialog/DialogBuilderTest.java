@@ -13,23 +13,23 @@ import test.opendingding.com.othermodule.R;
 /**
  * Created by wsf on 2018/10/30.
  */
-public class DialogTest extends AppCompatDialog {//建议extends AppCompatDialog 而非Dialog,兼容样式
+public class DialogBuilderTest extends AppCompatDialog {//建议extends AppCompatDialog 而非Dialog,兼容样式
 
-    public DialogTest(@NonNull Context context, int themeResId) {
+    public DialogBuilderTest(@NonNull Context context, int themeResId) {
         super(context, themeResId);
     }
 
     public static class Builder{
         private Activity mActivity;
         private ClickListener mClickListener;
-        private DialogTest mDialog;
+        private DialogBuilderTest mDialog;
 
         public Builder(Activity activity){
             this.mActivity = activity;
         }
 
-        public DialogTest create(){
-            mDialog = new DialogTest(mActivity, R.style.custom_dialog);
+        public DialogBuilderTest create(){
+            mDialog = new DialogBuilderTest(mActivity, R.style.custom_dialog);
             View rootView = LayoutInflater.from(mActivity).inflate(R.layout.dialog_layout, null);
             rootView.findViewById(R.id.bnt1).setOnClickListener(new View.OnClickListener() {
                 @Override

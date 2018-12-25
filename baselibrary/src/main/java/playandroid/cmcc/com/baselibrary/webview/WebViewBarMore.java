@@ -1,5 +1,7 @@
 package playandroid.cmcc.com.baselibrary.webview;
 
+import android.content.Context;
+import android.graphics.Color;
 import android.view.View;
 import android.widget.TextView;
 
@@ -14,56 +16,51 @@ import playandroid.cmcc.com.baselibrary.R;
 import playandroid.cmcc.com.baselibrary.R2;
 import playandroid.cmcc.com.baselibrary.popwindow.PopupClickType;
 import playandroid.cmcc.com.baselibrary.popwindow.PopupClient;
+import razerdp.basepopup.BasePopupWindow;
 
 /**
  * Created by wsf on 2018/12/19.
  */
 
-public class WebViewBarMore {
+public class WebViewBarMore extends BasePopupWindow {
 
-    private final Unbinder unbinder;
     @BindView(R2.id.m_tv_web_share)
     TextView mTvWebShare;
     @BindView(R2.id.m_tv_web_collect)
     TextView mTvWebCollect;
     @BindView(R2.id.m_tv_web_bs_open)
     TextView mTvWebBsOpen;
-    private final PopupClient build;
+    private Context mContext;
+    private Unbinder unbinder;
 
-    public WebViewBarMore() {
-        build = PopupClient.builder()
-                .view(R.layout.webview_bar_maor_layout)
-//                .animStyle(R.style.DialogBaseAnimation)
-                .width(ConvertUtils.dp2px(200))
-                .height(ConvertUtils.dp2px(120))
-                .clickType(PopupClickType.SCREEN_YES_AND_RETURN_KEY_YSE)
-                .build();
-        unbinder = ButterKnife.bind(this, build.getView());
+    public WebViewBarMore(Context context) {
+        super(context);
+        this.mContext = context;
     }
 
-    public void showPopup(View mView, int x, int y) {
-        if (build != null && !build.isShowing()) {
-            build.showPopupWindowPosition(mView, x, y);
-        }
+    @Override
+    public View onCreateContentView() {
+        View view = createPopupById(R.layout.webview_bar_maor_layout);
+        unbinder = ButterKnife.bind(this, view);
+        return view;
     }
-
 
     public void destory() {
-        if (build != null) {
-            if (build.isShowing()) {
-                build.dismiss();
-            }
-        }
         if (unbinder != null) {
             unbinder.unbind();
         }
     }
 
+    public void showPopup() {
+        setBackgroundColor(Color.TRANSPARENT);  //取消默认背景灰色
+//        setAllowDismissWhenTouchOutside(false); //点击popup背景区域不消失
+//        setBackPressEnable(false);              //点击返回键不消失
+//        setAllowInterceptTouchEvent(false);     //设置是否允许BasePopup拦截事件，默认拦截,false不拦截。配合setAllowDismissWhenTouchOutside使用popup不消失，popup背景内容可点击
+        showPopupWindow();
+    }
+
     @OnClick({R2.id.m_tv_web_share, R2.id.m_tv_web_collect, R2.id.m_tv_web_bs_open})
     public void onViewClicked(View view) {
-        if (build != null && build.isShowing()) {
-            build.dismiss();
-        }
         int i = view.getId();
         if (i == R.id.m_tv_web_share) {
             ToastUtils.showShort("分享");

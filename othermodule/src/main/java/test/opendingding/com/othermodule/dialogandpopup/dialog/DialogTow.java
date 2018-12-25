@@ -52,7 +52,7 @@ public class DialogTow extends AppCompatDialog {//建议extends AppCompatDialog 
                 }
             }
         });
-        setContentView(rootView);//Dialog使用setContentView
+        setContentView(rootView);//Dialog使22用setContentView
         setCanceledOnTouchOutside(true);//设置在窗口边界外触摸时是否取消此对话框。如果设置为true，则对话框设置为可取消
         setCancelable(true);//设置此对话框是否可以使用BACK键取消,true取消，false不取消
     }
