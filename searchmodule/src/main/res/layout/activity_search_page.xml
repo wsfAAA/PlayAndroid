@@ -17,9 +17,4 @@
             android:layout_height="match_parent" />
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
-    <playandroid.cmcc.com.baselibrary.ui.BaseLoadingView
-        android:id="@+id/m_base_loading"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
 </RelativeLayout>

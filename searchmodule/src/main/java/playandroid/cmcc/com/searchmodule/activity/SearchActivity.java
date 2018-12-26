@@ -5,6 +5,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
@@ -64,7 +65,7 @@ public class SearchActivity extends BaseMvpActivity<SearchPresenter> {
     }
 
     @Override
-    protected void initMvpView() {
+    protected void initView() {
         searchHotKey();
         searchHistory();
     }

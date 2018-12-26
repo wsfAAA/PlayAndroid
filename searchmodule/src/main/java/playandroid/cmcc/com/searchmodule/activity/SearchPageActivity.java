@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import me.drakeet.multitype.MultiTypeAdapter;
+import playandroid.cmcc.com.baselibrary.base.ActionBarMvpActivity;
 import playandroid.cmcc.com.baselibrary.basemvp.BaseMvpActivity;
 import playandroid.cmcc.com.baselibrary.ui.BaseLoadingView;
 import playandroid.cmcc.com.baselibrary.util.WebViewRoute;
@@ -23,14 +24,12 @@ import playandroid.cmcc.com.searchmodule.adapter.SearchAdapter;
 import playandroid.cmcc.com.searchmodule.bean.SearchBean;
 import playandroid.cmcc.com.searchmodule.presenter.SearchPagePresenter;
 
-public class SearchPageActivity extends BaseMvpActivity<SearchPagePresenter> {
+public class SearchPageActivity extends ActionBarMvpActivity<SearchPagePresenter> {
 
     @BindView(R2.id.mrecycler)
     RecyclerView mRecycler;
     @BindView(R2.id.mSmartRefreshLayout)
     SmartRefreshLayout mSmartRefreshLayout;
-    @BindView(R2.id.m_base_loading)
-    BaseLoadingView mBaseLoading;
 
     private MultiTypeAdapter mSearchAdapter;
     private ArrayList<SearchBean> mSearchBean = new ArrayList<>();
@@ -41,10 +40,12 @@ public class SearchPageActivity extends BaseMvpActivity<SearchPagePresenter> {
     }
 
     @Override
-    protected void initMvpView() {
+    protected void initView() {
+        isShowMore(View.GONE);
         Intent intent = getIntent();
         String searchContent = intent.getStringExtra(SearchActivity.INTENT_SEARCH_HOTKEY);
-        mBaseLoading.showLoading();
+        showLoading();
+        setTitleText(searchContent);
         mBasePresenter.searchRequest(searchContent);
 
         mSearchAdapter = new MultiTypeAdapter();
@@ -76,7 +77,7 @@ public class SearchPageActivity extends BaseMvpActivity<SearchPagePresenter> {
             }
         });
 
-        mBaseLoading.setAnewListener(new View.OnClickListener() {
+        mBaseLoadView.setAnewListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ToastUtils.showShort("重试");
@@ -86,14 +87,14 @@ public class SearchPageActivity extends BaseMvpActivity<SearchPagePresenter> {
 
     public void searchFailure() {
         ToastUtils.showShort("请求失败");
-        mBaseLoading.showEmptyData();
+        showEmptyData();
     }
 
     public void searchSucceed(SearchBean searchBean) {
         for (int i = 0; i < searchBean.getData().getDatas().size(); i++) {
             mSearchBean.add(searchBean);
         }
-        mBaseLoading.showContent();
+        showContent();
         mSearchAdapter.notifyDataSetChanged();
     }
 

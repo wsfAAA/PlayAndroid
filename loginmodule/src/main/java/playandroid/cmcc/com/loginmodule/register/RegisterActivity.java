@@ -40,9 +40,8 @@ public class RegisterActivity extends BaseMvpActivity<RegisterPresenter> {
         return R.layout.activity_register;
     }
 
-
     @Override
-    protected void initMvpView() {
+    protected void initView() {
 
     }
 

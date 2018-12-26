@@ -27,7 +27,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> {
     }
 
     @Override
-    protected void initMvpView() {
+    protected void initView() {
 
     }
 

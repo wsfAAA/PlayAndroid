@@ -1,6 +1,9 @@
 package playandroid.cmcc.com.baselibrary.basemvp;
 
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+
 import playandroid.cmcc.com.baselibrary.base.BaseActivity;
 
 /**
@@ -12,6 +15,16 @@ public abstract class BaseMvpActivity<P extends BasePresenter> extends BaseActiv
     protected P mBasePresenter;
 
     @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //mBasePresenter = TUtil.getT(this, 0);//通过反射 绑定Presenter
+        mBasePresenter = creatPersenter();
+        if (mBasePresenter != null) {
+            mBasePresenter.addActivityInstanc(this);
+        }
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         if (mBasePresenter != null) {
@@ -20,19 +33,5 @@ public abstract class BaseMvpActivity<P extends BasePresenter> extends BaseActiv
         }
     }
 
-
     public abstract P creatPersenter();
-
-    @Override
-    protected void initView() {
-        //mBasePresenter = TUtil.getT(this, 0);//通过反射 绑定Presenter
-        mBasePresenter = creatPersenter();
-        if (mBasePresenter != null) {
-            mBasePresenter.addActivityInstanc(this);
-        }
-        initMvpView();
-    }
-
-    protected abstract void initMvpView();
-
 }

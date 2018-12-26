@@ -183,7 +183,7 @@ public class BaseLoadingView extends RelativeLayout {
         mAnimatorSet.start();
     }
 
-    private void stopLoadAnimator() {
+    public void stopLoadAnimator() {
         if (mAnimatorSet != null && mAnimatorSet.isRunning()) {
             mAnimatorSet.cancel();
         }

@@ -48,9 +48,8 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> {
         return R.layout.loginactivity_main;
     }
 
-
     @Override
-    protected void initMvpView() {
+    protected void initView() {
 
     }
 
