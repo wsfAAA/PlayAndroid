@@ -28,7 +28,7 @@ import playandroid.cmcc.com.searchmodule.bean.SearchBean;
 /**
  * Created by wsf on 2018/9/29.
  */
-public class SearchAdapter extends ItemViewBinder<SearchBean, SearchAdapter.ViewHolder> {
+public class SearchAdapter extends ItemViewBinder<SearchBean.DataBean.DatasBean, SearchAdapter.ViewHolder> {
 
     private Context context;
 
@@ -44,19 +44,15 @@ public class SearchAdapter extends ItemViewBinder<SearchBean, SearchAdapter.View
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull SearchBean item) {
-        SearchBean.DataBean.DatasBean datasBean = item.getData().getDatas().get(holder.getPosition());
-        if (datasBean == null) {
-            return;
-        }
-        List<SearchBean.DataBean.DatasBean.TagsBean> tags = datasBean.getTags();
+    protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull SearchBean.DataBean.DatasBean item) {
+        List<SearchBean.DataBean.DatasBean.TagsBean> tags = item.getTags();
         if (tags != null && tags.size() > 0 && tags.get(0) != null && !TextUtils.isEmpty(tags.get(0).getUrl())) {
             holder.mImgPicture.setVisibility(View.VISIBLE);
-            BaseUtils.loaderGlideImage(context,datasBean.getEnvelopePic(),holder.mImgPicture);
-            loaderData(holder, datasBean);
+            BaseUtils.loaderGlideImage(context,item.getEnvelopePic(),holder.mImgPicture);
+            loaderData(holder, item);
         } else {
             holder.mImgPicture.setVisibility(View.GONE);
-            loaderData(holder, datasBean);
+            loaderData(holder, item);
         }
 //        String url="";
 //        if (!RegexUtils.isURL(datasBean.getLink())){
@@ -64,7 +60,7 @@ public class SearchAdapter extends ItemViewBinder<SearchBean, SearchAdapter.View
 //        }else {
 //            url=datasBean.getLink();
 //        }
-        holder.mLlRoot.setTag(R.id.search_result_position_id,datasBean.getLink());
+        holder.mLlRoot.setTag(R.id.search_result_position_id,item.getLink());
         holder.mLlRoot.setOnClickListener(mListener);
         holder.mImagCollect.setOnClickListener(mCollectListener);
     }

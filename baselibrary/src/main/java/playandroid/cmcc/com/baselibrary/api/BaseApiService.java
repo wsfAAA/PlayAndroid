@@ -15,10 +15,10 @@ public class BaseApiService {
 
     /**
      * 搜索
-     * 页码：拼接在链接上，从0开始。
+     * 页码：拼接在链接上，从0开始。  article/query/0/json
      * k ： 搜索关键词
      */
-    public static final String SEARCH = "article/query/0/json";
+    public static final String SEARCH = "article/query/";
 
     ////////////////////////////////////登录相关/////////////////////////////////////////
     /**

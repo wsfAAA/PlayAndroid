@@ -1,4 +1,4 @@
-package test.opendingding.com.othermodule.popwindow;
+package test.opendingding.com.othermodule.popupclient;
 
 
 import android.view.View;

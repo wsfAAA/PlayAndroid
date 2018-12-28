@@ -14,11 +14,11 @@ import playandroid.cmcc.com.searchmodule.presenter.SearchPagePresenter;
 public class SearchPageModle extends BaseModel<SearchPagePresenter> {
 
 
-    public void searchRequest(String mes) {
+    public void searchRequest(String mes,int pageCount) {
         RxClient.builder()
                 .addParams("k", mes)
                 .build()
-                .rxPost(BaseApiService.SEARCH, new RxCallBack<SearchBean>() {
+                .rxPost(BaseApiService.SEARCH+pageCount+"/json", new RxCallBack<SearchBean>() {
                     @Override
                     public void rxOnNext(SearchBean response) {
                         if (response != null && response.getData() != null && response.getData().getDatas().size() > 0) {

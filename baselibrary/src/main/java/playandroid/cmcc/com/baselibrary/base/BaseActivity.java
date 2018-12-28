@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -29,7 +30,7 @@ public abstract class BaseActivity extends FragmentActivity {
     private Unbinder mUnbind;
     private FrameLayout mFlContent;
     private RelativeLayout mBaseBarRoot;
-    protected BaseLoadingView mBaseLoadView;
+    private boolean isActionBar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,56 +39,42 @@ public abstract class BaseActivity extends FragmentActivity {
         setContentView();
         mContext = this;
         BaseApplication.getApplication().getActivityManage().addActivity(this);
+        Log.i("cesi---->", "BaseActivity onCreate");
     }
 
     private void setContentView() {
         setContentView(R.layout.activity_base);
         mFlContent = findViewById(R.id.fl_content);
         mBaseBarRoot = findViewById(R.id.base_bar_root);
-        mBaseLoadView = findViewById(R.id.base_load_view);
         mFlContent.addView(getLayoutInflater().inflate(getLayoutResID(), null));
-        if (isActionBar()) {
-            mBaseBarRoot.setVisibility(View.VISIBLE);
-        } else {
-            mBaseBarRoot.setVisibility(View.GONE);
-        }
         mUnbind = ButterKnife.bind(this);
     }
 
     @Override
     public void onAttachedToWindow() {
         super.onAttachedToWindow();
+        Log.i("cesi---->", "BaseActivity onAttachedToWindow");
         initView();
-
-    }
-
-    protected void showEmptyData() {
-        if (mBaseLoadView != null) {
-            mBaseLoadView.showEmptyData();
+        if (isActionBar) {
+            mBaseBarRoot.setVisibility(View.VISIBLE);
+        } else {
+            mBaseBarRoot.setVisibility(View.GONE);
         }
     }
 
-    protected void showLoading() {
-        if (mBaseLoadView != null) {
-            mBaseLoadView.showLoading();
-        }
-    }
-
-    protected void showContent() {
-        if (mBaseLoadView != null) {
-            mBaseLoadView.showContent();
-        }
-    }
-
-    protected void showNetWorkError() {
-        if (mBaseLoadView != null) {
-            mBaseLoadView.showNetWorkError();
-        }
+    /**
+     * 是否显示 isActionBar
+     *
+     * @param isActionBar
+     */
+    protected void isActionBar(boolean isActionBar) {
+        this.isActionBar = isActionBar;
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        Log.i("cesi---->", "BaseActivity onDestroy");
         if (mUnbind != null) {
             mUnbind.unbind();
         }
@@ -95,21 +82,10 @@ public abstract class BaseActivity extends FragmentActivity {
             mFlContent.removeAllViews();
             mFlContent = null;
         }
-        if (mBaseLoadView != null) {
-            mBaseLoadView.stopLoadAnimator();
-        }
         BaseApplication.getApplication().getActivityManage().removeActivity(this);
     }
 
     protected abstract int getLayoutResID();
 
     protected abstract void initView();
-
-    /**
-     * 是否需要ActionBar
-     */
-    protected boolean isActionBar() {
-        return false;
-    }
-
 }

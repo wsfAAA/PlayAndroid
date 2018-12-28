@@ -1,4 +1,4 @@
-package test.opendingding.com.othermodule.popwindow;
+package test.opendingding.com.othermodule.popupclient;
 
 /**
  * Created by wsf on 2018/12/19.

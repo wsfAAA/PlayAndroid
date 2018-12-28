@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.view.View;
 import android.widget.TextView;
 
-import com.blankj.utilcode.util.ConvertUtils;
 import com.blankj.utilcode.util.ToastUtils;
 
 import butterknife.BindView;
@@ -14,8 +13,6 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import playandroid.cmcc.com.baselibrary.R;
 import playandroid.cmcc.com.baselibrary.R2;
-import playandroid.cmcc.com.baselibrary.popwindow.PopupClickType;
-import playandroid.cmcc.com.baselibrary.popwindow.PopupClient;
 import razerdp.basepopup.BasePopupWindow;
 
 /**

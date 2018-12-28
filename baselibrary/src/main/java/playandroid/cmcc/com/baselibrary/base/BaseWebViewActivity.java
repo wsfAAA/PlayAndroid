@@ -1,5 +1,7 @@
 package playandroid.cmcc.com.baselibrary.base;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
@@ -16,9 +18,15 @@ public abstract class BaseWebViewActivity extends BaseActivity {
     private WebSettings webSettings;
 
     @Override
-    protected void initView() {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         initWeb();
         initWebView(webView,webSettings);
+    }
+
+    @Override
+    protected void initView() {
+
     }
 
     private void initWeb() {
@@ -52,6 +60,7 @@ public abstract class BaseWebViewActivity extends BaseActivity {
     }
 
     protected abstract void initWebView(WebView webView,WebSettings webSettings);
+
 
     @Override
     protected void onDestroy() {

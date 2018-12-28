@@ -1,5 +1,6 @@
 package playandroid.cmcc.com.baselibrary.basemvp;
 
+import android.content.Context;
 import android.support.v4.app.FragmentActivity;
 
 
@@ -9,6 +10,7 @@ public abstract class BasePresenter<V extends FragmentActivity, M extends BaseMo
 
     protected M mBaseModel;
     protected V mBaseView;
+    protected Context mContext;
 
     public BasePresenter() {
         mBaseModel = creatModel();
@@ -22,6 +24,9 @@ public abstract class BasePresenter<V extends FragmentActivity, M extends BaseMo
      */
     public void addActivityInstanc(V activity) {
         this.mBaseView = activity;
+        if (activity instanceof FragmentActivity) {
+            this.mContext = activity;
+        }
     }
 
     public void onDestroy() {

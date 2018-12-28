@@ -8,13 +8,13 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import test.opendingding.com.othermodule.R;
-import test.opendingding.com.othermodule.popwindow.*;
+import test.opendingding.com.othermodule.popupclient.*;
 
 public class MainActivity extends AppCompatActivity {
 
     private LinearLayout mLinear;
     private PopupClient build;
-    private test.opendingding.com.othermodule.popwindow.WebViewBarMore mWebViewBarMore;
+    private test.opendingding.com.othermodule.popupclient.WebViewBarMore mWebViewBarMore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void popup() {
         if (mWebViewBarMore == null) {
-            mWebViewBarMore = new test.opendingding.com.othermodule.popwindow.WebViewBarMore();
+            mWebViewBarMore = new test.opendingding.com.othermodule.popupclient.WebViewBarMore();
         }
         //指定位置
 //        mWebViewBarMore.showPopup(mLinear, ScreenUtils.getScreenWidth(), 0);
