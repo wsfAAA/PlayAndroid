@@ -1,7 +1,6 @@
-package playandroid.cmcc.com.baselibrary.basemvp;
+package playandroid.cmcc.com.baselibrary.mvp;
 
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;

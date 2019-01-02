@@ -1,4 +1,4 @@
-package playandroid.cmcc.com.baselibrary.basemvp;
+package playandroid.cmcc.com.baselibrary.mvp;
 
 
 /**

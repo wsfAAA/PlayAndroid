@@ -9,7 +9,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import butterknife.BindView;
 import butterknife.OnClick;
 import cmcc.com.playandroid.R;
-import playandroid.cmcc.com.baselibrary.basemvp.BaseMvpActivity;
+import playandroid.cmcc.com.baselibrary.mvp.BaseMvpActivity;
 import playandroid.cmcc.com.baselibrary.common.CommonFinal;
 
 public class MainActivity extends BaseMvpActivity<MainPresenter> {

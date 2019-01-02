@@ -8,9 +8,8 @@ import com.blankj.utilcode.util.ToastUtils;
 
 import java.util.ArrayList;
 
-import me.drakeet.multitype.Items;
 import me.drakeet.multitype.MultiTypeAdapter;
-import playandroid.cmcc.com.baselibrary.basemvp.BasePresenter;
+import playandroid.cmcc.com.baselibrary.mvp.BasePresenter;
 import playandroid.cmcc.com.baselibrary.util.WebViewRoute;
 import playandroid.cmcc.com.baselibrary.webview.WebviewActivity;
 import playandroid.cmcc.com.searchmodule.R;

@@ -1,7 +1,7 @@
 package cmcc.com.playandroid.main;
 
 
-import playandroid.cmcc.com.baselibrary.basemvp.BaseModel;
+import playandroid.cmcc.com.baselibrary.mvp.BaseModel;
 
 /**
  * Created by wsf on 2018/9/5.

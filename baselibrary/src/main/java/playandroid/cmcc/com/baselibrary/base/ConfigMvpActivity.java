@@ -11,8 +11,8 @@ import android.widget.TextView;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 
 import playandroid.cmcc.com.baselibrary.R;
-import playandroid.cmcc.com.baselibrary.basemvp.BaseMvpActivity;
-import playandroid.cmcc.com.baselibrary.basemvp.BasePresenter;
+import playandroid.cmcc.com.baselibrary.mvp.BaseMvpActivity;
+import playandroid.cmcc.com.baselibrary.mvp.BasePresenter;
 
 /**
  * Created by wsf on 2018/12/26.

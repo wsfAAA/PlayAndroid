@@ -1,7 +1,7 @@
 package cmcc.com.playandroid.main;
 
 
-import playandroid.cmcc.com.baselibrary.basemvp.BasePresenter;
+import playandroid.cmcc.com.baselibrary.mvp.BasePresenter;
 
 /**
  * Created by wsf on 2018/9/5.

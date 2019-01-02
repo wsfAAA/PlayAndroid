@@ -21,7 +21,7 @@ import butterknife.OnClick;
 import cmcc.com.playandroid.R;
 import cmcc.com.playandroid.adapter.NewMainViewPageAdapter;
 import cmcc.com.playandroid.presenter.NewMainPresenter;
-import playandroid.cmcc.com.baselibrary.basemvp.BaseMvpActivity;
+import playandroid.cmcc.com.baselibrary.mvp.BaseMvpActivity;
 import playandroid.cmcc.com.baselibrary.common.CommonFinal;
 
 public class NewMainActivity extends BaseMvpActivity<NewMainPresenter>
@@ -65,9 +65,10 @@ public class NewMainActivity extends BaseMvpActivity<NewMainPresenter>
                 return true;
             }
         });
+        mNewMainViewpager.setOffscreenPageLimit(2);
 
-        mBottomNavigation.setSelectedItemId(R.id.new_main_menu_home);
-        changeFragment(R.id.new_main_menu_home);
+        mBottomNavigation.setSelectedItemId(R.id.new_main_menu_discover);
+        changeFragment(R.id.new_main_menu_discover);
 
         mNewMainViewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override

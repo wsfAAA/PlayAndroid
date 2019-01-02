@@ -2,7 +2,7 @@ package playandroid.cmcc.com.loginmodule.register;
 
 import com.blankj.utilcode.util.ToastUtils;
 
-import playandroid.cmcc.com.baselibrary.basemvp.BasePresenter;
+import playandroid.cmcc.com.baselibrary.mvp.BasePresenter;
 import playandroid.cmcc.com.loginmodule.bean.LoginRegisterBean;
 
 /**

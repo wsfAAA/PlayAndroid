@@ -1,10 +1,11 @@
-package playandroid.cmcc.com.baselibrary.basemvp;
+package playandroid.cmcc.com.baselibrary.mvp;
 
 import android.content.Context;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 
 
-public abstract class BasePresenter<V extends FragmentActivity, M extends BaseModel> implements BindViewModel<M> {
+public abstract class BasePresenter<V extends IBaseView, M extends BaseModel> implements BindViewModel<M> {
 
     protected final String TAG = getClass().getSimpleName();
 
@@ -24,8 +25,8 @@ public abstract class BasePresenter<V extends FragmentActivity, M extends BaseMo
      */
     public void addActivityInstanc(V activity) {
         this.mBaseView = activity;
-        if (activity instanceof FragmentActivity) {
-            this.mContext = activity;
+        if (activity instanceof FragmentActivity || activity instanceof Fragment) {
+            this.mContext = (Context) activity;
         }
     }
 

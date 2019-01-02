@@ -12,7 +12,7 @@ import com.blankj.utilcode.util.ToastUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import playandroid.cmcc.com.baselibrary.basemvp.BaseMvpActivity;
+import playandroid.cmcc.com.baselibrary.mvp.BaseMvpActivity;
 import playandroid.cmcc.com.loginmodule.R;
 import playandroid.cmcc.com.loginmodule.R2;
 import playandroid.cmcc.com.loginmodule.bean.LoginRegisterBean;

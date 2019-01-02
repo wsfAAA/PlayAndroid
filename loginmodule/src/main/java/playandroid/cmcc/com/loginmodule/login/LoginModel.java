@@ -2,7 +2,7 @@ package playandroid.cmcc.com.loginmodule.login;
 
 
 import playandroid.cmcc.com.baselibrary.api.BaseApiService;
-import playandroid.cmcc.com.baselibrary.basemvp.BaseModel;
+import playandroid.cmcc.com.baselibrary.mvp.BaseModel;
 import playandroid.cmcc.com.baselibrary.net.RxClient;
 import playandroid.cmcc.com.baselibrary.net.callback.RxCallBack;
 import playandroid.cmcc.com.loginmodule.bean.LoginRegisterBean;

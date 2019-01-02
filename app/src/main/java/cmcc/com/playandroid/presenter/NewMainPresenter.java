@@ -7,10 +7,8 @@ import cmcc.com.playandroid.activity.NewMainActivity;
 import cmcc.com.playandroid.fragment.DiscoverFragment;
 import cmcc.com.playandroid.fragment.HomeFragment;
 import cmcc.com.playandroid.fragment.KnowledgeFragment;
-import cmcc.com.playandroid.main.MainActivity;
-import cmcc.com.playandroid.main.MainModel;
 import cmcc.com.playandroid.model.NewMainModel;
-import playandroid.cmcc.com.baselibrary.basemvp.BasePresenter;
+import playandroid.cmcc.com.baselibrary.mvp.BasePresenter;
 
 /**
  * Created by wsf on 2018/9/5.

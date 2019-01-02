@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
@@ -14,14 +13,14 @@ import android.widget.RelativeLayout;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import playandroid.cmcc.com.baselibrary.R;
-import playandroid.cmcc.com.baselibrary.ui.BaseLoadingView;
+import playandroid.cmcc.com.baselibrary.mvp.IBaseView;
 
 
 /**
  * Created by wsf on 2018/11/6.
  */
 
-public abstract class BaseActivity extends FragmentActivity {
+public abstract class BaseActivity extends FragmentActivity implements IBaseView{
 
     protected final String TAG = getClass().getSimpleName();
 

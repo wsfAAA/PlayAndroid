@@ -1,20 +1,9 @@
 package playandroid.cmcc.com.searchmodule.modle;
 
-import android.util.Log;
-
-import java.util.WeakHashMap;
-
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 import playandroid.cmcc.com.baselibrary.api.BaseApiService;
-import playandroid.cmcc.com.baselibrary.basemvp.BaseModel;
+import playandroid.cmcc.com.baselibrary.mvp.BaseModel;
 import playandroid.cmcc.com.baselibrary.net.RxClient;
-import playandroid.cmcc.com.baselibrary.net.RxCreator;
-import playandroid.cmcc.com.baselibrary.net.RxService;
 import playandroid.cmcc.com.baselibrary.net.callback.RxCallBack;
-import playandroid.cmcc.com.baselibrary.util.BaseUtils;
 import playandroid.cmcc.com.searchmodule.bean.SearchHotKey;
 import playandroid.cmcc.com.searchmodule.presenter.SearchPresenter;
 
