@@ -10,11 +10,9 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import cmcc.com.playandroid.R;
 import playandroid.cmcc.com.baselibrary.basemvp.BaseMvpActivity;
+import playandroid.cmcc.com.baselibrary.common.CommonFinal;
 
 public class MainActivity extends BaseMvpActivity<MainPresenter> {
-
-    public static final String AROUTER_LOGIN = "/account/login";
-    public static final String AROUTER_SEARCH = "/home/search";
 
     @BindView(R.id.bt_login)
     Button btLogin;
@@ -35,10 +33,10 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.bt_login:
-                ARouter.getInstance().build(AROUTER_LOGIN).navigation();
+                ARouter.getInstance().build(CommonFinal.AROUTER_LOGIN).navigation();
                 break;
             case R.id.bt_search:
-                ARouter.getInstance().build(AROUTER_SEARCH).navigation();
+                ARouter.getInstance().build(CommonFinal.AROUTER_SEARCH).navigation();
                 break;
         }
     }

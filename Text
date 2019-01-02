@@ -37,6 +37,9 @@ othermodule：里面是自己封装的一些东西没用在该项目中使用单
 --------------------------------------------------------------------------------------------------->
 三、主工程
    a、使用runtimeOnly 依赖其它组件  隔离代码
+   b、底部导航使用  BottomNavigationView+Fragment+ViewPager
+   c、侧拉菜单页使用 DrawerLayout+NavigationView
+   d、md风格控件使用：NavigationView、FloatingActionButton、AppBarLayout、CoordinatorLayout
 
 
 --------------------------------------------------------------------------------------------------->

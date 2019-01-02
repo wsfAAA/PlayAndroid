@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/m_new_main_toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_50"
+    app:layout_scrollFlags="scroll|enterAlways"
+    android:background="@color/color_EA1E63">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginRight="@dimen/dp_15">
+
+        <ImageView
+            android:id="@+id/m_img_open_deawer"
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="@dimen/dp_30"
+            android:layout_centerVertical="true"
+            android:src="@drawable/left_more" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="页面"
+            android:textColor="@color/color_ffffff"
+            android:textSize="@dimen/sp_18"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/m_img_search"
+            android:layout_width="@dimen/dp_25"
+            android:layout_height="@dimen/dp_25"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/search" />
+    </RelativeLayout>
+
+</android.support.v7.widget.Toolbar>

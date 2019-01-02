@@ -15,7 +15,7 @@ import java.util.Timer;
 import butterknife.BindView;
 import butterknife.OnClick;
 import cmcc.com.playandroid.R;
-import cmcc.com.playandroid.main.MainActivity;
+import cmcc.com.playandroid.activity.NewMainActivity;
 import playandroid.cmcc.com.baselibrary.base.BaseActivity;
 import playandroid.cmcc.com.baselibrary.timertask.BaseTimerTask;
 import playandroid.cmcc.com.baselibrary.timertask.ITimerListener;
@@ -31,7 +31,7 @@ public class WelcomeActivity extends BaseActivity implements ITimerListener {
     @BindView(R.id.mTv_time)
     TextView mTvTime;
     private Timer mTimer;
-    private long mCount = 5;
+    private long mCount = 2;
 
     @Override
     protected int getLayoutResID() {
@@ -88,7 +88,7 @@ public class WelcomeActivity extends BaseActivity implements ITimerListener {
             Intent intent = new Intent(this, GuideActivity.class);
             startActivity(intent);
         } else {
-            startActivity(new Intent(this, MainActivity.class));
+            startActivity(new Intent(this, NewMainActivity.class));
         }
         finish();
     }

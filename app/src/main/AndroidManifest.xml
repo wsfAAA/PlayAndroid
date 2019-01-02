@@ -20,7 +20,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".startpage.GuideActivity"></activity>
+        <activity android:name=".startpage.GuideActivity" />
+        <activity
+            android:name=".activity.NewMainActivity"
+            android:label="@string/title_activity_new_main"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

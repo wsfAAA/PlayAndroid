@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.OnClick;
 import cmcc.com.playandroid.R;
-import cmcc.com.playandroid.main.MainActivity;
+import cmcc.com.playandroid.activity.NewMainActivity;
 import playandroid.cmcc.com.baselibrary.base.BaseActivity;
 import playandroid.cmcc.com.baselibrary.util.GlideImageLoader;
 
@@ -74,7 +74,7 @@ public class GuideActivity extends BaseActivity {
     @OnClick(R.id.mBtn_start)
     public void onViewClicked() {
         SPUtils.getInstance().put(WelcomeActivity.IS_GUIDE, true);
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, NewMainActivity.class));
         finish();
     }
 }

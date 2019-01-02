@@ -31,6 +31,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    implementation 'com.android.support:support-v4:27.1.1'
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
 
     implementation project(':baselibrary')//依赖基础库
