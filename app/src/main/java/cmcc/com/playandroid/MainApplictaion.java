@@ -1,4 +1,4 @@
-package cmcc.com.playandroid.config;
+package cmcc.com.playandroid;
 
 
 import playandroid.cmcc.com.baselibrary.base.BaseApplication;

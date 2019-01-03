@@ -46,7 +46,7 @@ public class WebviewActivity extends BaseWebViewActivity {
     ProgressBar mProgressBar;
 
     private String mUrl;
-    private boolean mIsLoadUrl; //是否使用本webview加载 url,true使用 false不使用
+    private boolean mIsLoadUrl; //是否使用本webview加载 url,true使用 false不使用 ，默认使用
     private WebView mWebview;
     private WebViewBarMore mWebViewBarMore;
 

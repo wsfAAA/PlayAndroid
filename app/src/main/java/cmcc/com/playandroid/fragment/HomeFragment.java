@@ -14,6 +14,8 @@ public class HomeFragment extends BaseMvpFragment<HomePresenter> {
     @BindView(R.id.m_recyclerview)
     RecyclerView mRecyclerview;
 
+    private int pageCount = 0;
+
     public HomeFragment() {
     }
 
@@ -24,7 +26,9 @@ public class HomeFragment extends BaseMvpFragment<HomePresenter> {
 
     @Override
     protected void onFragmentVisible() {
-
+        mBasePresenter.requestData(pageCount);
+        mRecyclerview.setLayoutManager(new LinearLayoutManager(mContext));
+        mRecyclerview.setAdapter(mBasePresenter.initAdapter());
     }
 
     @Override

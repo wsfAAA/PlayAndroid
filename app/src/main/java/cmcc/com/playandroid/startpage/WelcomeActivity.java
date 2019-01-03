@@ -31,7 +31,7 @@ public class WelcomeActivity extends BaseActivity implements ITimerListener {
     @BindView(R.id.mTv_time)
     TextView mTvTime;
     private Timer mTimer;
-    private long mCount = 2;
+    private long mCount = 1;
 
     @Override
     protected int getLayoutResID() {

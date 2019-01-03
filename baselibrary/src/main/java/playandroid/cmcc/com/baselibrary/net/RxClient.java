@@ -188,10 +188,11 @@ public final class RxClient {
             okhttpBuilder.addInterceptor(new LogInterceptor());
         }
 
-        if (IS_CACHE) {
+        if (IS_CACHE) { //添加okhttp网络数据缓存
             okhttpBuilder.addInterceptor(new CacheInterceptor(BaseApplication.getApplication()));
         }
 
+        //添加公用请求参数 和 请求参数
         okhttpBuilder.addInterceptor(new HeaderInterceptor(HEADER_PARAMS));
 
         retrofitBuilde.client(okhttpBuilder.build());

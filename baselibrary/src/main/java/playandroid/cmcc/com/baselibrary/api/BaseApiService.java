@@ -29,4 +29,16 @@ public class BaseApiService {
      * 登录
      */
     public static final String LOGIN = "user/login";
+
+    ///////////////////////////////////////首页/////////////////////////////////////////
+    /**
+     * 首页banner
+     */
+    public static final String BANNER = "banner/json";
+
+    /**
+     * 首页列表
+     *    article/list/1/json
+     */
+    public static final String HOME_LIST = "article/list/";
 }

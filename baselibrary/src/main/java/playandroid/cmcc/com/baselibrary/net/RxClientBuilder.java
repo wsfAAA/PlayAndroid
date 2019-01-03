@@ -17,10 +17,10 @@ public final class RxClientBuilder {
     private final WeakHashMap<String, String> mHeaderPapams = new WeakHashMap<>();//请求头
     private RequestBody mBody = null;
     private File mFile = null;
-    private String mBaseUrl;
+    private String mBaseUrl;     //更换baseurl
     private int mConnectTimeOut;
     private int mReadTimeOut;
-    private boolean mIsCache;
+    private boolean mIsCache;   //是否使用okhttp缓存
 
     RxClientBuilder() {
 

@@ -27,6 +27,7 @@ public abstract class BaseMvpActivity<P extends BasePresenter> extends BaseActiv
         mBasePresenter = creatPersenter();
         if (mBasePresenter != null) {
             mBasePresenter.addActivityInstanc(this);
+            mBasePresenter.setContext(mContext);
         }
     }
 

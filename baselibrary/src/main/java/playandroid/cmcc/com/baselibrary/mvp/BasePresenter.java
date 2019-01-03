@@ -25,9 +25,10 @@ public abstract class BasePresenter<V extends IBaseView, M extends BaseModel> im
      */
     public void addActivityInstanc(V activity) {
         this.mBaseView = activity;
-        if (activity instanceof FragmentActivity || activity instanceof Fragment) {
-            this.mContext = (Context) activity;
-        }
+    }
+
+    public void setContext(Context context){
+        this.mContext=context;
     }
 
     public void onDestroy() {
