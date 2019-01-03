@@ -21,12 +21,12 @@ import playandroid.cmcc.com.baselibrary.mvp.BasePresenter;
  */
 public abstract class ConfigMvpActivity<P extends BasePresenter> extends BaseMvpActivity<P> {
 
+    // TODO: 2019/1/2 标题栏
     private ImageView mConfigImgBack;//返回
     private ImageView mConfigImgMore;//更多
     private TextView mConfigTvTitle; //标题
 
-    // TODO: 2018/12/27  注意 继承ConfigMvpActivity的页面为 SmartRefreshLayout赋值 用于刷新加载统一处理  
-    // TODO: 2018/12/27  相关属性：https://github.com/scwang90/SmartRefreshLayout/blob/master/art/md_property.md
+    // TODO: 2018/12/27  注意 继承ConfigMvpActivity的页面为 SmartRefreshLayout赋值 用于刷新加载统一处理  相关属性：https://github.com/scwang90/SmartRefreshLayout/blob/master/art/md_property.md
     protected SmartRefreshLayout mConfigSmartRefreshLayout;
 
     @Override

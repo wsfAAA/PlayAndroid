@@ -9,9 +9,11 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.ToastUtils;
@@ -21,8 +23,8 @@ import butterknife.OnClick;
 import cmcc.com.playandroid.R;
 import cmcc.com.playandroid.adapter.NewMainViewPageAdapter;
 import cmcc.com.playandroid.presenter.NewMainPresenter;
-import playandroid.cmcc.com.baselibrary.mvp.BaseMvpActivity;
 import playandroid.cmcc.com.baselibrary.common.CommonFinal;
+import playandroid.cmcc.com.baselibrary.mvp.BaseMvpActivity;
 
 public class NewMainActivity extends BaseMvpActivity<NewMainPresenter>
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -43,6 +45,9 @@ public class NewMainActivity extends BaseMvpActivity<NewMainPresenter>
     ViewPager mNewMainViewpager;
     @BindView(R.id.m_bottomNavigation)
     BottomNavigationView mBottomNavigation;
+    @BindView(R.id.m_tv_page_title)
+    TextView mTvPageTitle;
+
     private Fragment[] mFragments;
 
     @Override
@@ -61,14 +66,14 @@ public class NewMainActivity extends BaseMvpActivity<NewMainPresenter>
         mBottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                changeFragment(item.getItemId());
+                changeFragment(item.getItemId(),item.getTitle().toString());
                 return true;
             }
         });
         mNewMainViewpager.setOffscreenPageLimit(2);
 
-        mBottomNavigation.setSelectedItemId(R.id.new_main_menu_discover);
-        changeFragment(R.id.new_main_menu_discover);
+        mBottomNavigation.setSelectedItemId(R.id.new_main_menu_home);
+        changeFragment(R.id.new_main_menu_home,"首页");
 
         mNewMainViewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -81,12 +86,15 @@ public class NewMainActivity extends BaseMvpActivity<NewMainPresenter>
                 switch (position) {
                     case 0:
                         mBottomNavigation.setSelectedItemId(R.id.new_main_menu_discover);
+                        mTvPageTitle.setText("发现");
                         break;
                     case 1:
                         mBottomNavigation.setSelectedItemId(R.id.new_main_menu_home);
+                        mTvPageTitle.setText("首页");
                         break;
                     case 2:
                         mBottomNavigation.setSelectedItemId(R.id.new_main_menu_knowledge);
+                        mTvPageTitle.setText("知识体系");
                         break;
                     default:
                         break;
@@ -135,7 +143,10 @@ public class NewMainActivity extends BaseMvpActivity<NewMainPresenter>
         return true;
     }
 
-    private void changeFragment(int itemId) {
+    private void changeFragment(int itemId,String title) {
+        if (!TextUtils.isEmpty(title)){
+            mTvPageTitle.setText(title);
+        }
         switch (itemId) {
             case R.id.new_main_menu_discover:   //发现
                 mNewMainViewpager.setCurrentItem(0);

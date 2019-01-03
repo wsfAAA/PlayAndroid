@@ -49,7 +49,7 @@ othermodule：里面是自己封装的一些东西没用在该项目中使用单
 
 
 --------------------------------------------------------------------------------------------------->
- 问题：
+问题：
    A、baselibrary库中引用butterknife，在module中R2为空问题
       a、现解决方案 在module中也添加butterknife的引用，不够完善 后期优化        已解决
           方案：annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0' 需在每个module和主工程中引用
