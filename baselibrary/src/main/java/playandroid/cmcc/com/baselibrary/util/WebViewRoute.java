@@ -18,7 +18,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 public class WebViewRoute {
 
     public static final String WEBVIEW_URL = "WEBVIEW_URL";
-    public static final String WEBVIEW_LOAD_URL = "WEBVIEW_LOAD_URL";
+    public static final String WEBVIEW_LOAD_URL = "WEBVIEW_LOAD_URL"; //是否使用本webview加载 url,true使用 false不使用 ，默认使用
 
     private WebViewRoute() {
     }

@@ -21,8 +21,6 @@ import playandroid.cmcc.com.baselibrary.util.GlideImageLoader;
 import playandroid.cmcc.com.baselibrary.util.WebViewRoute;
 import playandroid.cmcc.com.baselibrary.webview.WebviewActivity;
 
-import static com.blankj.utilcode.util.ActivityUtils.startActivity;
-
 /**
  * Created by wsf on 2019/1/3.
  */

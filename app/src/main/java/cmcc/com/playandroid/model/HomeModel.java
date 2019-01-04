@@ -1,7 +1,5 @@
 package cmcc.com.playandroid.model;
 
-import javax.xml.transform.sax.TemplatesHandler;
-
 import cmcc.com.playandroid.adapter.HomeList;
 import cmcc.com.playandroid.bean.BannerBean;
 import cmcc.com.playandroid.presenter.HomePresenter;

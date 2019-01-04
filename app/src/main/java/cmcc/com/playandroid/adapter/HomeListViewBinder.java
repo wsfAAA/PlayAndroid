@@ -1,5 +1,7 @@
 package cmcc.com.playandroid.adapter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -14,12 +16,19 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cmcc.com.playandroid.R;
 import me.drakeet.multitype.ItemViewBinder;
+import playandroid.cmcc.com.baselibrary.util.WebViewRoute;
+import playandroid.cmcc.com.baselibrary.webview.WebviewActivity;
 
 /**
  * Created by wsf on 2019/1/3.
  */
 public class HomeListViewBinder extends ItemViewBinder<HomeList.DataBean.DatasBean, HomeListViewBinder.ViewHolder> {
 
+    private Context mContext;
+
+    public HomeListViewBinder(Context context) {
+        this.mContext = context;
+    }
 
     @NonNull
     @Override
@@ -30,17 +39,19 @@ public class HomeListViewBinder extends ItemViewBinder<HomeList.DataBean.DatasBe
 
     @Override
     protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull HomeList.DataBean.DatasBean homeList) {
+        holder.homeList = homeList;
+        holder.context = mContext;
         if (!TextUtils.isEmpty(homeList.getTitle())) {
             String replace = homeList.getTitle().replace("&mdash;", "");
             holder.mTvTitle.setText(replace);
         }
-        if (!TextUtils.isEmpty(homeList.getAuthor())){
+        if (!TextUtils.isEmpty(homeList.getAuthor())) {
             holder.mTvName.setText(homeList.getAuthor());
         }
-        if (!TextUtils.isEmpty(homeList.getSuperChapterName())){
+        if (!TextUtils.isEmpty(homeList.getSuperChapterName())) {
             holder.mTvType.setText(homeList.getSuperChapterName());
         }
-        if (!TextUtils.isEmpty(homeList.getNiceDate())){
+        if (!TextUtils.isEmpty(homeList.getNiceDate())) {
             holder.mTvTime.setText(homeList.getNiceDate());
         }
     }
@@ -55,11 +66,22 @@ public class HomeListViewBinder extends ItemViewBinder<HomeList.DataBean.DatasBe
         @BindView(R.id.m_tv_name)
         TextView mTvName;
         @BindView(R.id.card_root)
-        CardView cardRoot;
+        CardView mCardRoot;
+
+        private HomeList.DataBean.DatasBean homeList;
+        private Context context;
 
         ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            mCardRoot.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, WebviewActivity.class);
+                    intent.putExtra(WebViewRoute.WEBVIEW_URL, homeList.getLink());
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }

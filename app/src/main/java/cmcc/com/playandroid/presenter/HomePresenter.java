@@ -20,6 +20,7 @@ public class HomePresenter extends BasePresenter<HomeFragment, HomeModel> {
 
     private MultiTypeAdapter mMultiTypeAdapter;
     private Items mItems;
+    private boolean isRefresh; //是否是刷新
     private BannerBean bannerBean;
 
     @Override
@@ -27,16 +28,20 @@ public class HomePresenter extends BasePresenter<HomeFragment, HomeModel> {
         return new HomeModel();
     }
 
-    public void requestData(int pageCount) {
-        mBaseModel.requestBanner();
+    public void requestData(int pageCount, boolean isRefresh) {
+        this.isRefresh = isRefresh;
         mBaseModel.requestHomeList(pageCount);
+    }
+
+    public void requestBanner() {
+        mBaseModel.requestBanner();
     }
 
     public MultiTypeAdapter initAdapter() {
         mMultiTypeAdapter = new MultiTypeAdapter();
         mItems = new Items();
         mMultiTypeAdapter.register(BannerBean.class, new BannerViewBinder(mContext));  //banner
-        mMultiTypeAdapter.register(HomeList.DataBean.DatasBean.class, new HomeListViewBinder()); //首页列表
+        mMultiTypeAdapter.register(HomeList.DataBean.DatasBean.class, new HomeListViewBinder(mContext)); //首页列表
         mMultiTypeAdapter.setItems(mItems);
         return mMultiTypeAdapter;
     }
@@ -50,17 +55,24 @@ public class HomePresenter extends BasePresenter<HomeFragment, HomeModel> {
     }
 
     public void homeListSucceed(HomeList response) {
-        if (bannerBean != null && !mItems.contains(bannerBean)) {
-            mItems.add(bannerBean);
+        if (isRefresh) {
+            mItems.clear();
+            if (bannerBean != null) {
+                mItems.add(0, bannerBean);
+            }
         }
         for (int i = 0; i < response.getData().getDatas().size(); i++) {
             HomeList.DataBean.DatasBean datasBean = response.getData().getDatas().get(i);
             mItems.add(datasBean);
         }
         mMultiTypeAdapter.notifyDataSetChanged();
+        mBaseView.getSmartRefresh().finishLoadMore(true);
+        mBaseView.getSmartRefresh().finishRefresh(true);
     }
 
     public void homeListError() {
         ToastUtils.showShort("列表请求失败！");
+        mBaseView.getSmartRefresh().finishLoadMore(true);
+        mBaseView.getSmartRefresh().finishRefresh(true);
     }
 }
