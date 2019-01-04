@@ -9,13 +9,19 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import cmcc.com.playandroid.R;
+import cmcc.com.playandroid.activity.AuthorEssayActivity;
 import me.drakeet.multitype.ItemViewBinder;
+import playandroid.cmcc.com.baselibrary.api.BaseApiService;
+import playandroid.cmcc.com.baselibrary.common.CommonFinal;
+import playandroid.cmcc.com.baselibrary.util.BaseUtils;
 import playandroid.cmcc.com.baselibrary.util.WebViewRoute;
 import playandroid.cmcc.com.baselibrary.webview.WebviewActivity;
 
@@ -41,12 +47,21 @@ public class HomeListViewBinder extends ItemViewBinder<HomeList.DataBean.DatasBe
     protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull HomeList.DataBean.DatasBean homeList) {
         holder.homeList = homeList;
         holder.context = mContext;
+        if (!TextUtils.isEmpty(homeList.getEnvelopePic())) {
+            holder.mImgCover.setVisibility(View.VISIBLE);
+            BaseUtils.loaderGlideImage(mContext, homeList.getEnvelopePic(), holder.mImgCover);
+        } else {
+            holder.mImgCover.setVisibility(View.GONE);
+        }
         if (!TextUtils.isEmpty(homeList.getTitle())) {
             String replace = homeList.getTitle().replace("&mdash;", "");
             holder.mTvTitle.setText(replace);
         }
         if (!TextUtils.isEmpty(homeList.getAuthor())) {
             holder.mTvName.setText(homeList.getAuthor());
+            if (homeList.getTags() != null && homeList.getTags().size() > 0 && !TextUtils.isEmpty(homeList.getTags().get(0).getUrl())) {
+                holder.mTvName.setText("查看 " + homeList.getAuthor() + " 文章");
+            }
         }
         if (!TextUtils.isEmpty(homeList.getSuperChapterName())) {
             holder.mTvType.setText(homeList.getSuperChapterName());
@@ -67,6 +82,8 @@ public class HomeListViewBinder extends ItemViewBinder<HomeList.DataBean.DatasBe
         TextView mTvName;
         @BindView(R.id.card_root)
         CardView mCardRoot;
+        @BindView(R.id.m_img_cover)
+        ImageView mImgCover;
 
         private HomeList.DataBean.DatasBean homeList;
         private Context context;
@@ -80,6 +97,17 @@ public class HomeListViewBinder extends ItemViewBinder<HomeList.DataBean.DatasBe
                     Intent intent = new Intent(context, WebviewActivity.class);
                     intent.putExtra(WebViewRoute.WEBVIEW_URL, homeList.getLink());
                     context.startActivity(intent);
+                }
+            });
+            mTvName.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    List<HomeList.DataBean.DatasBean.TagsBean> tags = homeList.getTags();
+                    if (tags != null && homeList.getTags().size() > 0 && !TextUtils.isEmpty(homeList.getTags().get(0).getUrl())) {
+                        Intent intent = new Intent(context, WebviewActivity.class);
+                        intent.putExtra(WebViewRoute.WEBVIEW_URL, BaseApiService.BASE_URL + homeList.getTags().get(0).getUrl());
+                        context.startActivity(intent);
+                    }
                 }
             });
         }

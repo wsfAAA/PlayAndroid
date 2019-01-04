@@ -25,7 +25,8 @@
             android:name=".activity.NewMainActivity"
             android:label="@string/title_activity_new_main"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name="playandroid.cmcc.com.baselibrary.webview.WebviewActivity"/>
+        <activity android:name="playandroid.cmcc.com.baselibrary.webview.WebviewActivity" />
+        <activity android:name=".activity.AuthorEssayActivity" />
     </application>
 
 </manifest>

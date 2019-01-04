@@ -59,11 +59,18 @@ public abstract class ConfigMvpActivity<P extends BasePresenter> extends BaseMvp
      */
     protected void isShowMore(int visible) {
         if (mConfigImgMore != null) {
-            if (visible == View.VISIBLE) {
-                mConfigImgMore.setVisibility(View.VISIBLE);
-            } else {
-                mConfigImgMore.setVisibility(View.GONE);
-            }
+            mConfigImgMore.setVisibility(visible);
+        }
+    }
+
+    /**
+     * 是否显示 返回键
+     *
+     * @param visible
+     */
+    protected void isShowBack(int visible) {
+        if (mConfigImgBack != null) {
+            mConfigImgBack.setVisibility(View.VISIBLE);
         }
     }
 

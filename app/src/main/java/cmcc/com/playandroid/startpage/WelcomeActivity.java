@@ -76,7 +76,9 @@ public class WelcomeActivity extends BaseActivity implements ITimerListener {
         switch (view.getId()) {
             case R.id.mTv_time:
             case R.id.mBtn_start:
-                mTimer.cancel();
+                if (mTimer != null) {
+                    mTimer.cancel();
+                }
                 startActivtiy();
                 break;
         }
