@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
@@ -13,6 +14,8 @@ import org.json.JSONObject;
 
 import java.util.Map;
 import java.util.WeakHashMap;
+
+import playandroid.cmcc.com.baselibrary.R;
 
 /**
  * Created by wsf on 2018/9/29.
@@ -24,7 +27,13 @@ public class BaseUtils {
         if (imageUrl == null || imageView == null) {
             return;
         }
-        Glide.with(context).load(imageUrl).into(imageView);
+//        Glide.with(context).load(imageUrl).into(imageView);
+        Glide.with(context)
+                .load(imageUrl)
+                .centerCrop()
+                .dontAnimate()//防止设置placeholder导致第一次不显示网络图片,只显示默认图片的问题
+                .placeholder(R.drawable.ic_banner_error)
+                .diskCacheStrategy(DiskCacheStrategy.SOURCE).into(imageView);
     }
 
 

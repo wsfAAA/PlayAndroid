@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.youth.banner.Banner;
 import com.youth.banner.listener.OnBannerListener;
 
@@ -17,6 +18,8 @@ import java.util.List;
 import cmcc.com.playandroid.R;
 import cmcc.com.playandroid.bean.BannerBean;
 import me.drakeet.multitype.ItemViewBinder;
+import playandroid.cmcc.com.baselibrary.banner.BannerPagerAdapter;
+import playandroid.cmcc.com.baselibrary.banner.BannerViewPager;
 import playandroid.cmcc.com.baselibrary.util.GlideImageLoader;
 import playandroid.cmcc.com.baselibrary.util.WebViewRoute;
 import playandroid.cmcc.com.baselibrary.webview.WebviewActivity;
@@ -45,27 +48,29 @@ public class BannerViewBinder extends ItemViewBinder<BannerBean, BannerViewBinde
         for (int i = 0; i < banner.getData().size(); i++) {
             bannerUrl.add(banner.getData().get(i).getImagePath());
         }
-        //设置图片加载器
-        holder.mBanner.setImageLoader(new GlideImageLoader());
-        //设置图片集合
-        holder.mBanner.setImages(bannerUrl);
-        //设置自动轮播，默认为true
-        holder.mBanner.isAutoPlay(true);
-        //banner设置方法全部调用完毕时最后调用
-        holder.mBanner.start();
-        holder.mBanner.setOnBannerListener(new OnBannerListener() {
-            @Override
-            public void OnBannerClick(int i) {
-                Intent intent = new Intent(mContext, WebviewActivity.class);
-                intent.putExtra(WebViewRoute.WEBVIEW_URL, banner.getData().get(i).getUrl());
-                mContext.startActivity(intent);
-            }
-        });
+
+        holder.mBanner.initBanner(bannerUrl)
+                .addIndicator(5)
+                .isAutoPlay(true)
+                .addPageMargin(10)
+                .addViewPageMargin(20)
+                .addIndicatorBottom(10)
+                .addStyle(BannerViewPager.BANNER_3D_GALLERY_STYLE)
+                .isShowIndicator(View.VISIBLE)
+                .addBannerOnClick(new BannerViewPager.IBannerOnClick() {
+                    @Override
+                    public void onClick(int position) {
+                        Intent intent = new Intent(mContext, WebviewActivity.class);
+                        intent.putExtra(WebViewRoute.WEBVIEW_URL, banner.getData().get(position).getUrl());
+                        mContext.startActivity(intent);
+                    }
+                })
+                .startBanner();
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
-        private final Banner mBanner;
+        private final BannerViewPager mBanner;
 
         ViewHolder(View itemView) {
             super(itemView);

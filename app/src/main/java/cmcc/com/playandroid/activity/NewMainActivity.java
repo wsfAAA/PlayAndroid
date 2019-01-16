@@ -25,6 +25,7 @@ import cmcc.com.playandroid.adapter.NewMainViewPageAdapter;
 import cmcc.com.playandroid.presenter.NewMainPresenter;
 import playandroid.cmcc.com.baselibrary.common.CommonFinal;
 import playandroid.cmcc.com.baselibrary.mvp.BaseMvpActivity;
+import playandroid.cmcc.com.baselibrary.view.CustomScrollViewPager;
 
 public class NewMainActivity extends BaseMvpActivity<NewMainPresenter>
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -42,7 +43,7 @@ public class NewMainActivity extends BaseMvpActivity<NewMainPresenter>
     @BindView(R.id.drawer_layout)
     DrawerLayout mDrawerLayout;
     @BindView(R.id.m_new_main_viewpager)
-    ViewPager mNewMainViewpager;
+    CustomScrollViewPager mNewMainViewpager;
     @BindView(R.id.m_bottomNavigation)
     BottomNavigationView mBottomNavigation;
     @BindView(R.id.m_tv_page_title)
@@ -106,6 +107,7 @@ public class NewMainActivity extends BaseMvpActivity<NewMainPresenter>
 
             }
         });
+        mNewMainViewpager.setNoScroll(true);
     }
 
     @Override
