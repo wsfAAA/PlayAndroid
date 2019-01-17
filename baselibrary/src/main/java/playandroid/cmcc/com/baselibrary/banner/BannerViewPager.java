@@ -32,14 +32,14 @@ import playandroid.cmcc.com.baselibrary.banner.transformer.ZoomPageTransformer;
 
 public class BannerViewPager extends FrameLayout implements View.OnTouchListener, ViewPager.OnPageChangeListener {
 
-    public static final int BANNER_3D_GALLERY_STYLE = 1; //3D 画廊效果  使用此效果 建议使用addPageMargin、addViewPageMargin
-    public static final int BANNER_GALLERY_STYLE = 2; //平面 画廊效果   使用此效果 建议使用addPageMargin、addViewPageMargin
-    public static final int BANNER_NO_STYLE = 3; //普通banner效果       使用此效果 不建议使用addPageMargin、addViewPageMargin
+    public static final int BANNER_3D_GALLERY_STYLE = 1; //3D 画廊效果  使用此效果 建议使用 addViewPagerPageMargin、addViewPagerRightLeftPadding
+    public static final int BANNER_GALLERY_STYLE = 2; //平面 画廊效果   使用此效果 建议使用 addViewPagerPageMargin、addViewPagerRightLeftPadding
+    public static final int BANNER_NO_STYLE = 3; //普通banner效果       使用此效果 不建议使用 addViewPagerPageMargin、addViewPagerRightLeftPadding
 
     public static final int DELAY_TIME = 4;
 
     private Context mContext;
-    private List<String> mImgaData;
+    private List<Object> mImgaData;
     private ViewPager mViewPager;
     private View mLayout;
     private LinearLayout mLineIndicator;          //指示器 容器
@@ -49,13 +49,12 @@ public class BannerViewPager extends FrameLayout implements View.OnTouchListener
     private int resId_indicator_press = R.drawable.ic_banner_point_press;
     private int resId_indicator = R.drawable.ic_banner_point;
     private boolean isAutoPlay = true;
+    private int startCurrentIndex;
     private int mDelayTime = 2000;                        //自动轮播时间间隔
     private BannerPagerAdapter mBannerAdapter;
     private BannerHandler mBannerHandler;
-    private int startCurrentIndex;
 
     private ViewPager.OnPageChangeListener mOnPageChangeListener;
-
 
     public BannerViewPager(@NonNull Context context) {
         super(context);
@@ -118,7 +117,7 @@ public class BannerViewPager extends FrameLayout implements View.OnTouchListener
      *
      * @return
      */
-    public BannerViewPager initBanner(List<String> mImgaData) {
+    public BannerViewPager initBanner(List<Object> mImgaData) {
         this.mImgaData = mImgaData;
         mLayout = LayoutInflater.from(mContext).inflate(R.layout.banner_view_layout, null);
         mViewPager = (ViewPager) mLayout.findViewById(R.id.viewPager);
@@ -182,7 +181,7 @@ public class BannerViewPager extends FrameLayout implements View.OnTouchListener
      *
      * @param margin itme之间间隙
      */
-    public BannerViewPager addPageMargin(float margin) {
+    public BannerViewPager addViewPagerPageMargin(float margin) {
         if (mViewPager != null) {
             mViewPager.setPageMargin(SizeUtils.dp2px(margin));// viewpage item之间 间距
         }
@@ -195,7 +194,7 @@ public class BannerViewPager extends FrameLayout implements View.OnTouchListener
      * @param margin
      * @return
      */
-    public BannerViewPager addViewRightLeftPadding(float margin) {
+    public BannerViewPager addViewPagerRightLeftPadding(float margin) {
         if (mViewPager != null) {
             mViewPager.setPadding(SizeUtils.dp2px(margin), 0, SizeUtils.dp2px(margin), 0);
         }
@@ -415,7 +414,8 @@ public class BannerViewPager extends FrameLayout implements View.OnTouchListener
      *
      * @param onPageChangeListener
      */
-    public void addOnPageChangeListener(ViewPager.OnPageChangeListener onPageChangeListener) {
+    public BannerViewPager addOnPageChangeListener(ViewPager.OnPageChangeListener onPageChangeListener) {
         this.mOnPageChangeListener = onPageChangeListener;
+        return this;
     }
 }

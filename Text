@@ -25,6 +25,7 @@ othermodule：里面是自己封装的一些东西没用在该项目中使用单
    d、封装webview，本webview加载和跳转页面加载 使用mIsLoadUrl做区分，使用注意在对应的module中的清单文件测试WebviewActivity,
       封装的webview没有添加js交互，待添加
    f、封装popupwindow使用 具体使用见 WebViewBarMore
+   g、封装banner 提供三种样式 3d走廊效果、平铺效果、一般banner
 
 
 --------------------------------------------------------------------------------------------------->

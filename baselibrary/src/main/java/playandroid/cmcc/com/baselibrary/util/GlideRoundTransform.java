@@ -1,4 +1,4 @@
-package playandroid.cmcc.com.baselibrary.banner;
+package playandroid.cmcc.com.baselibrary.util;
 
 import android.content.Context;
 import android.content.res.Resources;

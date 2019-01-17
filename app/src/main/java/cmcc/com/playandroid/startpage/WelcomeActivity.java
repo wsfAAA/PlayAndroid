@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.blankj.utilcode.util.SPUtils;
@@ -30,8 +31,11 @@ public class WelcomeActivity extends BaseActivity implements ITimerListener {
     Button mBtnStart;
     @BindView(R.id.mTv_time)
     TextView mTvTime;
+    @BindView(R.id.rootView)
+    RelativeLayout mRootView;
     private Timer mTimer;
     private long mCount = 1;
+    private boolean aBoolean;
 
     @Override
     protected int getLayoutResID() {
@@ -40,6 +44,14 @@ public class WelcomeActivity extends BaseActivity implements ITimerListener {
 
     @Override
     protected void initView() {
+        aBoolean = SPUtils.getInstance().getBoolean(IS_GUIDE);
+        if (!aBoolean) {
+            mBtnStart.setVisibility(View.GONE);
+            mTvTime.setVisibility(View.GONE);
+        } else {
+            mBtnStart.setVisibility(View.VISIBLE);
+            mTvTime.setVisibility(View.VISIBLE);
+        }
         initTimer();
     }
 
@@ -85,7 +97,6 @@ public class WelcomeActivity extends BaseActivity implements ITimerListener {
     }
 
     private void startActivtiy() {
-        boolean aBoolean = SPUtils.getInstance().getBoolean(IS_GUIDE);
         if (!aBoolean) {
             Intent intent = new Intent(this, GuideActivity.class);
             startActivity(intent);

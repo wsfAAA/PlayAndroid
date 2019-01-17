@@ -21,7 +21,7 @@ import playandroid.cmcc.com.baselibrary.banner.callback.ILoaderImage;
  */
 
 public class BannerPagerAdapter extends PagerAdapter {
-    private List<String> mList = new ArrayList<>();
+    private List<Object> mList = new ArrayList<>();
     private Context mContext;
     private IBannerOnClick iBannerOnClick;
     private ILoaderImage mLoaderImage;
@@ -30,7 +30,7 @@ public class BannerPagerAdapter extends PagerAdapter {
         this.mContext = context;
     }
 
-    public void setImageData(List<String> data) {
+    public void setImageData(List<Object> data) {
         mList.clear();
         this.mList.addAll(data);
     }

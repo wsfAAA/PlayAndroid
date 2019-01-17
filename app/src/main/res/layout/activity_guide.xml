@@ -7,7 +7,7 @@
     tools:context=".startpage.GuideActivity">
 
 
-    <com.youth.banner.Banner
+    <playandroid.cmcc.com.baselibrary.banner.BannerViewPager
         android:id="@+id/m_banner"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

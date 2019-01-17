@@ -8,5 +8,11 @@ import android.widget.ImageView;
  */
 
 public interface ILoaderImage {
-    void loaderImage(Context context, String url, ImageView imageView);
+    /**
+     *  图片 加载回调
+     * @param context
+     * @param url      url 、id
+     * @param imageView
+     */
+    void loaderImage(Context context, Object url, ImageView imageView);
 }

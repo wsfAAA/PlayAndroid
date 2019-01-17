@@ -44,7 +44,7 @@ public class BannerViewBinder extends ItemViewBinder<BannerBean, BannerViewBinde
 
     @Override
     protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull final BannerBean banner) {
-        List<String> bannerUrl = new ArrayList<>();
+        List<Object> bannerUrl = new ArrayList<>();
         for (int i = 0; i < banner.getData().size(); i++) {
             bannerUrl.add(banner.getData().get(i).getImagePath());
         }
@@ -52,22 +52,21 @@ public class BannerViewBinder extends ItemViewBinder<BannerBean, BannerViewBinde
         holder.mBanner.initBanner(bannerUrl)
                 .addIndicator(5)
                 .isAutoPlay(true)
-                .addPageMargin(5)
-                .addViewRightLeftPadding(20)
-                .addDelayTime(5000)
+                .addViewPagerPageMargin(5)
+                .addViewPagerRightLeftPadding(20)
+                .addDelayTime(3000)
                 .addIndicatorBottom(10)
                 .addStyle(BannerViewPager.BANNER_3D_GALLERY_STYLE)
                 .isShowIndicator(View.VISIBLE)
                 .addLoaderImage(new ILoaderImage() {
                     @Override
-                    public void loaderImage(Context context, String url, ImageView imageView) {
+                    public void loaderImage(Context context, Object url, ImageView imageView) {
                         BaseUtils.loaderGlideImage(context, url, imageView,10);
                     }
                 })
                 .addBannerOnClick(new IBannerOnClick() {
                     @Override
                     public void onClick(int position) {
-                        ToastUtils.showShort(""+position);
                         Intent intent = new Intent(mContext, WebviewActivity.class);
                         intent.putExtra(WebViewRoute.WEBVIEW_URL, banner.getData().get(position).getUrl());
                         mContext.startActivity(intent);

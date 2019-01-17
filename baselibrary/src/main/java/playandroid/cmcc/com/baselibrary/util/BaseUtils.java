@@ -16,7 +16,6 @@ import java.util.Map;
 import java.util.WeakHashMap;
 
 import playandroid.cmcc.com.baselibrary.R;
-import playandroid.cmcc.com.baselibrary.banner.GlideRoundTransform;
 
 /**
  * Created by wsf on 2018/9/29.
