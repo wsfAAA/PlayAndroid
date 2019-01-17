@@ -5,7 +5,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -17,12 +16,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.blankj.utilcode.util.SizeUtils;
+
 import java.lang.ref.WeakReference;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import playandroid.cmcc.com.baselibrary.R;
+import playandroid.cmcc.com.baselibrary.banner.callback.IBannerOnClick;
+import playandroid.cmcc.com.baselibrary.banner.callback.ILoaderImage;
+import playandroid.cmcc.com.baselibrary.banner.transformer.ZoomPageTransformer;
 
 /**
  * Created by wsf on 2019/1/11.
@@ -50,6 +52,10 @@ public class BannerViewPager extends FrameLayout implements View.OnTouchListener
     private int mDelayTime = 2000;                        //自动轮播时间间隔
     private BannerPagerAdapter mBannerAdapter;
     private BannerHandler mBannerHandler;
+    private int startCurrentIndex;
+
+    private ViewPager.OnPageChangeListener mOnPageChangeListener;
+
 
     public BannerViewPager(@NonNull Context context) {
         super(context);
@@ -88,15 +94,6 @@ public class BannerViewPager extends FrameLayout implements View.OnTouchListener
 
 
     /**
-     * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
-     */
-    private int dp2px(float dpValue) {
-        final float scale = mContext.getResources().getDisplayMetrics().density;
-        return (int) (dpValue * scale + 0.5f);
-    }
-
-
-    /**
      * 改变指示器
      *
      * @param selectItemsIndex
@@ -127,17 +124,26 @@ public class BannerViewPager extends FrameLayout implements View.OnTouchListener
         mViewPager = (ViewPager) mLayout.findViewById(R.id.viewPager);
         mLineIndicator = (LinearLayout) mLayout.findViewById(R.id.lineIndicator);
 
-        mBannerHandler = new BannerHandler(this);
+        if (mBannerHandler == null) {
+            mBannerHandler = new BannerHandler(this);
+        }
 
-        mCurrentIndex = 0; // 默认指示器位置0
+        if (mBannerAdapter == null) {
+            mBannerAdapter = new BannerPagerAdapter(mContext);
+        }
 
-        mBannerAdapter = new BannerPagerAdapter(mContext);
+        mBannerAdapter.setImageData(mImgaData);
+        mViewPager.setAdapter(mBannerAdapter);
+
+        startCurrentIndex = mImgaData.size() * 100;
+
+        mCurrentIndex = startCurrentIndex % mImgaData.size(); // 初始化banner 初始位置 ，默认是 0
+
+        mViewPager.setCurrentItem(startCurrentIndex);
         mViewPager.setOffscreenPageLimit(2);//设置预加载的数量，这里设置了2,会预加载中心item左边两个Item和右边两个Item
         mViewPager.setOnTouchListener(this);
         mViewPager.setOnPageChangeListener(this);
 
-        mBannerAdapter.setImageData(mImgaData);
-        mViewPager.setAdapter(mBannerAdapter);
 
         if (mLayout != null) {
             removeAllViews();
@@ -178,7 +184,7 @@ public class BannerViewPager extends FrameLayout implements View.OnTouchListener
      */
     public BannerViewPager addPageMargin(float margin) {
         if (mViewPager != null) {
-            mViewPager.setPageMargin(dp2px(margin));// viewpage item之间 间距
+            mViewPager.setPageMargin(SizeUtils.dp2px(margin));// viewpage item之间 间距
         }
         return this;
     }
@@ -189,11 +195,10 @@ public class BannerViewPager extends FrameLayout implements View.OnTouchListener
      * @param margin
      * @return
      */
-    public BannerViewPager addViewPageMargin(float margin) {
-        RelativeLayout.LayoutParams layout = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT);
-        layout.setMargins(dp2px(margin), 0, dp2px(margin), 0);
-        mViewPager.setLayoutParams(layout);
+    public BannerViewPager addViewRightLeftPadding(float margin) {
+        if (mViewPager != null) {
+            mViewPager.setPadding(SizeUtils.dp2px(margin), 0, SizeUtils.dp2px(margin), 0);
+        }
         return this;
     }
 
@@ -209,7 +214,7 @@ public class BannerViewPager extends FrameLayout implements View.OnTouchListener
         for (int i = 0; i < mImgaData.size(); i++) {
             ImageView imageView = new ImageView(mContext);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            params.setMargins(dp2px(distance) / 2, 0, dp2px(distance) / 2, 0);
+            params.setMargins(SizeUtils.dp2px(distance) / 2, 0, SizeUtils.dp2px(distance) / 2, 0);
             imageView.setLayoutParams(params);
             if (i == mCurrentIndex) {
                 imageView.setImageResource(resId_indicator_press);
@@ -238,7 +243,7 @@ public class BannerViewPager extends FrameLayout implements View.OnTouchListener
         for (int i = 0; i < mImgaData.size(); i++) {
             ImageView imageView = new ImageView(mContext);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            params.setMargins(dp2px(distance) / 2, 0, dp2px(distance) / 2, 0);
+            params.setMargins(SizeUtils.dp2px(distance) / 2, 0, SizeUtils.dp2px(distance) / 2, 0);
             imageView.setLayoutParams(params);
             if (i == mCurrentIndex) {
                 imageView.setImageResource(resId_indicator_press);
@@ -259,7 +264,7 @@ public class BannerViewPager extends FrameLayout implements View.OnTouchListener
      */
     public BannerViewPager addIndicatorBottom(int paddBottom) {
         if (mLineIndicator != null) {
-            mLineIndicator.setPadding(0, 0, 0, dp2px(paddBottom));
+            mLineIndicator.setPadding(0, 0, 0, SizeUtils.dp2px(paddBottom));
         }
         return this;
     }
@@ -359,8 +364,8 @@ public class BannerViewPager extends FrameLayout implements View.OnTouchListener
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
         int i = position % mImgaData.size();
-        if (mOnPageChangeListener!=null){
-            mOnPageChangeListener.onPageScrolled(i,positionOffset,positionOffsetPixels);
+        if (mOnPageChangeListener != null) {
+            mOnPageChangeListener.onPageScrolled(i, positionOffset, positionOffsetPixels);
         }
     }
 
@@ -368,18 +373,24 @@ public class BannerViewPager extends FrameLayout implements View.OnTouchListener
     public void onPageSelected(int position) {
         mCurrentIndex = position % mImgaData.size();
         setImageBackground(mCurrentIndex);
-        if (mOnPageChangeListener!=null){
+        if (mOnPageChangeListener != null) {
             mOnPageChangeListener.onPageSelected(mCurrentIndex);
         }
     }
 
     @Override
     public void onPageScrollStateChanged(int state) {
-        if (mOnPageChangeListener!=null){
+        if (mOnPageChangeListener != null) {
             mOnPageChangeListener.onPageScrollStateChanged(state);
         }
     }
 
+    /**
+     * banner itme 点击监听
+     *
+     * @param iBannerOnClick
+     * @return
+     */
     public BannerViewPager addBannerOnClick(IBannerOnClick iBannerOnClick) {
         if (mBannerAdapter != null) {
             mBannerAdapter.setBannerOnClick(iBannerOnClick);
@@ -387,11 +398,23 @@ public class BannerViewPager extends FrameLayout implements View.OnTouchListener
         return this;
     }
 
-    public interface IBannerOnClick {
-        void onClick(int position);
+    /**
+     * 添加图片加载器
+     *
+     * @param loaderImage
+     */
+    public BannerViewPager addLoaderImage(ILoaderImage loaderImage) {
+        if (mBannerAdapter != null) {
+            mBannerAdapter.addLoaderImage(loaderImage);
+        }
+        return this;
     }
 
-    private ViewPager.OnPageChangeListener mOnPageChangeListener;
+    /**
+     * viewpager OnPageChangeListener 监听
+     *
+     * @param onPageChangeListener
+     */
     public void addOnPageChangeListener(ViewPager.OnPageChangeListener onPageChangeListener) {
         this.mOnPageChangeListener = onPageChangeListener;
     }

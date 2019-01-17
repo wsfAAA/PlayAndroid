@@ -7,10 +7,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.blankj.utilcode.util.ToastUtils;
-import com.youth.banner.Banner;
-import com.youth.banner.listener.OnBannerListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,9 +17,10 @@ import java.util.List;
 import cmcc.com.playandroid.R;
 import cmcc.com.playandroid.bean.BannerBean;
 import me.drakeet.multitype.ItemViewBinder;
-import playandroid.cmcc.com.baselibrary.banner.BannerPagerAdapter;
 import playandroid.cmcc.com.baselibrary.banner.BannerViewPager;
-import playandroid.cmcc.com.baselibrary.util.GlideImageLoader;
+import playandroid.cmcc.com.baselibrary.banner.callback.IBannerOnClick;
+import playandroid.cmcc.com.baselibrary.banner.callback.ILoaderImage;
+import playandroid.cmcc.com.baselibrary.util.BaseUtils;
 import playandroid.cmcc.com.baselibrary.util.WebViewRoute;
 import playandroid.cmcc.com.baselibrary.webview.WebviewActivity;
 
@@ -52,14 +52,22 @@ public class BannerViewBinder extends ItemViewBinder<BannerBean, BannerViewBinde
         holder.mBanner.initBanner(bannerUrl)
                 .addIndicator(5)
                 .isAutoPlay(true)
-                .addPageMargin(10)
-                .addViewPageMargin(20)
+                .addPageMargin(5)
+                .addViewRightLeftPadding(20)
+                .addDelayTime(5000)
                 .addIndicatorBottom(10)
                 .addStyle(BannerViewPager.BANNER_3D_GALLERY_STYLE)
                 .isShowIndicator(View.VISIBLE)
-                .addBannerOnClick(new BannerViewPager.IBannerOnClick() {
+                .addLoaderImage(new ILoaderImage() {
+                    @Override
+                    public void loaderImage(Context context, String url, ImageView imageView) {
+                        BaseUtils.loaderGlideImage(context, url, imageView,10);
+                    }
+                })
+                .addBannerOnClick(new IBannerOnClick() {
                     @Override
                     public void onClick(int position) {
+                        ToastUtils.showShort(""+position);
                         Intent intent = new Intent(mContext, WebviewActivity.class);
                         intent.putExtra(WebViewRoute.WEBVIEW_URL, banner.getData().get(position).getUrl());
                         mContext.startActivity(intent);

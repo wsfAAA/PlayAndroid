@@ -2,6 +2,7 @@ package playandroid.cmcc.com.baselibrary.banner;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import playandroid.cmcc.com.baselibrary.R;
-import playandroid.cmcc.com.baselibrary.util.BaseUtils;
+import playandroid.cmcc.com.baselibrary.banner.callback.IBannerOnClick;
+import playandroid.cmcc.com.baselibrary.banner.callback.ILoaderImage;
 
 /**
  * Created by Administrator on 2018/11/28.
@@ -21,8 +23,8 @@ import playandroid.cmcc.com.baselibrary.util.BaseUtils;
 public class BannerPagerAdapter extends PagerAdapter {
     private List<String> mList = new ArrayList<>();
     private Context mContext;
-    private int defaultImg = R.drawable.ic_banner_error;//默认图片
-    private BannerViewPager.IBannerOnClick iBannerOnClick;
+    private IBannerOnClick iBannerOnClick;
+    private ILoaderImage mLoaderImage;
 
     public BannerPagerAdapter(Context context) {
         this.mContext = context;
@@ -53,7 +55,6 @@ public class BannerPagerAdapter extends PagerAdapter {
         View view = LayoutInflater.from(mContext).inflate(R.layout.banner_img_layout, container, false);
         ImageView imageView = (ImageView) view.findViewById(R.id.banner_img);
         final int index = position % mList.size();
-        BaseUtils.loaderGlideImage(mContext, mList.get(index), imageView);
         container.addView(view);
         if (iBannerOnClick != null) {
             view.setOnClickListener(new View.OnClickListener() {
@@ -63,10 +64,17 @@ public class BannerPagerAdapter extends PagerAdapter {
                 }
             });
         }
+        if (mLoaderImage != null) {
+            mLoaderImage.loaderImage(mContext, mList.get(index), imageView);
+        }
         return view;
     }
 
-    public void setBannerOnClick(BannerViewPager.IBannerOnClick iBannerOnClick) {
+    public void setBannerOnClick(IBannerOnClick iBannerOnClick) {
         this.iBannerOnClick = iBannerOnClick;
+    }
+
+    public void addLoaderImage(ILoaderImage loaderImage) {
+        this.mLoaderImage = loaderImage;
     }
 }

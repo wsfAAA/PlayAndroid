@@ -1,4 +1,4 @@
-package playandroid.cmcc.com.baselibrary.banner;
+package playandroid.cmcc.com.baselibrary.banner.transformer;
 
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -11,7 +11,7 @@ import android.view.View;
 
 public class ZoomPageTransformer implements ViewPager.PageTransformer {
 
-    private static final float MAX_SCALE = 1.0f;//0缩放
+    private static final float MAX_SCALE = 1.0f;// 0 缩放
 
     private static final float MIN_SCALE = 0.85f;//0.85缩放
 
@@ -30,7 +30,7 @@ public class ZoomPageTransformer implements ViewPager.PageTransformer {
          * x、y拉伸为MIN_SCALE、透明度MIN_ALPHA
          */
         if (position < -1) {
-            view.setScaleX(MIN_SCALE);
+//            view.setScaleX(MIN_SCALE);
             view.setScaleY(MIN_SCALE);
             view.setAlpha(MIN_ALPHA);
         }
@@ -48,7 +48,7 @@ public class ZoomPageTransformer implements ViewPager.PageTransformer {
                 view.setTranslationX(scaleFactor);
             }
             view.setScaleY(scaleFactor);
-            view.setScaleX(scaleFactor);
+//            view.setScaleX(scaleFactor);
 
             // float alpha = 1f -  Math.abs(position) * (1 - );
 
@@ -61,7 +61,7 @@ public class ZoomPageTransformer implements ViewPager.PageTransformer {
          * x、y拉伸为MIN_SCALE、透明度MIN_ALPHA
          */
         else { // (1,+Infinity]
-            view.setScaleX(MIN_SCALE);
+//            view.setScaleX(MIN_SCALE);
             view.setScaleY(MIN_SCALE);
             view.setAlpha(MIN_ALPHA);
         }
