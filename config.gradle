@@ -60,9 +60,7 @@ ext {
             //glide图片加载
             "glide"               : 'com.github.bumptech.glide:glide:3.7.0',
 
-            //banner
-            "banner"              : 'com.youth.banner:banner:1.4.10',
-
+            //popupwindow
             "BasePopup"           : 'com.github.razerdp:BasePopup:2.1.4',
 
             "multidex"            : 'com.android.support:multidex:1.0.3',

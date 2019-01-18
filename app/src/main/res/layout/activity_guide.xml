@@ -10,8 +10,7 @@
     <playandroid.cmcc.com.baselibrary.banner.BannerViewPager
         android:id="@+id/m_banner"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:indicator_margin="@dimen/dp_5"/>
+        android:layout_height="match_parent" />
 
     <Button
         android:visibility="gone"

@@ -108,9 +108,6 @@ dependencies {
     //glide图片加载
     api rootProject.ext.dependencies["glide"]
 
-    //banner
-    api rootProject.ext.dependencies["banner"]
-
     //basepopupwindow
     api rootProject.ext.dependencies["BasePopup"]
 

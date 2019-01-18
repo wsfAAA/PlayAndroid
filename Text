@@ -21,11 +21,12 @@ othermodule：里面是自己封装的一些东西没用在该项目中使用单
 一、依赖baselibrary库              baselibrary库:目的向其他组件提供公共的网络请求和第三方库、通用功能
    a、在baselibrary库中           添加每个组件 所需的第三方依赖  通过config.gradle配置
    b、api 和 implementation 区分  api library 使用该修饰的依赖可以被其他library使用，implementation不可以
-   c、封装网络请求rxjava+retrofit，详情见net包下
+   c、封装网络请求rxjava + retrofit，详情见net包下
    d、封装webview，本webview加载和跳转页面加载 使用mIsLoadUrl做区分，使用注意在对应的module中的清单文件测试WebviewActivity,
       封装的webview没有添加js交互，待添加
    f、封装popupwindow使用 具体使用见 WebViewBarMore
    g、封装banner 提供三种样式 3d走廊效果、平铺效果、一般banner
+   h、添加 SmartRefreshLayout 自定义Header和Footer
 
 
 --------------------------------------------------------------------------------------------------->

@@ -6,8 +6,19 @@ import android.support.multidex.MultiDex;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.Utils;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreator;
+import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreator;
+import com.scwang.smartrefresh.layout.api.RefreshFooter;
+import com.scwang.smartrefresh.layout.api.RefreshHeader;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
+import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 
 import playandroid.cmcc.com.baselibrary.BuildConfig;
+import playandroid.cmcc.com.baselibrary.R;
+import playandroid.cmcc.com.baselibrary.ui.smartrefresh.MiguClassicHeader;
+import playandroid.cmcc.com.baselibrary.ui.smartrefresh.MiguShortVideoFooter;
 
 /**
  * 所有需要模块化开发的module都需要继承自BaseApplication
@@ -27,6 +38,29 @@ public class BaseApplication extends Application {
         super.attachBaseContext(base);
         application = this;
     }
+
+
+    static {
+        // TODO: 2019/1/18 SmartRefreshLayout 全局的Header构建器、Footer构建器， 可以全局配置 也可以xml中配置  参考：https://github.com/scwang90/SmartRefreshLayout/blob/master/art/md_custom.md
+        SmartRefreshLayout.setDefaultRefreshHeaderCreator(new DefaultRefreshHeaderCreator() {
+            @Override
+            public RefreshHeader createRefreshHeader(Context context, RefreshLayout layout) {
+                layout.setPrimaryColorsId(R.color.color_EA1E63, android.R.color.white);//全局设置主题颜色
+//                return new ClassicsHeader(context);// 指定为经典Header，默认是 贝塞尔雷达Header
+
+                return new MiguClassicHeader(context);
+            }
+        });
+        SmartRefreshLayout.setDefaultRefreshFooterCreator(new DefaultRefreshFooterCreator() {
+            @Override
+            public RefreshFooter createRefreshFooter(Context context, RefreshLayout layout) {
+//                return new ClassicsFooter(context).setDrawableSize(20);//指定为经典Footer，默认是 BallPulseFooter
+
+                return new MiguShortVideoFooter(context);
+            }
+        });
+    }
+
 
     @Override
     public void onCreate() {

@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.blankj.utilcode.util.SPUtils;
-import com.youth.banner.Banner;
 
 import java.util.ArrayList;
 
@@ -21,7 +20,6 @@ import playandroid.cmcc.com.baselibrary.banner.BannerViewPager;
 import playandroid.cmcc.com.baselibrary.banner.callback.ILoaderImage;
 import playandroid.cmcc.com.baselibrary.base.BaseActivity;
 import playandroid.cmcc.com.baselibrary.util.BaseUtils;
-import playandroid.cmcc.com.baselibrary.util.GlideImageLoader;
 
 public class GuideActivity extends BaseActivity {
 
