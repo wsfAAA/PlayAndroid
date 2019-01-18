@@ -26,7 +26,7 @@ import playandroid.cmcc.com.baselibrary.util.WebViewRoute;
 import playandroid.cmcc.com.baselibrary.webview.WebviewActivity;
 
 /**
- * Created by wsf on 2019/1/3.
+ * 首页列表
  */
 public class HomeListViewBinder extends ItemViewBinder<HomeList.DataBean.DatasBean, HomeListViewBinder.ViewHolder> {
 

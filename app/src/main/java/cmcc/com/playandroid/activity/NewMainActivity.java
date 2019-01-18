@@ -10,6 +10,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -25,6 +26,7 @@ import cmcc.com.playandroid.adapter.NewMainViewPageAdapter;
 import cmcc.com.playandroid.presenter.NewMainPresenter;
 import playandroid.cmcc.com.baselibrary.common.CommonFinal;
 import playandroid.cmcc.com.baselibrary.mvp.BaseMvpActivity;
+import playandroid.cmcc.com.baselibrary.ui.ScrollRecyclerView;
 import playandroid.cmcc.com.baselibrary.view.CustomScrollViewPager;
 
 public class NewMainActivity extends BaseMvpActivity<NewMainPresenter>
@@ -50,6 +52,7 @@ public class NewMainActivity extends BaseMvpActivity<NewMainPresenter>
     TextView mTvPageTitle;
 
     private Fragment[] mFragments;
+    private NewMainViewPageAdapter mNewMainViewPageAdapter;
 
     @Override
     protected int getLayoutResID() {
@@ -62,19 +65,19 @@ public class NewMainActivity extends BaseMvpActivity<NewMainPresenter>
         mNewMainToolbar.setContentInsetsAbsolute(0, 0);  //去除Toolbar默认左边距
         mNavView.setNavigationItemSelectedListener(this);
 
-        NewMainViewPageAdapter mNewMainViewPageAdapter = new NewMainViewPageAdapter(getSupportFragmentManager(), mFragments);
+        mNewMainViewPageAdapter = new NewMainViewPageAdapter(getSupportFragmentManager(), mFragments);
         mNewMainViewpager.setAdapter(mNewMainViewPageAdapter);
         mBottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                changeFragment(item.getItemId(),item.getTitle().toString());
+                changeFragment(item.getItemId(), item.getTitle().toString());
                 return true;
             }
         });
         mNewMainViewpager.setOffscreenPageLimit(2);
 
         mBottomNavigation.setSelectedItemId(R.id.new_main_menu_home);
-        changeFragment(R.id.new_main_menu_home,"首页");
+        changeFragment(R.id.new_main_menu_home, "首页");
 
         mNewMainViewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -108,6 +111,28 @@ public class NewMainActivity extends BaseMvpActivity<NewMainPresenter>
             }
         });
         mNewMainViewpager.setNoScroll(true);
+
+        ScrollRecyclerView.setRecyclerCallBack(new ScrollRecyclerView.RecyclerCallBack() {
+            @Override
+            public void onScrolledUp() {
+                mFab.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onScrolledDown() {
+                mFab.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onScrolledToTop() {
+                mFab.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onScrolledToBottom() {
+                mFab.setVisibility(View.GONE);
+            }
+        });
     }
 
     @Override
@@ -145,8 +170,8 @@ public class NewMainActivity extends BaseMvpActivity<NewMainPresenter>
         return true;
     }
 
-    private void changeFragment(int itemId,String title) {
-        if (!TextUtils.isEmpty(title)){
+    private void changeFragment(int itemId, String title) {
+        if (!TextUtils.isEmpty(title)) {
             mTvPageTitle.setText(title);
         }
         switch (itemId) {
@@ -177,8 +202,9 @@ public class NewMainActivity extends BaseMvpActivity<NewMainPresenter>
                 ARouter.getInstance().build(CommonFinal.AROUTER_SEARCH).navigation();
                 break;
             case R.id.m_fab:
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
+                if (mNewMainViewPageAdapter != null) {
+                    mNewMainViewPageAdapter.scrollToPosition(0);
+                }
                 break;
         }
     }

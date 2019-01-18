@@ -11,21 +11,22 @@ import android.view.ViewGroup;
 import cmcc.com.playandroid.R;
 
 /**
- * A simple {@link Fragment} subclass.
+ * 知识体系
  */
 public class KnowledgeFragment extends Fragment {
 
-
     public KnowledgeFragment() {
-        // Required empty public constructor
     }
 
+    public void scrollToPosition(int position) {
+//        if (mRecyclerview != null) {
+//            mRecyclerview.scrollToPosition(position);
+//        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        Log.i("wsf","KnowledgeFragment  "+this);
         return inflater.inflate(R.layout.fragment_knowledge, container, false);
     }
 

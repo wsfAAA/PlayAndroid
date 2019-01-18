@@ -3,7 +3,6 @@ package cmcc.com.playandroid.fragment;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -13,11 +12,15 @@ import butterknife.BindView;
 import cmcc.com.playandroid.R;
 import cmcc.com.playandroid.presenter.HomePresenter;
 import playandroid.cmcc.com.baselibrary.mvp.BaseMvpFragment;
+import playandroid.cmcc.com.baselibrary.ui.ScrollRecyclerView;
 
+/**
+ * 首页
+ */
 public class HomeFragment extends BaseMvpFragment<HomePresenter> {
 
     @BindView(R.id.m_recyclerview)
-    RecyclerView mRecyclerview;
+    ScrollRecyclerView mRecyclerview;
     @BindView(R.id.m_smart_refresh)
     SmartRefreshLayout mSmartRefresh;
 
@@ -31,9 +34,15 @@ public class HomeFragment extends BaseMvpFragment<HomePresenter> {
         return R.layout.fragment_home;
     }
 
+    public void scrollToPosition(int position) {
+        if (mRecyclerview != null) {
+            mRecyclerview.scrollToPosition(position);
+        }
+    }
+
     @Override
     protected void onFragmentVisible() {
-        mBasePresenter.requestData(pageCount,true);
+        mBasePresenter.requestData(pageCount, true);
         mBasePresenter.requestBanner();
         mRecyclerview.setLayoutManager(new LinearLayoutManager(mContext));
         mRecyclerview.setAdapter(mBasePresenter.initAdapter());
@@ -42,18 +51,18 @@ public class HomeFragment extends BaseMvpFragment<HomePresenter> {
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
                 pageCount = 0;
-                mBasePresenter.requestData(pageCount,false);
+                mBasePresenter.requestData(pageCount, false);
             }
 
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
                 pageCount++;
-                mBasePresenter.requestData(pageCount,true);
+                mBasePresenter.requestData(pageCount, true);
             }
         });
     }
 
-    public SmartRefreshLayout getSmartRefresh(){
+    public SmartRefreshLayout getSmartRefresh() {
         return mSmartRefresh;
     }
 

@@ -6,7 +6,7 @@
     android:orientation="vertical"
     tools:context="cmcc.com.playandroid.fragment.HomeFragment">
 
-    <android.support.v7.widget.RecyclerView
+    <playandroid.cmcc.com.baselibrary.ui.ScrollRecyclerView
         android:id="@+id/m_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

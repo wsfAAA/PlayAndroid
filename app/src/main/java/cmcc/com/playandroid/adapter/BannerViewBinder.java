@@ -25,7 +25,7 @@ import playandroid.cmcc.com.baselibrary.util.WebViewRoute;
 import playandroid.cmcc.com.baselibrary.webview.WebviewActivity;
 
 /**
- * Created by wsf on 2019/1/3.
+ * banner itme
  */
 public class BannerViewBinder extends ItemViewBinder<BannerBean, BannerViewBinder.ViewHolder> {
 
