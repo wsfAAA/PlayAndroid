@@ -22,7 +22,13 @@
 
     <color name="color_DDDDDD">#DDDDDD</color>
     <color name="color_BBBBBB">#BBBBBB</color>
+    <color name="color_efeeee">#efeeee</color>
+    <color name="color_F0F4F7">#F0F4F7</color>
+    <color name="color_5B5B5B">#5B5B5B</color>
+    <color name="color_D9D9D9">#D9D9D9</color>
+    <color name="color_FF9949">#FF9949</color>
     <color name="color_606060">#606060</color>
+    <color name="color_f4dede">#f4dede</color>
     <color name="color_F7F7F7">#F7F7F7</color>
 
 </resources>

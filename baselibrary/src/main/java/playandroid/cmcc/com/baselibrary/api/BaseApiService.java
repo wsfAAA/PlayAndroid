@@ -38,7 +38,13 @@ public class BaseApiService {
 
     /**
      * 首页列表
-     *    article/list/1/json
+     * article/list/1/json
      */
     public static final String HOME_LIST = "article/list/";
+
+    ///////////////////////////////////////导航/////////////////////////////////////////
+    /**
+     * 导航数据
+     */
+    public static final String NAVIGATION = "http://www.wanandroid.com/navi/json";
 }

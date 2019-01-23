@@ -32,6 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dp_16"
             android:src="@drawable/img_stick"
+            android:visibility="gone"
             app:backgroundTint="@color/color_EA1E63"
             app:layout_anchor="@id/m_new_main_viewpager"
             app:layout_anchorGravity="bottom|right|end" />

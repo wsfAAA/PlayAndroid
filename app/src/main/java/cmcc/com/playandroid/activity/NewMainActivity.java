@@ -135,6 +135,10 @@ public class NewMainActivity extends BaseMvpActivity<NewMainPresenter>
         });
     }
 
+    public void isVisible(int visible) {
+        mFab.setVisibility(visible);
+    }
+
     @Override
     public NewMainPresenter creatPersenter() {
         return new NewMainPresenter();

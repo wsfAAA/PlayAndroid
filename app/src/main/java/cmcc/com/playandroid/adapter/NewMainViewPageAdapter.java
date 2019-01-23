@@ -47,10 +47,10 @@ public class NewMainViewPageAdapter extends FragmentPagerAdapter {
         }
         if (mCurrentFragment instanceof HomeFragment) {
             ((HomeFragment) mCurrentFragment).scrollToPosition(position);
-        } else if (mCurrentFragment instanceof KnowledgeFragment) {
-            ((KnowledgeFragment) mCurrentFragment).scrollToPosition(position);
         } else if (mCurrentFragment instanceof DiscoverFragment) {
             ((DiscoverFragment) mCurrentFragment).scrollToPosition(position);
+        } else if (mCurrentFragment instanceof KnowledgeFragment) {
+
         }
     }
 }

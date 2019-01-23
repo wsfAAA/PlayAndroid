@@ -1,33 +1,99 @@
 package cmcc.com.playandroid.fragment;
 
 
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
+import java.util.ArrayList;
+
+import butterknife.BindView;
 import cmcc.com.playandroid.R;
+import cmcc.com.playandroid.adapter.RightNavigationViewBinder;
+import cmcc.com.playandroid.bean.NavigationBean;
+import cmcc.com.playandroid.presenter.KnowledgePresenter;
+import cmcc.com.playandroid.adapter.LeftNavigationViewBinder;
+import me.drakeet.multitype.MultiTypeAdapter;
+import playandroid.cmcc.com.baselibrary.mvp.BaseMvpFragment;
 
 /**
- * 知识体系
+ * 导航
  */
-public class KnowledgeFragment extends Fragment {
+public class KnowledgeFragment extends BaseMvpFragment<KnowledgePresenter> {
+
+    @BindView(R.id.m_left_recycler_view)
+    RecyclerView mLeftRecyclerView;
+    @BindView(R.id.m_right_recycler_view)
+    RecyclerView mRightRecyclerView;
+    private MultiTypeAdapter mLeftMultiTypeAdapter;
+    private MultiTypeAdapter mRightMultiTypeAdapter;
 
     public KnowledgeFragment() {
     }
 
-    public void scrollToPosition(int position) {
-//        if (mRecyclerview != null) {
-//            mRecyclerview.scrollToPosition(position);
-//        }
+    @Override
+    protected int getLayoutResID() {
+        return R.layout.fragment_knowledge;
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_knowledge, container, false);
+    protected void onFragmentVisible() {
+        final LinearLayoutManager mLeftLinearLayoutManager = new LinearLayoutManager(mContext);
+        final LinearLayoutManager mRightLinearLayoutManager = new LinearLayoutManager(mContext);
+        mLeftRecyclerView.setLayoutManager(mLeftLinearLayoutManager);
+        mRightRecyclerView.setLayoutManager(mRightLinearLayoutManager);
+
+        mLeftMultiTypeAdapter = new MultiTypeAdapter();
+        LeftNavigationViewBinder leftNavigationViewBinder = new LeftNavigationViewBinder();
+        mLeftMultiTypeAdapter.register(NavigationBean.DataBean.class, leftNavigationViewBinder);
+        mLeftMultiTypeAdapter.setItems(mBasePresenter.getTabData());
+        mLeftRecyclerView.setAdapter(mLeftMultiTypeAdapter);
+        leftNavigationViewBinder.setOnClickListener(new LeftNavigationViewBinder.OnItemClickListener() {
+            @Override
+            public void onClick(View v, int position) {
+                //改变右边item内容 位置
+                mRightRecyclerView.scrollToPosition(position);
+                mLeftMultiTypeAdapter.notifyDataSetChanged();
+            }
+        });
+
+        mRightRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                int firstVisibleItemPosition = mRightLinearLayoutManager.findFirstVisibleItemPosition();
+                ArrayList<NavigationBean.DataBean> tabData = mBasePresenter.getTabData();
+                for (int i = 0; i < tabData.size(); i++) {
+                    tabData.get(i).setSelect(false);
+                }
+                tabData.get(firstVisibleItemPosition).setSelect(true);
+
+                //改变左边 tab 选中位置
+                mLeftRecyclerView.scrollToPosition(firstVisibleItemPosition);
+                mLeftMultiTypeAdapter.notifyDataSetChanged();
+            }
+        });
+
+        mRightMultiTypeAdapter = new MultiTypeAdapter();
+        mRightMultiTypeAdapter.register(NavigationBean.DataBean.class, new RightNavigationViewBinder(mContext));
+        mRightMultiTypeAdapter.setItems(mBasePresenter.getTabData());
+        mRightRecyclerView.setAdapter(mRightMultiTypeAdapter);
+
+        mBasePresenter.requestData();
     }
 
+    public MultiTypeAdapter getLeftMultiTypeAdapter() {
+        return mLeftMultiTypeAdapter;
+    }
+
+    public MultiTypeAdapter getRightMultiTypeAdapter() {
+        return mRightMultiTypeAdapter;
+    }
+
+
+    @Override
+    public KnowledgePresenter creatPersenter() {
+        return new KnowledgePresenter();
+    }
 }

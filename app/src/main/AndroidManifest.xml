@@ -12,7 +12,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".main.MainActivity" />
         <activity android:name=".startpage.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,6 +23,7 @@
         <activity
             android:name=".activity.NewMainActivity"
             android:label="@string/title_activity_new_main"
+            android:launchMode="singleTask"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name="playandroid.cmcc.com.baselibrary.webview.WebviewActivity" />
         <activity android:name=".activity.AuthorEssayActivity" />
