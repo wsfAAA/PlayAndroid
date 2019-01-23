@@ -68,11 +68,15 @@ public class HomePresenter extends BasePresenter<HomeFragment, HomeModel> {
         mMultiTypeAdapter.notifyDataSetChanged();
         mBaseView.getSmartRefresh().finishLoadMore(true);
         mBaseView.getSmartRefresh().finishRefresh(true);
+        mBaseView.mLoadingView.showContent();
     }
 
     public void homeListError() {
         ToastUtils.showShort("列表请求失败！");
         mBaseView.getSmartRefresh().finishLoadMore(true);
         mBaseView.getSmartRefresh().finishRefresh(true);
+        if (mItems != null && mItems.size() <= 0) {
+            mBaseView.mLoadingView.showEmptyData();
+        }
     }
 }

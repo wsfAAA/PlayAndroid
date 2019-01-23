@@ -3,6 +3,7 @@ package cmcc.com.playandroid.fragment;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.View;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -12,6 +13,7 @@ import butterknife.BindView;
 import cmcc.com.playandroid.R;
 import cmcc.com.playandroid.presenter.HomePresenter;
 import playandroid.cmcc.com.baselibrary.mvp.BaseMvpFragment;
+import playandroid.cmcc.com.baselibrary.ui.BaseLoadingView;
 import playandroid.cmcc.com.baselibrary.ui.ScrollRecyclerView;
 
 /**
@@ -23,6 +25,8 @@ public class HomeFragment extends BaseMvpFragment<HomePresenter> {
     ScrollRecyclerView mRecyclerview;
     @BindView(R.id.m_smart_refresh)
     SmartRefreshLayout mSmartRefresh;
+    @BindView(R.id.m_base_loading_view)
+    public BaseLoadingView mLoadingView;
 
     private int pageCount = 0;
 
@@ -42,10 +46,20 @@ public class HomeFragment extends BaseMvpFragment<HomePresenter> {
 
     @Override
     protected void onFragmentVisible() {
+        mLoadingView.showContent();
         mBasePresenter.requestData(pageCount, true);
         mBasePresenter.requestBanner();
         mRecyclerview.setLayoutManager(new LinearLayoutManager(mContext));
         mRecyclerview.setAdapter(mBasePresenter.initAdapter());
+
+        mLoadingView.setAnewListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pageCount = 0;
+                mBasePresenter.requestBanner();
+                mBasePresenter.requestData(pageCount, true);
+            }
+        });
 
         mSmartRefresh.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
             @Override

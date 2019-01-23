@@ -42,11 +42,13 @@ public class KnowledgePresenter extends BasePresenter<KnowledgeFragment, Knowled
         }
         mBaseView.getLeftMultiTypeAdapter().notifyDataSetChanged();
         mBaseView.getRightMultiTypeAdapter().notifyDataSetChanged();
+        mBaseView.mLoadingView.showContent();
     }
 
 
     public void requestError() {
         ToastUtils.showShort("请求失败!");
+        mBaseView.mLoadingView.showEmptyData();
     }
 
     public ArrayList<NavigationBean.DataBean> getTabData() {

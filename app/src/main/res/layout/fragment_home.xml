@@ -1,14 +1,24 @@
-<com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/m_smart_refresh"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="cmcc.com.playandroid.fragment.HomeFragment">
 
-    <playandroid.cmcc.com.baselibrary.ui.ScrollRecyclerView
-        android:id="@+id/m_recyclerview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
-</com.scwang.smartrefresh.layout.SmartRefreshLayout>
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/m_smart_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <playandroid.cmcc.com.baselibrary.ui.ScrollRecyclerView
+            android:id="@+id/m_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+    <playandroid.cmcc.com.baselibrary.ui.BaseLoadingView
+        android:id="@+id/m_base_loading_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</RelativeLayout>

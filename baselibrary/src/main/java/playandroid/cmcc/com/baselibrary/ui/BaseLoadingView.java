@@ -125,6 +125,11 @@ public class BaseLoadingView extends RelativeLayout {
     }
 
 
+    /**
+     * 无数据、无网络 点击监听
+     *
+     * @param listener
+     */
     public void setAnewListener(OnClickListener listener) {
         mImgNoDataReload.setOnClickListener(listener);
         mImgReload.setOnClickListener(listener);

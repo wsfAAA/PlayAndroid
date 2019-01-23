@@ -60,6 +60,7 @@ public class RightNavigationViewBinder extends ItemViewBinder<NavigationBean.Dat
             mTitle = itemView.findViewById(R.id.m_tv_name);
             mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
 
+            //recyclervie 内部嵌套 recyclerview
             mMultiTypeAdapter = new MultiTypeAdapter();
             mMultiTypeAdapter.register(NavigationBean.DataBean.ArticlesBean.class, new NavigationContentViewBinder(mContext));
             mMultiTypeAdapter.setItems(articles);

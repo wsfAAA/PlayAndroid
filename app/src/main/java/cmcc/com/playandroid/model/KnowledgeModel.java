@@ -14,7 +14,7 @@ import playandroid.cmcc.com.baselibrary.net.callback.RxCallBack;
 public class KnowledgeModel extends BaseModel<KnowledgePresenter> {
 
     public void requestData() {
-        RxClient.builder().cache(false).build().rxGet(BaseApiService.NAVIGATION, new RxCallBack<NavigationBean>() {
+        RxClient.builder().cache(true).build().rxGet(BaseApiService.NAVIGATION, new RxCallBack<NavigationBean>() {
             @Override
             public void rxOnNext(NavigationBean response) {
                 mBasePresenter.requestSucceed(response);

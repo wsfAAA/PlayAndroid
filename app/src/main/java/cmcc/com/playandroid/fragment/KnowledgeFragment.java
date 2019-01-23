@@ -16,6 +16,7 @@ import cmcc.com.playandroid.presenter.KnowledgePresenter;
 import cmcc.com.playandroid.adapter.LeftNavigationViewBinder;
 import me.drakeet.multitype.MultiTypeAdapter;
 import playandroid.cmcc.com.baselibrary.mvp.BaseMvpFragment;
+import playandroid.cmcc.com.baselibrary.ui.BaseLoadingView;
 
 /**
  * 导航
@@ -26,6 +27,9 @@ public class KnowledgeFragment extends BaseMvpFragment<KnowledgePresenter> {
     RecyclerView mLeftRecyclerView;
     @BindView(R.id.m_right_recycler_view)
     RecyclerView mRightRecyclerView;
+    @BindView(R.id.m_loading_view)
+    public BaseLoadingView mLoadingView;
+
     private MultiTypeAdapter mLeftMultiTypeAdapter;
     private MultiTypeAdapter mRightMultiTypeAdapter;
 
@@ -39,11 +43,10 @@ public class KnowledgeFragment extends BaseMvpFragment<KnowledgePresenter> {
 
     @Override
     protected void onFragmentVisible() {
-        final LinearLayoutManager mLeftLinearLayoutManager = new LinearLayoutManager(mContext);
-        final LinearLayoutManager mRightLinearLayoutManager = new LinearLayoutManager(mContext);
-        mLeftRecyclerView.setLayoutManager(mLeftLinearLayoutManager);
-        mRightRecyclerView.setLayoutManager(mRightLinearLayoutManager);
-
+        /**
+         * 左边recyclerview 处理
+         */
+        mLeftRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         mLeftMultiTypeAdapter = new MultiTypeAdapter();
         LeftNavigationViewBinder leftNavigationViewBinder = new LeftNavigationViewBinder();
         mLeftMultiTypeAdapter.register(NavigationBean.DataBean.class, leftNavigationViewBinder);
@@ -58,6 +61,15 @@ public class KnowledgeFragment extends BaseMvpFragment<KnowledgePresenter> {
             }
         });
 
+        /**
+         * 右边 recyclerview 处理
+         */
+        final LinearLayoutManager mRightLinearLayoutManager = new LinearLayoutManager(mContext);
+        mRightRecyclerView.setLayoutManager(mRightLinearLayoutManager);
+        mRightMultiTypeAdapter = new MultiTypeAdapter();
+        mRightMultiTypeAdapter.register(NavigationBean.DataBean.class, new RightNavigationViewBinder(mContext));
+        mRightMultiTypeAdapter.setItems(mBasePresenter.getTabData());
+        mRightRecyclerView.setAdapter(mRightMultiTypeAdapter);
         mRightRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
@@ -75,12 +87,15 @@ public class KnowledgeFragment extends BaseMvpFragment<KnowledgePresenter> {
             }
         });
 
-        mRightMultiTypeAdapter = new MultiTypeAdapter();
-        mRightMultiTypeAdapter.register(NavigationBean.DataBean.class, new RightNavigationViewBinder(mContext));
-        mRightMultiTypeAdapter.setItems(mBasePresenter.getTabData());
-        mRightRecyclerView.setAdapter(mRightMultiTypeAdapter);
-
+        mLoadingView.showLoading();
         mBasePresenter.requestData();
+
+        mLoadingView.setAnewListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mBasePresenter.requestData();
+            }
+        });
     }
 
     public MultiTypeAdapter getLeftMultiTypeAdapter() {
