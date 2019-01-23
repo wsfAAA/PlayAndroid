@@ -1,19 +1,17 @@
-package cmcc.com.playandroid.fragment;
-
+package cmcc.com.playandroid.mvp.view;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import cmcc.com.playandroid.R;
+import cmcc.com.playandroid.adapter.LeftNavigationViewBinder;
 import cmcc.com.playandroid.adapter.RightNavigationViewBinder;
 import cmcc.com.playandroid.bean.NavigationBean;
-import cmcc.com.playandroid.presenter.KnowledgePresenter;
-import cmcc.com.playandroid.adapter.LeftNavigationViewBinder;
+import cmcc.com.playandroid.mvp.presenter.KnowledgePresenter;
 import me.drakeet.multitype.MultiTypeAdapter;
 import playandroid.cmcc.com.baselibrary.mvp.BaseMvpFragment;
 import playandroid.cmcc.com.baselibrary.ui.BaseLoadingView;

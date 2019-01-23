@@ -1,13 +1,13 @@
-package cmcc.com.playandroid.presenter;
+package cmcc.com.playandroid.mvp.presenter;
 
 
 import android.support.v4.app.Fragment;
 
-import cmcc.com.playandroid.activity.NewMainActivity;
-import cmcc.com.playandroid.fragment.DiscoverFragment;
-import cmcc.com.playandroid.fragment.HomeFragment;
-import cmcc.com.playandroid.fragment.KnowledgeFragment;
-import cmcc.com.playandroid.model.NewMainModel;
+import cmcc.com.playandroid.mvp.view.NewMainActivity;
+import cmcc.com.playandroid.mvp.view.DiscoverFragment;
+import cmcc.com.playandroid.mvp.view.HomeFragment;
+import cmcc.com.playandroid.mvp.view.KnowledgeFragment;
+import cmcc.com.playandroid.mvp.model.NewMainModel;
 import playandroid.cmcc.com.baselibrary.mvp.BasePresenter;
 
 /**

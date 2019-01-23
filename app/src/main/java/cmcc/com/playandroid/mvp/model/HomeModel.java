@@ -1,8 +1,8 @@
-package cmcc.com.playandroid.model;
+package cmcc.com.playandroid.mvp.model;
 
 import cmcc.com.playandroid.adapter.HomeList;
 import cmcc.com.playandroid.bean.BannerBean;
-import cmcc.com.playandroid.presenter.HomePresenter;
+import cmcc.com.playandroid.mvp.presenter.HomePresenter;
 import playandroid.cmcc.com.baselibrary.api.BaseApiService;
 import playandroid.cmcc.com.baselibrary.mvp.BaseModel;
 import playandroid.cmcc.com.baselibrary.net.RxClient;

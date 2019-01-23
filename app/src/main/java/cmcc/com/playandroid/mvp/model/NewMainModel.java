@@ -1,6 +1,6 @@
-package cmcc.com.playandroid.model;
+package cmcc.com.playandroid.mvp.model;
 
-import cmcc.com.playandroid.presenter.NewMainPresenter;
+import cmcc.com.playandroid.mvp.presenter.NewMainPresenter;
 import playandroid.cmcc.com.baselibrary.mvp.BaseModel;
 
 /**

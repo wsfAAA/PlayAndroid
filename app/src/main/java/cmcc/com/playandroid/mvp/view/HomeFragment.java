@@ -1,4 +1,4 @@
-package cmcc.com.playandroid.fragment;
+package cmcc.com.playandroid.mvp.view;
 
 
 import android.support.annotation.NonNull;
@@ -11,7 +11,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 
 import butterknife.BindView;
 import cmcc.com.playandroid.R;
-import cmcc.com.playandroid.presenter.HomePresenter;
+import cmcc.com.playandroid.mvp.presenter.HomePresenter;
 import playandroid.cmcc.com.baselibrary.mvp.BaseMvpFragment;
 import playandroid.cmcc.com.baselibrary.ui.BaseLoadingView;
 import playandroid.cmcc.com.baselibrary.ui.ScrollRecyclerView;

@@ -1,4 +1,4 @@
-package cmcc.com.playandroid.presenter;
+package cmcc.com.playandroid.mvp.presenter;
 
 
 import com.blankj.utilcode.util.ToastUtils;
@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cmcc.com.playandroid.bean.NavigationBean;
-import cmcc.com.playandroid.fragment.KnowledgeFragment;
-import cmcc.com.playandroid.model.KnowledgeModel;
+import cmcc.com.playandroid.mvp.view.KnowledgeFragment;
+import cmcc.com.playandroid.mvp.model.KnowledgeModel;
 import playandroid.cmcc.com.baselibrary.mvp.BasePresenter;
 
 /**
@@ -44,7 +44,6 @@ public class KnowledgePresenter extends BasePresenter<KnowledgeFragment, Knowled
         mBaseView.getRightMultiTypeAdapter().notifyDataSetChanged();
         mBaseView.mLoadingView.showContent();
     }
-
 
     public void requestError() {
         ToastUtils.showShort("请求失败!");

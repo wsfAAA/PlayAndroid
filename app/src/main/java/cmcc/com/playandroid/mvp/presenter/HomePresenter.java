@@ -1,4 +1,4 @@
-package cmcc.com.playandroid.presenter;
+package cmcc.com.playandroid.mvp.presenter;
 
 import com.blankj.utilcode.util.ToastUtils;
 
@@ -6,8 +6,8 @@ import cmcc.com.playandroid.adapter.BannerViewBinder;
 import cmcc.com.playandroid.adapter.HomeList;
 import cmcc.com.playandroid.adapter.HomeListViewBinder;
 import cmcc.com.playandroid.bean.BannerBean;
-import cmcc.com.playandroid.fragment.HomeFragment;
-import cmcc.com.playandroid.model.HomeModel;
+import cmcc.com.playandroid.mvp.view.HomeFragment;
+import cmcc.com.playandroid.mvp.model.HomeModel;
 import me.drakeet.multitype.Items;
 import me.drakeet.multitype.MultiTypeAdapter;
 import playandroid.cmcc.com.baselibrary.mvp.BasePresenter;

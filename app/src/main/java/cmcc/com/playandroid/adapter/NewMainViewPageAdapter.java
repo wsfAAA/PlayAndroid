@@ -5,9 +5,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.view.ViewGroup;
 
-import cmcc.com.playandroid.fragment.DiscoverFragment;
-import cmcc.com.playandroid.fragment.HomeFragment;
-import cmcc.com.playandroid.fragment.KnowledgeFragment;
+import cmcc.com.playandroid.mvp.view.DiscoverFragment;
+import cmcc.com.playandroid.mvp.view.HomeFragment;
+import cmcc.com.playandroid.mvp.view.KnowledgeFragment;
 
 /**
  * Created by wsf on 2019/1/2.

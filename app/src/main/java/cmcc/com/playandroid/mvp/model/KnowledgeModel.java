@@ -1,7 +1,7 @@
-package cmcc.com.playandroid.model;
+package cmcc.com.playandroid.mvp.model;
 
 import cmcc.com.playandroid.bean.NavigationBean;
-import cmcc.com.playandroid.presenter.KnowledgePresenter;
+import cmcc.com.playandroid.mvp.presenter.KnowledgePresenter;
 import playandroid.cmcc.com.baselibrary.api.BaseApiService;
 import playandroid.cmcc.com.baselibrary.mvp.BaseModel;
 import playandroid.cmcc.com.baselibrary.net.RxClient;

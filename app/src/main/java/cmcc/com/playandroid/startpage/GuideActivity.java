@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.OnClick;
 import cmcc.com.playandroid.R;
-import cmcc.com.playandroid.activity.NewMainActivity;
+import cmcc.com.playandroid.mvp.view.NewMainActivity;
 import playandroid.cmcc.com.baselibrary.banner.BannerViewPager;
 import playandroid.cmcc.com.baselibrary.banner.callback.ILoaderImage;
 import playandroid.cmcc.com.baselibrary.base.BaseActivity;

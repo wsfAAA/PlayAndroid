@@ -1,4 +1,4 @@
-package cmcc.com.playandroid.activity;
+package cmcc.com.playandroid.mvp.view;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -10,7 +10,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -23,7 +22,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import cmcc.com.playandroid.R;
 import cmcc.com.playandroid.adapter.NewMainViewPageAdapter;
-import cmcc.com.playandroid.presenter.NewMainPresenter;
+import cmcc.com.playandroid.mvp.presenter.NewMainPresenter;
 import playandroid.cmcc.com.baselibrary.common.CommonFinal;
 import playandroid.cmcc.com.baselibrary.mvp.BaseMvpActivity;
 import playandroid.cmcc.com.baselibrary.ui.ScrollRecyclerView;
