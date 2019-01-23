@@ -60,21 +60,29 @@ public class HomePresenter extends BasePresenter<HomeFragment, HomeModel> {
             if (bannerBean != null) {
                 mItems.add(0, bannerBean);
             }
+            mBaseView.getSmartRefresh().finishRefresh(true);
+        } else {
+            if (response.getData().isOver()) {
+                mBaseView.getSmartRefresh().finishLoadMoreWithNoMoreData();
+            } else {
+                mBaseView.getSmartRefresh().finishLoadMore(true);
+            }
         }
         for (int i = 0; i < response.getData().getDatas().size(); i++) {
             HomeList.DataBean.DatasBean datasBean = response.getData().getDatas().get(i);
             mItems.add(datasBean);
         }
         mMultiTypeAdapter.notifyDataSetChanged();
-        mBaseView.getSmartRefresh().finishLoadMore(true);
-        mBaseView.getSmartRefresh().finishRefresh(true);
         mBaseView.mLoadingView.showContent();
     }
 
     public void homeListError() {
         ToastUtils.showShort("列表请求失败！");
-        mBaseView.getSmartRefresh().finishLoadMore(true);
-        mBaseView.getSmartRefresh().finishRefresh(true);
+        if (isRefresh) {
+            mBaseView.getSmartRefresh().finishRefresh(false);
+        } else {
+            mBaseView.getSmartRefresh().finishLoadMore(false);
+        }
         if (mItems != null && mItems.size() <= 0) {
             mBaseView.mLoadingView.showEmptyData();
         }

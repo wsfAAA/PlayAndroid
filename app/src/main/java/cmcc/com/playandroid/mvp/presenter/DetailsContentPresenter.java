@@ -34,17 +34,22 @@ public class DetailsContentPresenter extends BasePresenter<DetailsContentActivit
         if (datasBeans.size() <= 0) {
             mBaseView.mBaseLoadView.showEmptyData();
         }
+        if (isRefresh) {
+            mBaseView.mSmartRefreshLayout.finishRefresh(false);
+        } else {
+            mBaseView.mSmartRefreshLayout.finishLoadMore(false);
+        }
     }
 
     public void succeed(HomeList response) {
         if (isRefresh) {
             datasBeans.clear();
-            mBaseView.mSmartRefreshLayout.finishRefresh();
+            mBaseView.mSmartRefreshLayout.finishRefresh(true);
         } else {
             if (response.getData().isOver()) {
                 mBaseView.mSmartRefreshLayout.finishLoadMoreWithNoMoreData();
             } else {
-                mBaseView.mSmartRefreshLayout.finishLoadMore();
+                mBaseView.mSmartRefreshLayout.finishLoadMore(true);
             }
         }
 
