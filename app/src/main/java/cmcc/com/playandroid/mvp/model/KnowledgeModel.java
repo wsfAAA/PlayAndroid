@@ -17,7 +17,9 @@ public class KnowledgeModel extends BaseModel<KnowledgePresenter> {
         RxClient.builder().cache(true).build().rxGet(BaseApiService.NAVIGATION, new RxCallBack<NavigationBean>() {
             @Override
             public void rxOnNext(NavigationBean response) {
-                mBasePresenter.requestSucceed(response);
+                if (response != null && response.getData() != null) {
+                    mBasePresenter.requestSucceed(response);
+                }
             }
 
             @Override

@@ -8,15 +8,13 @@
         android:id="@+id/m_tv_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginBottom="@dimen/dp_5"
         android:layout_marginRight="@dimen/dp_10"
-        android:layout_marginBottom="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_5"
         android:background="@drawable/bg_radius"
         android:gravity="center"
-        android:padding="@dimen/dp_5"
+        android:padding="@dimen/dp_3"
         android:text="content"
-        android:textSize="@dimen/sp_12" />
+        android:textSize="@dimen/sp_10" />
 
 </RelativeLayout>
-
-

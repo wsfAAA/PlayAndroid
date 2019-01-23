@@ -16,7 +16,7 @@ import playandroid.cmcc.com.baselibrary.ui.BaseLoadingView;
 public abstract class BaseMvpActivity<P extends BasePresenter> extends BaseActivity {
 
     protected P mBasePresenter;
-    protected BaseLoadingView mBaseLoadView;
+    public BaseLoadingView mBaseLoadView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,29 +31,29 @@ public abstract class BaseMvpActivity<P extends BasePresenter> extends BaseActiv
         }
     }
 
-    public void showContent() {
-        if (mBaseLoadView != null) {
-            mBaseLoadView.showContent();
-        }
-    }
-
-    public void showLoading() {
-        if (mBaseLoadView != null) {
-            mBaseLoadView.showLoading();
-        }
-    }
-
-    public void showEmptyData() {
-        if (mBaseLoadView != null) {
-            mBaseLoadView.showEmptyData();
-        }
-    }
-
-    public void showNetWorkError() {
-        if (mBaseLoadView != null) {
-            mBaseLoadView.showNetWorkError();
-        }
-    }
+//    public void showContent() {
+//        if (mBaseLoadView != null) {
+//            mBaseLoadView.showContent();
+//        }
+//    }
+//
+//    public void showLoading() {
+//        if (mBaseLoadView != null) {
+//            mBaseLoadView.showLoading();
+//        }
+//    }
+//
+//    public void showEmptyData() {
+//        if (mBaseLoadView != null) {
+//            mBaseLoadView.showEmptyData();
+//        }
+//    }
+//
+//    public void showNetWorkError() {
+//        if (mBaseLoadView != null) {
+//            mBaseLoadView.showNetWorkError();
+//        }
+//    }
 
     @Override
     protected void onDestroy() {

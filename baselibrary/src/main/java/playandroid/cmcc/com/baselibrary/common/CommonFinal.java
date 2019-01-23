@@ -11,7 +11,8 @@ public class CommonFinal {
     public static final String AROUTER_SEARCH = "/home/search";
 
     // intent 常量
-    public static final String TITLE_TYPE = "TITLE_TYPE";
-    public static final String REQUEST_URL = "REQUEST_URL";
+    public static final String DETAILS_PAGE_TITLE = "DETAILS_PAGE_TITLE"; //详情页page
+    public static final String DETAILS_PAGE_ID = "DETAILS_PAGE_ID"; //详情页 id
+
 
 }

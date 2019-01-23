@@ -47,4 +47,15 @@ public class BaseApiService {
      * 导航数据
      */
     public static final String NAVIGATION = "http://www.wanandroid.com/navi/json";
+
+    ///////////////////////////////////////发现/////////////////////////////////////////
+    /**
+     * 发现数据
+     */
+    public static final String DISCOVER = "http://www.wanandroid.com/tree/json";
+
+    /**
+     * 详情页   http://www.wanandroid.com/article/list/0/json?cid=60
+     */
+    public static final String DETAILS_CONTENT = "http://www.wanandroid.com/article/list/";
 }

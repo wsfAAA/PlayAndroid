@@ -17,7 +17,7 @@ import playandroid.cmcc.com.baselibrary.mvp.BasePresenter;
 /**
  * Created by wsf on 2018/12/26.
  * <p>
- * 可配置的activity 继承可扩展 单独页面的配置
+ * 可配置的activity 继承可扩展 用于单独页面的配置 例如 标题等
  */
 public abstract class ConfigMvpActivity<P extends BasePresenter> extends BaseMvpActivity<P> {
 
@@ -25,9 +25,6 @@ public abstract class ConfigMvpActivity<P extends BasePresenter> extends BaseMvp
     private ImageView mConfigImgBack;//返回
     private ImageView mConfigImgMore;//更多
     private TextView mConfigTvTitle; //标题
-
-    // TODO: 2018/12/27  注意 继承ConfigMvpActivity的页面为 SmartRefreshLayout赋值 用于刷新加载统一处理  相关属性：https://github.com/scwang90/SmartRefreshLayout/blob/master/art/md_property.md
-    protected SmartRefreshLayout mConfigSmartRefreshLayout;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,12 +45,8 @@ public abstract class ConfigMvpActivity<P extends BasePresenter> extends BaseMvp
         }
     }
 
-    protected void setSmartRefreshLayout(SmartRefreshLayout mConfigSmartRefreshLayout) {
-        this.mConfigSmartRefreshLayout = mConfigSmartRefreshLayout;
-    }
-
     /**
-     * 是否显示更多
+     * 是否显示更多  默认不显示
      *
      * @param visible
      */
@@ -64,7 +57,7 @@ public abstract class ConfigMvpActivity<P extends BasePresenter> extends BaseMvp
     }
 
     /**
-     * 是否显示 返回键
+     * 是否显示 返回键 默认显示
      *
      * @param visible
      */

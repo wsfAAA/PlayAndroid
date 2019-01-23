@@ -69,9 +69,9 @@ public class SearchPagePresenter extends BasePresenter<SearchPageActivity, Searc
     public void searchFailure() {
         ToastUtils.showShort("请求失败");
         if (mSearchBean.size() <= 0) {
-            mBaseView.showEmptyData();
+            mBaseView.mBaseLoadView.showEmptyData();
         }
-        mBaseView.stopRefresh(false);
+        mBaseView.mSmartRefreshLayout.finishRefresh(1000, false);
     }
 
     public void searchSucceed(SearchBean searchBean) {
@@ -82,9 +82,10 @@ public class SearchPagePresenter extends BasePresenter<SearchPageActivity, Searc
         if (searchBean.getData().isOver()) {
 //            mBaseView..finishLoadMore(1000,true,true);
         } else {
-            mBaseView.showContent();
+            mBaseView.mBaseLoadView.showContent();
             mSearchAdapter.notifyDataSetChanged();
-            mBaseView.stopRefresh(true);
+            mBaseView.mSmartRefreshLayout.finishRefresh(1000, true);
+            mBaseView.mSmartRefreshLayout.finishLoadMore(1000, true, false);
         }
     }
 

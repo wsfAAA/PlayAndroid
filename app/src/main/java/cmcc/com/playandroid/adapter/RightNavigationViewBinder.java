@@ -69,6 +69,7 @@ public class RightNavigationViewBinder extends ItemViewBinder<NavigationBean.Dat
         }
 
         private void adapter(List<NavigationBean.DataBean.ArticlesBean> articles, String name) {
+            this.articles.clear();
             this.articles.addAll(articles);
             mTitle.setText(name);
             mMultiTypeAdapter.notifyDataSetChanged();

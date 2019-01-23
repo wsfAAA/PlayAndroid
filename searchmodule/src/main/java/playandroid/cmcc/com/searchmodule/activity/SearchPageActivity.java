@@ -23,6 +23,8 @@ public class SearchPageActivity extends ConfigMvpActivity<SearchPagePresenter> {
 
     @BindView(R2.id.mrecycler)
     RecyclerView mRecycler;
+    @BindView(R2.mSmartRefreshLayout)
+    public SmartRefreshLayout mSmartRefreshLayout;
 
     private int pageCount = 0;
 
@@ -35,11 +37,10 @@ public class SearchPageActivity extends ConfigMvpActivity<SearchPagePresenter> {
     protected void initView() {
         Log.i("cesi---->", "SearchPageActivity initView");
         isShowMore(View.GONE);
-        setSmartRefreshLayout((SmartRefreshLayout) findViewById(R.id.mSmartRefreshLayout));
         Intent intent = getIntent();
         final String searchContent = intent.getStringExtra(SearchActivity.INTENT_SEARCH_HOTKEY);
         setTitleText(searchContent);
-        showLoading();
+        mBaseLoadView.showLoading();
         mBasePresenter.searchRequest(searchContent, pageCount, true);
 
         MultiTypeAdapter multiTypeAdapter = mBasePresenter.initAdapter();
@@ -54,14 +55,14 @@ public class SearchPageActivity extends ConfigMvpActivity<SearchPagePresenter> {
             }
         });
 
-        mConfigSmartRefreshLayout .setOnRefreshListener(new OnRefreshListener() {
+        mSmartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
                 pageCount = 0;
                 mBasePresenter.searchRequest(searchContent, pageCount, true);
             }
         });
-        mConfigSmartRefreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
+        mSmartRefreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
                 pageCount++;
@@ -70,10 +71,6 @@ public class SearchPageActivity extends ConfigMvpActivity<SearchPagePresenter> {
         });
     }
 
-    public void stopRefresh(boolean success) {
-        mConfigSmartRefreshLayout.finishRefresh(1000, success);
-        mConfigSmartRefreshLayout.finishLoadMore(1000, success, false);
-    }
 
     @Override
     public SearchPagePresenter creatPersenter() {

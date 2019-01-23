@@ -41,7 +41,8 @@ public class ScrollRecyclerView extends RecyclerView {
             mRecyclerCallBack.onScrolledToBottom();
         } else if (dy < 0) {   // 向上滑动
             mRecyclerCallBack.onScrolledUp();
-        } else if (dy > 0) {   // 向下滑动
+//        } else if (dy > 0) {   // 向下滑动
+        } else if (dy > 20) {   // 向下滑动
             mRecyclerCallBack.onScrolledDown();
         }
     }
