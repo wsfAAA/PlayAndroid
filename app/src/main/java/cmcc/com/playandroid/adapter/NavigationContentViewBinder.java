@@ -10,14 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import cmcc.com.playandroid.R;
 import cmcc.com.playandroid.bean.NavigationBean;
 import me.drakeet.multitype.ItemViewBinder;
-import playandroid.cmcc.com.baselibrary.api.BaseApiService;
 import playandroid.cmcc.com.baselibrary.util.WebViewRoute;
-import playandroid.cmcc.com.baselibrary.webview.WebviewActivity;
+import cmcc.com.playandroid.webview.WebviewActivity;
 
 /**
  * 导航右边 item 内容

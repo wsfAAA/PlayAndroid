@@ -12,13 +12,11 @@ import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreator;
 import com.scwang.smartrefresh.layout.api.RefreshFooter;
 import com.scwang.smartrefresh.layout.api.RefreshHeader;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
-import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 
 import playandroid.cmcc.com.baselibrary.BuildConfig;
 import playandroid.cmcc.com.baselibrary.R;
-import playandroid.cmcc.com.baselibrary.ui.smartrefresh.MiguClassicHeader;
-import playandroid.cmcc.com.baselibrary.ui.smartrefresh.MiguShortVideoFooter;
+import playandroid.cmcc.com.baselibrary.view.MiguClassicHeader;
+import playandroid.cmcc.com.baselibrary.view.MiguShortVideoFooter;
 
 /**
  * 所有需要模块化开发的module都需要继承自BaseApplication

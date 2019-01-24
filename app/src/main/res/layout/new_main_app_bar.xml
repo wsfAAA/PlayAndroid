@@ -20,7 +20,7 @@
 
         </android.support.design.widget.AppBarLayout>
 
-        <playandroid.cmcc.com.baselibrary.view.CustomScrollViewPager
+        <cmcc.com.playandroid.view.CustomScrollViewPager
             android:id="@+id/m_new_main_viewpager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

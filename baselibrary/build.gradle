@@ -114,4 +114,5 @@ dependencies {
     api rootProject.ext.dependencies["multidex"]
 
     api rootProject.ext.dependencies["cardview"]
+
 }

@@ -10,7 +10,7 @@
         android:background="@color/color_ffffff"
         android:orientation="horizontal">
 
-        <playandroid.cmcc.com.baselibrary.ui.StopAppBarRecyclerView
+        <cmcc.com.playandroid.view.StopAppBarRecyclerView
             android:id="@+id/m_left_recycler_view"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -24,7 +24,7 @@
             android:layout_weight="5" />
     </LinearLayout>
 
-    <playandroid.cmcc.com.baselibrary.ui.BaseLoadingView
+    <playandroid.cmcc.com.baselibrary.view.BaseLoadingView
         android:id="@+id/m_loading_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

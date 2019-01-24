@@ -54,12 +54,7 @@ public class SearchAdapter extends ItemViewBinder<SearchBean.DataBean.DatasBean,
             holder.mImgPicture.setVisibility(View.GONE);
             loaderData(holder, item);
         }
-//        String url="";
-//        if (!RegexUtils.isURL(datasBean.getLink())){
-//            url=""+datasBean.getLink();
-//        }else {
-//            url=datasBean.getLink();
-//        }
+
         holder.mLlRoot.setTag(R.id.search_result_position_id,item.getLink());
         holder.mLlRoot.setOnClickListener(mListener);
         holder.mImagCollect.setOnClickListener(mCollectListener);

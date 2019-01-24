@@ -34,6 +34,7 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
 
     implementation project(':baselibrary')//依赖基础库
+    implementation project(':commonmodule')//依赖公共库
     if (!Boolean.valueOf(rootProject.ext.isModule)) {
         runtimeOnly project(':loginmodule')//依赖登录库
         runtimeOnly project(':searchmodule')//搜索依赖库

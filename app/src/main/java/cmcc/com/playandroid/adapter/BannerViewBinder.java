@@ -9,20 +9,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.blankj.utilcode.util.ToastUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import cmcc.com.playandroid.R;
 import cmcc.com.playandroid.bean.BannerBean;
 import me.drakeet.multitype.ItemViewBinder;
-import playandroid.cmcc.com.baselibrary.banner.BannerViewPager;
-import playandroid.cmcc.com.baselibrary.banner.callback.IBannerOnClick;
-import playandroid.cmcc.com.baselibrary.banner.callback.ILoaderImage;
+import cmcc.com.playandroid.banner.BannerViewPager;
+import cmcc.com.playandroid.banner.callback.IBannerOnClick;
+import cmcc.com.playandroid.banner.callback.ILoaderImage;
 import playandroid.cmcc.com.baselibrary.util.BaseUtils;
 import playandroid.cmcc.com.baselibrary.util.WebViewRoute;
-import playandroid.cmcc.com.baselibrary.webview.WebviewActivity;
+import cmcc.com.playandroid.webview.WebviewActivity;
 
 /**
  * banner itme

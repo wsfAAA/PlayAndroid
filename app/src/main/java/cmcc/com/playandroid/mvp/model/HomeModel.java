@@ -1,6 +1,6 @@
 package cmcc.com.playandroid.mvp.model;
 
-import cmcc.com.playandroid.adapter.HomeList;
+import cmcc.com.playandroid.bean.CommonListBean;
 import cmcc.com.playandroid.bean.BannerBean;
 import cmcc.com.playandroid.mvp.presenter.HomePresenter;
 import playandroid.cmcc.com.baselibrary.api.BaseApiService;
@@ -36,9 +36,9 @@ public class HomeModel extends BaseModel<HomePresenter> {
     }
 
     public void requestHomeList(int pageCount) {
-        RxClient.builder().cache(false).build().rxGet(BaseApiService.HOME_LIST + pageCount + "/json", new RxCallBack<HomeList>() {
+        RxClient.builder().cache(false).build().rxGet(BaseApiService.HOME_LIST + pageCount + "/json", new RxCallBack<CommonListBean>() {
             @Override
-            public void rxOnNext(HomeList response) {
+            public void rxOnNext(CommonListBean response) {
                 if (response.getErrorCode() == 0 && !response.getData().getDatas().isEmpty()) {
                     mBasePresenter.homeListSucceed(response);
                 } else {

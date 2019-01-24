@@ -25,8 +25,6 @@
             android:label="@string/title_activity_new_main"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="playandroid.cmcc.com.baselibrary.webview.WebviewActivity" />
-        <activity android:name=".mvp.view.DetailsContentActivity"></activity>
     </application>
 
 </manifest>

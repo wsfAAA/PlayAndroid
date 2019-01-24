@@ -16,8 +16,8 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import cmcc.com.playandroid.R;
 import cmcc.com.playandroid.mvp.view.NewMainActivity;
-import playandroid.cmcc.com.baselibrary.banner.BannerViewPager;
-import playandroid.cmcc.com.baselibrary.banner.callback.ILoaderImage;
+import cmcc.com.playandroid.banner.BannerViewPager;
+import cmcc.com.playandroid.banner.callback.ILoaderImage;
 import playandroid.cmcc.com.baselibrary.base.BaseActivity;
 import playandroid.cmcc.com.baselibrary.util.BaseUtils;
 

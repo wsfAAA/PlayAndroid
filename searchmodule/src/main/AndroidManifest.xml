@@ -6,7 +6,7 @@
     <application android:theme="@style/AppTheme">
         <activity android:name=".activity.SearchActivity"/>
         <activity android:name=".activity.SearchPageActivity"/>
-        <activity android:name="playandroid.cmcc.com.baselibrary.webview.WebviewActivity"/>
+        <activity android:name="cmcc.com.playandroid.webview.WebviewActivity"/>
     </application>
 
 </manifest>

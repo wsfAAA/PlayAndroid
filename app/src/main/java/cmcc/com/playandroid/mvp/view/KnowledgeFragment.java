@@ -12,10 +12,10 @@ import cmcc.com.playandroid.adapter.LeftNavigationViewBinder;
 import cmcc.com.playandroid.adapter.RightNavigationViewBinder;
 import cmcc.com.playandroid.bean.NavigationBean;
 import cmcc.com.playandroid.mvp.presenter.KnowledgePresenter;
+import cmcc.com.playandroid.view.StopAppBarRecyclerView;
 import me.drakeet.multitype.MultiTypeAdapter;
 import playandroid.cmcc.com.baselibrary.mvp.BaseMvpFragment;
-import playandroid.cmcc.com.baselibrary.ui.BaseLoadingView;
-import playandroid.cmcc.com.baselibrary.ui.StopAppBarRecyclerView;
+import playandroid.cmcc.com.baselibrary.view.BaseLoadingView;
 
 /**
  * 导航

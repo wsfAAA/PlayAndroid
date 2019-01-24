@@ -3,8 +3,8 @@ package cmcc.com.playandroid.mvp.presenter;
 import com.blankj.utilcode.util.ToastUtils;
 
 import cmcc.com.playandroid.adapter.BannerViewBinder;
-import cmcc.com.playandroid.adapter.HomeList;
-import cmcc.com.playandroid.adapter.HomeListViewBinder;
+import cmcc.com.playandroid.adapter.CommonListViewBinder;
+import cmcc.com.playandroid.bean.CommonListBean;
 import cmcc.com.playandroid.bean.BannerBean;
 import cmcc.com.playandroid.mvp.view.HomeFragment;
 import cmcc.com.playandroid.mvp.model.HomeModel;
@@ -41,7 +41,7 @@ public class HomePresenter extends BasePresenter<HomeFragment, HomeModel> {
         mMultiTypeAdapter = new MultiTypeAdapter();
         mItems = new Items();
         mMultiTypeAdapter.register(BannerBean.class, new BannerViewBinder(mContext));  //banner
-        mMultiTypeAdapter.register(HomeList.DataBean.DatasBean.class, new HomeListViewBinder(mContext)); //首页列表
+        mMultiTypeAdapter.register(CommonListBean.DataBean.DatasBean.class, new CommonListViewBinder(mContext)); //首页列表
         mMultiTypeAdapter.setItems(mItems);
         return mMultiTypeAdapter;
     }
@@ -54,7 +54,7 @@ public class HomePresenter extends BasePresenter<HomeFragment, HomeModel> {
         this.bannerBean = bannerBean;
     }
 
-    public void homeListSucceed(HomeList response) {
+    public void homeListSucceed(CommonListBean response) {
         if (isRefresh) {
             mItems.clear();
             if (bannerBean != null) {
@@ -69,7 +69,7 @@ public class HomePresenter extends BasePresenter<HomeFragment, HomeModel> {
             }
         }
         for (int i = 0; i < response.getData().getDatas().size(); i++) {
-            HomeList.DataBean.DatasBean datasBean = response.getData().getDatas().get(i);
+            CommonListBean.DataBean.DatasBean datasBean = response.getData().getDatas().get(i);
             mItems.add(datasBean);
         }
         mMultiTypeAdapter.notifyDataSetChanged();

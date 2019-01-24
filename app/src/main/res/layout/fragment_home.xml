@@ -10,13 +10,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <playandroid.cmcc.com.baselibrary.ui.ScrollRecyclerView
+        <cmcc.com.playandroid.view.ScrollRecyclerView
             android:id="@+id/m_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
-    <playandroid.cmcc.com.baselibrary.ui.BaseLoadingView
+    <playandroid.cmcc.com.baselibrary.view.BaseLoadingView
         android:id="@+id/m_base_loading_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

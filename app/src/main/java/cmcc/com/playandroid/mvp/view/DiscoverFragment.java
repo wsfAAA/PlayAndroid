@@ -12,7 +12,7 @@ import cmcc.com.playandroid.bean.DiscoverBean;
 import cmcc.com.playandroid.mvp.presenter.DiscoverPresenter;
 import me.drakeet.multitype.MultiTypeAdapter;
 import playandroid.cmcc.com.baselibrary.mvp.BaseMvpFragment;
-import playandroid.cmcc.com.baselibrary.ui.BaseLoadingView;
+import playandroid.cmcc.com.baselibrary.view.BaseLoadingView;
 
 /**
  * 发现

@@ -22,11 +22,11 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import cmcc.com.playandroid.R;
 import cmcc.com.playandroid.adapter.NewMainViewPageAdapter;
+import cmcc.com.playandroid.common.CommonFinal;
 import cmcc.com.playandroid.mvp.presenter.NewMainPresenter;
-import playandroid.cmcc.com.baselibrary.common.CommonFinal;
+import cmcc.com.playandroid.view.CustomScrollViewPager;
+import cmcc.com.playandroid.view.ScrollRecyclerView;
 import playandroid.cmcc.com.baselibrary.mvp.BaseMvpActivity;
-import playandroid.cmcc.com.baselibrary.ui.ScrollRecyclerView;
-import playandroid.cmcc.com.baselibrary.view.CustomScrollViewPager;
 
 public class NewMainActivity extends BaseMvpActivity<NewMainPresenter>
         implements NavigationView.OnNavigationItemSelectedListener {

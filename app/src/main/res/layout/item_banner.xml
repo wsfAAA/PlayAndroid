@@ -4,7 +4,7 @@
     android:layout_marginTop="@dimen/dp_3"
     android:layout_height="@dimen/dp_200">
 
-    <playandroid.cmcc.com.baselibrary.banner.BannerViewPager
+    <cmcc.com.playandroid.banner.BannerViewPager
         android:id="@+id/m_banner"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

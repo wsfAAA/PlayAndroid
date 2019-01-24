@@ -1,0 +1,9 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cmcc.com.playandroid">
+
+    <application android:theme="@style/AppTheme">
+        <activity android:name=".activity.DetailsContentActivity" />
+        <activity android:name=".webview.WebviewActivity" />
+    </application>
+
+</manifest>

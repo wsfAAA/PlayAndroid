@@ -12,9 +12,9 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import butterknife.BindView;
 import cmcc.com.playandroid.R;
 import cmcc.com.playandroid.mvp.presenter.HomePresenter;
+import cmcc.com.playandroid.view.ScrollRecyclerView;
 import playandroid.cmcc.com.baselibrary.mvp.BaseMvpFragment;
-import playandroid.cmcc.com.baselibrary.ui.BaseLoadingView;
-import playandroid.cmcc.com.baselibrary.ui.ScrollRecyclerView;
+import playandroid.cmcc.com.baselibrary.view.BaseLoadingView;
 
 /**
  * 首页

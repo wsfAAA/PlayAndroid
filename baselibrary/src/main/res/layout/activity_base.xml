@@ -6,7 +6,7 @@
 
     <include layout="@layout/base_actionbar_layout" />
 
-    <playandroid.cmcc.com.baselibrary.ui.BaseLoadingView
+    <playandroid.cmcc.com.baselibrary.view.BaseLoadingView
         android:id="@+id/base_load_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

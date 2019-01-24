@@ -9,14 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.blankj.utilcode.util.ToastUtils;
-
-import butterknife.BindView;
 import cmcc.com.playandroid.R;
 import cmcc.com.playandroid.bean.DiscoverBean;
-import cmcc.com.playandroid.mvp.view.DetailsContentActivity;
+import cmcc.com.playandroid.activity.DetailsContentActivity;
 import me.drakeet.multitype.ItemViewBinder;
-import playandroid.cmcc.com.baselibrary.common.CommonFinal;
+import cmcc.com.playandroid.common.CommonFinal;
 
 /**
  * Created by wsf on 2019/1/23.

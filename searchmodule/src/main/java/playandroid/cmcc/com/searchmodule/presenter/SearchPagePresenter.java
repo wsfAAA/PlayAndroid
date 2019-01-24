@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import me.drakeet.multitype.MultiTypeAdapter;
 import playandroid.cmcc.com.baselibrary.mvp.BasePresenter;
 import playandroid.cmcc.com.baselibrary.util.WebViewRoute;
-import playandroid.cmcc.com.baselibrary.webview.WebviewActivity;
+import cmcc.com.playandroid.webview.WebviewActivity;
 import playandroid.cmcc.com.searchmodule.R;
 import playandroid.cmcc.com.searchmodule.activity.SearchPageActivity;
 import playandroid.cmcc.com.searchmodule.adapter.SearchAdapter;

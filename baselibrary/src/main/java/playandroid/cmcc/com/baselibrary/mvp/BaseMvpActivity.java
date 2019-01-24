@@ -7,7 +7,7 @@ import android.util.Log;
 
 import playandroid.cmcc.com.baselibrary.R;
 import playandroid.cmcc.com.baselibrary.base.BaseActivity;
-import playandroid.cmcc.com.baselibrary.ui.BaseLoadingView;
+import playandroid.cmcc.com.baselibrary.view.BaseLoadingView;
 
 /**
  * Created by wsf on 2018/11/14.
