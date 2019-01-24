@@ -10,7 +10,7 @@
         android:background="@color/color_ffffff"
         android:orientation="horizontal">
 
-        <android.support.v7.widget.RecyclerView
+        <playandroid.cmcc.com.baselibrary.ui.StopAppBarRecyclerView
             android:id="@+id/m_left_recycler_view"
             android:layout_width="0dp"
             android:layout_height="match_parent"

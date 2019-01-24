@@ -15,6 +15,7 @@ import cmcc.com.playandroid.mvp.presenter.KnowledgePresenter;
 import me.drakeet.multitype.MultiTypeAdapter;
 import playandroid.cmcc.com.baselibrary.mvp.BaseMvpFragment;
 import playandroid.cmcc.com.baselibrary.ui.BaseLoadingView;
+import playandroid.cmcc.com.baselibrary.ui.StopAppBarRecyclerView;
 
 /**
  * 导航
@@ -22,7 +23,7 @@ import playandroid.cmcc.com.baselibrary.ui.BaseLoadingView;
 public class KnowledgeFragment extends BaseMvpFragment<KnowledgePresenter> {
 
     @BindView(R.id.m_left_recycler_view)
-    RecyclerView mLeftRecyclerView;
+    StopAppBarRecyclerView mLeftRecyclerView;
     @BindView(R.id.m_right_recycler_view)
     RecyclerView mRightRecyclerView;
     @BindView(R.id.m_loading_view)
@@ -30,6 +31,7 @@ public class KnowledgeFragment extends BaseMvpFragment<KnowledgePresenter> {
 
     private MultiTypeAdapter mLeftMultiTypeAdapter;
     private MultiTypeAdapter mRightMultiTypeAdapter;
+    private boolean isLeftClick = false;
 
     public KnowledgeFragment() {
     }
@@ -50,12 +52,14 @@ public class KnowledgeFragment extends BaseMvpFragment<KnowledgePresenter> {
         mLeftMultiTypeAdapter.register(NavigationBean.DataBean.class, leftNavigationViewBinder);
         mLeftMultiTypeAdapter.setItems(mBasePresenter.getTabData());
         mLeftRecyclerView.setAdapter(mLeftMultiTypeAdapter);
+
         leftNavigationViewBinder.setOnClickListener(new LeftNavigationViewBinder.OnItemClickListener() {
             @Override
             public void onClick(View v, int position) {
+                mLeftMultiTypeAdapter.notifyDataSetChanged();
+                isLeftClick = true;
                 //改变右边item内容 位置
                 mRightRecyclerView.scrollToPosition(position);
-                mLeftMultiTypeAdapter.notifyDataSetChanged();
             }
         });
 
@@ -72,16 +76,20 @@ public class KnowledgeFragment extends BaseMvpFragment<KnowledgePresenter> {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                int firstVisibleItemPosition = mRightLinearLayoutManager.findFirstVisibleItemPosition();
-                ArrayList<NavigationBean.DataBean> tabData = mBasePresenter.getTabData();
-                for (int i = 0; i < tabData.size(); i++) {
-                    tabData.get(i).setSelect(false);
-                }
-                tabData.get(firstVisibleItemPosition).setSelect(true);
+                if (isLeftClick) {
+                    isLeftClick = false;
+                } else {
+                    int firstVisibleItemPosition = mRightLinearLayoutManager.findFirstVisibleItemPosition();
+                    ArrayList<NavigationBean.DataBean> tabData = mBasePresenter.getTabData();
+                    for (int i = 0; i < tabData.size(); i++) {
+                        tabData.get(i).setSelect(false);
+                    }
+                    tabData.get(firstVisibleItemPosition).setSelect(true);
 
-                //改变左边 tab 选中位置
-                mLeftRecyclerView.scrollToPosition(firstVisibleItemPosition);
-                mLeftMultiTypeAdapter.notifyDataSetChanged();
+                    //改变左边 tab 选中位置
+                    mLeftRecyclerView.scrollToPosition(firstVisibleItemPosition);
+                    mLeftMultiTypeAdapter.notifyDataSetChanged();
+                }
             }
         });
 

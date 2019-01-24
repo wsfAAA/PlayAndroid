@@ -23,7 +23,7 @@ public class SearchPageActivity extends ConfigMvpActivity<SearchPagePresenter> {
 
     @BindView(R2.id.mrecycler)
     RecyclerView mRecycler;
-    @BindView(R2.mSmartRefreshLayout)
+    @BindView(R2.id.mSmartRefreshLayout)
     public SmartRefreshLayout mSmartRefreshLayout;
 
     private int pageCount = 0;

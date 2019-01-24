@@ -46,7 +46,7 @@ public class HomeFragment extends BaseMvpFragment<HomePresenter> {
 
     @Override
     protected void onFragmentVisible() {
-        mLoadingView.showContent();
+        mLoadingView.showLoading();
         mBasePresenter.requestData(pageCount, true);
         mBasePresenter.requestBanner();
         mRecyclerview.setLayoutManager(new LinearLayoutManager(mContext));
@@ -60,7 +60,6 @@ public class HomeFragment extends BaseMvpFragment<HomePresenter> {
                 mBasePresenter.requestData(pageCount, true);
             }
         });
-
         mSmartRefresh.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {

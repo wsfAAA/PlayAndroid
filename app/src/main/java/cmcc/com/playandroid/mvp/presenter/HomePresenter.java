@@ -60,12 +60,12 @@ public class HomePresenter extends BasePresenter<HomeFragment, HomeModel> {
             if (bannerBean != null) {
                 mItems.add(0, bannerBean);
             }
-            mBaseView.getSmartRefresh().finishRefresh(true);
+            mBaseView.getSmartRefresh().finishRefresh();
         } else {
             if (response.getData().isOver()) {
                 mBaseView.getSmartRefresh().finishLoadMoreWithNoMoreData();
             } else {
-                mBaseView.getSmartRefresh().finishLoadMore(true);
+                mBaseView.getSmartRefresh().finishLoadMore();
             }
         }
         for (int i = 0; i < response.getData().getDatas().size(); i++) {
@@ -79,9 +79,9 @@ public class HomePresenter extends BasePresenter<HomeFragment, HomeModel> {
     public void homeListError() {
         ToastUtils.showShort("列表请求失败！");
         if (isRefresh) {
-            mBaseView.getSmartRefresh().finishRefresh(false);
+            mBaseView.getSmartRefresh().finishRefresh(1000,false);
         } else {
-            mBaseView.getSmartRefresh().finishLoadMore(false);
+            mBaseView.getSmartRefresh().finishLoadMore(1000,false,false);
         }
         if (mItems != null && mItems.size() <= 0) {
             mBaseView.mLoadingView.showEmptyData();

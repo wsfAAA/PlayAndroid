@@ -6,6 +6,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.scwang.smartrefresh.layout.api.RefreshFooter;
 import com.scwang.smartrefresh.layout.api.RefreshKernel;
@@ -20,6 +21,8 @@ import playandroid.cmcc.com.baselibrary.R;
  */
 public class MiguShortVideoFooter extends RelativeLayout implements RefreshFooter {
 
+
+    private TextView mTvContent;
 
     public MiguShortVideoFooter(Context context) {
         super(context);
@@ -36,8 +39,9 @@ public class MiguShortVideoFooter extends RelativeLayout implements RefreshFoote
         initView(context);
     }
 
-    private void initView(Context ctx){
-        View view = LayoutInflater.from(ctx).inflate(R.layout.view_custom_load_more,null);
+    private void initView(Context ctx) {
+        View view = LayoutInflater.from(ctx).inflate(R.layout.view_custom_load_more, null);
+        mTvContent = view.findViewById(R.id.m_tv_content);
         addView(view);
     }
 
@@ -89,7 +93,12 @@ public class MiguShortVideoFooter extends RelativeLayout implements RefreshFoote
     }
 
     @Override
-    public int onFinish(RefreshLayout refreshLayout, boolean b) {
+    public int onFinish(RefreshLayout refreshLayout, boolean success) {
+        if (success) {
+            mTvContent.setText("刷新完成");
+        } else {
+            mTvContent.setText("刷新失败");
+        }
         return 0;
     }
 

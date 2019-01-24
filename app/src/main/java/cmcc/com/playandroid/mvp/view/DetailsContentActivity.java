@@ -64,6 +64,8 @@ public class DetailsContentActivity extends ConfigMvpActivity<DetailsContentPres
             }
         });
 
+        mSmartRefreshLayout.setEnableLoadMoreWhenContentNotFull(false);
+        mSmartRefreshLayout.setEnableScrollContentWhenRefreshed(true);
         mSmartRefreshLayout.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {

@@ -15,7 +15,7 @@ import playandroid.cmcc.com.baselibrary.net.callback.RxCallBack;
 public class HomeModel extends BaseModel<HomePresenter> {
 
     public void requestBanner() {
-        RxClient.builder().cache(true).build().rxGet(BaseApiService.BANNER, new RxCallBack<BannerBean>() {
+        RxClient.builder().cache(false).build().rxGet(BaseApiService.BANNER, new RxCallBack<BannerBean>() {
             @Override
             public void rxOnNext(BannerBean response) {
                 if (response == null) {
@@ -36,7 +36,7 @@ public class HomeModel extends BaseModel<HomePresenter> {
     }
 
     public void requestHomeList(int pageCount) {
-        RxClient.builder().cache(true).build().rxGet(BaseApiService.HOME_LIST + pageCount + "/json", new RxCallBack<HomeList>() {
+        RxClient.builder().cache(false).build().rxGet(BaseApiService.HOME_LIST + pageCount + "/json", new RxCallBack<HomeList>() {
             @Override
             public void rxOnNext(HomeList response) {
                 if (response.getErrorCode() == 0 && !response.getData().getDatas().isEmpty()) {
