@@ -5,8 +5,9 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/PlayAndroid.iml" filepath="$PROJECT_DIR$/.idea/modules/PlayAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/baselibrary/baselibrary.iml" filepath="$PROJECT_DIR$/baselibrary/baselibrary.iml" />
-      <module fileurl="file://$PROJECT_DIR$/commonmodule/mylibrary.iml" filepath="$PROJECT_DIR$/commonmodule/mylibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/commonmodule/commonmodule.iml" filepath="$PROJECT_DIR$/commonmodule/commonmodule.iml" />
       <module fileurl="file://$PROJECT_DIR$/loginmodule/loginmodule.iml" filepath="$PROJECT_DIR$/loginmodule/loginmodule.iml" />
+      <module fileurl="file://F:\AndroidWorkTow\PlayAndroid\commonmodule\mylibrary.iml" filepath="F:\AndroidWorkTow\PlayAndroid\commonmodule\mylibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/othermodule/othermodule.iml" filepath="$PROJECT_DIR$/othermodule/othermodule.iml" />
       <module fileurl="file://$PROJECT_DIR$/searchmodule/searchmodule.iml" filepath="$PROJECT_DIR$/searchmodule/searchmodule.iml" />
     </modules>

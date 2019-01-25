@@ -201,7 +201,6 @@ public class NewMainActivity extends BaseMvpActivity<NewMainPresenter>
                 }
                 break;
             case R.id.m_img_search:
-                ToastUtils.showShort("搜索");
                 ARouter.getInstance().build(CommonFinal.AROUTER_SEARCH).navigation();
                 break;
             case R.id.m_fab:

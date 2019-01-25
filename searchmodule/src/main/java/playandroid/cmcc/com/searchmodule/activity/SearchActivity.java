@@ -20,6 +20,8 @@ import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import cmcc.com.playandroid.activity.DetailsContentActivity;
+import cmcc.com.playandroid.common.CommonFinal;
 import me.drakeet.multitype.MultiTypeAdapter;
 import playandroid.cmcc.com.baselibrary.mvp.BaseMvpActivity;
 import playandroid.cmcc.com.searchmodule.R;
@@ -55,7 +57,6 @@ public class SearchActivity extends BaseMvpActivity<SearchPresenter> {
     private ArrayList<String> mSearchHistoryList = new ArrayList<>();//历史记录
 
     public final static String SEARCH_HOTKEY = "SEARCH_HOTKEY";
-    public final static String INTENT_SEARCH_HOTKEY = "INTENT_SEARCH_HOTKEY";
     private SearchHistoryAdapter searchHistoryAdapter;
 
     @Override
@@ -109,7 +110,6 @@ public class SearchActivity extends BaseMvpActivity<SearchPresenter> {
         public void onClick(View v) {
             String historyKey = (String) v.getTag(R.id.tv_search_history_id);
             if (!TextUtils.isEmpty(historyKey)) {
-                ToastUtils.showShort(historyKey);
                 startActivity(historyKey);
             }
         }
@@ -183,8 +183,9 @@ public class SearchActivity extends BaseMvpActivity<SearchPresenter> {
     }
 
     private void startActivity(String searchContent) {
-        Intent intent = new Intent(this, SearchPageActivity.class);
-        intent.putExtra(INTENT_SEARCH_HOTKEY, searchContent);
+        Intent intent = new Intent(this, DetailsContentActivity.class);
+        intent.putExtra(CommonFinal.PAGE_TITLE, searchContent);
+        intent.putExtra(CommonFinal.IS_DISCOVER_PAGE_INTETN,false);
         startActivity(intent);
     }
 

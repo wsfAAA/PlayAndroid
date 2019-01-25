@@ -59,4 +59,9 @@ public class DetailsContentPresenter extends BasePresenter<DetailsContentActivit
     public List<CommonListBean.DataBean.DatasBean> getData() {
         return datasBeans;
     }
+
+    public void searchRequest(String mTitle, int pageCount, boolean isRefresh) {
+        this.isRefresh = isRefresh;
+        mBaseModel.searchRequest(mTitle, pageCount);
+    }
 }

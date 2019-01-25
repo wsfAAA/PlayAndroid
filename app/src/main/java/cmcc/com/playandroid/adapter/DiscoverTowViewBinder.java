@@ -58,8 +58,9 @@ public class DiscoverTowViewBinder extends ItemViewBinder<DiscoverBean.DataBean.
                 public void onClick(View v) {
                     if (discoverTow != null) {
                         Intent intent = new Intent(mContext, DetailsContentActivity.class);
-                        intent.putExtra(CommonFinal.DETAILS_PAGE_TITLE, discoverTow.getName());
+                        intent.putExtra(CommonFinal.PAGE_TITLE, discoverTow.getName());
                         intent.putExtra(CommonFinal.DETAILS_PAGE_ID, discoverTow.getId());
+                        intent.putExtra(CommonFinal.IS_DISCOVER_PAGE_INTETN,true);
                         mContext.startActivity(intent);
                     }
                 }

@@ -54,7 +54,7 @@ public class CommonListViewBinder extends ItemViewBinder<CommonListBean.DataBean
             holder.mImgCover.setVisibility(View.GONE);
         }
         if (!TextUtils.isEmpty(homeList.getTitle())) {
-            String replace = homeList.getTitle().replace("&mdash;", "");
+            String replace = homeList.getTitle().replace("&mdash;", "").replace("<em class='highlight'>","").replace("</em>","");
             holder.mTvTitle.setText(replace);
         }
         if (!TextUtils.isEmpty(homeList.getAuthor())) {

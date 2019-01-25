@@ -42,8 +42,9 @@ public class DetailsContentActivity extends ConfigMvpActivity<DetailsContentPres
 
     @Override
     protected void initView() {
-        String mTitle = getIntent().getStringExtra(CommonFinal.DETAILS_PAGE_TITLE);
+        final String mTitle = getIntent().getStringExtra(CommonFinal.PAGE_TITLE);
         mId = getIntent().getIntExtra(CommonFinal.DETAILS_PAGE_ID, 0);
+        final boolean isDiscover = getIntent().getBooleanExtra(CommonFinal.IS_DISCOVER_PAGE_INTETN, true); //是否是发现页跳转
         setTitleText(mTitle);
 
         mScrollRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
@@ -53,13 +54,21 @@ public class DetailsContentActivity extends ConfigMvpActivity<DetailsContentPres
         mScrollRecyclerView.setAdapter(mMultiTypeAdapter);
 
         mBaseLoadView.showLoading();
-        mBasePresenter.requestData(mId, pageCount, true);
+        if (isDiscover) {
+            mBasePresenter.requestData(mId, pageCount, true);
+        } else {
+            mBasePresenter.searchRequest(mTitle, pageCount, true);
+        }
 
         mBaseLoadView.setAnewListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 pageCount = 0;
-                mBasePresenter.requestData(mId, pageCount, true);
+                if (isDiscover) {
+                    mBasePresenter.requestData(mId, pageCount, true);
+                } else {
+                    mBasePresenter.searchRequest(mTitle, pageCount, true);
+                }
             }
         });
 
@@ -69,13 +78,21 @@ public class DetailsContentActivity extends ConfigMvpActivity<DetailsContentPres
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
                 pageCount++;
-                mBasePresenter.requestData(mId, pageCount, false);
+                if (isDiscover) {
+                    mBasePresenter.requestData(mId, pageCount, false);
+                } else {
+                    mBasePresenter.searchRequest(mTitle, pageCount, false);
+                }
             }
 
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
                 pageCount = 0;
-                mBasePresenter.requestData(mId, pageCount, true);
+                if (isDiscover) {
+                    mBasePresenter.requestData(mId, pageCount, true);
+                } else {
+                    mBasePresenter.searchRequest(mTitle, pageCount, true);
+                }
             }
         });
 

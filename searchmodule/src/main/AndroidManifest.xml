@@ -5,7 +5,6 @@
     <!--集成调试使用-->
     <application android:theme="@style/AppTheme">
         <activity android:name=".activity.SearchActivity"/>
-        <activity android:name=".activity.SearchPageActivity"/>
         <activity android:name="cmcc.com.playandroid.webview.WebviewActivity"/>
     </application>
 
