@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 
 /**
- * Created by zuoxian on 2016/3/14.
+ * RecyclerView 滚动方向处理
  */
 public class ScrollRecyclerView extends RecyclerView {
 

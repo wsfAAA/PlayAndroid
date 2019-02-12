@@ -27,7 +27,7 @@ import playandroid.cmcc.com.baselibrary.util.WebViewRoute;
 import cmcc.com.playandroid.webview.WebviewActivity;
 
 /**
- * 首页列表
+ * 公用文章列表适配器
  */
 public class CommonListViewBinder extends ItemViewBinder<CommonListBean.DataBean.DatasBean, CommonListViewBinder.ViewHolder> {
 

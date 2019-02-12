@@ -16,7 +16,7 @@ import me.drakeet.multitype.ItemViewBinder;
 import cmcc.com.playandroid.common.CommonFinal;
 
 /**
- * Created by wsf on 2019/1/23.
+ * Created by wsf on 2019/1/23. 发现页adapter
  */
 public class DiscoverTowViewBinder extends ItemViewBinder<DiscoverBean.DataBean.ChildrenBean, DiscoverTowViewBinder.ViewHolder> {
 
@@ -60,7 +60,7 @@ public class DiscoverTowViewBinder extends ItemViewBinder<DiscoverBean.DataBean.
                         Intent intent = new Intent(mContext, DetailsContentActivity.class);
                         intent.putExtra(CommonFinal.PAGE_TITLE, discoverTow.getName());
                         intent.putExtra(CommonFinal.DETAILS_PAGE_ID, discoverTow.getId());
-                        intent.putExtra(CommonFinal.IS_DISCOVER_PAGE_INTETN,true);
+                        intent.putExtra(CommonFinal.INTENT_TYPE,1);
                         mContext.startActivity(intent);
                     }
                 }

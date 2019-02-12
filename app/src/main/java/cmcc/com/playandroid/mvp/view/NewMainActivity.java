@@ -1,5 +1,6 @@
 package cmcc.com.playandroid.mvp.view;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
@@ -21,8 +22,10 @@ import com.blankj.utilcode.util.ToastUtils;
 import butterknife.BindView;
 import butterknife.OnClick;
 import cmcc.com.playandroid.R;
+import cmcc.com.playandroid.activity.DetailsContentActivity;
 import cmcc.com.playandroid.adapter.NewMainViewPageAdapter;
 import cmcc.com.playandroid.common.CommonFinal;
+import cmcc.com.playandroid.common.CommonRequest;
 import cmcc.com.playandroid.mvp.presenter.NewMainPresenter;
 import cmcc.com.playandroid.view.CustomScrollViewPager;
 import cmcc.com.playandroid.view.ScrollRecyclerView;
@@ -157,18 +160,13 @@ public class NewMainActivity extends BaseMvpActivity<NewMainPresenter>
     public boolean onNavigationItemSelected(MenuItem item) {
         // TODO: 2018/12/29 侧拉页面菜单id
         int id = item.getItemId();
-        if (id == R.id.nav_camera) {
-
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
+        if (id == R.id.nav_login) { //登录
             ARouter.getInstance().build(CommonFinal.AROUTER_LOGIN).navigation();
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.nav_collect) {//收藏
+            Intent intent = new Intent(this, DetailsContentActivity.class);
+            intent.putExtra(CommonFinal.INTENT_TYPE, 3);
+            intent.putExtra(CommonFinal.PAGE_TITLE, "我的收藏列表");
+            startActivity(intent);
         }
         return true;
     }

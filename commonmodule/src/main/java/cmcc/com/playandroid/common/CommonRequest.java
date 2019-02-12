@@ -8,6 +8,7 @@ import com.blankj.utilcode.util.ToastUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import cmcc.com.playandroid.bean.CommonListBean;
 import playandroid.cmcc.com.baselibrary.api.BaseApiService;
 import playandroid.cmcc.com.baselibrary.net.RxClient;
 import playandroid.cmcc.com.baselibrary.net.callback.RxCallBack;

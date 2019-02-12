@@ -27,7 +27,7 @@ othermodule：里面是自己封装的一些东西没用在该项目中使用单
 
    b、api 和 implementation 区分                     api library 使用该修饰的依赖可以被其他library使用，implementation不可以
 
-   c、封装网络请求rxjava + retrofit，详情见net包下
+   c、封装网络请求rxjava + retrofit，详情见net包下  添加cookies处理
 
    h、添加 SmartRefreshLayout 自定义Header和Footer
 

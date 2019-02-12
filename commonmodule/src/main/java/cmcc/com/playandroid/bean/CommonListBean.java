@@ -3,7 +3,7 @@ package cmcc.com.playandroid.bean;
 import java.util.List;
 
 /**
- * Created by wsf on 2019/1/3.
+ * Created by wsf on 2019/1/3.  公用文章bean
  */
 public class CommonListBean {
 

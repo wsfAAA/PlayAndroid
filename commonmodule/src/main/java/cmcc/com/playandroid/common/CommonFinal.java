@@ -15,7 +15,7 @@ public class CommonFinal {
     // intent 常量
     public static final String PAGE_TITLE = "PAGE_TITLE"; //页面title
     public static final String DETAILS_PAGE_ID = "DETAILS_PAGE_ID"; //详情页 id
-    public static final String IS_DISCOVER_PAGE_INTETN = "IS_DISCOVER_PAGE_INTETN"; //是否发现页跳转详情页
+    public static final String INTENT_TYPE = "INTENT_TYPE"; //  1 发现页跳转 0 搜索页跳转 2 收藏页跳转
 
 
 }

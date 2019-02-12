@@ -77,4 +77,12 @@ public class BaseApiService {
      * 参数： 文章id，拼接在链接中。
      */
     public static final String ESSAY_COLLECT = "lg/collect/";
+
+    /**
+     * 收藏列表
+     * http://www.wanandroid.com/lg/collect/list/0/json
+     * 方法：GET
+     * 参数： 页码：拼接在链接中，从0开始。
+     */
+    public static final String COLLECT_LIST = "lg/collect/list/";
 }

@@ -60,8 +60,14 @@ public class DetailsContentPresenter extends BasePresenter<DetailsContentActivit
         return datasBeans;
     }
 
+
     public void searchRequest(String mTitle, int pageCount, boolean isRefresh) {
         this.isRefresh = isRefresh;
         mBaseModel.searchRequest(mTitle, pageCount);
+    }
+
+    public void requestCollect(int pageCount, boolean isRefresh) {
+        this.isRefresh = isRefresh;
+        mBaseModel.requestCollect(pageCount);
     }
 }

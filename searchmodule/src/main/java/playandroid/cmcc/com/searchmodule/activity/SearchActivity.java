@@ -185,7 +185,7 @@ public class SearchActivity extends BaseMvpActivity<SearchPresenter> {
     private void startActivity(String searchContent) {
         Intent intent = new Intent(this, DetailsContentActivity.class);
         intent.putExtra(CommonFinal.PAGE_TITLE, searchContent);
-        intent.putExtra(CommonFinal.IS_DISCOVER_PAGE_INTETN,false);
+        intent.putExtra(CommonFinal.INTENT_TYPE,2);
         startActivity(intent);
     }
 
