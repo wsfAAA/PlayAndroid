@@ -123,19 +123,24 @@ public class CommonListViewBinder extends ItemViewBinder<CommonListBean.DataBean
             mImgCollect.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    CommonRequest.requsetCollect(homeList.getTitle(),homeList.getAuthor(),homeList.getLink());
                     CommonRequest.setCollectCallblak(new CommonRequest.CollectCallblak() {
                         @Override
-                        public void succeed() {
-                            mImgCollect.setImageResource(R.drawable.collect_no);
-                        }
-
-                        @Override
-                        public void error() {
-                            mImgCollect.setImageResource(R.drawable.collect_yes);
+                        public void succeed(boolean collect) {
+                            if (collect) {
+                                mImgCollect.setImageResource(R.drawable.collect_no);
+                                homeList.setCollect(true);
+                            } else {
+                                mImgCollect.setImageResource(R.drawable.collect_yes);
+                                homeList.setCollect(false);
+                            }
                         }
                     });
-                    CommonRequest.requsetCollect(homeList.getId());
+                    if (homeList.isCollect()) { //取消收藏
+                        CommonRequest.requsetUnCollect(homeList.getId());
+                    } else { //收藏
+//                        CommonRequest.requsetCollect(homeList.getTitle(), homeList.getAuthor(), homeList.getLink());
+                        CommonRequest.requsetCollect(homeList.getId());
+                    }
                 }
             });
         }

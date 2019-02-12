@@ -8,7 +8,6 @@ import com.blankj.utilcode.util.ToastUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import cmcc.com.playandroid.bean.CommonListBean;
 import playandroid.cmcc.com.baselibrary.api.BaseApiService;
 import playandroid.cmcc.com.baselibrary.net.RxClient;
 import playandroid.cmcc.com.baselibrary.net.callback.RxCallBack;
@@ -68,13 +67,10 @@ public class CommonRequest {
                             int errorCode = jsonObject.optInt("errorCode");
                             if (errorCode == 0) {
                                 if (mCollectCallblak != null) {
-                                    mCollectCallblak.succeed();
+                                    mCollectCallblak.succeed(true);
                                 }
                             } else {
                                 ToastUtils.showShort("收藏失败： " + errorCode);
-                                if (mCollectCallblak != null) {
-                                    mCollectCallblak.error();
-                                }
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -83,9 +79,44 @@ public class CommonRequest {
 
                     @Override
                     public void rxOnError(Throwable e) {
-                        if (mCollectCallblak != null) {
-                            mCollectCallblak.error();
+                        ToastUtils.showShort("收藏失败： " + e);
+                    }
+                });
+    }
+
+    /**
+     * 取消收藏
+     *
+     * @param id
+     */
+    public static void requsetUnCollect(int id) {
+        RxClient.builder()
+                .cache(false)
+                .build()
+                .rxPost(BaseApiService.UN_ESSAY_COLLECT + id + "/json", new RxCallBack<String>() {
+                    @Override
+                    public void rxOnNext(String response) {
+                        if (TextUtils.isEmpty(response)) {
+                            return;
                         }
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            int errorCode = jsonObject.optInt("errorCode");
+                            if (errorCode == 0) {
+                                if (mCollectCallblak != null) {
+                                    mCollectCallblak.succeed(false);
+                                }
+                            } else {
+                                ToastUtils.showShort("取消收藏失败： " + errorCode);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void rxOnError(Throwable e) {
+                        ToastUtils.showShort("取消收藏失败： " + e);
                     }
                 });
     }
@@ -97,8 +128,6 @@ public class CommonRequest {
     }
 
     public interface CollectCallblak {
-        void succeed();
-
-        void error();
+        void succeed(boolean collect);
     }
 }

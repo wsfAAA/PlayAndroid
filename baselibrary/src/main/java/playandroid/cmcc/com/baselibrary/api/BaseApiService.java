@@ -79,6 +79,15 @@ public class BaseApiService {
     public static final String ESSAY_COLLECT = "lg/collect/";
 
     /**
+     * 取消收藏
+     * http://www.wanandroid.com/lg/uncollect_originId/2333/json
+     * 方法：POST
+     * 参数：
+     * id:拼接在链接上
+     */
+    public static final String UN_ESSAY_COLLECT = "lg/uncollect_originId/";
+
+    /**
      * 收藏列表
      * http://www.wanandroid.com/lg/collect/list/0/json
      * 方法：GET
