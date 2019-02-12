@@ -9,6 +9,8 @@ import java.util.Map;
 import java.util.WeakHashMap;
 import java.util.concurrent.TimeUnit;
 
+import javax.xml.transform.sax.TemplatesHandler;
+
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -23,6 +25,7 @@ import playandroid.cmcc.com.baselibrary.BuildConfig;
 import playandroid.cmcc.com.baselibrary.api.BaseApiService;
 import playandroid.cmcc.com.baselibrary.base.BaseApplication;
 import playandroid.cmcc.com.baselibrary.net.callback.RxCallBack;
+import playandroid.cmcc.com.baselibrary.net.interceptor.AddCookiesInterceptor;
 import playandroid.cmcc.com.baselibrary.net.interceptor.CacheInterceptor;
 import playandroid.cmcc.com.baselibrary.net.interceptor.HeaderInterceptor;
 import playandroid.cmcc.com.baselibrary.util.BaseUtils;
@@ -38,6 +41,7 @@ public final class RxClient {
     private final int CONNECT_TIME_OUT;
     private final int READ_TIME_OUT;
     private final boolean IS_CACHE;
+    private final boolean IS_COOKIES;
 
     RxClient(Map<String, Object> params,
              WeakHashMap<String, String> headerPapams,
@@ -46,7 +50,8 @@ public final class RxClient {
              String baseUrl,
              int connectTimeOut,
              int readTimeOut,
-             boolean isCache) {
+             boolean isCache,
+             boolean addCookies) {
         this.PARAMS.putAll(params);
         this.HEADER_PARAMS.putAll(headerPapams);
         this.BODY = body;
@@ -55,6 +60,7 @@ public final class RxClient {
         this.CONNECT_TIME_OUT = connectTimeOut;
         this.READ_TIME_OUT = readTimeOut;
         this.IS_CACHE = isCache;
+        this.IS_COOKIES = addCookies;
     }
 
     public static RxClientBuilder builder() {
@@ -194,6 +200,10 @@ public final class RxClient {
 
         //添加公用请求参数 和 请求参数
         okhttpBuilder.addInterceptor(new HeaderInterceptor(HEADER_PARAMS));
+
+        if (IS_COOKIES) {
+            okhttpBuilder.addInterceptor(new AddCookiesInterceptor());
+        }
 
         retrofitBuilde.client(okhttpBuilder.build());
         Retrofit build = retrofitBuilde.build();

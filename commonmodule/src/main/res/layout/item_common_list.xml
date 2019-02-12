@@ -57,30 +57,48 @@
                 android:text="2020-1-1"
                 android:textColor="@color/color_545454" />
 
-            <TextView
-                android:id="@+id/m_tv_type"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/m_tv_time"
                 android:layout_marginTop="@dimen/dp_5"
-                android:background="@drawable/bg_border"
-                android:padding="@dimen/dp_5"
-                android:paddingBottom="@dimen/dp_5"
-                android:text="公众号"
-                android:textColor="@color/color_54e658"
-                android:textSize="@dimen/sp_12" />
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/m_tv_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/m_tv_type"
-                android:layout_marginLeft="@dimen/dp_5"
-                android:layout_toRightOf="@+id/m_tv_type"
-                android:padding="@dimen/dp_5"
-                android:text="作者"
-                android:textColor="@color/color_545454"
-                android:textSize="@dimen/sp_12" />
+                <TextView
+                    android:id="@+id/m_tv_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_border"
+                    android:padding="@dimen/dp_5"
+                    android:paddingBottom="@dimen/dp_5"
+                    android:text="公众号"
+                    android:textColor="@color/color_54e658"
+                    android:textSize="@dimen/sp_12" />
+
+                <TextView
+                    android:id="@+id/m_tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:padding="@dimen/dp_5"
+                    android:text="作者"
+                    android:textColor="@color/color_545454"
+                    android:textSize="@dimen/sp_12" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:id="@+id/m_img_collect"
+                    android:layout_width="@dimen/dp_30"
+                    android:layout_height="@dimen/dp_30"
+                    android:layout_marginRight="@dimen/dp_20"
+                    android:src="@drawable/collect_yes" />
+
+            </LinearLayout>
 
         </RelativeLayout>
     </LinearLayout>

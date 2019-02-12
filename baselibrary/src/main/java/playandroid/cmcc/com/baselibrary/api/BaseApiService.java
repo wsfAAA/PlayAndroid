@@ -46,16 +46,35 @@ public class BaseApiService {
     /**
      * 导航数据
      */
-    public static final String NAVIGATION = "http://www.wanandroid.com/navi/json";
+    public static final String NAVIGATION = "navi/json";
 
     ///////////////////////////////////////发现/////////////////////////////////////////
     /**
      * 发现数据
      */
-    public static final String DISCOVER = "http://www.wanandroid.com/tree/json";
+    public static final String DISCOVER = "tree/json";
 
     /**
      * 详情页   http://www.wanandroid.com/article/list/0/json?cid=60
      */
-    public static final String DETAILS_CONTENT = "http://www.wanandroid.com/article/list/";
+    public static final String DETAILS_CONTENT = "article/list/";
+
+
+    ///////////////////////////////////////收藏/////////////////////////////////////////
+    /**
+     * 收藏 站外文章
+     * http://www.wanandroid.com/lg/collect/add/json
+     * 方法：POST
+     * 参数：
+     * title，author，link
+     */
+    public static final String ESSAY_COLLECT2 = "lg/collect/add/json";
+
+    /**
+     * 收藏 站内文章
+     * http://www.wanandroid.com/lg/collect/1165/json
+     * 方法：POST
+     * 参数： 文章id，拼接在链接中。
+     */
+    public static final String ESSAY_COLLECT = "lg/collect/";
 }

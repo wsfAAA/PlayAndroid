@@ -20,14 +20,15 @@ public final class RxClientBuilder {
     private String mBaseUrl;     //更换baseurl
     private int mConnectTimeOut;
     private int mReadTimeOut;
-    private boolean mIsCache;   //是否使用okhttp缓存
+    private boolean mIsCache = false;   //是否使用okhttp缓存
+    private boolean addCookies = false; //添加cookies
 
     RxClientBuilder() {
 
     }
 
     public final RxClient build() {
-        return new RxClient(PARAMS, mHeaderPapams, mBody, mFile, mBaseUrl, mConnectTimeOut, mReadTimeOut, mIsCache);
+        return new RxClient(PARAMS, mHeaderPapams, mBody, mFile, mBaseUrl, mConnectTimeOut, mReadTimeOut, mIsCache, addCookies);
     }
 
     /**
@@ -79,8 +80,8 @@ public final class RxClientBuilder {
     }
 
     /**
+     * json 格式
      *
-     *  json 格式
      * @param raw
      * @return
      */
@@ -130,6 +131,17 @@ public final class RxClientBuilder {
      */
     public final RxClientBuilder cache(boolean isCache) {
         this.mIsCache = isCache;
+        return this;
+    }
+
+    /**
+     * 是否添加 Cookies
+     *
+     * @param addCookies
+     * @return
+     */
+    public final RxClientBuilder addCookies(boolean addCookies) {
+        this.addCookies = addCookies;
         return this;
     }
 }

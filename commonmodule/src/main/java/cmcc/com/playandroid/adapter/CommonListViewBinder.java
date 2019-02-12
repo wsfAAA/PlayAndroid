@@ -19,6 +19,7 @@ import butterknife.ButterKnife;
 import cmcc.com.playandroid.R;
 import cmcc.com.playandroid.R2;
 import cmcc.com.playandroid.bean.CommonListBean;
+import cmcc.com.playandroid.common.CommonRequest;
 import me.drakeet.multitype.ItemViewBinder;
 import playandroid.cmcc.com.baselibrary.api.BaseApiService;
 import playandroid.cmcc.com.baselibrary.util.BaseUtils;
@@ -54,7 +55,7 @@ public class CommonListViewBinder extends ItemViewBinder<CommonListBean.DataBean
             holder.mImgCover.setVisibility(View.GONE);
         }
         if (!TextUtils.isEmpty(homeList.getTitle())) {
-            String replace = homeList.getTitle().replace("&mdash;", "").replace("<em class='highlight'>","").replace("</em>","");
+            String replace = homeList.getTitle().replace("&mdash;", "").replace("<em class='highlight'>", "").replace("</em>", "");
             holder.mTvTitle.setText(replace);
         }
         if (!TextUtils.isEmpty(homeList.getAuthor())) {
@@ -68,6 +69,12 @@ public class CommonListViewBinder extends ItemViewBinder<CommonListBean.DataBean
         }
         if (!TextUtils.isEmpty(homeList.getNiceDate())) {
             holder.mTvTime.setText(homeList.getNiceDate());
+        }
+
+        if (homeList.isCollect()) {
+            holder.mImgCollect.setImageResource(R.drawable.collect_no);
+        } else {
+            holder.mImgCollect.setImageResource(R.drawable.collect_yes);
         }
     }
 
@@ -84,6 +91,8 @@ public class CommonListViewBinder extends ItemViewBinder<CommonListBean.DataBean
         CardView mCardRoot;
         @BindView(R2.id.m_img_cover)
         ImageView mImgCover;
+        @BindView(R2.id.m_img_collect)
+        ImageView mImgCollect;
 
         private CommonListBean.DataBean.DatasBean homeList;
         private Context context;
@@ -108,6 +117,25 @@ public class CommonListViewBinder extends ItemViewBinder<CommonListBean.DataBean
                         intent.putExtra(WebViewRoute.WEBVIEW_URL, BaseApiService.BASE_URL + homeList.getTags().get(0).getUrl());
                         context.startActivity(intent);
                     }
+                }
+            });
+
+            mImgCollect.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//                    CommonRequest.requsetCollect(homeList.getTitle(),homeList.getAuthor(),homeList.getLink());
+                    CommonRequest.setCollectCallblak(new CommonRequest.CollectCallblak() {
+                        @Override
+                        public void succeed() {
+                            mImgCollect.setImageResource(R.drawable.collect_no);
+                        }
+
+                        @Override
+                        public void error() {
+                            mImgCollect.setImageResource(R.drawable.collect_yes);
+                        }
+                    });
+                    CommonRequest.requsetCollect(homeList.getId());
                 }
             });
         }

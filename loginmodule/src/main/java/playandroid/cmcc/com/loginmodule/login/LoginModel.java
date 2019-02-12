@@ -16,6 +16,7 @@ public class LoginModel extends BaseModel<LoginPresenter> {
 
     public void login(String username, String password) {
         RxClient.builder()
+                .addCookies(true)
                 .addParams("username", username)
                 .addParams("password", password)
                 .build()

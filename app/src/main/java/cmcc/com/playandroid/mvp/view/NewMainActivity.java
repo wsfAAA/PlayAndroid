@@ -166,7 +166,7 @@ public class NewMainActivity extends BaseMvpActivity<NewMainPresenter>
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
-
+            ARouter.getInstance().build(CommonFinal.AROUTER_LOGIN).navigation();
         } else if (id == R.id.nav_send) {
 
         }
