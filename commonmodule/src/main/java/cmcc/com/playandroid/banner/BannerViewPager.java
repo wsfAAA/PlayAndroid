@@ -19,10 +19,10 @@ import com.blankj.utilcode.util.SizeUtils;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
-import cmcc.com.playandroid.R;
 import cmcc.com.playandroid.banner.callback.IBannerOnClick;
 import cmcc.com.playandroid.banner.callback.ILoaderImage;
 import cmcc.com.playandroid.banner.transformer.ZoomPageTransformer;
+import playandroid.cmcc.com.commonmodule.R;
 
 /**
  * Created by wsf on 2019/1/11.

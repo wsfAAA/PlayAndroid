@@ -11,8 +11,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
-import cmcc.com.playandroid.R;
-import cmcc.com.playandroid.R2;
+import playandroid.cmcc.com.commonmodule.R;
+import playandroid.cmcc.com.commonmodule.R2;
 import razerdp.basepopup.BasePopupWindow;
 
 /**

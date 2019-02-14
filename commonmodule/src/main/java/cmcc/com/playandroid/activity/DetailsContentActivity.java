@@ -10,14 +10,14 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 
 import butterknife.BindView;
-import cmcc.com.playandroid.R;
-import cmcc.com.playandroid.R2;
 import cmcc.com.playandroid.adapter.CommonListViewBinder;
 import cmcc.com.playandroid.bean.CommonListBean;
 import cmcc.com.playandroid.view.ScrollRecyclerView;
 import me.drakeet.multitype.MultiTypeAdapter;
 import playandroid.cmcc.com.baselibrary.base.ConfigMvpActivity;
 import cmcc.com.playandroid.common.CommonFinal;
+import playandroid.cmcc.com.commonmodule.R;
+import playandroid.cmcc.com.commonmodule.R2;
 
 /**
  * 文章列表页 详情页

@@ -10,9 +10,9 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 import java.util.List;
 
-import cmcc.com.playandroid.R;
 import cmcc.com.playandroid.banner.callback.IBannerOnClick;
 import cmcc.com.playandroid.banner.callback.ILoaderImage;
+import playandroid.cmcc.com.commonmodule.R;
 
 /**
  * Created by Administrator on 2018/11/28.

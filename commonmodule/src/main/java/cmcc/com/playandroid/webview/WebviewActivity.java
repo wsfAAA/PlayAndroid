@@ -21,10 +21,10 @@ import com.blankj.utilcode.util.RegexUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import cmcc.com.playandroid.R;
-import cmcc.com.playandroid.R2;
 import playandroid.cmcc.com.baselibrary.base.BaseWebViewActivity;
 import playandroid.cmcc.com.baselibrary.util.WebViewRoute;
+import playandroid.cmcc.com.commonmodule.R;
+import playandroid.cmcc.com.commonmodule.R2;
 
 @Route(path = "/search/webactivity")
 public class WebviewActivity extends BaseWebViewActivity {

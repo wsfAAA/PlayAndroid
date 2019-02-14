@@ -27,8 +27,8 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation project(':baselibrary')//依赖基础库
+    api project(':baselibrary')//依赖基础库
 
-    //butterknife R2使用
+//    butterknife R2使用
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
 }

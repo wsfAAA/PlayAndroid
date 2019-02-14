@@ -10,8 +10,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
-import playandroid.cmcc.com.baselibrary.R2;
 import test.opendingding.com.othermodule.R;
+import test.opendingding.com.othermodule.R2;
 
 /**
  * Created by wsf on 2018/12/19.

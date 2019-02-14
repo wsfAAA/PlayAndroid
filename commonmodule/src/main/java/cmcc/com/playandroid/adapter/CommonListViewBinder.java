@@ -12,19 +12,25 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.blankj.utilcode.util.SPUtils;
+
 import java.util.List;
+import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import cmcc.com.playandroid.R;
-import cmcc.com.playandroid.R2;
 import cmcc.com.playandroid.bean.CommonListBean;
+import cmcc.com.playandroid.common.CommonFinal;
 import cmcc.com.playandroid.common.CommonRequest;
 import me.drakeet.multitype.ItemViewBinder;
 import playandroid.cmcc.com.baselibrary.api.BaseApiService;
+import playandroid.cmcc.com.baselibrary.net.interceptor.AddCookiesInterceptor;
 import playandroid.cmcc.com.baselibrary.util.BaseUtils;
 import playandroid.cmcc.com.baselibrary.util.WebViewRoute;
 import cmcc.com.playandroid.webview.WebviewActivity;
+import playandroid.cmcc.com.commonmodule.R;
+import playandroid.cmcc.com.commonmodule.R2;
 
 /**
  * 公用文章列表适配器
@@ -123,6 +129,11 @@ public class CommonListViewBinder extends ItemViewBinder<CommonListBean.DataBean
             mImgCollect.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Set<String> stringSet = SPUtils.getInstance().getStringSet(AddCookiesInterceptor.COOKIES);
+                    if (stringSet==null||stringSet.isEmpty()){
+                        ARouter.getInstance().build(CommonFinal.AROUTER_LOGIN).navigation();
+                        return;
+                    }
                     CommonRequest.setCollectCallblak(new CommonRequest.CollectCallblak() {
                         @Override
                         public void succeed(boolean collect) {
