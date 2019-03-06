@@ -46,6 +46,18 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, RetrofitActivity.class));
             }
         });
+        findViewById(R.id.bnt5).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, ScaleImageActivity.class));
+            }
+        });
+        findViewById(R.id.bnt6).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, PicActivity.class));
+            }
+        });
     }
 
     private void popup() {

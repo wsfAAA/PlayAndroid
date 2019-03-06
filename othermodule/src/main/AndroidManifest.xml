@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="test.opendingding.com.othermodule">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".MyApp"
@@ -21,7 +21,9 @@
         </activity>
         <activity android:name=".activity.InterfacedActivity" />
         <activity android:name=".activity.DialogActivity" />
-        <activity android:name=".activity.RetrofitActivity"></activity>
+        <activity android:name=".activity.RetrofitActivity" />
+        <activity android:name=".activity.ScaleImageActivity" />
+        <activity android:name=".activity.PicActivity"></activity>
     </application>
 
 </manifest>

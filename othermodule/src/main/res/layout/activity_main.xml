@@ -27,8 +27,20 @@
         android:text="dialog dialogfragment popupwindow"/>
 
     <Button
-        android:id="@+id/btn4"
+    android:id="@+id/btn4"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Retrofit Net"/>
+
+    <Button
+        android:id="@+id/bnt5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Retrofit Net"/>
+        android:text="图片选择"/>
+
+    <Button
+        android:id="@+id/bnt6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="图片平移、缩放"/>
 </LinearLayout>
