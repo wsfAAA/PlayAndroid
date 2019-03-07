@@ -5,8 +5,14 @@ package test.opendingding.com.othermodule.view;
  */
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
@@ -19,22 +25,24 @@ import android.view.View.OnTouchListener;
 import android.view.ViewConfiguration;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
+import test.opendingding.com.othermodule.view.core.IShape;
+import test.opendingding.com.othermodule.view.core.debug.L;
 
 public class ScaleView extends AppCompatImageView implements OnGlobalLayoutListener, OnScaleGestureListener, OnTouchListener {
 
     /**
      * 表示是否只有一次加载
      */
-    private boolean isOnce = false;
+//    private boolean isOnce = false;
 
     /**
      * 初始时的缩放值
      */
-    private float mInitScale;
+    private float mInitScale = 1.0f;
     /**
      * 最大的缩放值
      */
-    private float mMaxScale;
+    private float mMaxScale = mInitScale * 4;
     /**
      * 图片缩放矩阵
      */
@@ -76,6 +84,7 @@ public class ScaleView extends AppCompatImageView implements OnGlobalLayoutListe
         mMatrix = new Matrix();
         // 设置缩放模式
         super.setScaleType(ScaleType.MATRIX);
+//        postCenter();
 
         //是用于处理缩放的工具类 ScaleGestureDetector 方法onScale、onScaleBegin、onScaleEnd
         mScaleGesture = new ScaleGestureDetector(context, this);
@@ -88,66 +97,96 @@ public class ScaleView extends AppCompatImageView implements OnGlobalLayoutListe
     }
 
 
+    /**
+     * 在屏幕中心显示,这里来自于ImageView的源码
+     */
+    private void postCenter() {
+        post(new Runnable() {
+            @Override
+            public void run() {
+                if (getDrawable() == null) {
+                    return;
+                }
+                final int dwidth = getDrawable().getIntrinsicWidth();
+                final int dheight = getDrawable().getIntrinsicHeight();
+
+                final int vwidth = getWidth() - getPaddingLeft() - getPaddingRight();
+                final int vheight = getHeight() - getPaddingTop() - getPaddingBottom();
+                float scale;
+                float dx = 0, dy = 0;
+
+                if (dwidth * vheight > vwidth * dheight) {
+                    scale = (float) vheight / (float) dheight;
+                    dx = (vwidth - dwidth * scale) * 0.5f;
+                } else {
+                    scale = (float) vwidth / (float) dwidth;
+                    dy = (vheight - dheight * scale) * 0.5f;
+                }
+                Matrix matrix = new Matrix();
+                matrix.setScale(scale, scale);
+                matrix.postTranslate(Math.round(dx), Math.round(dy));
+                setImageMatrix(matrix);
+            }
+        });
+
+    }
+
     @Override
     public void onGlobalLayout() {
         // 如果还没有加载图片
-        if (!isOnce) {
-
-            // 获得控件的宽高
-            int width = getWidth();
-            int height = getHeight();
-
-            Drawable drawable = getDrawable();
-            if (drawable == null) {
-                return;
-            }
-
-            // 获得图片的宽高
-            int bitmapWidth = drawable.getIntrinsicWidth();
-            int bitmapHeight = drawable.getIntrinsicHeight();
-
-            // 设定比例值
-            float scale = 0.0f;
-
-            // 如果图片的宽度>控件的宽度，缩小
-            if (bitmapWidth > width && bitmapHeight < height) {
-                scale = width * 1.0f / bitmapWidth;
-            }
-            // 如果图片的高度>控件的高度，缩小
-            if (bitmapHeight > height && bitmapWidth < width) {
-                scale = height * 1.0f / bitmapHeight;
-            }
-            // 如果图片的宽高度>控件的宽高度，缩小 或者 如果图片的宽高度<控件的宽高度，放大
-            if ((bitmapWidth > width && bitmapHeight > height) || (bitmapWidth < width && bitmapHeight < height)) {
-                float f1 = width * 1.0f / bitmapWidth;
-                float f2 = height * 1.0f / bitmapHeight;
-                scale = Math.min(f1, f2);
-            }
-
-            // 初始化缩放值
-            mInitScale = scale;
-            mMaxScale = mInitScale * 4;
-
-            // 得到移动的距离
-            int dx = width / 2 - bitmapWidth / 2;
-            int dy = height / 2 - bitmapHeight / 2;
-
-            // 平移
-            mMatrix.postTranslate(dx, dy);
-
-            // 在控件的中心缩放
-            mMatrix.postScale(scale, scale, width / 2, height / 2);
-
-            // 设置矩阵
-            setImageMatrix(mMatrix);
-
-            // 关于matrix，就是个3*3的矩阵
-            /**
-             * xscale xskew xtrans yskew yscale ytrans 0 0 0
-             */
-
-            isOnce = true;
-        }
+//        if (!isOnce) {
+//
+//            // 获得控件的宽高
+//            int width = getWidth();
+//            int height = getHeight();
+//
+//            Drawable drawable = getDrawable();
+//            if (drawable == null) {
+//                return;
+//            }
+//
+//            // 获得图片的宽高
+//            int bitmapWidth = drawable.getIntrinsicWidth();
+//            int bitmapHeight = drawable.getIntrinsicHeight();
+//
+//            // 设定比例值
+//            float scale = 1.0f;
+//
+////            // 如果图片的宽度>控件的宽度，缩小
+////            if (bitmapWidth > width && bitmapHeight < height) {
+////                scale = width * 1.0f / bitmapWidth;
+////            }
+////            // 如果图片的高度>控件的高度，缩小
+////            if (bitmapHeight > height && bitmapWidth < width) {
+////                scale = height * 1.0f / bitmapHeight;
+////            }
+////            // 如果图片的宽高度>控件的宽高度，缩小 或者 如果图片的宽高度<控件的宽高度，放大
+////            if ((bitmapWidth > width && bitmapHeight > height) || (bitmapWidth < width && bitmapHeight < height)) {
+////                float f1 = width * 1.0f / bitmapWidth;
+////                float f2 = height * 1.0f / bitmapHeight;
+////                scale = Math.min(f1, f2);
+////            }
+//
+//            // 初始化缩放值
+//            mInitScale = scale;
+//            mMaxScale = mInitScale * 4;
+//
+////            // 得到移动的距离
+////            int dx = width / 2 - bitmapWidth / 2;
+////            int dy = height / 2 - bitmapHeight / 2;
+////
+////            // 平移
+////            mMatrix.postTranslate(dx, dy);
+////
+////            // 在控件的中心缩放
+////            mMatrix.postScale(scale, scale, width / 2, height / 2);
+////
+////            // 设置矩阵
+////            setImageMatrix(mMatrix);
+//
+//            // 关于matrix，是个3*3的矩阵
+//            isOnce = true;
+//        }
     }
 
     /**
@@ -169,7 +208,7 @@ public class ScaleView extends AppCompatImageView implements OnGlobalLayoutListe
     }
 
     /**
-     * 获得缩放值
+     * 获得当前的缩放比例
      *
      * @return
      */
@@ -187,7 +226,6 @@ public class ScaleView extends AppCompatImageView implements OnGlobalLayoutListe
      */
     @Override
     public boolean onScale(ScaleGestureDetector detector) {
-        // 如果没有图片，返回
         if (getDrawable() == null) {
             return true;
         }
@@ -221,8 +259,7 @@ public class ScaleView extends AppCompatImageView implements OnGlobalLayoutListe
 
 //            Log.i("wsf","intentScale: "+intentScale+"   ,scale:  "+scale+"   ,mMaxScale: "+mMaxScale+"  ,mInitScale: "+mInitScale);
 
-            // 检测边界与中心点
-            checkSideAndCenterWhenScale();
+//            checkSideAndCenterWhenScale();
 
             setImageMatrix(mMatrix);
         }
@@ -264,6 +301,9 @@ public class ScaleView extends AppCompatImageView implements OnGlobalLayoutListe
         return rectF;
     }
 
+    /**
+     * 检测边界与中心点
+     */
     private void checkSideAndCenterWhenScale() {
         RectF rectF = getMatrixRectF();
         float deltaX = 0f;
@@ -315,7 +355,6 @@ public class ScaleView extends AppCompatImageView implements OnGlobalLayoutListe
     @Override
     public boolean onTouch(View v, MotionEvent event) {
 
-        // 把事件传递给缩放手势
         mScaleGesture.onTouchEvent(event);
 
         float x = event.getX();
@@ -399,9 +438,8 @@ public class ScaleView extends AppCompatImageView implements OnGlobalLayoutListe
 
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
-                // 清楚手指
+                // 清除手指
                 mLastPointerCount = 0;
-
                 break;
         }
 
@@ -423,4 +461,20 @@ public class ScaleView extends AppCompatImageView implements OnGlobalLayoutListe
         return Math.sqrt(dx * dx + dy * dy) > mTouchSlop;
     }
 
+    /**
+     * 图片裁剪
+     */
+    public Bitmap crop() {
+        if (getDrawable() == null) {
+            return null;
+        }
+
+        //拿到裁剪区域宽高
+        Bitmap saveBitmap = Bitmap.createBitmap((int) mRestrictRect.right, (int) mRestrictRect.bottom, Bitmap.Config.ARGB_4444);
+        Canvas canvas = new Canvas(saveBitmap);
+        //当裁剪超出图片边界，超出区域以颜色填充
+        canvas.drawColor(Color.BLACK);
+        draw(canvas);
+        return saveBitmap;
+    }
 }

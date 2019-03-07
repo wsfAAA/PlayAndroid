@@ -1,11 +1,11 @@
 package test.opendingding.com.othermodule.activity;
 
+import android.graphics.Bitmap;
 import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.ViewGroup;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -14,19 +14,34 @@ import test.opendingding.com.othermodule.view.ScaleView;
 
 public class PicActivity extends AppCompatActivity {
 
-    /**
-     * 问题点
-     * 1、边界限制
-     * 2、图片截取
-     *
-     * @param savedInstanceState
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pic);
         final ScaleView scaleView = findViewById(R.id.ll);
+        scaleView.setImageResource(R.drawable.cover1);
         final TextView tvRect = findViewById(R.id.tv_rect);
+        final ImageView imgPic = findViewById(R.id.img_pic);
+        findViewById(R.id.bt).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bitmap crop = scaleView.crop();
+                if (crop != null) {
+                    imgPic.setVisibility(View.VISIBLE);
+                    imgPic.setImageBitmap(crop);
+                } else {
+                    imgPic.setVisibility(View.GONE);
+                }
+            }
+        });
+
+        findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imgPic.setVisibility(View.GONE);
+            }
+        });
+
         scaleView.post(new Runnable() {
             @Override
             public void run() {
@@ -34,13 +49,7 @@ public class PicActivity extends AppCompatActivity {
                 layoutParams.width = scaleView.getWidth();
                 layoutParams.height = 600;
 
-                int centerX = layoutParams.width/ 2;
-                int centerY = layoutParams.height / 2;
-                int shapeLeft = centerX - layoutParams.width / 2;
-                int shapeRight = centerX + layoutParams.width / 2;
-                int shapeTop = centerY - layoutParams.height / 2;
-                int shapeBottom = centerY + layoutParams.height / 2;
-                RectF rectF = new RectF(shapeLeft, shapeTop, shapeRight, shapeBottom);
+                RectF rectF = new RectF(0, 0, layoutParams.width, layoutParams.height);
                 scaleView.setRestrict(rectF);
                 tvRect.setLayoutParams(layoutParams);
             }

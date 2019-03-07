@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import test.opendingding.com.othermodule.R;
+import test.opendingding.com.othermodule.activity.clippic.MainActivity2;
 import test.opendingding.com.othermodule.popupclient.*;
 
 public class MainActivity extends AppCompatActivity {
@@ -56,6 +57,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, PicActivity.class));
+            }
+        });
+        findViewById(R.id.bnt7).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, MainActivity2.class));
             }
         });
     }

@@ -43,4 +43,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="图片平移、缩放"/>
+
+    <Button
+        android:id="@+id/bnt7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="hy图片截取"/>
 </LinearLayout>

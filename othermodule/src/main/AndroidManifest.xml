@@ -23,7 +23,9 @@
         <activity android:name=".activity.DialogActivity" />
         <activity android:name=".activity.RetrofitActivity" />
         <activity android:name=".activity.ScaleImageActivity" />
-        <activity android:name=".activity.PicActivity"></activity>
+        <activity android:name=".activity.PicActivity"/>
+        <activity android:name=".activity.clippic.MainActivity2"/>
+        <activity android:name=".activity.clippic.ShowImageActivity"/>
     </application>
 
 </manifest>

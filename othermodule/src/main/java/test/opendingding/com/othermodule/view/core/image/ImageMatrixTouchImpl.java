@@ -140,24 +140,23 @@ public class ImageMatrixTouchImpl extends BaseTouchImpl<ImageView> implements Sc
         mView.getImageMatrix().postTranslate(moveX, moveY);
         //  Log.i(TAG, "Matrix Move: motionX" + motionX + " motionY" + motionY);
         //  Log.i(TAG, "Matrix Move: mLastX" + mLastX+ " mLastY" + mLastY);
-        Log.i("wsf", "moveX; " + moveX + " moveY; " + moveY);
+//        Log.i("wsf", "moveX; " + moveX + " moveY; " + moveY);
         mView.invalidate();
     }
 
 
     public float getScrollY() {
-
-
         double sourceCenterY = (mView.getTop() + mView.getBottom()) * 1.0 / 2;
         double afterCenterY = getCurrentRectF().centerY();
+        Log.i("wsf","getTop: "+mView.getTop()+"   getBottom:  "+mView.getBottom()+"     "+(mView.getTop() + mView.getBottom())+  "    ,afterCenterY: "+afterCenterY);
         return (float) (afterCenterY - sourceCenterY);
     }
 
 
     public float getScrollX() {
-
         double sourceCenterX = (mView.getLeft() + mView.getRight()) * 1.0 / 2;
         int afterCenterX = (int) getCurrentRectF().centerX();
+        Log.i("wsf","getLeft: "+mView.getLeft()+"   getRight:  "+mView.getRight()+"     "+(mView.getLeft() + mView.getRight())+  "    ,afterCenterX: "+afterCenterX);
         return (float) (afterCenterX - sourceCenterX);
     }
 
