@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.RectF;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -26,6 +27,7 @@ public class PicActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Bitmap crop = scaleView.crop();
+                Log.i("wsf","picwidth: "+crop.getWidth()+"    picheight: "+crop.getHeight());
                 if (crop != null) {
                     imgPic.setVisibility(View.VISIBLE);
                     imgPic.setImageBitmap(crop);
@@ -46,10 +48,12 @@ public class PicActivity extends AppCompatActivity {
             @Override
             public void run() {
                 RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) tvRect.getLayoutParams();
-                layoutParams.width = scaleView.getWidth();
+                layoutParams.width = scaleView.getWidth()-200;
                 layoutParams.height = 600;
 
                 RectF rectF = new RectF(0, 0, layoutParams.width, layoutParams.height);
+
+                Log.i("wsf","width: "+layoutParams.width+"    height: "+layoutParams.height);
                 scaleView.setRestrict(rectF);
                 tvRect.setLayoutParams(layoutParams);
             }

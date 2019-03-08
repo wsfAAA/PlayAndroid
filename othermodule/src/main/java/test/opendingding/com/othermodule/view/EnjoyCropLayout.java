@@ -221,7 +221,6 @@ public class EnjoyCropLayout extends FrameLayout {
         canvas.drawBitmap(bitmap, cropRect, showRect, new Paint());
 
         return saveBitmap;
-
     }
 
 

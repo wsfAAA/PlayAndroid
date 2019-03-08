@@ -9,10 +9,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.Rect;
 import android.graphics.RectF;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
@@ -24,9 +21,6 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.ViewConfiguration;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-
-import test.opendingding.com.othermodule.view.core.IShape;
-import test.opendingding.com.othermodule.view.core.debug.L;
 
 public class ScaleView extends AppCompatImageView implements OnGlobalLayoutListener, OnScaleGestureListener, OnTouchListener {
 
@@ -214,9 +208,6 @@ public class ScaleView extends AppCompatImageView implements OnGlobalLayoutListe
      */
     public float getScale() {
         float[] values = new float[9];
-        /**
-         * Copy 9 values from the matrix into the array.
-         */
         mMatrix.getValues(values);
         return values[Matrix.MSCALE_X];
     }
@@ -284,7 +275,7 @@ public class ScaleView extends AppCompatImageView implements OnGlobalLayoutListe
     }
 
     /**
-     * 获得图片缩放后的矩阵
+     * 根据当前图片的Matrix获得图片的范围
      *
      * @return
      */
@@ -403,30 +394,30 @@ public class ScaleView extends AppCompatImageView implements OnGlobalLayoutListe
                     if (getDrawable() == null) {
                         return true;
                     }
-
-                    /**
-                     * 边界限制
-                     */
-                    if (mRestrictRect != null) {
-                        if (dx > 0) {
-                            if (rectF.left + dx > mRestrictRect.left) {
-                                dx = mRestrictRect.left - rectF.left;
-                            }
-                        } else {
-                            if (rectF.right + dx < mRestrictRect.right) {
-                                dx = mRestrictRect.right - rectF.right;
-                            }
-                        }
-                        if (dy > 0) {
-                            if (rectF.top + dy > mRestrictRect.top) {
-                                dy = mRestrictRect.top - rectF.top;
-                            }
-                        } else {
-                            if (rectF.bottom + dy < mRestrictRect.bottom) {
-                                dy = mRestrictRect.bottom - rectF.bottom;
-                            }
-                        }
-                    }
+//                    Log.i("wsf","mRestrictRect:  "+mRestrictRect+"  ,rectF: "+rectF+"    ,dx: "+dx+"  ,dy: "+dy);
+//                    /**
+//                     * 移动 边界限制
+//                     */
+//                    if (mRestrictRect != null) {
+//                        if (dx > 0) {
+//                            if (rectF.left + dx > mRestrictRect.left) {
+//                                dx = mRestrictRect.left - rectF.left;
+//                            }
+//                        } else {
+//                            if (rectF.right + dx < mRestrictRect.right) {
+//                                dx = mRestrictRect.right - rectF.right;
+//                            }
+//                        }
+//                        if (dy > 0) {
+//                            if (rectF.top + dy > mRestrictRect.top) {
+//                                dy = mRestrictRect.top - rectF.top;
+//                            }
+//                        } else {
+//                            if (rectF.bottom + dy < mRestrictRect.bottom) {
+//                                dy = mRestrictRect.bottom - rectF.bottom;
+//                            }
+//                        }
+//                    }
                     mMatrix.postTranslate(dx, dy);
                     setImageMatrix(mMatrix);
                 }
@@ -468,8 +459,6 @@ public class ScaleView extends AppCompatImageView implements OnGlobalLayoutListe
         if (getDrawable() == null) {
             return null;
         }
-
-        //拿到裁剪区域宽高
         Bitmap saveBitmap = Bitmap.createBitmap((int) mRestrictRect.right, (int) mRestrictRect.bottom, Bitmap.Config.ARGB_4444);
         Canvas canvas = new Canvas(saveBitmap);
         //当裁剪超出图片边界，超出区域以颜色填充
