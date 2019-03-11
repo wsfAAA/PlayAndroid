@@ -26,11 +26,7 @@ public class ScaleImageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scale_image);
 
-        /**
-         *
-         * 1、图片缩放，能缩小比原图小
-         * 2、图片预览截取框问题， 设置超出图片范围图片可以自由移动 可以不在截取框之内
-         */
+
         back = findViewById(R.id.back);
         img_pic = findViewById(R.id.img_pic);
         enjoyCropLayout = (EnjoyCropLayout) findViewById(R.id.ll);

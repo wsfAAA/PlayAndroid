@@ -7,13 +7,11 @@ package test.opendingding.com.othermodule.view;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.ScaleGestureDetector.OnScaleGestureListener;
@@ -60,6 +58,7 @@ public class ScaleView extends AppCompatImageView implements OnGlobalLayoutListe
      * 限制图片的范围
      */
     private RectF mRestrictRect;
+    private float mIntentScale;
 
 
     public ScaleView(Context context, AttributeSet attrs) {
@@ -88,41 +87,6 @@ public class ScaleView extends AppCompatImageView implements OnGlobalLayoutListe
          * 系统提供了这样的方法。表示滑动的时候，手的移动要大于这个返回的距离值才开始移动控件。
          */
         mTouchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
-    }
-
-
-    /**
-     * 在屏幕中心显示,这里来自于ImageView的源码
-     */
-    private void postCenter() {
-        post(new Runnable() {
-            @Override
-            public void run() {
-                if (getDrawable() == null) {
-                    return;
-                }
-                final int dwidth = getDrawable().getIntrinsicWidth();
-                final int dheight = getDrawable().getIntrinsicHeight();
-
-                final int vwidth = getWidth() - getPaddingLeft() - getPaddingRight();
-                final int vheight = getHeight() - getPaddingTop() - getPaddingBottom();
-                float scale;
-                float dx = 0, dy = 0;
-
-                if (dwidth * vheight > vwidth * dheight) {
-                    scale = (float) vheight / (float) dheight;
-                    dx = (vwidth - dwidth * scale) * 0.5f;
-                } else {
-                    scale = (float) vwidth / (float) dwidth;
-                    dy = (vheight - dheight * scale) * 0.5f;
-                }
-                Matrix matrix = new Matrix();
-                matrix.setScale(scale, scale);
-                matrix.postTranslate(Math.round(dx), Math.round(dy));
-                setImageMatrix(matrix);
-            }
-        });
-
     }
 
     @Override
@@ -220,7 +184,7 @@ public class ScaleView extends AppCompatImageView implements OnGlobalLayoutListe
         if (getDrawable() == null) {
             return true;
         }
-        // 缩放因子，>0表示正在放大，<0表示正在缩小
+        // 缩放因子，>1表示正在放大，<1表示正在缩小
         float intentScale = detector.getScaleFactor();
         float scale = getScale();
 
@@ -242,15 +206,15 @@ public class ScaleView extends AppCompatImageView implements OnGlobalLayoutListe
                 intentScale = mMaxScale / scale;
             }
 
+            mIntentScale = intentScale;
+
             // 以控件为中心缩放
             // mMatrix.postScale(intentScale, intentScale, getWidth()/2,
             // getHeight()/2);
             // 以手势为中心缩放
             mMatrix.postScale(intentScale, intentScale, detector.getFocusX(), detector.getFocusY());
 
-//            Log.i("wsf","intentScale: "+intentScale+"   ,scale:  "+scale+"   ,mMaxScale: "+mMaxScale+"  ,mInitScale: "+mInitScale);
-
-//            checkSideAndCenterWhenScale();
+            checkSideAndCenterWhenScale();
 
             setImageMatrix(mMatrix);
         }
@@ -284,9 +248,7 @@ public class ScaleView extends AppCompatImageView implements OnGlobalLayoutListe
         RectF rectF = new RectF();
         Drawable drawable = getDrawable();
         if (drawable != null) {
-            // 初始化矩阵
             rectF.set(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
-            // 移动s  将此矩阵应用于矩形，并将变换后的矩形写回其中
             matrix.mapRect(rectF);
         }
         return rectF;
@@ -394,30 +356,29 @@ public class ScaleView extends AppCompatImageView implements OnGlobalLayoutListe
                     if (getDrawable() == null) {
                         return true;
                     }
-//                    Log.i("wsf","mRestrictRect:  "+mRestrictRect+"  ,rectF: "+rectF+"    ,dx: "+dx+"  ,dy: "+dy);
-//                    /**
-//                     * 移动 边界限制
-//                     */
-//                    if (mRestrictRect != null) {
-//                        if (dx > 0) {
-//                            if (rectF.left + dx > mRestrictRect.left) {
-//                                dx = mRestrictRect.left - rectF.left;
-//                            }
-//                        } else {
-//                            if (rectF.right + dx < mRestrictRect.right) {
-//                                dx = mRestrictRect.right - rectF.right;
-//                            }
-//                        }
-//                        if (dy > 0) {
-//                            if (rectF.top + dy > mRestrictRect.top) {
-//                                dy = mRestrictRect.top - rectF.top;
-//                            }
-//                        } else {
-//                            if (rectF.bottom + dy < mRestrictRect.bottom) {
-//                                dy = mRestrictRect.bottom - rectF.bottom;
-//                            }
-//                        }
-//                    }
+                    /**
+                     * 移动 边界限制
+                     */
+                    if (mRestrictRect != null) {
+                        if (dx > 0) {
+                            if (rectF.left + dx > mRestrictRect.left) {
+                                dx = mRestrictRect.left - rectF.left;
+                            }
+                        } else {
+                            if (rectF.right + dx < mRestrictRect.right) {
+                                dx = mRestrictRect.right - rectF.right;
+                            }
+                        }
+                        if (dy > 0) {
+                            if (rectF.top + dy > mRestrictRect.top) {
+                                dy = mRestrictRect.top - rectF.top;
+                            }
+                        } else {
+                            if (rectF.bottom + dy < mRestrictRect.bottom) {
+                                dy = mRestrictRect.bottom - rectF.bottom;
+                            }
+                        }
+                    }
                     mMatrix.postTranslate(dx, dy);
                     setImageMatrix(mMatrix);
                 }
@@ -452,6 +413,33 @@ public class ScaleView extends AppCompatImageView implements OnGlobalLayoutListe
         return Math.sqrt(dx * dx + dy * dy) > mTouchSlop;
     }
 
+//    /**
+//     * 图片裁剪
+//     */
+//    public Bitmap crop() {
+//        if (getDrawable() == null) {
+//            return null;
+//        }
+//        if (mRestrictRect == null) {
+//            return null;
+//        }
+//        Bitmap saveBitmap = Bitmap.createBitmap((int) mRestrictRect.right, (int) mRestrictRect.bottom, Bitmap.Config.ARGB_4444);
+//        Canvas canvas = new Canvas(saveBitmap);
+//        /**
+//         * 当截取框宽度<图片宽度，canvas 图片截取是从左上角开始的canvas需要移动空白区域
+//         */
+//        float v = getWidth() - mRestrictRect.right;
+//        float leftPadding = v / 2;
+//        if (v > 0) {
+//            canvas.translate(-leftPadding, 0);
+//            draw(canvas);
+//        } else {
+//            draw(canvas);
+//        }
+//        return saveBitmap;
+//    }
+
+
     /**
      * 图片裁剪
      */
@@ -459,11 +447,19 @@ public class ScaleView extends AppCompatImageView implements OnGlobalLayoutListe
         if (getDrawable() == null) {
             return null;
         }
-        Bitmap saveBitmap = Bitmap.createBitmap((int) mRestrictRect.right, (int) mRestrictRect.bottom, Bitmap.Config.ARGB_4444);
-        Canvas canvas = new Canvas(saveBitmap);
-        //当裁剪超出图片边界，超出区域以颜色填充
-        canvas.drawColor(Color.BLACK);
+        Bitmap tmpBitmap = Bitmap.createBitmap(getWidth(), getHeight(),
+                Bitmap.Config.RGB_565);
+        Canvas canvas = new Canvas(tmpBitmap);
         draw(canvas);
-        return saveBitmap;
+
+        Matrix matrix = new Matrix();
+        matrix.postScale(mIntentScale, mIntentScale);
+
+        Bitmap ret = Bitmap.createBitmap(tmpBitmap, (int) mRestrictRect.left,
+                (int) mRestrictRect.top, (int) mRestrictRect.width(),
+                (int) mRestrictRect.height(), matrix, true);
+        tmpBitmap.recycle();
+        tmpBitmap = null;
+        return ret;
     }
 }

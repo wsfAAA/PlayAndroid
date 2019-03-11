@@ -26,12 +26,6 @@
             android:layout_centerHorizontal="true"
             android:background="@drawable/rect_xuxian" />
 
-        <ImageView
-            android:id="@+id/img_pic"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone" />
-
     </RelativeLayout>
 
     <RelativeLayout

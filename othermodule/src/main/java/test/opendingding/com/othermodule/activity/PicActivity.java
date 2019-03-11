@@ -1,5 +1,6 @@
 package test.opendingding.com.othermodule.activity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.RectF;
 import android.os.Bundle;
@@ -10,7 +11,11 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.io.ByteArrayOutputStream;
+
 import test.opendingding.com.othermodule.R;
+import test.opendingding.com.othermodule.activity.clippic.MainActivity2;
+import test.opendingding.com.othermodule.activity.clippic.ShowImageActivity;
 import test.opendingding.com.othermodule.view.ScaleView;
 
 public class PicActivity extends AppCompatActivity {
@@ -22,25 +27,18 @@ public class PicActivity extends AppCompatActivity {
         final ScaleView scaleView = findViewById(R.id.ll);
         scaleView.setImageResource(R.drawable.cover1);
         final TextView tvRect = findViewById(R.id.tv_rect);
-        final ImageView imgPic = findViewById(R.id.img_pic);
         findViewById(R.id.bt).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Bitmap crop = scaleView.crop();
-                Log.i("wsf","picwidth: "+crop.getWidth()+"    picheight: "+crop.getHeight());
-                if (crop != null) {
-                    imgPic.setVisibility(View.VISIBLE);
-                    imgPic.setImageBitmap(crop);
-                } else {
-                    imgPic.setVisibility(View.GONE);
-                }
-            }
-        });
 
-        findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                imgPic.setVisibility(View.GONE);
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                crop.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                byte[] datas = baos.toByteArray();
+
+                Intent intent = new Intent(PicActivity.this, ShowImageActivity.class);
+                intent.putExtra("bitmap", datas);
+                startActivity(intent);
             }
         });
 
@@ -51,7 +49,7 @@ public class PicActivity extends AppCompatActivity {
                 layoutParams.width = scaleView.getWidth()-200;
                 layoutParams.height = 600;
 
-                RectF rectF = new RectF(0, 0, layoutParams.width, layoutParams.height);
+                RectF rectF = new RectF(100, 0, layoutParams.width+100, layoutParams.height);
 
                 Log.i("wsf","width: "+layoutParams.width+"    height: "+layoutParams.height);
                 scaleView.setRestrict(rectF);

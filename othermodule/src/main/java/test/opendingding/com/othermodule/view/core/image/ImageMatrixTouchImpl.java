@@ -148,15 +148,13 @@ public class ImageMatrixTouchImpl extends BaseTouchImpl<ImageView> implements Sc
     public float getScrollY() {
         double sourceCenterY = (mView.getTop() + mView.getBottom()) * 1.0 / 2;
         double afterCenterY = getCurrentRectF().centerY();
-        Log.i("wsf","getTop: "+mView.getTop()+"   getBottom:  "+mView.getBottom()+"     "+(mView.getTop() + mView.getBottom())+  "    ,afterCenterY: "+afterCenterY);
         return (float) (afterCenterY - sourceCenterY);
     }
 
 
     public float getScrollX() {
         double sourceCenterX = (mView.getLeft() + mView.getRight()) * 1.0 / 2;
-        int afterCenterX = (int) getCurrentRectF().centerX();
-        Log.i("wsf","getLeft: "+mView.getLeft()+"   getRight:  "+mView.getRight()+"     "+(mView.getLeft() + mView.getRight())+  "    ,afterCenterX: "+afterCenterX);
+        int afterCenterX = (int) getCurrentRectF().centerX();//矩形的水平中心
         return (float) (afterCenterX - sourceCenterX);
     }
 
@@ -227,10 +225,10 @@ public class ImageMatrixTouchImpl extends BaseTouchImpl<ImageView> implements Sc
         mScale = mScale * scaleFactor;
         mView.getImageMatrix().postScale(scaleFactor, scaleFactor,
                 px, py);
-        L.error("scale:" + scaleFactor + " (" + px + "," + py + ")");
         mView.invalidate();
         return true;
     }
+
 
     @Override
     public boolean onScaleBegin(ScaleGestureDetector detector) {
