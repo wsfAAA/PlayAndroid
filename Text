@@ -5,6 +5,8 @@
     3、组件之间可以组合使用
     4、封装一套自己 base核心库         待完善
     5、分享、支付组件
+    6、组件之间通信
+        方式一：通过eventbus通信
 
 重构内容：
    1、文章列表 首页、搜索详情页、可以共用一个activity和adapter 和bean，还有建议把baselibrary不属于base层的东西提取到一个共用的moudle中
@@ -25,6 +27,8 @@ othermodule：里面是自己封装的一些东西没用在该项目中使用单
    c、封装网络请求rxjava + retrofit，详情见net包下  添加cookies处理
 
    h、添加 SmartRefreshLayout 自定义Header和Footer
+
+   g、在封装的basemvp中添加 eventbus 进行组件间通信
 
 
 --------------------------------------------------------------------------------------------------->

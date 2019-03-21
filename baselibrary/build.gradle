@@ -83,20 +83,19 @@ dependencies {
     //    api rootProject.ext.dependencies["converter-gson"]
 
     //Rxjava和Retrofit相关的依赖
-    compile 'com.squareup.okhttp3:logging-interceptor:3.8.1'
+    api 'com.squareup.okhttp3:logging-interceptor:3.8.1'    //拦截器
 
-    //拦截器
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    compile 'io.reactivex.rxjava2:rxjava:2.1.8'
-    compile 'com.squareup.retrofit2:retrofit:2.3.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
-    compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
-    compile 'com.squareup.retrofit2:converter-scalars:2.3.0'
+    api 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    api 'io.reactivex.rxjava2:rxjava:2.1.8'
+    api 'com.squareup.retrofit2:retrofit:2.3.0'
+    api 'com.squareup.retrofit2:converter-gson:2.3.0'
+    api 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    api 'com.squareup.retrofit2:converter-scalars:2.3.0'
 
     //String解析工厂
 
     //okthhp网络打印
-    compile('com.parkingwang:okhttp3-loginterceptor:latest.integration',
+    api('com.parkingwang:okhttp3-loginterceptor:latest.integration',
             { exclude group: 'com.squareup.okhttp3' })
 
     //数据加载控件
@@ -113,4 +112,5 @@ dependencies {
 
     api rootProject.ext.dependencies["cardview"]
 
+    api rootProject.ext.dependencies["eventbus"]
 }

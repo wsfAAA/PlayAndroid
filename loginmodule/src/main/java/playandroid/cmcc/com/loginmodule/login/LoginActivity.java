@@ -11,8 +11,11 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.blankj.utilcode.util.ToastUtils;
 
+import org.greenrobot.eventbus.EventBus;
+
 import butterknife.BindView;
 import butterknife.OnClick;
+import cmcc.com.playandroid.common.EventBusMessage;
 import playandroid.cmcc.com.baselibrary.mvp.BaseMvpActivity;
 import playandroid.cmcc.com.loginmodule.R;
 import playandroid.cmcc.com.loginmodule.R2;
@@ -78,15 +81,6 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> {
         etUserpassword.setText(data.getStringExtra(RegisterActivity.USERPASSWORD));
     }
 
-    /**
-     * 登录成功
-     *
-     * @param bean
-     */
-    public void loginSucceed(LoginRegisterBean bean) {
-        ToastUtils.showShort("登录成功:  " + bean.getData().getUsername() + "   " + bean.getData().getPassword());
-        finish();
-    }
 
     @Override
     public LoginPresenter creatPersenter() {

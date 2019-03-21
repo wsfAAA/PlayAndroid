@@ -1,10 +1,7 @@
 package cmcc.com.playandroid.activity;
 
 
-import android.util.Log;
-
 import cmcc.com.playandroid.bean.CommonListBean;
-import cmcc.com.playandroid.activity.DetailsContentPresenter;
 import playandroid.cmcc.com.baselibrary.api.BaseApiService;
 import playandroid.cmcc.com.baselibrary.mvp.BaseModel;
 import playandroid.cmcc.com.baselibrary.net.RxClient;

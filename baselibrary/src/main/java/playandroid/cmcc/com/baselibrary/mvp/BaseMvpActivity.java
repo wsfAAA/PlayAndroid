@@ -16,7 +16,7 @@ import playandroid.cmcc.com.baselibrary.view.BaseLoadingView;
 public abstract class BaseMvpActivity<P extends BasePresenter> extends BaseActivity {
 
     protected P mBasePresenter;
-    public BaseLoadingView mBaseLoadView;
+    public BaseLoadingView mBaseLoadView;   //加载状态  加载中、加载失败、null数据
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

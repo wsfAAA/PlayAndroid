@@ -19,6 +19,8 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.ToastUtils;
 
+import org.greenrobot.eventbus.Subscribe;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import cmcc.com.playandroid.R;
@@ -26,6 +28,7 @@ import cmcc.com.playandroid.activity.DetailsContentActivity;
 import cmcc.com.playandroid.adapter.NewMainViewPageAdapter;
 import cmcc.com.playandroid.common.CommonFinal;
 import cmcc.com.playandroid.common.CommonRequest;
+import cmcc.com.playandroid.common.EventBusMessage;
 import cmcc.com.playandroid.mvp.presenter.NewMainPresenter;
 import cmcc.com.playandroid.view.CustomScrollViewPager;
 import cmcc.com.playandroid.view.ScrollRecyclerView;
@@ -59,6 +62,21 @@ public class NewMainActivity extends BaseMvpActivity<NewMainPresenter>
     @Override
     protected int getLayoutResID() {
         return R.layout.activity_new_main;
+    }
+
+//    @Subscribe(sticky = true)
+    @Subscribe
+    public void onEvent(EventBusMessage eventBusMessage) {
+        if (eventBusMessage.getType().equals(EventBusMessage.EVENT_LOGIN_SUCCEED)) {
+            ToastUtils.showShort(eventBusMessage.getMessage());
+        }else if (eventBusMessage.getType().equals(EventBusMessage.EVENT_LOGIN_FIALUER)){
+            ToastUtils.showShort(eventBusMessage.getMessage());
+        }
+    }
+
+    @Override
+    protected boolean isReceiveEvent() {
+        return true;
     }
 
     @Override

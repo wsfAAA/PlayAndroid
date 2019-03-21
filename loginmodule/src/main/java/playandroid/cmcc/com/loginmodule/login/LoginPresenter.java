@@ -3,6 +3,9 @@ package playandroid.cmcc.com.loginmodule.login;
 
 import com.blankj.utilcode.util.ToastUtils;
 
+import org.greenrobot.eventbus.EventBus;
+
+import cmcc.com.playandroid.common.EventBusMessage;
 import playandroid.cmcc.com.baselibrary.mvp.BasePresenter;
 import playandroid.cmcc.com.loginmodule.bean.LoginRegisterBean;
 
@@ -17,11 +20,15 @@ public class LoginPresenter extends BasePresenter<LoginActivity, LoginModel> {
     }
 
     public void loginSucceed(LoginRegisterBean bean) {
-        mBaseView.loginSucceed(bean);
+//        ToastUtils.showShort("登录成功:  " + bean.getData().getUsername() + "   " + bean.getData().getPassword());
+        EventBus.getDefault().post(new EventBusMessage(EventBusMessage.EVENT_LOGIN_SUCCEED,"登录成功"));
+        mBaseView.finish();
     }
 
     public void loginFialuer(String meg) {
-        ToastUtils.showShort("登录失败： " + meg);
+//        ToastUtils.showShort("登录失败： " + meg);
+        EventBus.getDefault().post(new EventBusMessage(EventBusMessage.EVENT_LOGIN_FIALUER,meg));
+        mBaseView.finish();
     }
 
     @Override

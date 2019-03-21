@@ -54,5 +54,5 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
     annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
 
-    implementation project(':baselibrary')
+    implementation project(':commonmodule')//依赖公共库
 }
