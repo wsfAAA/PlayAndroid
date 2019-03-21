@@ -22,7 +22,7 @@ public class ClipImageLayout extends RelativeLayout {
     /**
      * 这里测试，直接写死了大小，真正使用过程中，可以提取为自定义属性
      */
-    private int mHorizontalPadding = 0;
+    private int mHorizontalPadding = 20;
 
     public ClipImageLayout(Context context, AttributeSet attrs) {
         super(context, attrs);

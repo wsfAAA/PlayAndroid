@@ -77,7 +77,7 @@ public class ScaleView extends AppCompatImageView implements OnGlobalLayoutListe
         mMatrix = new Matrix();
         // 设置缩放模式
         super.setScaleType(ScaleType.MATRIX);
-//        postCenter();
+        postCenter();
 
         //是用于处理缩放的工具类 ScaleGestureDetector 方法onScale、onScaleBegin、onScaleEnd
         mScaleGesture = new ScaleGestureDetector(context, this);
@@ -87,6 +87,39 @@ public class ScaleView extends AppCompatImageView implements OnGlobalLayoutListe
          * 系统提供了这样的方法。表示滑动的时候，手的移动要大于这个返回的距离值才开始移动控件。
          */
         mTouchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
+    }
+
+    /**
+     * 在屏幕中心显示,这里来自于ImageView的源码
+     */
+    private void postCenter() {
+        post(new Runnable() {
+            @Override
+            public void run() {
+                if (getDrawable() == null) {
+                    return;
+                }
+                final int dwidth = getDrawable().getIntrinsicWidth();
+                final int dheight = getDrawable().getIntrinsicHeight();
+
+                final int vwidth = getWidth() - getPaddingLeft() - getPaddingRight();
+                final int vheight = getHeight() - getPaddingTop() - getPaddingBottom();
+                float scale;
+                float dx = 0, dy = 0;
+
+                if (dwidth * vheight > vwidth * dheight) {
+                    scale = (float) vheight / (float) dheight;
+                    dx = (vwidth - dwidth * scale) * 0.5f;
+                } else {
+                    scale = (float) vwidth / (float) dwidth;
+                    dy = (vheight - dheight * scale) * 0.5f;
+                }
+                Matrix matrix = new Matrix();
+                matrix.setScale(scale, scale);
+                matrix.postTranslate(Math.round(dx), Math.round(dy));
+                setImageMatrix(matrix);
+            }
+        });
     }
 
     @Override
@@ -452,12 +485,9 @@ public class ScaleView extends AppCompatImageView implements OnGlobalLayoutListe
         Canvas canvas = new Canvas(tmpBitmap);
         draw(canvas);
 
-        Matrix matrix = new Matrix();
-        matrix.postScale(mIntentScale, mIntentScale);
-
         Bitmap ret = Bitmap.createBitmap(tmpBitmap, (int) mRestrictRect.left,
                 (int) mRestrictRect.top, (int) mRestrictRect.width(),
-                (int) mRestrictRect.height(), matrix, true);
+                (int) mRestrictRect.height());
         tmpBitmap.recycle();
         tmpBitmap = null;
         return ret;

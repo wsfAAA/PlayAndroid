@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     private LinearLayout mLinear;
     private PopupClient build;
-    private test.opendingding.com.othermodule.popupclient.WebViewBarMore mWebViewBarMore;
+    private WebViewBarMore mWebViewBarMore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void popup() {
         if (mWebViewBarMore == null) {
-            mWebViewBarMore = new test.opendingding.com.othermodule.popupclient.WebViewBarMore();
+            mWebViewBarMore = new WebViewBarMore();
         }
         //指定位置
 //        mWebViewBarMore.showPopup(mLinear, ScreenUtils.getScreenWidth(), 0);

@@ -25,7 +25,7 @@ public class PicActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pic);
         final ScaleView scaleView = findViewById(R.id.ll);
-        scaleView.setImageResource(R.drawable.cover1);
+        scaleView.setImageResource(R.drawable.tst1);
         final TextView tvRect = findViewById(R.id.tv_rect);
         findViewById(R.id.bt).setOnClickListener(new View.OnClickListener() {
             @Override

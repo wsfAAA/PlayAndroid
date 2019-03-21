@@ -3,13 +3,13 @@ package test.opendingding.com.othermodule.view;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
 
-import test.opendingding.com.othermodule.R;
 
 /**
  * @author zhy
@@ -35,7 +35,7 @@ public class ClipImageBorderView extends View {
     /**
      * 边框的宽度 单位dp
      */
-    private int mBorderWidth = 1;
+    private int mBorderWidth = 2;
 
     private Paint mPaint;
 
@@ -60,7 +60,6 @@ public class ClipImageBorderView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-//        setBackgroundResource(R.drawable.rect_xuxian);
         // 计算矩形区域的宽度
         mWidth = getWidth() - 2 * mHorizontalPadding;
         // 计算距离屏幕垂直边界 的边距
@@ -79,9 +78,11 @@ public class ClipImageBorderView extends View {
         canvas.drawRect(mHorizontalPadding, getHeight() - mVerticalPadding,
                 getWidth() - mHorizontalPadding, getHeight(), mPaint);
         // 绘制外边框
-        mPaint.setColor(mBorderColor);
+//        mPaint.setColor(mBorderColor);
+        mPaint.setColor(Color.RED);
         mPaint.setStrokeWidth(mBorderWidth);
         mPaint.setStyle(Style.STROKE);
+        mPaint.setPathEffect(new DashPathEffect(new float[] {20, 8}, 0));
         canvas.drawRect(mHorizontalPadding, mVerticalPadding, getWidth()
                 - mHorizontalPadding, getHeight() - mVerticalPadding, mPaint);
     }
