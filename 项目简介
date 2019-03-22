@@ -1,12 +1,13 @@
 
 目的：
     1、每个组件都可以单独运行          完成
-    2、组件直接相互解耦
+    2、组件直接相互解耦                待完善
     3、组件之间可以组合使用
     4、封装一套自己 base核心库         待完善
     5、分享、支付组件
-    6、组件之间通信
-        方式一：通过eventbus通信
+    6、组件之间通信                    完善
+        方式一：通过eventbus通信       详见
+        方式二：通过arouter进行通信
 
 重构内容：
    1、文章列表 首页、搜索详情页、可以共用一个activity和adapter 和bean，还有建议把baselibrary不属于base层的东西提取到一个共用的moudle中
@@ -15,6 +16,16 @@
 全局统一配置文中修改 isModule ，true单独调试 false 集成调试
 
 othermodule：里面是自己封装的一些东西没用在该项目中使用单独拿出来
+
+--------------------------------------------------------------------------------------------------->
+
+项目依赖关系：
+1、app          依赖 commonmodule(implementation)、loginmodule和searchmodule（runtimeOnly）
+2、baselibrary  依赖 第三方依赖    使用api
+3、commonmodule 依赖 baselibrary  （api）、idataservice（api）
+4、idataservice 依赖 baselibrary  （api）
+5、loginmodule  依赖 commonmodule （implementation）
+6、searchmodule 依赖 commonmodule （implementation）
 
 --------------------------------------------------------------------------------------------------->
 
@@ -28,7 +39,7 @@ othermodule：里面是自己封装的一些东西没用在该项目中使用单
 
    h、添加 SmartRefreshLayout 自定义Header和Footer
 
-   g、在封装的basemvp中添加 eventbus 进行组件间通信
+   g、在封装的basemvp中添加 eventbus 进行组件间通信 ，使用参考 EventBusMessage.EVENT_LOGIN_SUCCEED
 
 
 --------------------------------------------------------------------------------------------------->
@@ -39,6 +50,7 @@ othermodule：里面是自己封装的一些东西没用在该项目中使用单
 
 
 --------------------------------------------------------------------------------------------------->
+
 三、主工程 app
    a、使用runtimeOnly 依赖其它组件  隔离代码
    b、底部导航使用  BottomNavigationView+Fragment+ViewPager
@@ -47,11 +59,13 @@ othermodule：里面是自己封装的一些东西没用在该项目中使用单
 
 
 --------------------------------------------------------------------------------------------------->
+
 四、搜索  searchmodule
     1、技术点
             a、热词 点击传值通过setTag进行传值
 
 --------------------------------------------------------------------------------------------------->
+
 五、commonmodule  公共库   为其他业务module提供 公共的页面 适配器  共用的view功能 等
 
     1、封装webview，本webview加载和跳转页面加载 使用mIsLoadUrl做区分，使用注意在对应的module中的清单文件测试WebviewActivity,
@@ -61,7 +75,15 @@ othermodule：里面是自己封装的一些东西没用在该项目中使用单
 
     3、封装banner 提供三种样式 3d走廊效果、平铺效果、一般banner
 
+
 --------------------------------------------------------------------------------------------------->
+
+六、idataservice 组件交互传值   处理组件之间通信
+
+    1、使用arouter组件通信、传值  参考 ISearchService 使用
+
+--------------------------------------------------------------------------------------------------->
+
 问题：
    1、baselibrary库中引用butterknife，在module中R2为空问题
       现解决方案： 在module中也添加butterknife的引用，不够完善 后期优化        已解决
@@ -72,7 +94,8 @@ othermodule：里面是自己封装的一些东西没用在该项目中使用单
      butterknife在android studio3.0上最高只能使用8.4.0
 
 --------------------------------------------------------------------------------------------------->
-代码解耦：使用implementation主项目中依旧是可以访问到 login 中代码，需要采用3.0的runtimeOnly 进行隔离。
+
+代码解耦：使用implementation主项目中依旧是可以访问到 login 中代码(不可以访问第三方库)，需要采用3.0的runtimeOnly 进行隔离。
 资源隔离：可以把公用的资源图片或其它提取到base中，或者使用resourcePrefix，
          但 resourcePrefix 配置只能限定 res 中 xml 文件中定义的资源，并不能限定图片资源
 

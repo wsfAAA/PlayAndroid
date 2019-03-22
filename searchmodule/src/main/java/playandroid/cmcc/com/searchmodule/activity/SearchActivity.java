@@ -31,7 +31,7 @@ import playandroid.cmcc.com.searchmodule.adapter.SearchItemBinder;
 import playandroid.cmcc.com.searchmodule.bean.SearchHotKey;
 import playandroid.cmcc.com.searchmodule.presenter.SearchPresenter;
 
-@Route(path = "/home/search")
+@Route(path = CommonFinal.AROUTER_SEARCH)
 public class SearchActivity extends BaseMvpActivity<SearchPresenter> {
 
     @BindView(R2.id.img_search_back)

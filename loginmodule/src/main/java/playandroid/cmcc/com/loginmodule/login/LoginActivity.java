@@ -15,6 +15,7 @@ import org.greenrobot.eventbus.EventBus;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import cmcc.com.playandroid.common.CommonFinal;
 import cmcc.com.playandroid.common.EventBusMessage;
 import playandroid.cmcc.com.baselibrary.mvp.BaseMvpActivity;
 import playandroid.cmcc.com.loginmodule.R;
@@ -23,7 +24,7 @@ import playandroid.cmcc.com.loginmodule.bean.LoginRegisterBean;
 import playandroid.cmcc.com.loginmodule.register.RegisterActivity;
 
 
-@Route(path = "/account/login")
+@Route(path = CommonFinal.AROUTER_LOGIN)
 public class LoginActivity extends BaseMvpActivity<LoginPresenter> {
 
     @BindView(R2.id.et_username)

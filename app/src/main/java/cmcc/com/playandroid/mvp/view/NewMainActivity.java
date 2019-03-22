@@ -16,8 +16,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.ToastUtils;
+import com.ccm.idataservice.search.ISearchService;
 
 import org.greenrobot.eventbus.Subscribe;
 
@@ -27,7 +29,6 @@ import cmcc.com.playandroid.R;
 import cmcc.com.playandroid.activity.DetailsContentActivity;
 import cmcc.com.playandroid.adapter.NewMainViewPageAdapter;
 import cmcc.com.playandroid.common.CommonFinal;
-import cmcc.com.playandroid.common.CommonRequest;
 import cmcc.com.playandroid.common.EventBusMessage;
 import cmcc.com.playandroid.mvp.presenter.NewMainPresenter;
 import cmcc.com.playandroid.view.CustomScrollViewPager;
@@ -59,17 +60,18 @@ public class NewMainActivity extends BaseMvpActivity<NewMainPresenter>
     private Fragment[] mFragments;
     private NewMainViewPageAdapter mNewMainViewPageAdapter;
 
+
     @Override
     protected int getLayoutResID() {
         return R.layout.activity_new_main;
     }
 
-//    @Subscribe(sticky = true)
+    //    @Subscribe(sticky = true)
     @Subscribe
     public void onEvent(EventBusMessage eventBusMessage) {
         if (eventBusMessage.getType().equals(EventBusMessage.EVENT_LOGIN_SUCCEED)) {
             ToastUtils.showShort(eventBusMessage.getMessage());
-        }else if (eventBusMessage.getType().equals(EventBusMessage.EVENT_LOGIN_FIALUER)){
+        } else if (eventBusMessage.getType().equals(EventBusMessage.EVENT_LOGIN_FIALUER)) {
             ToastUtils.showShort(eventBusMessage.getMessage());
         }
     }
@@ -217,7 +219,15 @@ public class NewMainActivity extends BaseMvpActivity<NewMainPresenter>
                 }
                 break;
             case R.id.m_img_search:
-                ARouter.getInstance().build(CommonFinal.AROUTER_SEARCH).navigation();
+                // TODO: 2019/3/22 使用路由跳转 
+//                ARouter.getInstance().build(CommonFinal.AROUTER_SEARCH).navigation();
+
+                // TODO: 2019/3/22 组件通信 接口跳转
+                //方式一
+                ISearchService navigation = (ISearchService) ARouter.getInstance().build(CommonFinal.AROUTER_SEARCH_TEST).navigation();
+                navigation.goToSearch(this,"欢迎收搜");
+                //方式二
+//                ARouter.getInstance().navigation(ISearchService.class).goToSearch(this,"欢迎收搜");
                 break;
             case R.id.m_fab:
                 if (mNewMainViewPageAdapter != null) {

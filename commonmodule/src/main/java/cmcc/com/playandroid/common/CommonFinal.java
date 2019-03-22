@@ -10,6 +10,8 @@ public class CommonFinal {
     public static final String AROUTER_LOGIN = "/account/login";
     public static final String AROUTER_SEARCH = "/home/search";
 
+    public static final String AROUTER_SEARCH_TEST = "/home/search/service";
+
     // sp 存储常量
 
     // intent 常量
