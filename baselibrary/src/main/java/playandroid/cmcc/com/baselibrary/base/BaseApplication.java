@@ -3,6 +3,7 @@ package playandroid.cmcc.com.baselibrary.base;
 import android.app.Application;
 import android.content.Context;
 import android.support.multidex.MultiDex;
+import android.util.Log;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.Utils;
@@ -67,6 +68,8 @@ public class BaseApplication extends Application {
         MultiDex.install(this);
         initARouter();
         initUtils();
+
+        Log.i("wsf","BaseApplication  onCreate");
     }
 
     /**

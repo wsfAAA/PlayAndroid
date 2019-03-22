@@ -1,1 +1,1 @@
-include ':app', ':loginmodule', ':baselibrary', ':searchmodule', ':othermodule', ':commonmodule'
+include ':app', ':loginmodule', ':baselibrary', ':searchmodule', ':othermodule', ':commonmodule', ':idataservice'
