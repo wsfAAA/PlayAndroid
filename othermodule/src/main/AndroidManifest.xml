@@ -3,6 +3,11 @@
     package="test.opendingding.com.othermodule">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".MyApp"
@@ -23,9 +28,11 @@
         <activity android:name=".activity.DialogActivity" />
         <activity android:name=".activity.RetrofitActivity" />
         <activity android:name=".activity.ScaleImageActivity" />
-        <activity android:name=".activity.PicActivity"/>
-        <activity android:name=".activity.clippic.MainActivity2"/>
-        <activity android:name=".activity.clippic.ShowImageActivity"/>
+        <activity android:name=".activity.PicActivity" />
+        <activity android:name=".activity.clippic.MainActivity2" />
+        <activity android:name=".activity.clippic.ShowImageActivity" />
+        <activity android:name=".QRcode.QRCodeActivity" />
+        <activity android:name=".activity.PermissionsActivity"></activity>
     </application>
 
 </manifest>
