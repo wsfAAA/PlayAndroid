@@ -79,7 +79,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //相机权限
-                String[] permissions = new String[]{Manifest.permission.CAMERA};
+                String[] permissions = new String[]{ Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA};
 
                 PermissionsUtils.showSystemSetting = false;//是否支持显示系统设置权限设置窗口跳转
                 PermissionsUtils.getInstance().chekPermissions(MainActivity.this, permissions, permissionsResult);

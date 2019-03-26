@@ -32,7 +32,9 @@
         <activity android:name=".activity.clippic.MainActivity2" />
         <activity android:name=".activity.clippic.ShowImageActivity" />
         <activity android:name=".QRcode.QRCodeActivity" />
-        <activity android:name=".activity.PermissionsActivity"></activity>
+        <activity android:name=".activity.PermissionsActivity"/>
+        <activity android:name=".QRcode.SecondActivity"/>
+        <activity android:name=".QRcode.ThreeActivity"/>
     </application>
 
 </manifest>
