@@ -12,12 +12,6 @@ android {
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [moduleName: project.getName()]
-            }
-        }
         multiDexEnabled true
     }
 
@@ -60,7 +54,6 @@ dependencies {
 
     //ARouter路由
     api rootProject.ext.dependencies["arouter-api"]
-//    annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
 
     //butterknife
     api rootProject.ext.dependencies["butterknife"]

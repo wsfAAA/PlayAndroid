@@ -5,6 +5,11 @@ if (Boolean.valueOf(rootProject.ext.isModule)) {//单独调试
 }
 apply plugin: 'com.jakewharton.butterknife'
 
+// arouter配置
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
 android {
     compileSdkVersion rootProject.ext.versions.compileSdkVersion
 
@@ -19,12 +24,13 @@ android {
         versionName rootProject.ext.versions.versionName
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
 
-        // 这是为了让ARouter知道这个模块区别于其他模块 不然报错
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [moduleName: project.getName()]
-            }
+    // arouter配置
+    kapt {
+        generateStubs = true
+        arguments {
+            arg("moduleName", project.getName())
         }
     }
 
@@ -51,7 +57,8 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
-    annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
+    // arouter配置 kapt取代 annotationProcessor
+    kapt rootProject.ext.dependencies["arouter-compiler"]
 
     implementation project(':commonmodule')//依赖公共库
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
