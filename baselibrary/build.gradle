@@ -12,7 +12,7 @@ android {
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-        // 所有使用到 ARouter 的组件和模块的 build.gradle 都要添加
+
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [moduleName: project.getName()]
@@ -60,7 +60,7 @@ dependencies {
 
     //ARouter路由
     api rootProject.ext.dependencies["arouter-api"]
-    annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
+//    annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
 
     //butterknife
     api rootProject.ext.dependencies["butterknife"]

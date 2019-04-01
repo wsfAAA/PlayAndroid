@@ -9,6 +9,7 @@ public class CommonFinal {
     //Arouter  路由常量
     public static final String AROUTER_LOGIN = "/account/login";
     public static final String AROUTER_SEARCH = "/home/search";
+    public static final String AROUTER_KOTLIN = "/account/kotlin";
 
     public static final String AROUTER_SEARCH_TEST = "/home/search/service";
 

@@ -40,6 +40,7 @@ ext {
             // arouter-compiler 的注解依赖需要所有使用 ARouter 的 model 都添加依赖  butterknife-compiler也一样
             "arouter-compiler"    : 'com.alibaba:arouter-compiler:1.1.4',
 
+
             //butterknife
             "butterknife"         : 'com.jakewharton:butterknife:8.4.0',
             "butterknife-compiler": 'com.jakewharton:butterknife-compiler:8.4.0',

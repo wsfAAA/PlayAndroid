@@ -12,7 +12,7 @@ android {
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-        // 所有使用到 ARouter 的组件和模块的 build.gradle 都要添加
+        // 这是为了让ARouter知道这个模块区别于其他模块 不然报错
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [moduleName: project.getName()]
@@ -37,5 +37,6 @@ dependencies {
     if (!Boolean.valueOf(rootProject.ext.isModule)) {
         runtimeOnly project(':loginmodule')//依赖登录库
         runtimeOnly project(':searchmodule')//搜索依赖库
+        runtimeOnly project(':kotlinmodule')//kotion编程库
     }
 }

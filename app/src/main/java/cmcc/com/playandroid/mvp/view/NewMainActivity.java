@@ -66,7 +66,7 @@ public class NewMainActivity extends BaseMvpActivity<NewMainPresenter>
         return R.layout.activity_new_main;
     }
 
-    //    @Subscribe(sticky = true)
+    //    @Subscribe(sticky = true)  通过eventbus 组件通信
     @Subscribe
     public void onEvent(EventBusMessage eventBusMessage) {
         if (eventBusMessage.getType().equals(EventBusMessage.EVENT_LOGIN_SUCCEED)) {
@@ -169,7 +169,7 @@ public class NewMainActivity extends BaseMvpActivity<NewMainPresenter>
     @Override
     public void onBackPressed() {
         if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
-            mDrawerLayout.closeDrawer(GravityCompat.START);   //关闭侧拉
+            mDrawerLayout.closeDrawer(GravityCompat.START);   //关闭侧滑菜单
         } else {
             super.onBackPressed();
         }
@@ -178,7 +178,7 @@ public class NewMainActivity extends BaseMvpActivity<NewMainPresenter>
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // TODO: 2018/12/29 侧拉页面菜单id
+        // TODO: 2018/12/29 侧滑页面菜单id
         int id = item.getItemId();
         if (id == R.id.nav_login) { //登录
             ARouter.getInstance().build(CommonFinal.AROUTER_LOGIN).navigation();
@@ -187,6 +187,8 @@ public class NewMainActivity extends BaseMvpActivity<NewMainPresenter>
             intent.putExtra(CommonFinal.INTENT_TYPE, 3);
             intent.putExtra(CommonFinal.PAGE_TITLE, "我的收藏列表");
             startActivity(intent);
+        } else if (id == R.id.nav_kotlin) {
+            ARouter.getInstance().build(CommonFinal.AROUTER_KOTLIN).navigation();
         }
         return true;
     }
@@ -215,7 +217,7 @@ public class NewMainActivity extends BaseMvpActivity<NewMainPresenter>
                 if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
                     mDrawerLayout.closeDrawer(GravityCompat.START);
                 } else {
-                    mDrawerLayout.openDrawer(GravityCompat.START); //打开侧拉
+                    mDrawerLayout.openDrawer(GravityCompat.START); //打开侧滑菜单
                 }
                 break;
             case R.id.m_img_search:
@@ -225,7 +227,7 @@ public class NewMainActivity extends BaseMvpActivity<NewMainPresenter>
                 // TODO: 2019/3/22 组件通信 接口跳转
                 //方式一
                 ISearchService navigation = (ISearchService) ARouter.getInstance().build(CommonFinal.AROUTER_SEARCH_TEST).navigation();
-                navigation.goToSearch(this,"欢迎收搜");
+                navigation.goToSearch(this, "欢迎收搜");
                 //方式二
 //                ARouter.getInstance().navigation(ISearchService.class).goToSearch(this,"欢迎收搜");
                 break;

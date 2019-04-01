@@ -20,12 +20,14 @@ othermodule：里面是自己封装的一些东西没用在该项目中使用单
 --------------------------------------------------------------------------------------------------->
 
 项目依赖关系：
-1、app          依赖 commonmodule(implementation)、loginmodule和searchmodule（runtimeOnly）
+1、app          依赖 commonmodule(implementation)、loginmodule和searchmodule、kotlinmodule（runtimeOnly）
 2、baselibrary  依赖 第三方依赖    使用api
 3、commonmodule 依赖 baselibrary  （api）、idataservice（api）
 4、idataservice 依赖 baselibrary  （api）
 5、loginmodule  依赖 commonmodule （implementation）
 6、searchmodule 依赖 commonmodule （implementation）
+7、kotlinmodule 依赖 commonmodule （implementation）、kotlin相关
+8、项目gradle（PlayAndroid）   依赖 config配置文件、kotlin相关依赖、butterknife依赖、maven
 
 --------------------------------------------------------------------------------------------------->
 
@@ -85,6 +87,7 @@ othermodule：里面是自己封装的一些东西没用在该项目中使用单
 --------------------------------------------------------------------------------------------------->
 
 七、kotlinmodule kotlin语言使用和java的交互
+    1、arouter跳转问题
 
 --------------------------------------------------------------------------------------------------->
 
@@ -93,6 +96,7 @@ othermodule：里面是自己封装的一些东西没用在该项目中使用单
       现解决方案： 在module中也添加butterknife的引用，不够完善 后期优化        已解决
       已解决方案：annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0' 需在每个module和主工程中引用
                和arouter路由中的 annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'一样
+   2、kotlinmodule arouter跳转问题     没有解决
 
 注意：
      butterknife在android studio3.0上最高只能使用8.4.0
