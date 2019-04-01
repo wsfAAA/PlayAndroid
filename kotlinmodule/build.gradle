@@ -3,11 +3,11 @@ if (Boolean.valueOf(rootProject.ext.isModule)) {//单独调试
 } else {
     apply plugin: 'com.android.library'
 }
-apply plugin: 'com.jakewharton.butterknife'
 
 // arouter配置
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android'
+//启用扩展支持直接使用ID
 apply plugin: 'kotlin-android-extensions'
 
 android {
@@ -56,7 +56,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
     // arouter配置 kapt取代 annotationProcessor
     kapt rootProject.ext.dependencies["arouter-compiler"]
 

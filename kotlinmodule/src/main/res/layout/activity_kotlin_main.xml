@@ -6,10 +6,21 @@
     android:layout_height="match_parent"
     tools:context="kotlintest.com.kotlinmodule.mvp.view.KotlinMainActivity">
 
-    <TextView
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/mSmartRefresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="哈哈哈哈哈哈哈" />
+        android:layout_height="match_parent">
+
+        <cmcc.com.playandroid.view.ScrollRecyclerView
+            android:id="@+id/mRecyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+    <playandroid.cmcc.com.baselibrary.view.BaseLoadingView
+        android:id="@+id/mBaseLoadingView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </RelativeLayout>
