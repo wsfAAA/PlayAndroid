@@ -20,14 +20,14 @@ class KotlinModle : BaseModel<KotlinPersenter>() {
                     return
                 }
                 if (response.getErrorCode() == 0 && !response.getData().getDatas().isEmpty()) {
-                    mBasePresenter.homeListSucceed(response);
+                    mBasePresenter.homeListSucceed(response)
                 } else {
-                    mBasePresenter.homeListError();
+                    mBasePresenter.homeListError()
                 }
             }
 
             override fun rxOnError(e: Throwable?) {
-                mBasePresenter.homeListError();
+                mBasePresenter.homeListError()
             }
         })
     }

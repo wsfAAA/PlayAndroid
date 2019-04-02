@@ -1,9 +1,9 @@
 package kotlintest.com.kotlinmodule.mvp.persenter
 
-import cmcc.com.playandroid.adapter.CommonListViewBinder
 import cmcc.com.playandroid.bean.CommonListBean
 import com.blankj.utilcode.util.ToastUtils
 import kotlintest.com.kotlinmodule.BannerBean
+import kotlintest.com.kotlinmodule.adapter.KotlinIBannerBinder
 import kotlintest.com.kotlinmodule.adapter.KotlinItemBinder
 import kotlintest.com.kotlinmodule.mvp.module.KotlinModle
 import kotlintest.com.kotlinmodule.mvp.view.KotlinMainActivity
@@ -16,6 +16,7 @@ import playandroid.cmcc.com.baselibrary.mvp.BasePresenter
  */
 class KotlinPersenter : BasePresenter<KotlinMainActivity, KotlinModle>() {
     var isRefresh = false
+    var mCountPage = 0
     private lateinit var adapter: MultiTypeAdapter
     private lateinit var mItems: MutableList<Any>
 
@@ -24,10 +25,13 @@ class KotlinPersenter : BasePresenter<KotlinMainActivity, KotlinModle>() {
         mItems = ArrayList()
         adapter.items = mItems
 //        adapter.register(CommonListBean.DataBean.DatasBean::class.java,  CommonListViewBinder(mContext)) //使用java的公共 binder类
-
         var kotlinItemBinder = KotlinItemBinder()
         kotlinItemBinder.KotlinItemBinder(mContext)
         adapter.register(CommonListBean.DataBean.DatasBean::class.java, kotlinItemBinder)  //使用kotlin binder类
+
+        var kotlinIBannerBinder = KotlinIBannerBinder()
+        kotlinIBannerBinder.KotlinIBannerBinder(mContext)
+        adapter.register(BannerBean::class.java, kotlinIBannerBinder)
         return adapter
     }
 
@@ -35,31 +39,31 @@ class KotlinPersenter : BasePresenter<KotlinMainActivity, KotlinModle>() {
         return KotlinModle()
     }
 
-    fun requestListData(mCountPage: Int, b: Boolean) {
+    fun requestBanner(countPage: Int, b: Boolean) {
         isRefresh = b
-        mBaseModel.requestListData(mCountPage)
-    }
-
-    fun requestBanner() {
+        mCountPage = countPage
         mBaseModel.requestBannner()
     }
 
     fun bannerSucceed(response: BannerBean) {
-
+        if (isRefresh) {
+            mItems.clear()
+            if (response != null) {
+                mItems.add(0, response)
+            }
+        }
+        mBaseModel.requestListData(mCountPage)
     }
 
     fun bannerError() {
-
-
+        ToastUtils.showShort("bannner请求失败")
     }
 
     fun homeListSucceed(response: CommonListBean?) {
         if (response == null) {
             return
         }
-
         if (isRefresh) {
-            mItems.clear()
             mBaseView.mSmartRefresh.finishRefresh()
         } else {
             if (response.data.isOver) {
@@ -70,29 +74,26 @@ class KotlinPersenter : BasePresenter<KotlinMainActivity, KotlinModle>() {
         }
 
         for (index in response.data.datas.indices) {
-            var datasBean = response.data.datas[index]
-            mItems.add(datasBean)
+            mItems.add(response.data.datas[index])
         }
         adapter.notifyDataSetChanged()
         mBaseView.mBaseLoadView.showContent()
-
         ToastUtils.showShort("请求成功")
     }
 
     fun homeListError() {
         ToastUtils.showShort("请求失败")
         if (isRefresh) {
-            mBaseView.mSmartRefresh.finishRefresh(1000,false)
+            mBaseView.mSmartRefresh.finishRefresh(1000, false)
         } else {
-            mBaseView.mSmartRefresh.finishLoadMore(1000,false,false)
+            mBaseView.mSmartRefresh.finishLoadMore(1000, false, false)
         }
 
-        if (mItems!=null&&mItems.size > 0) {
+        if (mItems != null && mItems.size > 0) {
             mBaseView.mBaseLoadView.showContent()
         } else {
             mBaseView.mBaseLoadView.showEmptyData()
         }
     }
-
 }
 

@@ -30,8 +30,7 @@ class KotlinMainActivity : BaseMvpActivity<KotlinPersenter>() {
 
     override fun initView() {
         mBaseLoadView.showLoading()
-        mBasePresenter.requestListData(mCountPage, true)
-        mBasePresenter.requestBanner()
+        mBasePresenter.requestBanner(mCountPage,true)
 
         val layout = LinearLayoutManager(mContext)
         mRecyclerview.layoutManager = layout
@@ -41,14 +40,12 @@ class KotlinMainActivity : BaseMvpActivity<KotlinPersenter>() {
         mSmartRefresh.setOnRefreshLoadMoreListener(object : OnRefreshLoadMoreListener {
             override fun onRefresh(p0: RefreshLayout) {
                 mCountPage = 0
-                mBasePresenter.requestListData(mCountPage, true)
-                mBasePresenter.requestBanner()
+                mBasePresenter.requestBanner(mCountPage,true)
             }
 
             override fun onLoadMore(p0: RefreshLayout) {
                 mCountPage++
-                mBasePresenter.requestListData(mCountPage, false)
-                mBasePresenter.requestBanner()
+                mBasePresenter.requestBanner(mCountPage,false)
             }
         })
 
