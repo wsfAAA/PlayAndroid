@@ -38,7 +38,7 @@ class KotlinModle : BaseModel<KotlinPersenter>() {
                 if (response == null) {
                     return
                 }
-                if (response.getErrorCode() == 0 && !response.getData().isEmpty()) {
+                if (response.errorCode == 0 && !response.getData().isEmpty()) {
                     mBasePresenter.bannerSucceed(response);
                 } else {
                     mBasePresenter.bannerError();

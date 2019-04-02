@@ -7,6 +7,7 @@ import kotlintest.com.kotlinmodule.BannerBean
 import kotlintest.com.kotlinmodule.adapter.KotlinItemBinder
 import kotlintest.com.kotlinmodule.mvp.module.KotlinModle
 import kotlintest.com.kotlinmodule.mvp.view.KotlinMainActivity
+import kotlinx.android.synthetic.main.activity_kotlin_main.*
 import me.drakeet.multitype.MultiTypeAdapter
 import playandroid.cmcc.com.baselibrary.mvp.BasePresenter
 
@@ -23,7 +24,10 @@ class KotlinPersenter : BasePresenter<KotlinMainActivity, KotlinModle>() {
         mItems = ArrayList()
         adapter.items = mItems
 //        adapter.register(CommonListBean.DataBean.DatasBean::class.java,  CommonListViewBinder(mContext)) //使用java的公共 binder类
-        adapter.register(CommonListBean.DataBean.DatasBean::class.java,KotlinItemBinder())
+
+        var kotlinItemBinder = KotlinItemBinder()
+        kotlinItemBinder.KotlinItemBinder(mContext)
+        adapter.register(CommonListBean.DataBean.DatasBean::class.java, kotlinItemBinder)  //使用kotlin binder类
         return adapter
     }
 
@@ -38,7 +42,6 @@ class KotlinPersenter : BasePresenter<KotlinMainActivity, KotlinModle>() {
 
     fun requestBanner() {
         mBaseModel.requestBannner()
-
     }
 
     fun bannerSucceed(response: BannerBean) {
@@ -57,6 +60,13 @@ class KotlinPersenter : BasePresenter<KotlinMainActivity, KotlinModle>() {
 
         if (isRefresh) {
             mItems.clear()
+            mBaseView.mSmartRefresh.finishRefresh()
+        } else {
+            if (response.data.isOver) {
+                mBaseView.mSmartRefresh.finishLoadMoreWithNoMoreData()
+            } else {
+                mBaseView.mSmartRefresh.finishLoadMore()
+            }
         }
 
         for (index in response.data.datas.indices) {
@@ -64,11 +74,24 @@ class KotlinPersenter : BasePresenter<KotlinMainActivity, KotlinModle>() {
             mItems.add(datasBean)
         }
         adapter.notifyDataSetChanged()
+        mBaseView.mBaseLoadView.showContent()
+
         ToastUtils.showShort("请求成功")
     }
 
     fun homeListError() {
         ToastUtils.showShort("请求失败")
+        if (isRefresh) {
+            mBaseView.mSmartRefresh.finishRefresh(1000,false)
+        } else {
+            mBaseView.mSmartRefresh.finishLoadMore(1000,false,false)
+        }
+
+        if (mItems!=null&&mItems.size > 0) {
+            mBaseView.mBaseLoadView.showContent()
+        } else {
+            mBaseView.mBaseLoadView.showEmptyData()
+        }
     }
 
 }
