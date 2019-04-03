@@ -2,28 +2,17 @@ package kotlintest.com.kotlinmodule.adapter
 
 import android.content.Context
 import android.content.Intent
-import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
-import android.text.TextUtils
-import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import cmcc.com.playandroid.banner.BannerViewPager
 import cmcc.com.playandroid.banner.callback.IBannerOnClick
 import cmcc.com.playandroid.banner.callback.ILoaderImage
-import cmcc.com.playandroid.bean.CommonListBean
-import cmcc.com.playandroid.common.CommonFinal
-import cmcc.com.playandroid.common.CommonRequest
 import cmcc.com.playandroid.webview.WebviewActivity
-import com.alibaba.android.arouter.launcher.ARouter
-import com.blankj.utilcode.util.SPUtils
 import kotlintest.com.kotlinmodule.BannerBean
 import me.drakeet.multitype.ItemViewBinder
-import playandroid.cmcc.com.baselibrary.api.BaseApiService
-import playandroid.cmcc.com.baselibrary.net.interceptor.AddCookiesInterceptor
 import playandroid.cmcc.com.baselibrary.util.BaseUtils
 import playandroid.cmcc.com.baselibrary.util.WebViewRoute
 import kotlin.com.kotlinmodule.R
@@ -31,12 +20,12 @@ import kotlin.com.kotlinmodule.R
 /**
  * Created by wsf on 2019/4/1.   MultiType版本的 kotlin 使用
  */
-class KotlinIBannerBinder : ItemViewBinder<BannerBean, KotlinIBannerBinder.ViewHolder>() {
+class KotlinIBannerBinder() : ItemViewBinder<BannerBean, KotlinIBannerBinder.ViewHolder>() {
 
     lateinit var mContext: Context
     private lateinit var bannerUrl: MutableList<Any>
 
-    fun KotlinIBannerBinder(context: Context) {
+    constructor(context: Context) : this() {
         this.mContext = context
     }
 

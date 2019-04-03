@@ -25,13 +25,8 @@ class KotlinPersenter : BasePresenter<KotlinMainActivity, KotlinModle>() {
         mItems = ArrayList()
         adapter.items = mItems
 //        adapter.register(CommonListBean.DataBean.DatasBean::class.java,  CommonListViewBinder(mContext)) //使用java的公共 binder类
-        var kotlinItemBinder = KotlinItemBinder()
-        kotlinItemBinder.KotlinItemBinder(mContext)
-        adapter.register(CommonListBean.DataBean.DatasBean::class.java, kotlinItemBinder)  //使用kotlin binder类
-
-        var kotlinIBannerBinder = KotlinIBannerBinder()
-        kotlinIBannerBinder.KotlinIBannerBinder(mContext)
-        adapter.register(BannerBean::class.java, kotlinIBannerBinder)
+        adapter.register(CommonListBean.DataBean.DatasBean::class.java, KotlinItemBinder(mContext))  //使用kotlin binder类
+        adapter.register(BannerBean::class.java, KotlinIBannerBinder(mContext))
         return adapter
     }
 

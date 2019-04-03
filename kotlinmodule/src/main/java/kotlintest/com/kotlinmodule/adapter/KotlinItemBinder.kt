@@ -2,6 +2,8 @@ package kotlintest.com.kotlinmodule.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.os.Parcel
+import android.os.Parcelable
 import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
 import android.text.TextUtils
@@ -27,11 +29,11 @@ import kotlin.com.kotlinmodule.R
 /**
  * Created by wsf on 2019/4/1.   MultiType版本的 kotlin 使用
  */
-class KotlinItemBinder : ItemViewBinder<CommonListBean.DataBean.DatasBean, KotlinItemBinder.ViewHolder>() {
+class KotlinItemBinder() : ItemViewBinder<CommonListBean.DataBean.DatasBean, KotlinItemBinder.ViewHolder>() {
 
     lateinit var mContext: Context
 
-    fun KotlinItemBinder(context: Context) {
+    constructor(context: Context) : this() {
         this.mContext = context
     }
 
