@@ -18,7 +18,7 @@ android {
                 arguments = [moduleName: project.getName()]
             }
         }
-
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -32,7 +32,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
-
+    implementation rootProject.ext.dependencies["multidex"]
     implementation project(':commonmodule')//依赖公共库
     if (!Boolean.valueOf(rootProject.ext.isModule)) {
         runtimeOnly project(':loginmodule')//依赖登录库

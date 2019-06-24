@@ -103,6 +103,9 @@ othermodule：里面是自己封装的一些东西没用在该项目中使用单
    2、kotlinmodule arouter跳转问题     解决
            kotlin arouter配置和java的配置不同详情见 kotlinmodule.gradel
 
+   3、组件化 使用baselibrary多层依赖 multidex 出现com.android.dex.DexIndexOverflowException: field ID not in [0, 0xffff]: 65536
+       解决方案： 把multidex依赖 依赖到app的gradle中，但是baselibrary也要依赖
+
 注意：
      butterknife在android studio3.0上最高只能使用8.4.0
 

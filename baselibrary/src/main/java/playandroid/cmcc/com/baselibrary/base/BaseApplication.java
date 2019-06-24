@@ -1,8 +1,8 @@
 package playandroid.cmcc.com.baselibrary.base;
 
-import android.app.Application;
 import android.content.Context;
 import android.support.multidex.MultiDex;
+import android.support.multidex.MultiDexApplication;
 import android.util.Log;
 
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -26,7 +26,7 @@ import playandroid.cmcc.com.baselibrary.view.MiguShortVideoFooter;
  * 2、通过全局 context
  * 3、Activity管理器
  */
-public class BaseApplication extends Application {
+public class BaseApplication extends MultiDexApplication {
 
     private static BaseApplication application;
 
@@ -36,6 +36,7 @@ public class BaseApplication extends Application {
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
         application = this;
+        MultiDex.install(this);
     }
 
 
@@ -65,7 +66,6 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         application = this;
-        MultiDex.install(this);
         initARouter();
         initUtils();
 
