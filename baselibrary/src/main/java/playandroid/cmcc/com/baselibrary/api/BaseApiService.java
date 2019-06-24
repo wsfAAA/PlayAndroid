@@ -5,7 +5,8 @@ package playandroid.cmcc.com.baselibrary.api;
  */
 
 public class BaseApiService {
-    public static final String BASE_URL = "http://wanandroid.com/";
+//    public static final String BASE_URL = "http://wanandroid.com/";
+    public static final String BASE_URL = "https://www.wanandroid.com";
 
     ////////////////////////////////////搜索相关/////////////////////////////////////////
     /**
