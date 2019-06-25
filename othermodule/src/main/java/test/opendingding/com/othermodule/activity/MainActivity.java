@@ -93,6 +93,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this,PermissionsActivity.class));
             }
         });
+        findViewById(R.id.bnt9).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,HTMLActivity.class));
+            }
+        });
     }
 
     //创建监听权限的接口对象

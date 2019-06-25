@@ -61,4 +61,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="二维码" />
+
+
+    <Button
+        android:id="@+id/bnt9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Android和Web交互" />
 </LinearLayout>
