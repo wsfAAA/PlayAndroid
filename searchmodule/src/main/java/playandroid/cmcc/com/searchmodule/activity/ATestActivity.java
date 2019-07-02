@@ -20,7 +20,8 @@ public class ATestActivity extends AppCompatActivity {
         findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ARouter.getInstance().build(CommonFinal.AROUTER_HOME).navigation();
+//                ARouter.getInstance().build(CommonFinal.AROUTER_HOME).navigation();  // TODO: 2019/7/2  有问题，暂时不能确定
+                ARouter.getInstance().build(CommonFinal.AROUTER_KOTLIN).navigation();
             }
         });
         findViewById(R.id.btn2).setOnClickListener(new View.OnClickListener() {
