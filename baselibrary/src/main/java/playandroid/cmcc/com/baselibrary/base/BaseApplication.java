@@ -3,10 +3,14 @@ package playandroid.cmcc.com.baselibrary.base;
 import android.content.Context;
 import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.blankj.utilcode.util.ToastUtils;
 import com.blankj.utilcode.util.Utils;
+import com.ccm.idataservice.IServiceManager;
+import com.ccm.idataservice.TestCallBack;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreator;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreator;
@@ -26,7 +30,7 @@ import playandroid.cmcc.com.baselibrary.view.MiguShortVideoFooter;
  * 2、通过全局 context
  * 3、Activity管理器
  */
-public class BaseApplication extends MultiDexApplication {
+public class BaseApplication extends MultiDexApplication  implements TestCallBack {
 
     private static BaseApplication application;
 
@@ -69,6 +73,7 @@ public class BaseApplication extends MultiDexApplication {
         initARouter();
         initUtils();
 
+        IServiceManager.getInstance().getISearchService().testCallBack(this);
         Log.i("wsf","BaseApplication  onCreate");
     }
 
@@ -135,4 +140,14 @@ public class BaseApplication extends MultiDexApplication {
         return activityManage;
     }
 
+    /**
+     * ARouter 全局传值
+     * @param mes
+     */
+    @Override
+    public void testString(String mes) {
+        if (!TextUtils.isEmpty(mes)){
+            ToastUtils.showShort(mes);
+        }
+    }
 }

@@ -27,7 +27,7 @@ import playandroid.cmcc.com.baselibrary.mvp.IBaseView;
  * Created by wsf on 2018/11/6.
  */
 
-public abstract class BaseActivity extends FragmentActivity implements IBaseView , TestCallBack {
+public abstract class BaseActivity extends FragmentActivity implements IBaseView {
 
     protected final String TAG = getClass().getSimpleName();
 
@@ -53,7 +53,6 @@ public abstract class BaseActivity extends FragmentActivity implements IBaseView
         }
 
         Log.i("cesi---->", "BaseActivity onCreate");
-        IServiceManager.getInstance().getISearchService().testCallBack(this);
     }
 
     private void setContentView() {
@@ -93,17 +92,6 @@ public abstract class BaseActivity extends FragmentActivity implements IBaseView
      */
     protected boolean isReceiveEvent() {
         return false;
-    }
-
-    /**
-     * ARouter 全局传值
-     * @param mes
-     */
-    @Override
-    public void testString(String mes) {
-        if (!TextUtils.isEmpty(mes)){
-            ToastUtils.showShort(mes);
-        }
     }
 
     @Override

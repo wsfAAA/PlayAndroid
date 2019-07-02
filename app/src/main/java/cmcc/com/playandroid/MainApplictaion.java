@@ -9,7 +9,7 @@ import playandroid.cmcc.com.baselibrary.base.BaseApplication;
  * Created by wsf on 2018/9/6.
  * 主项目的 Application
  */
-public class MainApplictaion extends BaseApplication {
+public class MainApplictaion extends BaseApplication  {
 
     @Override
     public void onCreate() {

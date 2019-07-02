@@ -8,6 +8,7 @@
     6、组件之间通信                    完善
         方式一：通过eventbus通信       详见
         方式二：通过arouter进行通信    参考 ISearchService 使用
+                添加arouter全局传值
 
 重构内容：
    1、文章列表 首页、搜索详情页、可以共用一个activity和adapter 和bean，还有建议把baselibrary不属于base层的东西提取到一个共用的moudle中
