@@ -2,10 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="playandroid.cmcc.com.searchmodule">
 
-    <!--集成调试使用-->
+    <!-- 集成调试使用 -->
     <application android:theme="@style/AppTheme">
-        <activity android:name=".activity.SearchActivity"/>
-        <activity android:name="cmcc.com.playandroid.webview.WebviewActivity"/>
+        <activity android:name=".activity.SearchActivity" />
+        <activity android:name="cmcc.com.playandroid.webview.WebviewActivity" />
+        <activity android:name=".activity.ATestActivity"></activity>
     </application>
 
 </manifest>

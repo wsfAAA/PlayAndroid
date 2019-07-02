@@ -3,6 +3,7 @@ package com.ccm.idataservice.search;
 import android.content.Context;
 
 import com.alibaba.android.arouter.facade.template.IProvider;
+import com.ccm.idataservice.TestCallBack;
 
 /**
  * Created by wsf on 2019/3/22.
@@ -17,4 +18,6 @@ public interface ISearchService extends IProvider {
     void initSDK(Context context);
 
     void goToSearch(Context context,String message);
+
+    void testCallBack(TestCallBack testCallBack);
 }

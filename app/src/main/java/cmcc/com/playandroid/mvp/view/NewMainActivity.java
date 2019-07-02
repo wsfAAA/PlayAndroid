@@ -11,14 +11,18 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.ToastUtils;
+import com.ccm.idataservice.IServiceManager;
+import com.ccm.idataservice.TestCallBack;
 import com.ccm.idataservice.search.ISearchService;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -36,7 +40,7 @@ import cmcc.com.playandroid.view.ScrollRecyclerView;
 import playandroid.cmcc.com.baselibrary.mvp.BaseMvpActivity;
 
 public class NewMainActivity extends BaseMvpActivity<NewMainPresenter>
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener ,TestCallBack {
 
     @BindView(R.id.m_img_open_deawer)
     ImageView mImgOpenDeawer;
@@ -59,6 +63,7 @@ public class NewMainActivity extends BaseMvpActivity<NewMainPresenter>
 
     private Fragment[] mFragments;
     private NewMainViewPageAdapter mNewMainViewPageAdapter;
+    private ISearchService iSearchService;
 
 
     @Override
@@ -83,6 +88,7 @@ public class NewMainActivity extends BaseMvpActivity<NewMainPresenter>
 
     @Override
     protected void initView() {
+        iSearchService = IServiceManager.getInstance().getISearchService();
         mFragments = mBasePresenter.initFragment();
         mNewMainToolbar.setContentInsetsAbsolute(0, 0);  //去除Toolbar默认左边距
         mNavView.setNavigationItemSelectedListener(this);
@@ -226,16 +232,25 @@ public class NewMainActivity extends BaseMvpActivity<NewMainPresenter>
 
                 // TODO: 2019/3/22 组件通信 接口跳转
                 //方式一
-                ISearchService navigation = (ISearchService) ARouter.getInstance().build(CommonFinal.AROUTER_SEARCH_TEST).navigation();
-                navigation.goToSearch(this, "欢迎收搜");
-                //方式二
-//                ARouter.getInstance().navigation(ISearchService.class).goToSearch(this,"欢迎收搜");
+//                ISearchService navigation = (ISearchService) ARouter.getInstance().build(CommonFinal.AROUTER_SEARCH_TEST).navigation();
+//                navigation.goToSearch(this, "欢迎收搜");
+//                方式二
+                iSearchService.goToSearch(this,"欢迎收搜");
+                iSearchService.testCallBack(NewMainActivity.this);
+                Log.i("wsf","iSearchService:  "+iSearchService);
                 break;
             case R.id.m_fab:
                 if (mNewMainViewPageAdapter != null) {
                     mNewMainViewPageAdapter.scrollToPosition(0);
                 }
                 break;
+        }
+    }
+
+    @Override
+    public void testString(String mes) {
+        if (TextUtils.isEmpty(mes)){
+            ToastUtils.showShort(mes);
         }
     }
 }
