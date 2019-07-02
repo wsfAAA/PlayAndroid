@@ -27,5 +27,8 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    api project(':baselibrary')//依赖基础库
+//    api project(':baselibrary')//依赖基础库
+    //ARouter路由
+    implementation rootProject.ext.dependencies["arouter-api"]
+
 }

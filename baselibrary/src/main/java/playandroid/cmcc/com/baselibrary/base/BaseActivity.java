@@ -4,11 +4,16 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
+
+import com.blankj.utilcode.util.ToastUtils;
+import com.ccm.idataservice.IServiceManager;
+import com.ccm.idataservice.TestCallBack;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -22,7 +27,7 @@ import playandroid.cmcc.com.baselibrary.mvp.IBaseView;
  * Created by wsf on 2018/11/6.
  */
 
-public abstract class BaseActivity extends FragmentActivity implements IBaseView {
+public abstract class BaseActivity extends FragmentActivity implements IBaseView , TestCallBack {
 
     protected final String TAG = getClass().getSimpleName();
 
@@ -48,6 +53,7 @@ public abstract class BaseActivity extends FragmentActivity implements IBaseView
         }
 
         Log.i("cesi---->", "BaseActivity onCreate");
+        IServiceManager.getInstance().getISearchService().testCallBack(this);
     }
 
     private void setContentView() {
@@ -87,6 +93,17 @@ public abstract class BaseActivity extends FragmentActivity implements IBaseView
      */
     protected boolean isReceiveEvent() {
         return false;
+    }
+
+    /**
+     * ARouter 全局传值
+     * @param mes
+     */
+    @Override
+    public void testString(String mes) {
+        if (!TextUtils.isEmpty(mes)){
+            ToastUtils.showShort(mes);
+        }
     }
 
     @Override

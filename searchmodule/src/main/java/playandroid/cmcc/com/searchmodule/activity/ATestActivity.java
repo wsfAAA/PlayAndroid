@@ -31,5 +31,13 @@ public class ATestActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        findViewById(R.id.btn3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SearchService.getInstance().setTestString("全局--组件接口测试传值");
+                Log.i("wsf","SearchService.getInstance():  "+SearchService.getInstance());
+            }
+        });
     }
 }

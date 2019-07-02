@@ -17,8 +17,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.alibaba.android.arouter.facade.annotation.Autowired;
-import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.ToastUtils;
 import com.ccm.idataservice.IServiceManager;
@@ -249,7 +247,7 @@ public class NewMainActivity extends BaseMvpActivity<NewMainPresenter>
 
     @Override
     public void testString(String mes) {
-        if (TextUtils.isEmpty(mes)){
+        if (!TextUtils.isEmpty(mes)){
             ToastUtils.showShort(mes);
         }
     }
