@@ -240,6 +240,7 @@ public class NewMainActivity extends BaseMvpActivity<NewMainPresenter>
             case R.id.m_fab:
                 if (mNewMainViewPageAdapter != null) {
                     mNewMainViewPageAdapter.scrollToPosition(0);
+
                 }
                 break;
         }
