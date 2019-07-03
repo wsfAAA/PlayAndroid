@@ -31,7 +31,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
     implementation rootProject.ext.dependencies["multidex"]
     implementation project(':commonmodule')//依赖公共库
@@ -39,5 +38,6 @@ dependencies {
         runtimeOnly project(':loginmodule')//依赖登录库
         runtimeOnly project(':searchmodule')//搜索依赖库
         runtimeOnly project(':kotlinmodule')//kotion编程库
+        implementation project(':main_module')
     }
 }

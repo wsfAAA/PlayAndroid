@@ -29,6 +29,7 @@ othermodule：里面是自己封装的一些东西没用在该项目中使用单
 6、searchmodule 依赖 commonmodule （implementation）
 7、kotlinmodule 依赖 commonmodule （implementation）、kotlin相关
 8、项目gradle（PlayAndroid）   依赖 config配置文件、kotlin相关依赖、butterknife依赖、maven
+9、main_module 依赖 commonmodule （implementation）
 
 --------------------------------------------------------------------------------------------------->
 
@@ -91,6 +92,10 @@ othermodule：里面是自己封装的一些东西没用在该项目中使用单
     1、arouter 跳转问题
          kotlin arouter配置和java的配置不同详情见 kotlinmodule.gradel
          参考地址：https://blog.csdn.net/arrol1786936883/article/details/78255073
+
+--------------------------------------------------------------------------------------------------->
+八、main_module   主项目app
+
 
 --------------------------------------------------------------------------------------------------->
 

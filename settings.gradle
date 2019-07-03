@@ -1,1 +1,1 @@
-include ':app', ':loginmodule', ':baselibrary', ':searchmodule', ':othermodule', ':commonmodule', ':idataservice', ':kotlinmodule'
+include ':app', ':loginmodule', ':baselibrary', ':searchmodule', ':othermodule', ':commonmodule', ':idataservice', ':kotlinmodule', ':main_module'

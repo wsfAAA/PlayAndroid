@@ -10,6 +10,7 @@
       <module fileurl="file://$PROJECT_DIR$/idataservice/idataservice.iml" filepath="$PROJECT_DIR$/idataservice/idataservice.iml" />
       <module fileurl="file://$PROJECT_DIR$/kotlinmodule/kotlinmodule.iml" filepath="$PROJECT_DIR$/kotlinmodule/kotlinmodule.iml" />
       <module fileurl="file://$PROJECT_DIR$/loginmodule/loginmodule.iml" filepath="$PROJECT_DIR$/loginmodule/loginmodule.iml" />
+      <module fileurl="file://$PROJECT_DIR$/main_module/main_module.iml" filepath="$PROJECT_DIR$/main_module/main_module.iml" />
       <module fileurl="file://F:/AndroidWorkTow/PlayAndroid/commonmodule/mylibrary.iml" filepath="F:/AndroidWorkTow/PlayAndroid/commonmodule/mylibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/othermodule/othermodule.iml" filepath="$PROJECT_DIR$/othermodule/othermodule.iml" />
       <module fileurl="file://$PROJECT_DIR$/searchmodule/searchmodule.iml" filepath="$PROJECT_DIR$/searchmodule/searchmodule.iml" />
