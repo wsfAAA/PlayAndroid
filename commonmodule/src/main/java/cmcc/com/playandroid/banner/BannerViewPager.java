@@ -79,7 +79,7 @@ public class BannerViewPager extends FrameLayout implements View.OnTouchListener
         @Override
         public void handleMessage(Message msg) {
             BannerViewPager bannerViewPager = bannerHandler.get();
-            if (bannerViewPager.mViewPager == null) {
+            if (bannerViewPager==null||bannerViewPager.mViewPager == null) {
                 return;
             }
             if (msg.what == DELAY_TIME) {

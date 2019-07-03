@@ -23,7 +23,7 @@ android {
         // 这是为了让ARouter知道这个模块区别于其他模块 不然报错
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [ moduleName : project.getName() ]
+                arguments = [ AROUTER_MODULE_NAME : project.getName() ]
             }
         }
     }
@@ -46,6 +46,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    aaptOptions.cruncherEnabled = false
+    aaptOptions.useNewCruncher = false
+
 }
 
 dependencies {

@@ -15,7 +15,7 @@ android {
         // 这是为了让ARouter知道这个模块区别于其他模块 不然报错
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [moduleName: project.getName()]
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
             }
         }
         multiDexEnabled true
@@ -26,6 +26,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    aaptOptions.cruncherEnabled = false
+    aaptOptions.useNewCruncher = false
+
 }
 
 dependencies {
@@ -33,6 +36,7 @@ dependencies {
 
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
     implementation rootProject.ext.dependencies["multidex"]
+
     implementation project(':commonmodule')//依赖公共库
     if (!Boolean.valueOf(rootProject.ext.isModule)) {
         runtimeOnly project(':loginmodule')//依赖登录库

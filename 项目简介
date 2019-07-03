@@ -106,7 +106,7 @@ othermodule：里面是自己封装的一些东西没用在该项目中使用单
       已解决方案：annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0' 需在每个module和主工程中引用
                和arouter路由中的 annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'一样
 
-   2、kotlinmodule arouter跳转问题     解决
+   2、kotlinmodule arouter 跳转问题     解决
            kotlin arouter配置和java的配置不同详情见 kotlinmodule.gradel
 
    3、组件化 使用baselibrary多层依赖 multidex 出现com.android.dex.DexIndexOverflowException: field ID not in [0, 0xffff]: 65536

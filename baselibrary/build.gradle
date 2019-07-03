@@ -13,6 +13,12 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         multiDexEnabled true
+        // 这是为了让ARouter知道这个模块区别于其他模块 不然报错
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [ AROUTER_MODULE_NAME : project.getName() ]
+            }
+        }
     }
 
 
@@ -27,6 +33,8 @@ android {
     configurations.all {
         resolutionStrategy.force 'com.android.support:support-annotations:27.1.1'
     }
+    aaptOptions.cruncherEnabled = false
+    aaptOptions.useNewCruncher = false
 
 }
 
@@ -53,6 +61,7 @@ dependencies {
 
     //ARouter路由
     api rootProject.ext.dependencies["arouter-api"]
+    annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
 
     //butterknife
     api rootProject.ext.dependencies["butterknife"]

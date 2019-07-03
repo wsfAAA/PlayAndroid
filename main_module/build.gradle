@@ -22,7 +22,7 @@ android {
         // 这是为了让ARouter知道这个模块区别于其他模块 不然报错
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [ moduleName : project.getName() ]
+                arguments = [ AROUTER_MODULE_NAME : project.getName() ]
             }
         }
     }
@@ -45,6 +45,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    aaptOptions.cruncherEnabled = false
+    aaptOptions.useNewCruncher = false
 
 }
 
@@ -52,6 +54,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
-    annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
+//    annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
     implementation project(':commonmodule')//依赖公共库
 }
