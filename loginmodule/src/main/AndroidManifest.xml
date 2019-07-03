@@ -2,10 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="playandroid.cmcc.com.loginmodule">
 
-    <!--集成调试使用-->
+    <!-- 集成调试使用 -->
     <application android:theme="@style/AppTheme">
-        <activity android:name=".login.LoginActivity"/>
-        <activity android:name=".register.RegisterActivity"/>
+        <activity android:name=".login.LoginActivity" />
+        <activity android:name=".register.RegisterActivity" />
+        <activity android:name=".LoginTestActivity"></activity>
     </application>
 
 </manifest>

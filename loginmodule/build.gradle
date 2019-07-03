@@ -23,7 +23,7 @@ android {
         // 这是为了让ARouter知道这个模块区别于其他模块 不然报错
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [ AROUTER_MODULE_NAME : project.getName() ]
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
             }
         }
     }

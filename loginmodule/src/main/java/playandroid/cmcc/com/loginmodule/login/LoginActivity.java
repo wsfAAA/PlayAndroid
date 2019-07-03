@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.ToastUtils;
 
 import org.greenrobot.eventbus.EventBus;
@@ -67,6 +68,8 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> {
             } else {
                 mBasePresenter.login(username, userpassword);
             }
+
+//            ARouter.getInstance().build(CommonFinal.AROUTER_SEARCH).navigation();
         } else if (view.getId() == R.id.tv_register) {
             startActivityForResult(new Intent(this, RegisterActivity.class), REQUEST);
         }

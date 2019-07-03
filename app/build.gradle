@@ -42,6 +42,6 @@ dependencies {
         runtimeOnly project(':loginmodule')//依赖登录库
         runtimeOnly project(':searchmodule')//搜索依赖库
         runtimeOnly project(':kotlinmodule')//kotion编程库
-        implementation project(':main_module')
+        implementation project(':main_module') //主业务
     }
 }
