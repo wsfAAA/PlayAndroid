@@ -8,64 +8,98 @@
     android:orientation="vertical"
     tools:context="test.opendingding.com.othermodule.activity.MainActivity">
 
-    <Button
-        android:id="@+id/btn1"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="popupwindow使用" />
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Interfaced" />
+            <Button
+                android:id="@+id/btn1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="popupwindow使用" />
 
-    <Button
-        android:id="@+id/btn3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="dialog dialogfragment popupwindow" />
+            <Button
+                android:id="@+id/btn2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Interfaced" />
 
-    <Button
-        android:id="@+id/btn4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Retrofit Net" />
+            <Button
+                android:id="@+id/btn3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="dialog dialogfragment popupwindow" />
 
-    <Button
-        android:id="@+id/btn_quanxian"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="6.0权限 工具类"/>
+            <Button
+                android:id="@+id/btn4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Retrofit Net" />
 
-    <Button
-        android:id="@+id/bnt5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="图片选择" />
+            <Button
+                android:id="@+id/btn_quanxian"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="6.0权限 工具类" />
 
-    <Button
-        android:id="@+id/bnt6"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="图片平移、缩放" />
+            <Button
+                android:id="@+id/bnt5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="图片选择" />
 
-    <Button
-        android:id="@+id/bnt7"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="鸿洋 图片截取" />
+            <Button
+                android:id="@+id/bnt6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="图片平移、缩放" />
 
-    <Button
-        android:id="@+id/bnt8"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="二维码" />
+            <Button
+                android:id="@+id/bnt7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="鸿洋 图片截取" />
+
+            <Button
+                android:id="@+id/bnt8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="二维码" />
 
 
-    <Button
-        android:id="@+id/bnt9"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Android和Web交互" />
+            <Button
+                android:id="@+id/bnt9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Android和Web交互" />
+
+            <CheckBox
+                android:id="@+id/cb"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:button="@null"
+                android:visibility="visible"
+                android:background="@color/result_points"/>
+
+
+            <TextView
+                android:id="@+id/tv_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""/>
+
+            <Button
+                android:id="@+id/bnt10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="倒计时" />
+
+        </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>

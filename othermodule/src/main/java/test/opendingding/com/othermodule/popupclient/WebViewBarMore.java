@@ -34,7 +34,7 @@ public class WebViewBarMore {
 //                .animStyle(R.style.DialogBaseAnimation)
                 .width(ConvertUtils.dp2px(200))
                 .height(ConvertUtils.dp2px(120))
-                .clickType(PopupClickType.SCREEN_YES_AND_RETURN_KEY_YSE)
+                .clickType(PopupClickType.SCREEN_NO_AND_RETURN_KEY_NO_AND_WORK)
                 .build();
         unbinder = ButterKnife.bind(this, build.getView());
     }

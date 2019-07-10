@@ -3,13 +3,24 @@ package test.opendingding.com.othermodule.activity;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.os.CountDownTimer;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.TextPaint;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.blankj.utilcode.util.ToastUtils;
@@ -79,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //相机权限
-                String[] permissions = new String[]{ Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                String[] permissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
                         Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA};
 
                 PermissionsUtils.showSystemSetting = false;//是否支持显示系统设置权限设置窗口跳转
@@ -90,13 +101,89 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn_quanxian).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,PermissionsActivity.class));
+                startActivity(new Intent(MainActivity.this, PermissionsActivity.class));
             }
         });
+
+        final CheckBox checkBox = findViewById(R.id.cb);
+        checkBox.setChecked(true);
+
+        checkBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean checked = checkBox.isChecked();
+                boolean clickable = checkBox.isClickable();
+                Log.i("wsf","checked:  "+checked+"     clickable:  "+clickable);
+                if (checked){
+                    checkBox.setBackgroundResource(R.drawable.a);
+                }else {
+                    checkBox.setBackgroundResource(R.drawable.tbug);
+                }
+            }
+        });
+
+
         findViewById(R.id.bnt9).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,HTMLActivity.class));
+                startActivity(new Intent(MainActivity.this, HTMLActivity.class));
+            }
+        });
+
+        //TextView 多个颜色多个点击事件
+        TextView textView=findViewById(R.id.tv_text);
+        String tips = "咪咕提升了用户的安全性和隐私性， 并更新了《咪咕用户服务协议》和《咪咕隐私权政策》";
+        SpannableString spannableString=new SpannableString(tips);
+        spannableString.setSpan(new ClickableSpan() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "咪咕隐私权政策", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void updateDrawState(TextPaint ds) {
+                super.updateDrawState(ds);
+                ds.setColor(Color.BLUE);
+                ds.setUnderlineText(false);
+            }
+        },tips.length() - 9, tips.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        spannableString.setSpan(new ClickableSpan() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "咪咕用户服务协议", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void updateDrawState(TextPaint ds) {
+                super.updateDrawState(ds);
+                ds.setColor(Color.RED);
+                ds.setUnderlineText(false);
+            }
+        },tips.length() - 20, tips.length()-10,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+
+        textView.setMovementMethod(LinkMovementMethod.getInstance());//设置可点击状态
+        textView.setHighlightColor(Color.TRANSPARENT); //设置点击后的颜色为透明
+        textView.setText(spannableString);
+
+        final CountDownTimer mCountDownTimer = new CountDownTimer(10000, 1000) {
+
+            @Override
+            public void onTick(long millisUntilFinished) {
+                Log.i("wsf","millisUntilFinished:  "+millisUntilFinished);
+            }
+
+            @Override
+            public void onFinish() {
+                Log.i("wsf","onFinish"); //主动cancel onFinish 不会走
+            }
+        };
+        mCountDownTimer.start();
+        findViewById(R.id.bnt10).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mCountDownTimer.cancel();
             }
         });
     }

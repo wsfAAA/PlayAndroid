@@ -73,7 +73,9 @@ public class BaseApplication extends MultiDexApplication  implements TestCallBac
         initARouter();
         initUtils();
 
-        IServiceManager.getInstance().getISearchService().testCallBack(this);
+        if (IServiceManager.getInstance()!=null&&IServiceManager.getInstance().getISearchService()!=null){
+            IServiceManager.getInstance().getISearchService().testCallBack(this);
+        }
         Log.i("wsf","BaseApplication  onCreate");
     }
 

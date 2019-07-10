@@ -114,7 +114,7 @@ public class PopupClient extends PopupWindow {
             setFocusable(true);
 //            setBackgroundDrawable(new PaintDrawable());
         }
-        if (PopupClickType.SCREEN_NO_AND_RETURN_KEY_NO_AND_WORK == CLICK_TYPE) {//点击屏幕外不消失,返回键退出界面 popup外区域依旧可以操作
+        if (PopupClickType.SCREEN_NO_AND_RETURN_KEY_NO_AND_WORK == CLICK_TYPE) {//点击屏幕外不消失 popup外区域依旧可以操作,返回键退出界面
             setOutsideTouchable(false);
         }
         if (PopupClickType.SCREEN_YES_AND_RETURN_KEY == CLICK_TYPE) {//点击屏幕外消失，点击返回键退出界面

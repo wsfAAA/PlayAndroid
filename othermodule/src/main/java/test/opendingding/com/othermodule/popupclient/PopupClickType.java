@@ -16,7 +16,7 @@ public enum PopupClickType {
     SCREEN_YES_AND_RETURN_KEY,
 
     /**
-     *  点击屏幕外不消失，点击返回键退出界面 popup外区域依旧可以操作
+     *  点击屏幕外不消失 popup外区域依旧可以操作，点击返回键退出界面
      */
     SCREEN_NO_AND_RETURN_KEY_NO_AND_WORK,
 
