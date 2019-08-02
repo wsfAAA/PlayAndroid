@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,6 +53,7 @@ public class CommonListViewBinder extends ItemViewBinder<CommonListBean.DataBean
 
     @Override
     protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull CommonListBean.DataBean.DatasBean homeList) {
+        Log.i("wsf","aaaaaaaaaaaaa:  "+homeList);
         holder.homeList = homeList;
         holder.context = mContext;
         if (!TextUtils.isEmpty(homeList.getEnvelopePic())) {

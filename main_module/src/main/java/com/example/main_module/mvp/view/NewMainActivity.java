@@ -232,7 +232,7 @@ public class NewMainActivity extends BaseMvpActivity<NewMainPresenter>
 
             // TODO: 2019/3/22 组件通信 接口跳转
             //方式一
-//                ISearchService navigation = (ISearchService) ARouter.getInstance().build(CommonFinal.AROUTER_SEARCH_TEST).navigation();
+                ISearchService navigation = (ISearchService) ARouter.getInstance().build(CommonFinal.AROUTER_SEARCH_TEST).navigation();
 //                navigation.goToSearch(this, "欢迎收搜");
 //                方式二
             iSearchService.goToSearch(this, "欢迎收搜");
