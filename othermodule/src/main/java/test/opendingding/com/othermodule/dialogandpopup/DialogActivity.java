@@ -1,4 +1,4 @@
-package test.opendingding.com.othermodule.activity;
+package test.opendingding.com.othermodule.dialogandpopup;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

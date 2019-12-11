@@ -1,4 +1,4 @@
-package test.opendingding.com.othermodule.activity;
+package test.opendingding.com.othermodule.interfaced;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -6,10 +6,10 @@ import android.view.View;
 import android.widget.Toast;
 
 import test.opendingding.com.othermodule.R;
-import test.opendingding.com.othermodule.interfaced.InterfacedCallBack;
-import test.opendingding.com.othermodule.interfaced.TestCallBack;
-import test.opendingding.com.othermodule.interfaced.TestCallBackUtils;
 
+/**
+ * 接口回调
+ */
 public class InterfacedActivity extends AppCompatActivity implements TestCallBack, InterfacedCallBack {
 
     @Override
@@ -146,8 +146,9 @@ public class InterfacedActivity extends AppCompatActivity implements TestCallBac
     }
 
     //----------------------------------静态匿名内部类回调2,使用内部接口----------------------------------
+
     /**
-     *静态匿名内部类回调2,使用内部接口
+     * 静态匿名内部类回调2,使用内部接口
      */
     private void TestSix() {
         TestCallBackUtils.setCallBack2(new TestCallBackUtils.InterfacedCallBack2() {
@@ -159,13 +160,14 @@ public class InterfacedActivity extends AppCompatActivity implements TestCallBac
     }
 
     //----------------------------------静态回调使用内部接口----------------------------------
+
     /**
      * 静态回调使用内部接口
      */
     private void TestSave() {
         //模拟任务TestDemo2方法自动被回调
         TestCallBackUtils.TestDemo2();
-        TestCallBackUtils.interfacedCallBack2=new TestCallBackUtils.InterfacedCallBack2() {
+        TestCallBackUtils.interfacedCallBack2 = new TestCallBackUtils.InterfacedCallBack2() {
             @Override
             public void onMessage(String msg) {
                 Toast.makeText(InterfacedActivity.this, msg, Toast.LENGTH_SHORT).show();

@@ -24,18 +24,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.InterfacedActivity" />
-        <activity android:name=".activity.DialogActivity" />
+        <activity android:name=".interfaced.InterfacedActivity" />
+        <activity android:name=".dialogandpopup.DialogActivity" />
         <activity android:name=".activity.RetrofitActivity" />
-        <activity android:name=".activity.ScaleImageActivity" />
-        <activity android:name=".activity.PicActivity" />
-        <activity android:name=".activity.clippic.MainActivity2" />
-        <activity android:name=".activity.clippic.ShowImageActivity" />
+        <activity android:name=".picture.ScaleImageActivity" />
+        <activity android:name=".picture.PicActivity" />
+        <activity android:name=".picture.clippic.MainActivity2" />
+        <activity android:name=".picture.clippic.ShowImageActivity" />
         <activity android:name=".QRcode.QRCodeActivity" />
-        <activity android:name=".activity.PermissionsActivity" />
+        <activity android:name=".permission.PermissionsActivity" />
         <activity android:name=".QRcode.SecondActivity" />
         <activity android:name=".QRcode.ThreeActivity" />
-        <activity android:name=".activity.HTMLActivity"></activity>
+        <activity android:name=".html.HTMLActivity" />
+        <activity android:name=".designmodel.ModelActivity"></activity>
     </application>
 
 </manifest>

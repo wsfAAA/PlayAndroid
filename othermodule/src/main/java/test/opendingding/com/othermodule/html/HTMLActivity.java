@@ -1,4 +1,4 @@
-package test.opendingding.com.othermodule.activity;
+package test.opendingding.com.othermodule.html;
 
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;

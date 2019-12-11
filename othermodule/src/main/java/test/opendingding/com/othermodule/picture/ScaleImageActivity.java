@@ -1,4 +1,4 @@
-package test.opendingding.com.othermodule.activity;
+package test.opendingding.com.othermodule.picture;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;

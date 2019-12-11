@@ -1,4 +1,4 @@
-package test.opendingding.com.othermodule.activity.clippic;
+package test.opendingding.com.othermodule.picture.clippic;
 
 import android.app.Activity;
 import android.graphics.Bitmap;

@@ -1,4 +1,4 @@
-package test.opendingding.com.othermodule.utile;
+package test.opendingding.com.othermodule.permission;
 
 import android.app.Activity;
 import android.content.DialogInterface;

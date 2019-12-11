@@ -1,4 +1,4 @@
-package test.opendingding.com.othermodule.activity;
+package test.opendingding.com.othermodule.picture;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -7,15 +7,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.io.ByteArrayOutputStream;
 
 import test.opendingding.com.othermodule.R;
-import test.opendingding.com.othermodule.activity.clippic.MainActivity2;
-import test.opendingding.com.othermodule.activity.clippic.ShowImageActivity;
+import test.opendingding.com.othermodule.picture.clippic.ShowImageActivity;
 import test.opendingding.com.othermodule.view.ScaleView;
 
 public class PicActivity extends AppCompatActivity {

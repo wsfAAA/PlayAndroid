@@ -1,7 +1,6 @@
-package test.opendingding.com.othermodule.activity;
+package test.opendingding.com.othermodule.permission;
 
 import android.Manifest;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,10 +8,11 @@ import android.view.View;
 
 import com.blankj.utilcode.util.ToastUtils;
 
-import test.opendingding.com.othermodule.QRcode.QRCodeActivity;
 import test.opendingding.com.othermodule.R;
-import test.opendingding.com.othermodule.utile.PermissionsUtils;
 
+/**
+ * 动态权限
+ */
 public class PermissionsActivity extends AppCompatActivity {
 
     @Override

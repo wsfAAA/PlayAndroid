@@ -2,11 +2,8 @@ package test.opendingding.com.othermodule.activity;
 
 import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.CountDownTimer;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.SpannableString;
@@ -18,7 +15,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,9 +23,15 @@ import com.blankj.utilcode.util.ToastUtils;
 
 import test.opendingding.com.othermodule.QRcode.QRCodeActivity;
 import test.opendingding.com.othermodule.R;
-import test.opendingding.com.othermodule.activity.clippic.MainActivity2;
+import test.opendingding.com.othermodule.picture.clippic.MainActivity2;
+import test.opendingding.com.othermodule.dialogandpopup.DialogActivity;
+import test.opendingding.com.othermodule.html.HTMLActivity;
+import test.opendingding.com.othermodule.interfaced.InterfacedActivity;
+import test.opendingding.com.othermodule.permission.PermissionsActivity;
+import test.opendingding.com.othermodule.picture.PicActivity;
+import test.opendingding.com.othermodule.picture.ScaleImageActivity;
 import test.opendingding.com.othermodule.popupclient.*;
-import test.opendingding.com.othermodule.utile.PermissionsUtils;
+import test.opendingding.com.othermodule.permission.PermissionsUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -47,6 +49,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 popup();
+            }
+        });
+        findViewById(R.id.tv_moshi).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
         findViewById(R.id.btn2).setOnClickListener(new View.OnClickListener() {
