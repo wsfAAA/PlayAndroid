@@ -2,18 +2,18 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AndroidStudy-PlayAndroid.iml" filepath="$PROJECT_DIR$/AndroidStudy-PlayAndroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AndroidStudy-PlayAndroid.iml" filepath="$PROJECT_DIR$/AndroidStudy-PlayAndroid.iml" group="PlayAndroid" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/PlayAndroid.iml" filepath="$PROJECT_DIR$/.idea/modules/PlayAndroid.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/baselibrary/baselibrary.iml" filepath="$PROJECT_DIR$/baselibrary/baselibrary.iml" />
-      <module fileurl="file://$PROJECT_DIR$/commonmodule/commonmodule.iml" filepath="$PROJECT_DIR$/commonmodule/commonmodule.iml" />
-      <module fileurl="file://$PROJECT_DIR$/idataservice/idataservice.iml" filepath="$PROJECT_DIR$/idataservice/idataservice.iml" />
-      <module fileurl="file://$PROJECT_DIR$/kotlinmodule/kotlinmodule.iml" filepath="$PROJECT_DIR$/kotlinmodule/kotlinmodule.iml" />
-      <module fileurl="file://$PROJECT_DIR$/loginmodule/loginmodule.iml" filepath="$PROJECT_DIR$/loginmodule/loginmodule.iml" />
-      <module fileurl="file://$PROJECT_DIR$/main_module/main_module.iml" filepath="$PROJECT_DIR$/main_module/main_module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="PlayAndroid/app" />
+      <module fileurl="file://$PROJECT_DIR$/baselibrary/baselibrary.iml" filepath="$PROJECT_DIR$/baselibrary/baselibrary.iml" group="PlayAndroid/baselibrary" />
+      <module fileurl="file://$PROJECT_DIR$/commonmodule/commonmodule.iml" filepath="$PROJECT_DIR$/commonmodule/commonmodule.iml" group="PlayAndroid/commonmodule" />
+      <module fileurl="file://$PROJECT_DIR$/idataservice/idataservice.iml" filepath="$PROJECT_DIR$/idataservice/idataservice.iml" group="PlayAndroid/idataservice" />
+      <module fileurl="file://$PROJECT_DIR$/kotlinmodule/kotlinmodule.iml" filepath="$PROJECT_DIR$/kotlinmodule/kotlinmodule.iml" group="PlayAndroid/kotlinmodule" />
+      <module fileurl="file://$PROJECT_DIR$/loginmodule/loginmodule.iml" filepath="$PROJECT_DIR$/loginmodule/loginmodule.iml" group="PlayAndroid/loginmodule" />
+      <module fileurl="file://$PROJECT_DIR$/main_module/main_module.iml" filepath="$PROJECT_DIR$/main_module/main_module.iml" group="PlayAndroid/main_module" />
       <module fileurl="file://F:/AndroidWorkTow/PlayAndroid/commonmodule/mylibrary.iml" filepath="F:/AndroidWorkTow/PlayAndroid/commonmodule/mylibrary.iml" />
-      <module fileurl="file://$PROJECT_DIR$/othermodule/othermodule.iml" filepath="$PROJECT_DIR$/othermodule/othermodule.iml" />
-      <module fileurl="file://$PROJECT_DIR$/searchmodule/searchmodule.iml" filepath="$PROJECT_DIR$/searchmodule/searchmodule.iml" />
+      <module fileurl="file://$PROJECT_DIR$/othermodule/othermodule.iml" filepath="$PROJECT_DIR$/othermodule/othermodule.iml" group="PlayAndroid/othermodule" />
+      <module fileurl="file://$PROJECT_DIR$/searchmodule/searchmodule.iml" filepath="$PROJECT_DIR$/searchmodule/searchmodule.iml" group="PlayAndroid/searchmodule" />
     </modules>
   </component>
 </project>

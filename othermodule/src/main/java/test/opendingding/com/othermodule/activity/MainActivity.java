@@ -15,10 +15,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.blankj.utilcode.util.KeyboardUtils;
 import com.blankj.utilcode.util.ToastUtils;
 
 import test.opendingding.com.othermodule.QRcode.QRCodeActivity;
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout mLinear;
     private PopupClient build;
     private WebViewBarMore mWebViewBarMore;
+    private EditText editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,6 +115,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, PermissionsActivity.class));
             }
         });
+        findViewById(R.id.bnt11).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, TestActivity.class));
+            }
+        });
 
         final CheckBox checkBox = findViewById(R.id.cb);
         checkBox.setChecked(true);
@@ -121,10 +130,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 boolean checked = checkBox.isChecked();
                 boolean clickable = checkBox.isClickable();
-                Log.i("wsf","checked:  "+checked+"     clickable:  "+clickable);
-                if (checked){
+                Log.i("wsf", "checked:  " + checked + "     clickable:  " + clickable);
+                if (checked) {
                     checkBox.setBackgroundResource(R.drawable.a);
-                }else {
+                } else {
                     checkBox.setBackgroundResource(R.drawable.tbug);
                 }
             }
@@ -139,9 +148,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //TextView 多个颜色多个点击事件
-        TextView textView=findViewById(R.id.tv_text);
+        TextView textView = findViewById(R.id.tv_text);
         String tips = "咪咕提升了用户的安全性和隐私性， 并更新了《咪咕用户服务协议》和《咪咕隐私权政策》";
-        SpannableString spannableString=new SpannableString(tips);
+        SpannableString spannableString = new SpannableString(tips);
         spannableString.setSpan(new ClickableSpan() {
             @Override
             public void onClick(View view) {
@@ -154,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
                 ds.setColor(Color.BLUE);
                 ds.setUnderlineText(false);
             }
-        },tips.length() - 9, tips.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }, tips.length() - 9, tips.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         spannableString.setSpan(new ClickableSpan() {
             @Override
@@ -168,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
                 ds.setColor(Color.RED);
                 ds.setUnderlineText(false);
             }
-        },tips.length() - 20, tips.length()-10,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }, tips.length() - 20, tips.length() - 10, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
 
         textView.setMovementMethod(LinkMovementMethod.getInstance());//设置可点击状态
@@ -179,12 +188,12 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTick(long millisUntilFinished) {
-                Log.i("wsf","millisUntilFinished:  "+millisUntilFinished);
+                Log.i("wsf", "millisUntilFinished:  " + millisUntilFinished);
             }
 
             @Override
             public void onFinish() {
-                Log.i("wsf","onFinish"); //主动cancel onFinish 不会走
+                Log.i("wsf", "onFinish"); //主动cancel onFinish 不会走
             }
         };
         mCountDownTimer.start();
@@ -192,8 +201,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mCountDownTimer.cancel();
+
+                KeyboardUtils.showSoftInput(editText);
             }
         });
+
+        editText = findViewById(R.id.edit_content);
     }
 
     //创建监听权限的接口对象
