@@ -152,5 +152,6 @@ public class BaseApplication extends MultiDexApplication  implements TestCallBac
             ToastUtils.showShort(mes);
         }
 
+
     }
 }
