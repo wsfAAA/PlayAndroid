@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Android-AndroidStudy-PlayAndroid.iml" filepath="$PROJECT_DIR$/Android-AndroidStudy-PlayAndroid.iml" group="PlayAndroid" />
       <module fileurl="file://$PROJECT_DIR$/AndroidStudy-PlayAndroid.iml" filepath="$PROJECT_DIR$/AndroidStudy-PlayAndroid.iml" group="PlayAndroid" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/PlayAndroid.iml" filepath="$PROJECT_DIR$/.idea/modules/PlayAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="PlayAndroid/app" />
