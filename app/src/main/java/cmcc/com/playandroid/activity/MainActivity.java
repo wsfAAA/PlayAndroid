@@ -14,6 +14,5 @@ public class MainActivity extends AppCompatActivity {
         ActivityMainBinding binding = ActivityMainBinding.inflate(LayoutInflater.from(this));
         setContentView(binding.getRoot());
         binding.tvText.setText("测试数据");
-
     }
 }
