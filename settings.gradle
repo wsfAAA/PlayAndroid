@@ -1,2 +1,1 @@
-include ':app', ':loginmodule', ':baselibrary', ':searchmodule', ':othermodule', ':commonmodule', ':idataservice', ':kotlinmodule', ':main_module'
-include ':newbase'
+include ':app', ':newbase'
