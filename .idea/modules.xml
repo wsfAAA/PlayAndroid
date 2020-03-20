@@ -12,6 +12,7 @@
       <module fileurl="file://$PROJECT_DIR$/loginmodule/loginmodule.iml" filepath="$PROJECT_DIR$/loginmodule/loginmodule.iml" group="PlayAndroid/loginmodule" />
       <module fileurl="file://$PROJECT_DIR$/main_module/main_module.iml" filepath="$PROJECT_DIR$/main_module/main_module.iml" group="PlayAndroid/main_module" />
       <module fileurl="file://F:/AndroidWorkTow/PlayAndroid/commonmodule/mylibrary.iml" filepath="F:/AndroidWorkTow/PlayAndroid/commonmodule/mylibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/newbase/newbase.iml" filepath="$PROJECT_DIR$/newbase/newbase.iml" group="PlayAndroid/newbase" />
       <module fileurl="file://$PROJECT_DIR$/othermodule/othermodule.iml" filepath="$PROJECT_DIR$/othermodule/othermodule.iml" group="PlayAndroid/othermodule" />
       <module fileurl="file://$PROJECT_DIR$/searchmodule/searchmodule.iml" filepath="$PROJECT_DIR$/searchmodule/searchmodule.iml" group="PlayAndroid/searchmodule" />
     </modules>
