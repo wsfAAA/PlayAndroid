@@ -1,4 +1,4 @@
-package com.live.base;
+package com.playandroid.newbase;
 
 import org.junit.Test;
 

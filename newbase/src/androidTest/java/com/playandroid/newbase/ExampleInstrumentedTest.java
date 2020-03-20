@@ -1,4 +1,4 @@
-package com.live.base;
+package com.playandroid.newbase;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.live.base.test", appContext.getPackageName());
+        assertEquals("com.playandroid.newbase", appContext.getPackageName());
     }
 }
