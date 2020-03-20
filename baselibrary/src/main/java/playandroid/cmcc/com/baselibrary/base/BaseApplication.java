@@ -151,6 +151,5 @@ public class BaseApplication extends MultiDexApplication  implements TestCallBac
         if (!TextUtils.isEmpty(mes)){
             ToastUtils.showShort(mes);
         }
-
     }
 }
