@@ -1,4 +1,4 @@
-package com.playandroid.newbase.base;
+package com.playandroid.newbase.mvp;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;

@@ -1,24 +1,21 @@
 package com.playandroid.newbase;
 
-import android.widget.TextView;
+import com.playandroid.newbase.mvp.InjectPresenter;
+import com.playandroid.newbase.mvp.BaseMvpActivity;
+import com.playandroid.newbase.databinding.ActivityTestBinding;
 
-import com.playandroid.newbase.base.InjectPresenter;
-import com.playandroid.newbase.base.TestBaseMvpActivity;
-
-public class TestActivity extends TestBaseMvpActivity {
+public class TestActivity extends BaseMvpActivity<ActivityTestBinding> {
 
     @InjectPresenter
     TestPresenter testPresenter;
 
     @Override
     protected void initView() {
-        TextView textView = findViewById(R.id.tv_text_test);
-        textView.setText(testPresenter.getTest());
+        viewBinding.tvTextTest.setText(testPresenter.getTest());
     }
 
     @Override
-    protected void setContentView() {
-        setContentView(R.layout.activity_test);
+    protected ActivityTestBinding getViewBinding() {
+        return ActivityTestBinding.inflate(getLayoutInflater());
     }
-
 }

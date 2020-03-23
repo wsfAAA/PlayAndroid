@@ -1,4 +1,4 @@
-package com.playandroid.newbase.base;
+package com.playandroid.newbase.mvp;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -3,8 +3,8 @@ package com.playandroid.newbase;
 import android.content.Intent;
 import android.view.View;
 
-import com.playandroid.newbase.databinding.ActivityMainBinding;
 import com.playandroid.newbase.mvp.BaseMvpActivity;
+import com.playandroid.newbase.databinding.ActivityMainBinding;
 
 public class MainActivity extends BaseMvpActivity<ActivityMainBinding> {
 
@@ -14,7 +14,7 @@ public class MainActivity extends BaseMvpActivity<ActivityMainBinding> {
         viewBinding.tvText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,TestActivity.class));
+                startActivity(new Intent(MainActivity.this, TestActivity.class));
             }
         });
     }
