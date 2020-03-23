@@ -1,19 +1,26 @@
 package com.playandroid.newbase;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.content.Intent;
+import android.view.View;
 
 import com.playandroid.newbase.databinding.ActivityMainBinding;
+import com.playandroid.newbase.mvp.BaseMvpActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseMvpActivity<ActivityMainBinding> {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        ActivityMainBinding binding = ActivityMainBinding.inflate(LayoutInflater.from(this));
-        setContentView(binding.getRoot());
-        setContentView(R.layout.activity_main);
+    protected void initView(ActivityMainBinding mainBinding) {
+        mainBinding.tvText.setText("aaaaaa");
+        mainBinding.tvText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,TestActivity.class));
+            }
+        });
+    }
+
+    @Override
+    protected ActivityMainBinding getViewBinding() {
+        return ActivityMainBinding.inflate(getLayoutInflater());
     }
 }
