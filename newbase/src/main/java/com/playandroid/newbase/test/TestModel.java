@@ -1,4 +1,4 @@
-package com.playandroid.newbase;
+package com.playandroid.newbase.test;
 
 import com.playandroid.newbase.mvp.BaseModel;
 

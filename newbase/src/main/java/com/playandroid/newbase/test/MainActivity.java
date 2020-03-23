@@ -1,4 +1,4 @@
-package com.playandroid.newbase;
+package com.playandroid.newbase.test;
 
 import android.content.Intent;
 import android.view.View;
@@ -10,7 +10,7 @@ public class MainActivity extends BaseMvpActivity<ActivityMainBinding> {
 
     @Override
     protected void initView() {
-        viewBinding.tvText.setText("aaaaaa");
+        viewBinding.tvText.setText("点击跳转");
         viewBinding.tvText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
