@@ -9,9 +9,9 @@ import com.playandroid.newbase.mvp.BaseMvpActivity;
 public class MainActivity extends BaseMvpActivity<ActivityMainBinding> {
 
     @Override
-    protected void initView(ActivityMainBinding mainBinding) {
-        mainBinding.tvText.setText("aaaaaa");
-        mainBinding.tvText.setOnClickListener(new View.OnClickListener() {
+    protected void initView() {
+        viewBinding.tvText.setText("aaaaaa");
+        viewBinding.tvText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this,TestActivity.class));

@@ -7,7 +7,7 @@ import androidx.viewbinding.ViewBinding;
 
 public abstract class BaseMvpActivity<T extends ViewBinding> extends FragmentActivity {
 
-    private T viewBinding;
+    protected T viewBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,10 +15,10 @@ public abstract class BaseMvpActivity<T extends ViewBinding> extends FragmentAct
         initViewBefore();
         viewBinding = getViewBinding();
         setContentView(viewBinding.getRoot());
-        initView(viewBinding);
+        initView();
     }
 
-    protected abstract void initView(T viewBinding);
+    protected abstract void initView();
 
     protected abstract T getViewBinding();
 
