@@ -1,12 +1,11 @@
 package com.playandroid.newbase.mvp;
 
 import android.os.Bundle;
-import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
 import androidx.viewbinding.ViewBinding;
 
-public abstract class BaseMvpActivity<T extends ViewBinding> extends AppCompatActivity {
+public abstract class BaseMvpActivity<T extends ViewBinding> extends FragmentActivity {
 
     private T viewBinding;
 
