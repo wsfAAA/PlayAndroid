@@ -1,29 +1,53 @@
 package com.playandroid.newbase.mvp;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.Fragment;
 import androidx.viewbinding.ViewBinding;
 
-public abstract class BaseMvpActivity<T extends ViewBinding> extends FragmentActivity implements BaseView {
-    private List<BasePresenter> mPresenters;
+public abstract class BaseMvpFragment<T extends ViewBinding> extends Fragment implements BaseView {
+
+    protected Context mContext;
     protected T viewBinding;
+    private List<BasePresenter> mPresenters;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        initViewBefore();
-        viewBinding = getViewBinding();
-        setContentView(viewBinding.getRoot());
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.mContext = context;
+    }
 
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        viewBinding = getViewBinding();
         mPresenters = new ArrayList<>();
         initPresenter();
         initView();
+        return viewBinding.getRoot();
+    }
+
+    protected abstract void initView();
+
+    protected abstract T getViewBinding();
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        for (BasePresenter presenter : mPresenters) {
+            presenter.detach();  // 解绑
+        }
     }
 
     /**
@@ -56,24 +80,6 @@ public abstract class BaseMvpActivity<T extends ViewBinding> extends FragmentAct
                     e.printStackTrace();
                 }
             }
-        }
-    }
-
-    protected abstract void initView();
-
-    protected abstract T getViewBinding();
-
-    /**
-     * 初始化view 之前
-     */
-    protected void initViewBefore() {
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        for (BasePresenter presenter : mPresenters) {
-            presenter.detach();  // 解绑
         }
     }
 }

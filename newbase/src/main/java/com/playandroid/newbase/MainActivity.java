@@ -3,8 +3,8 @@ package com.playandroid.newbase;
 import android.content.Intent;
 import android.view.View;
 
-import com.playandroid.newbase.mvp.BaseMvpActivity;
 import com.playandroid.newbase.databinding.ActivityMainBinding;
+import com.playandroid.newbase.mvp.BaseMvpActivity;
 
 public class MainActivity extends BaseMvpActivity<ActivityMainBinding> {
 

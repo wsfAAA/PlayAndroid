@@ -32,6 +32,7 @@ dependencies {
     api rootProject.ext.dependencies["multidex"]
     api rootProject.ext.dependencies["appcompat"]
     api rootProject.ext.dependencies["constraintlayout"]
+    api rootProject.ext.dependencies["eventbus"]
 
     testImplementation rootProject.ext.dependencies["junit"]
     androidTestImplementation rootProject.ext.dependencies["runner"]
