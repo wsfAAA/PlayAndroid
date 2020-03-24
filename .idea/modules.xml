@@ -5,10 +5,11 @@
       <module fileurl="file://$PROJECT_DIR$/Android-AndroidStudy-PlayAndroid.iml" filepath="$PROJECT_DIR$/Android-AndroidStudy-PlayAndroid.iml" group="PlayAndroid" />
       <module fileurl="file://$PROJECT_DIR$/AndroidStudy-PlayAndroid.iml" filepath="$PROJECT_DIR$/AndroidStudy-PlayAndroid.iml" group="PlayAndroid" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/PlayAndroid.iml" filepath="$PROJECT_DIR$/.idea/modules/PlayAndroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/newbase/PlayAndroid-newbase.iml" filepath="$PROJECT_DIR$/newbase/PlayAndroid-newbase.iml" group="PlayAndroid/newbase" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="PlayAndroid/app" />
       <module fileurl="file://F:/AndroidWorkTow/PlayAndroid/commonmodule/mylibrary.iml" filepath="F:/AndroidWorkTow/PlayAndroid/commonmodule/mylibrary.iml" />
-      <module fileurl="file://$PROJECT_DIR$/studay/studay.iml" filepath="$PROJECT_DIR$/studay/studay.iml" group="PlayAndroid/studay" />
       <module fileurl="file://$PROJECT_DIR$/newbase/newbase.iml" filepath="$PROJECT_DIR$/newbase/newbase.iml" group="PlayAndroid/newbase" />
+      <module fileurl="file://$PROJECT_DIR$/studay/studay.iml" filepath="$PROJECT_DIR$/studay/studay.iml" group="PlayAndroid/studay" />
     </modules>
   </component>
 </project>
