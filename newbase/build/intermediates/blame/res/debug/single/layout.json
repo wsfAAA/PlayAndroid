@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "D:\\Android\\AndroidStudy\\PlayAndroid\\newbase\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\test_layout_view.xml",
+        "source": "D:\\Android\\AndroidStudy\\PlayAndroid\\newbase\\src\\main\\res\\layout\\test_layout_view.xml"
+    },
+    {
+        "merged": "D:\\Android\\AndroidStudy\\PlayAndroid\\newbase\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_test.xml",
+        "source": "D:\\Android\\AndroidStudy\\PlayAndroid\\newbase\\src\\main\\res\\layout\\activity_test.xml"
+    },
+    {
+        "merged": "D:\\Android\\AndroidStudy\\PlayAndroid\\newbase\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main.xml",
+        "source": "D:\\Android\\AndroidStudy\\PlayAndroid\\newbase\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "D:\\Android\\AndroidStudy\\PlayAndroid\\newbase\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fratment_test_layout.xml",
+        "source": "D:\\Android\\AndroidStudy\\PlayAndroid\\newbase\\src\\main\\res\\layout\\fratment_test_layout.xml"
+    }
+]
