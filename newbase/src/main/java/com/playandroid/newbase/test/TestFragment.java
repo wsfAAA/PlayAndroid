@@ -19,6 +19,6 @@ public class TestFragment extends BaseMvpFragment<FratmentTestLayoutBinding> {
 
     @Override
     protected void initView() {
-        viewBinding.tvFragmentText.setText(testPresenter.getTest()+"    fragment测试");
+        viewBinding.tvFragmentText.setText(testPresenter.getTestTow()+"    fragment测试");
     }
 }

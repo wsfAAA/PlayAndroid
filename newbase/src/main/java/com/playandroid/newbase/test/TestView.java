@@ -34,7 +34,7 @@ public class TestView extends BaseMvpViewGroup {
     @Override
     protected void initView(View view) {
         TestLayoutViewBinding viewBinding = TestLayoutViewBinding.bind(view);
-        viewBinding.tvTextView.setText(testPresenter.getTest() + "    viewGroup 测试使用...");
+        viewBinding.tvTextView.setText(testPresenter.getTestTow() + "    viewGroup 测试使用...");
     }
 
     @Override
