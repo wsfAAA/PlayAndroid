@@ -4,6 +4,7 @@ apply from: "config.gradle"  //引入config配置文件
 buildscript {
 
     repositories {
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         google()
         jcenter()
     }
@@ -15,9 +16,9 @@ buildscript {
 allprojects {
     repositories {
         maven { url "https://jitpack.io" }
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         google()
-        jcenter()
-    }
+        jcenter()    }
 }
 
 task clean(type: Delete) {
