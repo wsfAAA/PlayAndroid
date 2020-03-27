@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TestActivity">
+
+    <FrameLayout
+        android:id="@+id/frame_tx"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff"/>
+
+    <!--     android:background="@drawable/bg_live_bg" -->
+    <FrameLayout
+        android:id="@+id/frame_camera"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000" />
+
+    <RelativeLayout
+        android:id="@+id/rl_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="80dp">
+
+        <View
+            android:id="@+id/view_test"
+            android:layout_width="80dp"
+            android:layout_height="130dp"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/tv_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view_test"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:text="立即试妆"
+            android:textColor="@color/colorAccent"
+            android:textSize="10sp" />
+    </RelativeLayout>
+
+
+</RelativeLayout>
