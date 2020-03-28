@@ -1,6 +1,8 @@
 package com.playandroid.newbase.net;
 
 
+import com.playandroid.newbase.net.http.IHttpRequest;
+
 import java.io.File;
 import java.util.WeakHashMap;
 
@@ -22,13 +24,14 @@ public final class RxClientBuilder {
     private int mReadTimeOut;
     private boolean mIsCache = false;   //是否使用okhttp缓存
     private boolean addCookies = false; //添加cookies
+    private IHttpRequest httpRequest;
 
     RxClientBuilder() {
 
     }
 
     public final RxClient build() {
-        return new RxClient(PARAMS, mHeaderPapams, mBody, mFile, mBaseUrl, mConnectTimeOut, mReadTimeOut, mIsCache, addCookies);
+        return new RxClient(PARAMS, mHeaderPapams, mBody, mFile, mBaseUrl, mConnectTimeOut, mReadTimeOut, mIsCache, addCookies,httpRequest);
     }
 
     /**
@@ -142,6 +145,11 @@ public final class RxClientBuilder {
      */
     public final RxClientBuilder addCookies(boolean addCookies) {
         this.addCookies = addCookies;
+        return this;
+    }
+
+    public final RxClientBuilder addHttpRequest(IHttpRequest httpRequest) {
+        this.httpRequest = httpRequest;
         return this;
     }
 }
