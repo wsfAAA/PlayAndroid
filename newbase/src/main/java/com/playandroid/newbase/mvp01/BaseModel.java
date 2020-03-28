@@ -1,4 +1,4 @@
-package com.playandroid.newbase.mvp;
+package com.playandroid.newbase.mvp01;
 
 /**
  * Model 基类

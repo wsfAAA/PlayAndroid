@@ -1,6 +1,6 @@
-package com.playandroid.newbase.test;
+package com.playandroid.newbase.mvp01.test;
 
-import com.playandroid.newbase.mvp.BasePresenter;
+import com.playandroid.newbase.mvp01.BasePresenter;
 
 public class TestPresenterTow extends BasePresenter<TestActivity, TestModelTow> {
 

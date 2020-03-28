@@ -1,7 +1,7 @@
-package com.playandroid.newbase.test.contract;
+package com.playandroid.newbase.mvp01.test.contract;
 
 
-import com.playandroid.newbase.mvp.BaseView;
+import com.playandroid.newbase.mvp01.BaseView;
 
 /**
  * 协议类

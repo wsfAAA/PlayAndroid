@@ -1,6 +1,6 @@
-package com.playandroid.newbase.test;
+package com.playandroid.newbase.mvp01.test;
 
-import com.playandroid.newbase.mvp.BaseModel;
+import com.playandroid.newbase.mvp01.BaseModel;
 
 public class TestModel extends BaseModel {
 

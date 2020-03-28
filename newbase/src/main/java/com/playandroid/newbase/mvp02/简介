@@ -1,0 +1,4 @@
+基础版的mvp模式   1 view  对应多 presenter（使用注解的形式实现） ，1 presenter 对应多 model（使用注解的形式实现）
+
+
+

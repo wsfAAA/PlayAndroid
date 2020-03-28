@@ -33,7 +33,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.521" />
 
-    <com.playandroid.newbase.test.TestView
+    <com.playandroid.newbase.mvp01.test.TestView
         android:layout_width="match_parent"
         android:layout_height="100dp"
         app:layout_constraintLeft_toLeftOf="parent"

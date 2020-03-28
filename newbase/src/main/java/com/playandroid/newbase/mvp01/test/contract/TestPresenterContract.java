@@ -1,4 +1,4 @@
-package com.playandroid.newbase.test.contract;
+package com.playandroid.newbase.mvp01.test.contract;
 
 public interface TestPresenterContract {
 

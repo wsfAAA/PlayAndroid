@@ -1,8 +1,8 @@
-package com.playandroid.newbase.test;
+package com.playandroid.newbase.mvp01.test;
 
 import com.playandroid.newbase.databinding.FratmentTestLayoutBinding;
-import com.playandroid.newbase.mvp.BaseMvpFragment;
-import com.playandroid.newbase.mvp.InjectPresenter;
+import com.playandroid.newbase.mvp01.BaseMvpFragment;
+import com.playandroid.newbase.mvp01.InjectPresenter;
 
 /**
  * BaseMvpFragment 使用

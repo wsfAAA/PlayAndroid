@@ -1,9 +1,9 @@
-package com.playandroid.newbase.test;
+package com.playandroid.newbase.mvp01.test;
 
 import com.playandroid.newbase.databinding.ActivityTestBinding;
-import com.playandroid.newbase.mvp.BaseMvpActivity;
-import com.playandroid.newbase.mvp.InjectPresenter;
-import com.playandroid.newbase.test.contract.TestViewContract;
+import com.playandroid.newbase.mvp01.BaseMvpActivity;
+import com.playandroid.newbase.mvp01.InjectPresenter;
+import com.playandroid.newbase.mvp01.test.contract.TestViewContract;
 
 import androidx.fragment.app.FragmentTransaction;
 

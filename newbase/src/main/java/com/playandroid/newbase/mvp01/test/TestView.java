@@ -1,4 +1,4 @@
-package com.playandroid.newbase.test;
+package com.playandroid.newbase.mvp01.test;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -6,8 +6,8 @@ import android.view.View;
 
 import com.playandroid.newbase.R;
 import com.playandroid.newbase.databinding.TestLayoutViewBinding;
-import com.playandroid.newbase.mvp.BaseMvpViewGroup;
-import com.playandroid.newbase.mvp.InjectPresenter;
+import com.playandroid.newbase.mvp01.BaseMvpViewGroup;
+import com.playandroid.newbase.mvp01.InjectPresenter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

@@ -1,51 +1,51 @@
-package com.playandroid.newbase.mvp;
+package com.playandroid.newbase.mvp01;
 
 import android.content.Context;
-import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.util.AttributeSet;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.viewbinding.ViewBinding;
 
-public abstract class BaseMvpFragment<T extends ViewBinding> extends Fragment implements BaseView {
-
+public abstract class BaseMvpViewGroup extends RelativeLayout implements BaseView {
     protected Context mContext;
-    protected T viewBinding;
     private List<BasePresenter> mPresenters = new ArrayList<>();
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        this.mContext = context;
+    public BaseMvpViewGroup(@NonNull Context context) {
+        super(context);
+        init(context);
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        viewBinding = getViewBinding();
+    public BaseMvpViewGroup(@NonNull Context context, @Nullable AttributeSet attrs) {
+        super(context, attrs);
+        init(context);
+    }
+
+    public BaseMvpViewGroup(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        init(context);
+    }
+
+    private void init(Context context) {
+        mContext = context;
+        View inflate = inflate(mContext, getLayoutResID(), this);
         mPresenters = MvpUtil.initPresenter(this);
-        initView();
-        return viewBinding.getRoot();
+        initView(inflate);
     }
 
-    protected abstract void initView();
+    protected abstract void initView(View view);
 
-    protected abstract T getViewBinding();
+    protected abstract int getLayoutResID();
 
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
+    protected void onDestroy() {
         for (BasePresenter presenter : mPresenters) {
-            presenter.detach();  // 解绑
+            presenter.detach();
         }
+//        removeAllViews();
     }
 
 //    /**
@@ -80,4 +80,5 @@ public abstract class BaseMvpFragment<T extends ViewBinding> extends Fragment im
 //            }
 //        }
 //    }
+
 }

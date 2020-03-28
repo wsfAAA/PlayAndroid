@@ -1,4 +1,4 @@
-package com.playandroid.newbase.mvp;
+package com.playandroid.newbase.mvp02;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
