@@ -7,6 +7,7 @@ import com.google.gson.Gson;
 import com.parkingwang.okhttp3.LogInterceptor.LogInterceptor;
 import com.playandroid.newbase.BaseApplication;
 import com.playandroid.newbase.net.HttpMethod;
+import com.playandroid.newbase.net.RetrofitService;
 import com.playandroid.newbase.net.RxCreator;
 import com.playandroid.newbase.net.RxService;
 import com.playandroid.newbase.net.api.ApiService;
@@ -30,6 +31,9 @@ import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class OkhttpRequest implements IHttpRequest {
@@ -68,6 +72,7 @@ public class OkhttpRequest implements IHttpRequest {
     @Override
     public void get(String url, RxCallBack rxCallBack) {
         request(HttpMethod.GET, url, rxCallBack);
+//        retrofitrequest(HttpMethod.GET, url, rxCallBack);
     }
 
     @Override
@@ -90,6 +95,8 @@ public class OkhttpRequest implements IHttpRequest {
         Observable<ResponseBody> download = getRxService().download(url, PARAMS);
     }
 
+
+    /////////////////////////////////////////// retrofit 配合 rxjava 请求  ////////////////////////////////////
     public void request(HttpMethod method, String url, final RxCallBack rxCallBack) {
         RxService rxService = getRxService();
         Observable<String> observable = null;
@@ -186,4 +193,94 @@ public class OkhttpRequest implements IHttpRequest {
         return build.create(RxService.class);
     }
 
+
+
+    /////////////////////////////////////////// retrofit 请求  ////////////////////////////////////
+    public void retrofitrequest(HttpMethod method, String url, final RxCallBack rxCallBack) {
+        RetrofitService retrofitService = getRetrofitService();
+        Call<String> call = null;
+        switch (method) {
+            case GET:
+                call = retrofitService.get(url, PARAMS);
+                break;
+            case POST:
+                call = retrofitService.post(url, PARAMS);
+                break;
+            case POST_RAW:
+                call = retrofitService.postRaw(url, BODY);
+                break;
+            case UPLOAD:
+                final RequestBody requestBody =
+                        RequestBody.create(MediaType.parse(MultipartBody.FORM.toString()), FILE);
+                final MultipartBody.Part body =
+                        MultipartBody.Part.createFormData("file", FILE.getName(), requestBody);
+                call = retrofitService.upload(url, body);
+                break;
+            default:
+                break;
+        }
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if (response != null && !TextUtils.isEmpty(response.body())) {
+                    String body = response.body();
+                    if (rxCallBack.mType == String.class) {
+                        rxCallBack.rxOnNext(body);
+                    } else {
+                        try {
+                            rxCallBack.rxOnNext(new Gson().fromJson(body, rxCallBack.mType));
+                        } catch (Exception e) {
+                        }
+                    }
+                } else {
+                    rxCallBack.rxOnError(new Throwable("response is null or response.body() is null "));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable throwable) {
+                rxCallBack.rxOnError(throwable);
+            }
+        });
+    }
+
+    private RetrofitService getRetrofitService() {
+        Retrofit.Builder retrofitBuilde = RxCreator.getRetrofitBuilde();
+        OkHttpClient.Builder okhttpBuilder = RxCreator.getOkhttpBuilder();
+
+        if (!TextUtils.isEmpty(BASEURL)) {
+            retrofitBuilde.baseUrl(BASEURL);
+        } else {
+            retrofitBuilde.baseUrl(ApiService.BASE_URL);
+        }
+
+        if (CONNECT_TIME_OUT > 0) {
+            okhttpBuilder.connectTimeout(CONNECT_TIME_OUT, TimeUnit.SECONDS);
+        }
+        if (READ_TIME_OUT > 0) {
+            okhttpBuilder.readTimeout(READ_TIME_OUT, TimeUnit.SECONDS);
+        }
+
+        if (BuildConfig.DEBUG) {
+            okhttpBuilder.cache(RxCreator.getCache());
+        }
+        // TODO: 2018/12/14  网络日志打印输出
+        okhttpBuilder.addInterceptor(new LogInterceptor());
+
+        if (IS_CACHE) { //添加okhttp网络数据缓存
+            okhttpBuilder.addInterceptor(new CacheInterceptor(BaseApplication.getBaseApplication()));
+        }
+
+        //添加公用请求参数 和 请求参数
+        okhttpBuilder.addInterceptor(new HeaderInterceptor(HEADER_PARAMS));
+
+//        if (IS_COOKIES) {
+//            okhttpBuilder.addInterceptor(new AddCookiesInterceptor());
+//        }
+        retrofitBuilde.client(okhttpBuilder.build());
+
+//        retrofitBuilde.addConverterFactory()  //添加retrofit解析工厂
+        Retrofit build = retrofitBuilde.build();
+        return build.create(RetrofitService.class);
+    }
 }

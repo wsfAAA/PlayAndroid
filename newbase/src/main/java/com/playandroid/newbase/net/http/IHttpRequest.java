@@ -1,6 +1,5 @@
 package com.playandroid.newbase.net.http;
 
-import com.playandroid.newbase.net.HttpMethod;
 import com.playandroid.newbase.net.callback.RxCallBack;
 
 import java.io.File;
