@@ -1,4 +1,4 @@
-package com.playandroid.newbase.net;
+package com.live.base.net;
 
 import java.util.WeakHashMap;
 
@@ -11,6 +11,7 @@ import retrofit2.http.DELETE;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
@@ -46,7 +47,7 @@ public interface RetrofitService {
 
     @Streaming
     @GET
-    Call<ResponseBody> download(@Url String url, @QueryMap WeakHashMap<String, Object> params);
+    Call<ResponseBody> download(@Header("Range") String range, @Url() String url);
 
     @Multipart
     @POST

@@ -1,4 +1,4 @@
-package com.playandroid.newbase.net;
+package com.live.base.net;
 
 public enum HttpMethod {
     GET,

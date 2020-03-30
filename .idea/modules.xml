@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/AndroidStudy-PlayAndroid.iml" filepath="$PROJECT_DIR$/AndroidStudy-PlayAndroid.iml" group="PlayAndroid" />
       <module fileurl="file://$PROJECT_DIR$/.idea/PlayAndroid.iml" filepath="$PROJECT_DIR$/.idea/PlayAndroid.iml" group="PlayAndroid" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="PlayAndroid/app" />
+      <module fileurl="file://$PROJECT_DIR$/base/base.iml" filepath="$PROJECT_DIR$/base/base.iml" group="PlayAndroid/base" />
       <module fileurl="file://$PROJECT_DIR$/newbase/newbase.iml" filepath="$PROJECT_DIR$/newbase/newbase.iml" group="PlayAndroid/newbase" />
     </modules>
   </component>

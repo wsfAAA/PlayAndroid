@@ -1,7 +1,8 @@
-package com.playandroid.newbase.net;
+package com.live.base.net;
 
 
-import com.playandroid.newbase.net.http.IHttpRequest;
+
+import com.live.base.net.http.IHttpRequest;
 
 import java.io.File;
 import java.util.WeakHashMap;

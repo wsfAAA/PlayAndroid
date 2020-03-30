@@ -1,23 +1,35 @@
-package com.playandroid.newbase.net.http;
+package com.live.base.net.http;
 
+import android.app.Application;
+import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.blankj.utilcode.util.SPUtils;
+import com.blankj.utilcode.util.ThreadUtils;
+import com.blankj.utilcode.util.ToastUtils;
+import com.blankj.utilcode.util.ViewUtils;
 import com.google.gson.Gson;
+import com.live.base.BaseApplication;
+import com.live.base.net.HttpMethod;
+import com.live.base.net.RetrofitService;
+import com.live.base.net.RxCreator;
+import com.live.base.net.RxService;
+import com.live.base.net.api.ApiService;
+import com.live.base.net.callback.DownloadListener;
+import com.live.base.net.callback.RxCallBack;
+import com.live.base.net.interceptor.CacheInterceptor;
+import com.live.base.net.interceptor.HeaderInterceptor;
+import com.live.base.net.service.DownloadIntentService;
 import com.parkingwang.okhttp3.LogInterceptor.LogInterceptor;
-import com.playandroid.newbase.BaseApplication;
-import com.playandroid.newbase.net.HttpMethod;
-import com.playandroid.newbase.net.RetrofitService;
-import com.playandroid.newbase.net.RxCreator;
-import com.playandroid.newbase.net.RxService;
-import com.playandroid.newbase.net.api.ApiService;
-import com.playandroid.newbase.net.callback.RxCallBack;
-import com.playandroid.newbase.net.interceptor.CacheInterceptor;
-import com.playandroid.newbase.net.interceptor.HeaderInterceptor;
 
 import java.io.File;
+import java.io.InputStream;
+import java.io.RandomAccessFile;
 import java.util.Map;
 import java.util.WeakHashMap;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
@@ -90,11 +102,67 @@ public class OkhttpRequest implements IHttpRequest {
         request(HttpMethod.UPLOAD, url, rxCallBack);
     }
 
+    private long range = 0;
+
     @Override
-    public void rxDownload(String url) {
-        Observable<ResponseBody> download = getRxService().download(url, PARAMS);
+    public void rxDownload(final String downloadUrl, final String download_path, final String download_file_name, final DownloadListener downloadListener) {
+        if (downloadListener == null) {
+            return;
+        }
+        final File file = new File(download_path + download_file_name);
+        int progress = 0;
+        String totalLength = "-"; //断点续传时请求的总长度
+        if (file.exists()) {
+            range = SPUtils.getInstance().getLong(downloadUrl, 0);
+            progress = (int) (range * 100 / file.length());
+            totalLength += file.length();
+            if (range == file.length()) {   //检测到已经下载完成
+                downloadListener.onCompleted(file.getAbsolutePath());
+                return;
+            }
+        }
+//        Log.e("wsf", "range = " + range + "    已下载:  " + progress + "  % " + "     totalLength:  " + totalLength);
+        downloadListener.onStart(progress);
+        final Call<ResponseBody> download = getRetrofitService().download("bytes=" + Long.toString(range) + totalLength, downloadUrl);
+        download.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful()) {
+                    writeResponseBodyToDisk(response.body(), range, downloadUrl, download_path, download_file_name, downloadListener);
+                } else {
+                    downloadListener.onError("onResponse : " + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                downloadListener.onError(t.getMessage());
+            }
+        });
     }
 
+    @Override
+    public void rxDownloadService(Application application, String url, String download_path, String download_file_name) {
+        Intent intent = new Intent(application, DownloadIntentService.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("download_url", url);
+        bundle.putString("download_file_name", download_file_name);
+        bundle.putString("download_path", download_path);
+        intent.putExtras(bundle);
+        application.startService(intent);
+    }
+
+    @Override
+    public void rxDownloadService(Application application, String baseUrl, String url, String download_path, String download_file_name) {
+        Intent intent = new Intent(application, DownloadIntentService.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("download_url", url);
+        bundle.putString("download_file_name", download_file_name);
+        bundle.putString("download_path", download_path);
+        bundle.putString("download_base_url", baseUrl);
+        intent.putExtras(bundle);
+        application.startService(intent);
+    }
 
     /////////////////////////////////////////// retrofit 配合 rxjava 请求  ////////////////////////////////////
     public void request(HttpMethod method, String url, final RxCallBack rxCallBack) {
@@ -193,6 +261,85 @@ public class OkhttpRequest implements IHttpRequest {
         return build.create(RxService.class);
     }
 
+    private void writeResponseBodyToDisk(final ResponseBody responseBody, final long range, final String downloadUrl,
+                                         final String download_path, final String download_file_name,
+                                         final DownloadListener downloadListener) {
+        //创建单一线程池（线程里面只有一个线程，如果该线程意外死亡，那么系统会自动创建一个新的线程来代替）
+        ExecutorService singlePool = ThreadUtils.getSinglePool();
+        singlePool.execute(new Runnable() {
+            @Override
+            public void run() {
+                RandomAccessFile randomAccessFile = null;
+                InputStream inputStream = null;
+                long total = range;
+                long responseLength = 0;
+                try {
+                    byte[] buf = new byte[2048];
+                    int len = 0;
+                    responseLength = responseBody.contentLength();
+                    inputStream = responseBody.byteStream();
+                    final File file = new File(download_path, download_file_name);
+                    File dir = new File(download_path);
+                    if (!dir.exists()) {
+                        dir.mkdirs();
+                    }
+
+                    randomAccessFile = new RandomAccessFile(file, "rwd");
+                    if (range == 0) {
+                        randomAccessFile.setLength(responseLength);
+                    }
+                    randomAccessFile.seek(range);
+
+                    int progress = 0;
+                    int lastProgress = 0;
+
+                    while ((len = inputStream.read(buf)) != -1) {
+                        randomAccessFile.write(buf, 0, len);
+                        total += len;
+                        SPUtils.getInstance().put(downloadUrl, total);
+                        lastProgress = progress;
+                        progress = (int) (total * 100 / randomAccessFile.length());
+                        if (progress > 0 && progress != lastProgress) {
+                            final int finalProgress = progress;
+                            ViewUtils.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    downloadListener.onProgress(finalProgress);
+                                }
+                            });
+                        }
+                    }
+                    ViewUtils.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            downloadListener.onCompleted(file.getAbsolutePath());
+                        }
+                    });
+                } catch (final Exception e) {
+                    ViewUtils.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            downloadListener.onError(e.getMessage());
+                        }
+                    });
+                    e.printStackTrace();
+                } finally {
+                    try {
+                        if (randomAccessFile != null) {
+                            randomAccessFile.close();
+                        }
+
+                        if (inputStream != null) {
+                            inputStream.close();
+                        }
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+    }
 
 
     /////////////////////////////////////////// retrofit 请求  ////////////////////////////////////
@@ -279,7 +426,6 @@ public class OkhttpRequest implements IHttpRequest {
 //        }
         retrofitBuilde.client(okhttpBuilder.build());
 
-//        retrofitBuilde.addConverterFactory()  //添加retrofit解析工厂
         Retrofit build = retrofitBuilde.build();
         return build.create(RetrofitService.class);
     }

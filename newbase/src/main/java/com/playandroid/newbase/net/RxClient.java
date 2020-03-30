@@ -1,8 +1,10 @@
-package com.playandroid.newbase.net;
+package com.live.base.net;
 
-import com.playandroid.newbase.net.callback.RxCallBack;
-import com.playandroid.newbase.net.http.IHttpRequest;
-import com.playandroid.newbase.net.http.OkhttpRequest;
+
+import com.live.base.net.callback.DownloadListener;
+import com.live.base.net.callback.RxCallBack;
+import com.live.base.net.http.IHttpRequest;
+import com.live.base.net.http.OkhttpRequest;
 
 import java.io.File;
 import java.util.Map;
@@ -83,10 +85,10 @@ public final class RxClient {
     }
 
 
-    public final void rxDownload(String url) {
+    public final void rxDownload(String url, String download_path, String download_file_name, final DownloadListener downloadListener) {
         if (httpRequest == null) {
             throw new NullPointerException("httpRequest  is null!");
         }
-        httpRequest.rxDownload(url);
+        httpRequest.rxDownload(url, download_path, download_file_name, downloadListener);
     }
 }

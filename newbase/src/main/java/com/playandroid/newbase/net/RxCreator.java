@@ -1,8 +1,8 @@
-package com.playandroid.newbase.net;
+package com.live.base.net;
 
 
-import com.playandroid.newbase.BaseApplication;
-import com.playandroid.newbase.net.api.ApiService;
+import com.live.base.BaseApplication;
+import com.live.base.net.api.ApiService;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -59,8 +59,8 @@ public final class RxCreator {
     private static final class RetrofitHolder {
         public static final Retrofit.Builder RETROFIT_BUILDER = new Retrofit.Builder()
                 .baseUrl(ApiService.BASE_URL)
-                .addConverterFactory(ScalarsConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create());
+                .addConverterFactory(ScalarsConverterFactory.create())  // 解析工厂
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create()); //支持rxjava
     }
 
     public static Retrofit.Builder getRetrofitBuilde() {

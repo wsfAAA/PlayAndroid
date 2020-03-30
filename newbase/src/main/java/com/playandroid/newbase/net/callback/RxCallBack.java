@@ -1,4 +1,4 @@
-package com.playandroid.newbase.net.callback;
+package com.live.base.net.callback;
 
 import com.google.gson.internal.$Gson$Types;
 
