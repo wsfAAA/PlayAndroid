@@ -1,4 +1,0 @@
-#Fri Mar 27 11:14:51 GMT+08:00 2020
-base.0=D\:\\Android\\AndroidStudy\\PlayAndroid\\newbase\\build\\intermediates\\dex\\debug\\out\\classes.dex
-path.0=classes.dex
-renamed.0=classes.dex
