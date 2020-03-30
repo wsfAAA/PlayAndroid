@@ -11,6 +11,7 @@ import retrofit2.http.DELETE;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
@@ -44,9 +45,14 @@ public interface RxService {
     @DELETE
     Observable<String> delete(@Url String url, @QueryMap WeakHashMap<String, Object> params);
 
-    @Streaming
+    /**
+     * 下载
+     * @param url
+     * @return
+     */
+    @Streaming //添加这个注解用来下载大文件
     @GET
-    Observable<ResponseBody> download(@Url String url, @QueryMap WeakHashMap<String, Object> params);
+    Observable<ResponseBody> download(@Header("Range") String range, @Url() String url);
 
     @Multipart
     @POST

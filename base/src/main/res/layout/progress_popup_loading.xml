@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/bg_color_progress"
+    android:orientation="vertical"
+    android:padding="@dimen/dp_20"
+    tools:viewBindingIgnore="true">
+
+    <com.live.base.view.CirclePercentView
+        android:id="@+id/progress_circular"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        app:circleBgColor="@color/color_4D000000"
+        app:circleProgressColor="@color/color_ffffff"
+        app:circleRadius="30" />
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:text="特效同步中"
+        android:textColor="#fff"
+        android:textSize="@dimen/sp_12" />
+
+</LinearLayout>

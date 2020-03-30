@@ -59,8 +59,8 @@ public final class RxCreator {
     private static final class RetrofitHolder {
         public static final Retrofit.Builder RETROFIT_BUILDER = new Retrofit.Builder()
                 .baseUrl(ApiService.BASE_URL)
-                .addConverterFactory(ScalarsConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create());
+                .addConverterFactory(ScalarsConverterFactory.create())  // 解析工厂
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create()); //支持rxjava
     }
 
     public static Retrofit.Builder getRetrofitBuilde() {

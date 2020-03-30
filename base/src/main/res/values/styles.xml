@@ -1,0 +1,87 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.FullScreen">
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Transparent" parent="@style/Base.Theme.AppCompat">
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <style name="MyCheckBoxAll" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/pink</item>
+        <item name="colorControlActivated">@color/pink</item>
+    </style>
+
+    <!-- Input dialog theme. -->
+    <style name="InputDialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">#00000000</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="colorControlNormal">@color/colorAccent</item>
+        <item name="android:textColorHint">@color/c9</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
+    </style>
+
+    <declare-styleable name="CirclePercentView">
+        <!--圆弧背景色-->
+        <attr name="circleBgColor" format="reference" />
+        <!--圆弧进度条颜色-->
+        <attr name="circleProgressColor" format="reference" />
+        <!--圆弧宽度-->
+        <attr name="circleRadius" format="integer" />
+        <!--渐变开始颜色-->
+        <attr name="circleStartColor" format="reference" />
+        <!--渐变结束颜色-->
+        <attr name="circleEndColor" format="reference" />
+        <!--是否渐变-->
+        <attr name="circleIsGradient" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="ShadowLayout">
+        <!--阴影的圆角大小-->
+        <attr name="hl_cornerRadius" format="dimension" />
+        <!--阴影的扩散范围(也可以理解为扩散程度)-->
+        <attr name="hl_shadowLimit" format="dimension" />
+        <attr name="hl_shadowColor" format="color" />
+        <attr name="hl_shadowBackColor" format="color" />
+        <attr name="hl_shadowBackColorClicked" format="color" />
+        <!--x轴的偏移量-->
+        <attr name="hl_dx" format="dimension" />
+        <!--y轴的偏移量-->
+        <attr name="hl_dy" format="dimension" />
+        <!--左边是否显示阴影-->
+        <attr name="hl_leftShow" format="boolean" />
+        <!--右边是否显示阴影-->
+        <attr name="hl_rightShow" format="boolean" />
+        <!--上边是否显示阴影-->
+        <attr name="hl_topShow" format="boolean" />
+        <!--下面是否显示阴影-->
+        <attr name="hl_bottomShow" format="boolean" />
+
+        <!-- 新增selector样式，是pressed叫是sectored还是2者都需要 -->
+        <attr name="hl_selectorMode">
+            <flag name="pressed" value="1" />
+            <flag name="selected" value="2" />
+        </attr>
+
+        <!--        是否要显示应用，可能有只想用shape这块，不想要阴影-->
+        <attr name="hl_isShowShadow" format="boolean" />
+
+    </declare-styleable>
+</resources>

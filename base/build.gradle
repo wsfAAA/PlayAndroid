@@ -44,6 +44,7 @@ dependencies {
     api rootProject.ext.dependencies["converter-scalars"]
     api rootProject.ext.dependencies["converter-gson"]
     api rootProject.ext.dependencies["utilcode"]
+    api rootProject.ext.dependencies["BasePopup"]
 
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="color_343434">#343434</color>
+    <color name="color_4c000000">#4c000000</color>ff3366
+    <color name="color_4D000000">#4D000000</color>
+    <color name="color_80ff3366">#80ff3366</color>
+    <color name="color_ffffff">#ffffff</color>
+    <color name="color_6e6e6e">#6e6e6e</color>
+    <color name="color_beb18f">#beb18f</color>
+    <color name="color_d9d9d9d">#d9d9d9</color>
+    <color name="pink">#ff3366</color>
+    <color name="black66">#666</color>
+    <color name="black">#000</color>
+    <color name="color_666666">#666666</color>
+    <color name="color_ff3366">#ff3366</color>
+    <color name="color_333333">#333333</color>
+    <color name="color_f0f0f0">#f0f0f0</color>
+    <color name="color_decea5">#decea5</color>
+    <color name="color_000000">#000000</color>
+    <color name="color_ede5f2">#ede5f2</color>
+    <color name="color_F6F2F9">#F6F2F9</color>
+    <color name="color_bcb090">#bcb090</color>
+<!--    半透明-->
+    <color name="color_80000000">#80000000</color>
+
+    <color name="white">#fff</color>
+    <color name="gold">#bcb090</color>
+    <color name="transparent">@android:color/transparent</color>
+    <color name="transparent10">#80000000</color>
+    <color name="c9">#777777</color>
+    <color name="color_cccccc">#cccccc</color>
+    <color name="color_dddddd">#dddddd</color>
+    <color name="color_eeeee">#eeeeee</color>
+    <color name="color_4c4c4c">#4c4c4c</color>
+
+    <color name="mine_color">#855a20</color>
+    <color name="default_shadow_color">#2a000000</color>
+    <color name="default_shadowback_color">#fff</color>
+</resources>

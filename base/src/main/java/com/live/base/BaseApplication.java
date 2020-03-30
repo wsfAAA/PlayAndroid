@@ -26,5 +26,4 @@ public class BaseApplication extends Application {
     public static BaseApplication getBaseApplication() {
         return baseApplication;
     }
-
 }
