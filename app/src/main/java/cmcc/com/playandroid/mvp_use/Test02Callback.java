@@ -1,4 +1,4 @@
-package cmcc.com.playandroid.mvptest;
+package cmcc.com.playandroid.mvp_use;
 
 
 import com.live.base.mvp.BaseView;

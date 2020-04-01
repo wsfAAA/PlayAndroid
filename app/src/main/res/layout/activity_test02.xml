@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="cmcc.com.playandroid.mvptest.Test02Activity">
+    tools:context="cmcc.com.playandroid.mvp_use.Test02Activity">
 
     <TextView
         android:id="@+id/tv_text_one"

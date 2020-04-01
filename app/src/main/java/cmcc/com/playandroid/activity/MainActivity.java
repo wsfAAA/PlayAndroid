@@ -18,7 +18,7 @@ import com.live.base.net.http.OkhttpRequest;
 
 import androidx.appcompat.app.AppCompatActivity;
 import cmcc.com.playandroid.databinding.ActivityMainBinding;
-import cmcc.com.playandroid.mvptest.Test02Activity;
+import cmcc.com.playandroid.mvp_use.Test02Activity;
 
 public class MainActivity extends AppCompatActivity {
 
