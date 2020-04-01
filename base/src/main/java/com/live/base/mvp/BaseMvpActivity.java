@@ -11,7 +11,7 @@ import androidx.viewbinding.ViewBinding;
 
 public abstract class BaseMvpActivity<T extends ViewBinding> extends FragmentActivity implements BaseView {
     private List<BasePresenter> mPresenters = new ArrayList<>();
-    protected T viewBinding;
+    protected T viewBinding;   // 如果不想使用viewBinding可以在根布局上添加 tools:viewBindingIgnore="true" 即可
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
