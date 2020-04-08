@@ -7,6 +7,7 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import cmcc.com.playandroid.databinding.ActivityMainBinding;
+import cmcc.com.playandroid.kotlin.KotlinActivity;
 import cmcc.com.playandroid.mvp_use.Test02Activity;
 import cmcc.com.playandroid.net_use.NetActivity;
 import cmcc.com.playandroid.viewbyid.ViewByIdActivity;
@@ -35,6 +36,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, ViewByIdActivity.class));
+            }
+        });
+        binding.btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, KotlinActivity.class));
             }
         });
     }
