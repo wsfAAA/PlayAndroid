@@ -12,5 +12,6 @@ class MainActivity : AppCompatActivity() {
         textView.setText("这是测试数据。。。。。。。。。。。。。。。。。")
         image.setImageResource(R.mipmap.ic_launcher)
 
+
     }
 }
